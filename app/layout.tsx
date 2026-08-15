@@ -6,6 +6,7 @@ import Footer from '@/components/Footer'
 import Chatbot from '@/components/Chatbot'
 import SectionTransitionLoader from '@/components/SectionTransitionLoader'
 import ScrollReveal from '@/components/ScrollReveal'
+import { getOrganizationStructuredData } from '@/lib/seo'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -49,6 +50,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
         <link rel="preconnect" href="https://source.unsplash.com" crossOrigin="" />
+        <script
+          key="ld-org"
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(getOrganizationStructuredData()) }}
+        />
       </head>
       <body className={inter.className}>
         <Header />
