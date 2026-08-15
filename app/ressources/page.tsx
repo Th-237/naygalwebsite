@@ -74,7 +74,36 @@ export default function RessourcesPage() {
 
         <div className="mt-16 flex items-end justify-between gap-6"><div><p className="eyebrow">Explorer la bibliothèque</p><h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Les ressources utiles maintenant</h2></div><p className="hidden text-sm text-slate-500 sm:block">{displayedResources.length} ressource{displayedResources.length > 1 ? 's' : ''}</p></div>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {displayedResources.length ? displayedResources.map((resource) => <article key={resource.title} className="group flex min-h-72 flex-col rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl"><div className="flex items-start justify-between"><span className={`flex h-12 min-w-12 items-center justify-center rounded-2xl ${resource.color} text-sm font-bold`}>{resource.icon}</span><span className="text-xs font-bold uppercase tracking-[.12em] text-slate-400">{resource.duration}</span></div><p className="mt-10 text-xs font-bold uppercase tracking-[.14em] text-[#438a2c]">{resource.type}</p><h3 className="mt-2 text-2xl font-semibold leading-tight tracking-tight">{resource.title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{resource.description}</p>{resource.href ? (<Link href={resource.href} target="_blank" rel="noopener noreferrer" className="mt-auto pt-6 text-sm font-bold group-hover:text-[#438a2c]">Ouvrir le PDF →</Link>) : (<Link href="/contact" className="mt-auto pt-6 text-sm font-bold group-hover:text-[#438a2c]">Consulter →</Link>)} </article>) : <div className="col-span-full rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center text-sm text-slate-600">Aucune ressource ne correspond à votre recherche.</div>}
+          {displayedResources.length ? displayedResources.map((resource) => (
+            <article key={resource.title} className="group flex min-h-72 flex-col rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl">
+              <div className="flex items-start justify-between">
+                <span className={`flex h-12 min-w-12 items-center justify-center rounded-2xl ${resource.color} text-sm font-bold`}>
+                  {resource.href && resource.href.endsWith('.pdf') ? (
+                    <a href={resource.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                      <svg className="h-6 w-6 text-red-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                        <rect x="3" y="3" width="14" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M17 3v5h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <text x="7" y="15" fill="currentColor" fontSize="9" fontWeight="700">PDF</text>
+                      </svg>
+                    </a>
+                  ) : (
+                    resource.icon
+                  )}
+                </span>
+                <span className="text-xs font-bold uppercase tracking-[.12em] text-slate-400">{resource.duration}</span>
+              </div>
+
+              <p className="mt-10 text-xs font-bold uppercase tracking-[.14em] text-[#438a2c]">{resource.type}</p>
+              <h3 className="mt-2 text-2xl font-semibold leading-tight tracking-tight">{resource.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-600">{resource.description}</p>
+
+              {resource.href ? (
+                <Link href={resource.href} target="_blank" rel="noopener noreferrer" className="mt-auto pt-6 text-sm font-bold group-hover:text-[#438a2c]">Ouvrir le PDF →</Link>
+              ) : (
+                <Link href="/contact" className="mt-auto pt-6 text-sm font-bold group-hover:text-[#438a2c]">Consulter →</Link>
+              )}
+            </article>
+          )) : <div className="col-span-full rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center text-sm text-slate-600">Aucune ressource ne correspond à votre recherche.</div>}
         </div>
       </section>
 
