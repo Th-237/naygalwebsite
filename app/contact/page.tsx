@@ -150,8 +150,23 @@ export default function ContactPage() {
     setStatus('sending')
 
     try {
-      // Remplacer cette simulation par Firebase / API.
-      await new Promise((resolve) => setTimeout(resolve, 1500))
+      const to = 'naygalcameroun@gmail.com'
+      const subject = `[NAYGAL] ${formData.subject || 'Contact'} - ${formData.detail || ''}`
+      const bodyLines = [
+        `Nom: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Téléphone: ${formData.phone}`,
+        `Organisation: ${formData.organization}`,
+        `Sujet: ${getSubjectLabel()}`,
+        `Précision: ${formData.detail}`,
+        '',
+        'Message :',
+        formData.message,
+      ]
+      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`
+
+      // Ouvrir le client mail de l'utilisateur avec les champs pré-remplis.
+      window.location.href = mailto
 
       setStatus('sent')
 
@@ -164,7 +179,8 @@ export default function ContactPage() {
         detail: '',
         message: '',
       })
-    } catch {
+    } catch (err) {
+      console.error(err)
       setStatus('error')
     }
   }
@@ -389,7 +405,7 @@ export default function ContactPage() {
           <div className="grid sm:grid-cols-3">
 
             <a
-              href="mailto:contact@naygal.cm"
+              href="mailto:naygalcameroun@gmail.com"
               className="border-b border-white/10 p-6 transition hover:bg-white/[.03] sm:border-b-0 sm:border-r"
             >
 
@@ -398,7 +414,7 @@ export default function ContactPage() {
               </p>
 
               <p className="mt-2 text-sm font-semibold text-white">
-                contact@naygal.cm
+                naygalcameroun@gmail.com
               </p>
 
               <p className="mt-1 text-xs text-slate-500">
@@ -690,7 +706,7 @@ export default function ContactPage() {
                   </p>
 
                   <p className="mt-3 text-sm text-slate-300">
-                    contact@naygal.cm
+                    naygalcameroun@gmail.com
                   </p>
 
                   <p className="mt-1 text-sm text-slate-300">
@@ -1085,10 +1101,10 @@ export default function ContactPage() {
             <div className="flex flex-wrap gap-3">
 
               <a
-                href="mailto:contact@naygal.cm"
+                href="mailto:naygalcameroun@gmail.com"
                 className="border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/5"
               >
-                contact@naygal.cm
+                naygalcameroun@gmail.com
               </a>
 
               <a
