@@ -98,7 +98,10 @@ export default function RessourcesPage() {
               <p className="mt-3 text-sm leading-6 text-slate-600">{resource.description}</p>
 
               {resource.href ? (
-                <Link href={resource.href} target="_blank" rel="noopener noreferrer" className="mt-auto pt-6 text-sm font-bold group-hover:text-[#438a2c]">Ouvrir le PDF →</Link>
+                <div className="mt-auto pt-6 flex items-center gap-4">
+                  <Link href={resource.href} target="_blank" rel="noopener noreferrer" className="text-sm font-bold group-hover:text-[#438a2c]">Ouvrir le PDF →</Link>
+                  <a href={resource.href} download className="text-sm font-semibold text-slate-600 hover:text-slate-800">Télécharger</a>
+                </div>
               ) : (
                 <Link href="/contact" className="mt-auto pt-6 text-sm font-bold group-hover:text-[#438a2c]">Consulter →</Link>
               )}
