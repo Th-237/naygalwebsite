@@ -69,13 +69,11 @@ export default function RessourcesPage() {
               <div className="flex items-start justify-between">
                 <span className={`flex h-12 min-w-12 items-center justify-center rounded-2xl ${resource.color} text-sm font-bold`}>
                   {resource.href && resource.href.endsWith('.pdf') ? (
-                    <a href={resource.href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                      <svg className="h-6 w-6 text-red-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                        <rect x="3" y="3" width="14" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
-                        <path d="M17 3v5h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <text x="7" y="15" fill="currentColor" fontSize="9" fontWeight="700">PDF</text>
-                      </svg>
-                    </a>
+                    <svg className="h-6 w-6 text-red-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+                      <rect x="3" y="3" width="14" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M17 3v5h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <text x="7" y="15" fill="currentColor" fontSize="9" fontWeight="700">PDF</text>
+                    </svg>
                   ) : (
                     resource.icon
                   )}
@@ -87,14 +85,18 @@ export default function RessourcesPage() {
               <h3 className="mt-2 text-2xl font-semibold leading-tight tracking-tight">{resource.title}</h3>
               <p className="mt-3 text-sm leading-6 text-slate-600">{resource.description}</p>
 
-              {resource.href && resource.href.endsWith('.pdf') ? (
-                <div className="mt-auto pt-6 flex items-center gap-4">
-                  <Link href={resource.href} target="_blank" rel="noopener noreferrer" className="text-sm font-bold group-hover:text-[#438a2c]">Ouvrir le PDF →</Link>
-                  <a href={resource.href} download className="text-sm font-semibold text-slate-600 hover:text-slate-800">Télécharger</a>
-                </div>
-              ) : (
-                <Link href={`/ressources/${resource.category.toLowerCase()}/${resource.slug}`} className="mt-auto pt-6 text-sm font-bold group-hover:text-[#438a2c]">Consulter →</Link>
-              )}
+              <div className="mt-auto pt-6">
+                <Link href="/contact" className="text-sm font-bold group-hover:text-[#438a2c]">
+                  {(() => {
+                    const type = resource.type?.toLowerCase()
+                    if (type === 'article') return 'Obtenir l’article →'
+                    if (type === 'guide') return 'Obtenir le guide →'
+                    if (type === 'conseil') return 'Obtenir le conseil →'
+                    if (type === 'outil' || type === 'checklist') return "Obtenir l'outil →"
+                    return 'Obtenir la ressource →'
+                  })()}
+                </Link>
+              </div>
             </article>
           )) : <div className="col-span-full rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center text-sm text-slate-600">Aucune ressource ne correspond à votre recherche.</div>}
         </div>
