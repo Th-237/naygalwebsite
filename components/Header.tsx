@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { siteNavigation } from '@/lib/site-map'
-import ThemeToggle from './ThemeToggle'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -54,14 +53,11 @@ export default function Header() {
             <Link href="/contact" className="ml-3 rounded-sm bg-[#52a234] px-4 py-2.5 text-sm font-semibold text-white transition-smooth hover:bg-[#438a2c] focus:outline-none focus:ring-2 focus:ring-[#52a234] focus:ring-offset-2">
               Contact
             </Link>
-            <ThemeToggle />
           </nav>
 
           <Link href="/contact" className="hidden rounded-sm bg-[#52a234] px-4 py-2.5 text-sm font-semibold text-white lg:inline-flex xl:hidden">
             Contact
           </Link>
-
-          <ThemeToggle />
 
           <button
             type="button"

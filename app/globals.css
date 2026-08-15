@@ -13,31 +13,7 @@
   }
 
   body {
-    /* Theme-aware colors using CSS variables */
-    background-color: var(--bg);
-    color: var(--text);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Light theme variables */
-  :root {
-    --bg: #ffffff;
-    --surface: #f8fafc;
-    --text: #0f172a;
-    --muted: #64748b;
-    --accent: #52A234;
-    --card: #ffffff;
-  }
-
-  /* Dark (blue night) theme variables */
-  .dark {
-    --bg: #071321; /* main dark background */
-    --surface: #0b1c2d;
-    --text: #e6eef6;
-    --muted: #94a3b8;
-    --accent: #6ec34e;
-    --card: rgba(255,255,255,0.03);
+    @apply bg-white text-slate-900 antialiased;
   }
 
   ::selection {
