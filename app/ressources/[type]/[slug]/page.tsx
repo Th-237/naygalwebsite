@@ -1,13 +1,19 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { findResourceBySlug } from '../../../lib/resources'
+import { findResourceBySlug } from '../../../../lib/resources'
 
-type Props = { params: { slug: string } }
+type Props = { params: { type: string; slug: string } }
 
-export default function ResourcePage({ params }: Props) {
-  const { slug } = params
+export default function ResourceDetailPage({ params }: Props) {
+  const { type, slug } = params
   const resource = findResourceBySlug(slug)
   if (!resource) return notFound()
+
+  // Optional: ensure category matches the URL type
+  if (resource.category.toLowerCase() !== type) {
+    // if mismatch, show notFound to avoid category/slug collisions
+    return notFound()
+  }
 
   return (
     <main className="container-custom py-16">
@@ -16,7 +22,6 @@ export default function ResourcePage({ params }: Props) {
         <h1 className="mt-4 text-3xl font-semibold">{resource.title}</h1>
         <p className="mt-4 text-sm text-slate-600">{resource.description}</p>
 
-        {/* If it's a PDF, provide direct open/download links */}
         {resource.href && resource.href.endsWith('.pdf') ? (
           <div className="mt-8 flex gap-4">
             <a href={resource.href} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#021d47] px-4 py-2 text-sm font-bold text-white">Ouvrir le PDF</a>
