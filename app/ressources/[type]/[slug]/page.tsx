@@ -17,6 +17,24 @@ export default function ResourceDetailPage({ params }: Props) {
 
   return (
     <main className="container-custom py-16">
+      {/* Structured data for resource */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            resource.type === 'Article'
+              ? {
+                  '@context': 'https://schema.org',
+                  '@type': 'Article',
+                  headline: resource.title,
+                  description: resource.description,
+                  url: `https://naygal.com/ressources/${resource.category.toLowerCase()}/${resource.slug}`,
+                }
+              : { '@context': 'https://schema.org', '@type': 'CreativeWork', name: resource.title, description: resource.description }
+          ),
+        }}
+      />
       <div className="max-w-3xl">
         <p className="text-sm font-bold uppercase tracking-[.12em] text-[#438a2c]">{resource.type}</p>
         <h1 className="mt-4 text-3xl font-semibold">{resource.title}</h1>

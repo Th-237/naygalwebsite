@@ -319,3 +319,13 @@ export default function ActualitesPage() {
     </main>
   )
 }
+
+export const metadata = {
+  title: 'Actualités · NAYGAL',
+  description: 'Les dernières actualités, événements et articles de NAYGAL.',
+  openGraph: {
+    title: 'Actualités · NAYGAL',
+    description: 'Les dernières actualités, événements et articles de NAYGAL.',
+    url: 'https://naygal.com/actualites',
+  },
+}

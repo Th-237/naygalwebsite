@@ -576,3 +576,13 @@ export default function Home() {
     </main>
   )
 }
+
+export const metadata = {
+  title: 'NAYGAL — Accueil',
+  description: 'NAYGAL accompagne les entreprises, établissements et organisations dans leur transformation numérique au Cameroun.',
+  openGraph: {
+    title: 'NAYGAL — Accueil',
+    description: 'NAYGAL accompagne les entreprises, établissements et organisations dans leur transformation numérique au Cameroun.',
+    url: 'https://naygal.com',
+  },
+}

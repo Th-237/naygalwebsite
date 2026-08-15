@@ -106,3 +106,13 @@ export default function RessourcesPage() {
     </main>
   )
 }
+
+export const metadata = {
+  title: 'Ressources · NAYGAL',
+  description: 'Articles, guides et outils pour accompagner votre transformation numérique.',
+  openGraph: {
+    title: 'Ressources · NAYGAL',
+    description: 'Articles, guides et outils pour accompagner votre transformation numérique.',
+    url: 'https://naygal.com/ressources',
+  },
+}
