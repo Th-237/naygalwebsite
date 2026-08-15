@@ -126,7 +126,9 @@ export default function AcademyEvenementsPage() {
               <p className="mt-4 text-slate-600">Voici d’autres images prises pendant la journée JTECH.</p>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {bottomImages.map((image) => (
-                  <img key={image.src} src={image.src} alt={image.alt} className="h-48 w-full rounded-[1.5rem] object-cover" />
+                  <div key={image.src} className="relative h-48 w-full rounded-[1.5rem] overflow-hidden">
+                    <Image src={image.src} alt={image.alt} fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
+                  </div>
                 ))}
               </div>
             </div>

@@ -250,7 +250,11 @@ export default function ActualitesPage() {
 
         <div className="grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
           <article className="group relative min-h-[460px] overflow-hidden rounded-[2rem] bg-naygal-dark shadow-xl shadow-naygal-dark/10">
-            <img src={featuredStory.image} alt="Équipe collaborant autour d’un projet numérique" className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0">
+              <div className="relative h-full w-full">
+                <Image src={featuredStory.image} alt="Équipe collaborant autour d’un projet numérique" fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 50vw" />
+              </div>
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#021d47] via-[#021d47]/75 to-[#021d47]/10" />
             <div className="relative flex h-full min-h-[460px] flex-col justify-end p-7 text-white sm:p-10">
               <div className="mb-auto flex items-center justify-between gap-4"><span className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] backdrop-blur-sm">{featuredStory.type}</span><span className="text-sm text-white/80">{featuredStory.meta}</span></div>
@@ -303,7 +307,12 @@ export default function ActualitesPage() {
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {filteredArticles.length > 0 ? filteredArticles.map((article) => (
             <article key={article.title} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/80">
-              <div className="relative h-48 overflow-hidden"><img src={article.image} alt="" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-naygal-dark/25 to-transparent" /></div>
+              <div className="relative h-48 overflow-hidden">
+                <div className="relative h-full w-full">
+                  <Image src={article.image} alt={article.title} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(max-width: 640px) 100vw, 33vw" />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-naygal-dark/25 to-transparent" />
+              </div>
               <div className="p-6"><div className="flex items-center justify-between gap-3 text-xs font-semibold"><span className="text-[#438a2c]">{article.category}</span><span className="text-slate-400">{article.meta}</span></div><p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">{article.type}</p><h3 className="mt-2 text-xl font-semibold leading-snug tracking-tight">{article.title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{article.description}</p><Link href="/contact" className="group mt-5 inline-flex items-center gap-2 text-sm font-bold text-naygal-dark">Lire la ressource <ArrowIcon /></Link></div>
             </article>
           )) : <div className="col-span-full rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center text-sm text-slate-600">Aucune ressource ne correspond à votre recherche pour le moment.</div>}
