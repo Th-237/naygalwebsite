@@ -74,6 +74,14 @@ export default function SectionTransitionLoader() {
         return
       }
 
+      // Ignore links that open in a new tab or are downloads — they don't change the current SPA route
+      if (anchor.target && anchor.target !== '_self') {
+        return
+      }
+      if (anchor.hasAttribute('download')) {
+        return
+      }
+
       const href = anchor.getAttribute('href')
       if (!href) {
         return
