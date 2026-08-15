@@ -150,23 +150,13 @@ export default function ContactPage() {
     setStatus('sending')
 
     try {
-      const to = 'naygalcameroun@gmail.com'
-      const subject = `[NAYGAL] ${formData.subject || 'Contact'} - ${formData.detail || ''}`
-      const bodyLines = [
-        `Nom: ${formData.name}`,
-        `Email: ${formData.email}`,
-        `Téléphone: ${formData.phone}`,
-        `Organisation: ${formData.organization}`,
-        `Sujet: ${getSubjectLabel()}`,
-        `Précision: ${formData.detail}`,
-        '',
-        'Message :',
-        formData.message,
-      ]
-      const mailto = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-      // Ouvrir le client mail de l'utilisateur avec les champs pré-remplis.
-      window.location.href = mailto
+      if (!res.ok) throw new Error('Send failed')
 
       setStatus('sent')
 
