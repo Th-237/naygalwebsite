@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 const topImages = [
@@ -68,8 +69,10 @@ export default function AcademyEvenementsPage() {
               </div>
             </div>
 
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-white shadow-[0_30px_80px_rgba(3,41,101,.12)]">
-              <img src={topImages[activeSlide].src} alt={topImages[activeSlide].alt} className="h-[520px] w-full object-cover transition duration-700" />
+              <div className="relative overflow-hidden rounded-[2.5rem] bg-white shadow-[0_30px_80px_rgba(3,41,101,.12)]">
+              <div className="relative h-[520px] w-full">
+                <Image src={topImages[activeSlide].src} alt={topImages[activeSlide].alt} fill className="object-cover transition duration-700" sizes="(max-width: 1024px) 100vw, 50vw" />
+              </div>
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent px-6 py-6 text-white">
                 <p className="text-sm uppercase tracking-[0.18em] text-white/70">JTECH</p>
                 <p className="mt-2 text-lg font-semibold">{topImages[activeSlide].alt}</p>

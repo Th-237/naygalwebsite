@@ -46,6 +46,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
+        <link rel="preconnect" href="https://source.unsplash.com" crossOrigin="" />
+      </head>
       <body className={inter.className}>
         <Header />
         <SectionTransitionLoader />

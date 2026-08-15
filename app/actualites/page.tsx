@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useMemo, useState } from 'react'
 
 const featuredStory = {
@@ -185,7 +186,9 @@ export default function ActualitesPage() {
             <div className="flex h-full w-[500%]" style={{ transform: `translateX(-${activeSlide * 20}%)`, transition: isSliding ? 'transform 850ms cubic-bezier(0.16, 1, 0.3, 1)' : 'none' }}>
               {heroImages.map((image, index) => (
                 <div key={`slide-${index}`} className="relative h-full w-1/5 shrink-0">
-                  <img src={image.src} alt={image.alt} className="h-full w-full scale-105 object-cover transition-transform duration-[5000ms] ease-out" />
+                  <div className="relative h-full w-full">
+                    <Image src={image.src} alt={image.alt} fill className="scale-105 object-cover transition-transform duration-[5000ms] ease-out" sizes="(max-width: 1024px) 100vw, 20vw" />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-[#021d47]/55 via-[#021d47]/10 to-transparent" />
                   <div className="absolute inset-x-7 top-7 flex items-center justify-between text-xs font-bold uppercase tracking-[0.16em] text-white/85"><span className="rounded-full border border-white/20 bg-[#021d47]/30 px-3 py-1.5 backdrop-blur-sm">{image.eyebrow}</span><span>0{index + 1} / 05</span></div>
                 </div>
@@ -199,7 +202,9 @@ export default function ActualitesPage() {
           </div>
           {/* Mobile: show the current slide image as a large banner */}
           <div className="mx-auto block relative h-56 w-full max-w-3xl overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] shadow-lg lg:hidden">
-            <img src={currentSlide.src} alt={currentSlide.alt || currentSlide.title} className="h-full w-full object-cover transition-opacity duration-700" />
+            <div className="relative h-full w-full">
+              <Image src={currentSlide.src} alt={currentSlide.alt || currentSlide.title} fill className="object-cover transition-opacity duration-700" sizes="100vw" />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#021d47]/60 to-transparent" />
             <button type="button" onClick={() => setActiveSlide((current) => (current + heroImages.length - 1) % heroImages.length)} className="absolute left-3 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-[#021d47] shadow-md">‹</button>
             <button type="button" onClick={() => setActiveSlide((current) => (current + 1) % heroImages.length)} className="absolute right-3 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-[#021d47] shadow-md">›</button>

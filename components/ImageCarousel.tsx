@@ -1,5 +1,6 @@
-'use client'
+"use client"
 
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 
 type Slide = {
@@ -87,7 +88,9 @@ export default function ImageCarousel({ slides = [], interval = 4000 }: { slides
       <div className="flex transition-transform duration-700 will-change-transform" style={{ transform: `translateX(-${index * 100}%)` }}>
         {slides.map((s, i) => (
           <div key={i} className="min-w-full">
-            <img src={s.src} alt={s.alt || ''} className="h-[430px] w-full object-cover" />
+            <div className="relative h-[430px] w-full">
+              <Image src={s.src} alt={s.alt || ''} fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
+            </div>
           </div>
         ))}
       </div>
