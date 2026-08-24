@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { findResourceBySlug } from '../../../../lib/resources'
 
+// ✅ Définir SITE à l'extérieur, au niveau du module
+const SITE = process.env.SITE_URL || 'https://naygal.cm'
+
 type Props = { params: Promise<{ type: string; slug: string }> }
 
 export async function generateMetadata({ params }: Props) {
@@ -14,8 +17,6 @@ export async function generateMetadata({ params }: Props) {
       description: 'Cette ressource n’existe pas ou n’est plus disponible.',
     }
   }
-
-  const SITE = process.env.SITE_URL || 'https://naygal.cm'
 
   return {
     title: `${resource.title} | NAYGAL`,
