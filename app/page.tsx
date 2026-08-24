@@ -12,13 +12,13 @@ const quickLinks = [
     title: 'NAYGAL Academy',
     description: 'Former les talents numériques de demain.',
     href: '/academy',
-    image: '/images/home/NAYGAL ACADEMY.jpg',
+    image: '/images/home/NAYGALACADEMY.jpg',
   },
   {
     title: 'Nos projets',
     description: 'Découvrir les solutions que nous concevons.',
     href: '/projets',
-    image: '/images/home/NOS PROJETS.png',
+    image: '/images/home/NOSPROJETS.png',
   },
   {
     title: 'À propos',
@@ -119,7 +119,7 @@ const projects = [
     description:
       'Une plateforme éducative africaine pour apprendre, pratiquer et progresser.',
     href: '/projets',
-    image: '/images/home/NAYAC ON LINE.jpg',
+    image: '/images/home/NAYACONLINE.jpg',
   },
 ]
 
@@ -786,7 +786,7 @@ export default function Home() {
           <div className="relative overflow-hidden bg-[#032965]">
 
             <img
-              src="/images/home/NAYTECH ROOM.png"
+              src="/images/home/NAYTECHROOM.png"
               alt="Salle de formation informatique"
               className="absolute inset-0 h-full w-full object-cover opacity-60"
             />
