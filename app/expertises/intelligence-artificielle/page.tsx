@@ -26,19 +26,19 @@ const cards = [
     label: 'Produit',
     title: 'Agents IA pour vos opérations',
     description: 'Développez des assistants personnalisés qui fluidifient les interactions internes et externes.',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/intelligence-artificielle/agentia.png',
   },
   {
     label: 'Recherche',
     title: 'Génération de contenu',
     description: 'Créez des textes, résumés et scripts adaptés à vos besoins métiers en quelques secondes.',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/intelligence-artificielle/iagenerative.jpg',
   },
   {
     label: 'Impact',
     title: 'Décisions augmentées',
     description: 'Exposez vos équipes à des insights concrets pour mieux piloter leurs activités.',
-    image: 'https://images.unsplash.com/photo-1524661135-edb22d5d3e8d?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/intelligence-artificielle/impact.webp',
   },
 ]
 
@@ -47,19 +47,19 @@ const educationResources = [
     title: 'OpenAI',
     description: 'Inspiration produit pour l’IA en éducation, les assistants et l’automatisation intelligente.',
     href: 'https://openai.com/',
-    image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/intelligence-artificielle/openai.jpg',
   },
   {
     title: 'Khan Academy',
     description: 'Exemple d’apprentissage personnalisé et de contenus pédagogiques accessibles.',
     href: 'https://www.khanacademy.org/',
-    image: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/intelligence-artificielle/khan academy.png',
   },
   {
     title: 'edX',
     description: 'Ressources éducatives en ligne et parcours adaptatifs pour monter en compétences.',
     href: 'https://www.edx.org/',
-    image: 'https://images.unsplash.com/photo-1517520287167-4bbf64a00d66?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/intelligence-artificielle/edx.png',
   },
 ]
 
@@ -67,31 +67,38 @@ const africaCases = [
   {
     title: 'Éducation augmentée',
     description: 'Tutoriels IA et parcours adaptatifs pour campus et écoles en Afrique.',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/intelligence-artificielle/Éducation augmentée.jpg',
   },
   {
     title: 'Monitoreo intelligent',
     description: 'Tableaux de bord de performance pour suivre l’apprentissage et l’engagement.',
-    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/intelligence-artificielle/Monitoreo intelligent.jpeg',
   },
   {
     title: 'Workflow automatisé',
     description: 'Automatisation des tâches administratives pour les établissements et les formateurs.',
-    image: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/intelligence-artificielle/Workflow automatisé.png',
   },
 ]
 
 export default function IntelligenceArtificiellePage() {
   return (
     <main className="min-h-screen bg-[#021d47] text-white pt-[72px]">
-      <section className="relative overflow-hidden border-b border-white/10 py-24">
-        <div className="absolute inset-0 bg-naygal-dark opacity-90" />
+      <section className="relative min-h-[700px] overflow-hidden border-b border-white/10 py-24">
+        <Image
+          src="/images/expertises/intelligence-artificielle/ia&automatisation.png"
+          alt="Interface d’intelligence artificielle"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-naygal-dark opacity-60" />
         <div className="absolute left-0 top-16 h-[380px] w-[380px] rounded-full bg-[#52a234]/10 blur-[140px]" />
         <div className="absolute right-0 bottom-24 h-[340px] w-[340px] rounded-full bg-white/10 blur-[120px]" />
 
-        <div className="container-custom relative z-10">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
-            <div className="max-w-2xl">
+        <div className="container-custom relative z-10 flex min-h-[700px] items-center">
+          <div className="max-w-2xl -translate-y-8 sm:-translate-y-12">
               <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[.18em] text-slate-200">
                 Expertises · IA & Automatisation
               </p>
@@ -115,20 +122,6 @@ export default function IntelligenceArtificiellePage() {
                   Voir les expertises
                 </Link>
               </div>
-            </div>
-
-            <div className="rounded-[32px] border border-white/10 bg-[#031127]/90 p-6 shadow-naygal-card">
-              <div className="relative overflow-hidden rounded-[28px] bg-slate-900 h-[420px]">
-                <Image
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80"
-                  alt="Interface d’intelligence artificielle"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-              </div>
-            </div>
           </div>
         </div>
       </section>

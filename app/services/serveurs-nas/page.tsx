@@ -119,7 +119,7 @@ export default function ServeursNASPage() {
       <section className="relative min-h-[700px] overflow-hidden bg-[#021f50] text-white">
 
         <img
-          src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?auto=format&fit=crop&w=2200&q=90"
+          src="/images/services/serveurs-nas/1.webp"
           alt="Serveurs et stockage informatique"
           className="absolute inset-0 h-full w-full object-cover opacity-35"
         />
@@ -350,7 +350,7 @@ export default function ServeursNASPage() {
             <div className="relative min-h-[430px]">
 
               <img
-                src="https://images.unsplash.com/photo-1563770660941-10a4c6c6e8b7?auto=format&fit=crop&w=1400&q=85"
+                src="/images/services/serveurs-nas/2.png"
                 alt="Centre de données et stockage"
                 className="absolute inset-0 h-full w-full object-cover opacity-70"
               />

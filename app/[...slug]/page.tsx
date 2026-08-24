@@ -6,6 +6,34 @@ type PageProps = {
   params: Promise<{ slug: string[] }>
 }
 
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params
+  const href = `/${slug.join('/')}`
+  const page = sitePages.find((item) => item.href === href)
+
+  if (!page) {
+    return {
+      title: 'Page introuvable | NAYGAL',
+      description: 'Cette page n’existe pas ou n’est plus disponible.',
+    }
+  }
+
+  const SITE = process.env.SITE_URL || 'https://naygal.cm'
+
+  return {
+    title: `${page.name} | NAYGAL`,
+    description: page.description,
+    alternates: {
+      canonical: `${SITE}${page.href}`,
+    },
+    openGraph: {
+      title: `${page.name} | NAYGAL`,
+      description: page.description,
+      url: `${SITE}${page.href}`,
+    },
+  }
+}
+
 export function generateStaticParams() {
   return sitePages.map(({ href }) => ({ slug: href.slice(1).split('/') }))
 }

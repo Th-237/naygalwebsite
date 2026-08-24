@@ -107,12 +107,4 @@ export default function RessourcesPage() {
   )
 }
 
-export const metadata = {
-  title: 'Ressources · NAYGAL',
-  description: 'Articles, guides et outils pour accompagner votre transformation numérique.',
-  openGraph: {
-    title: 'Ressources · NAYGAL',
-    description: 'Articles, guides et outils pour accompagner votre transformation numérique.',
-    url: 'https://naygal.com/ressources',
-  },
-}
+// Metadata moved to server-resolved layer to avoid exporting from a client component.

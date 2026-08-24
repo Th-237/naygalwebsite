@@ -158,7 +158,7 @@ export default function ReseauxPage() {
       <section className="relative min-h-[700px] overflow-hidden bg-[#021f50] text-white">
 
         <img
-          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=90"
+          src="/images/services/reseaux/1.jpg"
           alt="Infrastructure réseau informatique"
           className="absolute inset-0 h-full w-full object-cover opacity-35"
         />
@@ -404,7 +404,7 @@ export default function ReseauxPage() {
             <div className="relative min-h-[430px]">
 
               <img
-                src="https://images.unsplash.com/photo-1606904825846-647eb07f5be2?auto=format&fit=crop&w=1400&q=85"
+                src="/images/services/reseaux/2.jpg"
                 alt="Technologie réseau et connectivité"
                 className="absolute inset-0 h-full w-full object-cover opacity-70"
               />

@@ -2,10 +2,37 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { findResourceBySlug } from '../../../../lib/resources'
 
-type Props = { params: { type: string; slug: string } }
+type Props = { params: Promise<{ type: string; slug: string }> }
 
-export default function ResourceDetailPage({ params }: Props) {
-  const { type, slug } = params
+export async function generateMetadata({ params }: Props) {
+  const { type, slug } = await params
+  const resource = findResourceBySlug(slug)
+
+  if (!resource || resource.category.toLowerCase() !== type) {
+    return {
+      title: 'Ressource introuvable | NAYGAL',
+      description: 'Cette ressource n’existe pas ou n’est plus disponible.',
+    }
+  }
+
+  const SITE = process.env.SITE_URL || 'https://naygal.cm'
+
+  return {
+    title: `${resource.title} | NAYGAL`,
+    description: resource.description,
+    alternates: {
+      canonical: `${SITE}/ressources/${resource.category.toLowerCase()}/${resource.slug}`,
+    },
+    openGraph: {
+      title: `${resource.title} | NAYGAL`,
+      description: resource.description,
+      url: `${SITE}/ressources/${resource.category.toLowerCase()}/${resource.slug}`,
+    },
+  }
+}
+
+export default async function ResourceDetailPage({ params }: Props) {
+  const { type, slug } = await params
   const resource = findResourceBySlug(slug)
   if (!resource) return notFound()
 
@@ -24,15 +51,15 @@ export default function ResourceDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             resource.type === 'Article'
-              ? {
+                  ? {
                   '@context': 'https://schema.org',
                   '@type': 'Article',
                   headline: resource.title,
                   description: resource.description,
-                  url: `https://naygal.com/ressources/${resource.category.toLowerCase()}/${resource.slug}`,
+                  url: `${SITE}/ressources/${resource.category.toLowerCase()}/${resource.slug}`,
                 }
               : { '@context': 'https://schema.org', '@type': 'CreativeWork', name: resource.title, description: resource.description }
-          ),
+          ).replace(/</g, '\\u003c'),
         }}
       />
       <div className="max-w-3xl">

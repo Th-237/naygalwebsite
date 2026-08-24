@@ -36,6 +36,7 @@ const bottomImages = [
     src: '/images/academy/evenements/jtech/IMG-20260618-WA0090.jpg',
     alt: 'Équipe présentant un projet numérique pendant JTECH',
   },
+ 
 ]
 
 export default function AcademyEvenementsPage() {

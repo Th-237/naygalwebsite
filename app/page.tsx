@@ -1,588 +1,948 @@
-import Link from "next/link"
+import Link from 'next/link'
 
-const expertises = [
+const quickLinks = [
   {
-    number: "01",
-    title: "Infrastructure & Réseaux",
-    description:
-      "Concevoir des infrastructures fiables, performantes et adaptées aux réalités de votre organisation.",
-    items: ["Réseaux", "Serveurs", "Stockage", "Virtualisation"],
+    title: 'Services',
+    description: 'Infrastructure, réseaux, cloud, cybersécurité et IA.',
+    href: '/services',
+    image:
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=85',
   },
   {
-    number: "02",
-    title: "Cybersécurité",
-    description:
-      "Protéger vos systèmes, vos données et vos collaborateurs face aux risques numériques.",
-    items: ["Audit", "Sécurité", "Sauvegarde", "Sensibilisation"],
+    title: 'NAYGAL Academy',
+    description: 'Former les talents numériques de demain.',
+    href: '/academy',
+    image: '/images/home/NAYGAL ACADEMY.jpg',
   },
   {
-    number: "03",
-    title: "Cloud & Données",
-    description:
-      "Construire des environnements de stockage et de cloud maîtrisés, sécurisés et évolutifs.",
-    items: ["Cloud privé", "Cloud hybride", "NAS", "Gestion des données"],
+    title: 'Nos projets',
+    description: 'Découvrir les solutions que nous concevons.',
+    href: '/projets',
+    image: '/images/home/NOS PROJETS.png',
   },
   {
-    number: "04",
-    title: "IA & Automatisation",
+    title: 'À propos',
+    description: 'Comprendre NAYGAL, notre vision et notre histoire.',
+    href: '/a-propos',
+    image: '/images/home/images.jpeg',
+  },
+]
+
+const services = [
+  {
+    number: '01',
+    title: 'Infrastructure',
     description:
-      "Automatiser les tâches répétitives et exploiter l'intelligence artificielle pour gagner en efficacité.",
-    items: ["Automatisation", "IA générative", "Agents IA", "Productivité"],
+      'Concevoir des infrastructures informatiques fiables, évolutives et adaptées à votre organisation.',
+    href: '/services/infrastructure',
   },
   {
-    number: "05",
-    title: "Transformation numérique",
+    number: '02',
+    title: 'Réseaux',
     description:
-      "Accompagner les organisations dans leur modernisation avec une approche pragmatique et progressive.",
-    items: ["Conseil", "Digitalisation", "Optimisation", "Accompagnement"],
+      'Connecter vos équipes, vos sites et vos équipements avec des réseaux performants et sécurisés.',
+    href: '/services/reseaux',
+  },
+  {
+    number: '03',
+    title: 'Cybersécurité',
+    description:
+      'Prévenir, détecter et répondre aux menaces qui ciblent vos systèmes et vos données.',
+    href: '/services/cybersecurite',
+  },
+  {
+    number: '04',
+    title: 'Cloud',
+    description:
+      'Exploiter le cloud avec une approche maîtrisée, sécurisée et adaptée à vos besoins.',
+    href: '/services/cloud',
+  },
+  {
+    number: '05',
+    title: 'Automatisation IA',
+    description:
+      'Transformer les tâches répétitives en processus intelligents et plus efficaces.',
+    href: '/services/automatisation-ia',
+  },
+  {
+    number: '06',
+    title: 'Maintenance',
+    description:
+      'Maintenir vos équipements et systèmes opérationnels dans la durée.',
+    href: '/services/maintenance',
   },
 ]
 
 const problems = [
   {
-    title: "Vos données sont dispersées ?",
+    title: 'Votre informatique vous ralentit ?',
     description:
-      "Centralisez, structurez et sécurisez vos données pour retrouver le contrôle de votre information.",
+      'Nous identifions les points de blocage et construisons une infrastructure plus fiable.',
   },
   {
-    title: "Trop de tâches manuelles ?",
+    title: 'Vos données sont difficiles à maîtriser ?',
     description:
-      "Identifions ce qui peut être automatisé pour permettre à vos équipes de se concentrer sur l'essentiel.",
+      'Nous vous aidons à centraliser, organiser, sauvegarder et sécuriser votre information.',
   },
   {
-    title: "Votre infrastructure vous limite ?",
+    title: 'Vous voulez automatiser votre activité ?',
     description:
-      "Faites évoluer votre environnement informatique sans investir inutilement dans des solutions disproportionnées.",
+      'Nous identifions les processus pouvant être améliorés par les logiciels, l’automatisation et l’IA.',
   },
   {
-    title: "Vous ne savez pas par où commencer ?",
+    title: 'Vous souhaitez développer les compétences de vos équipes ?',
     description:
-      "NAYGAL vous accompagne dans l'identification des priorités et la construction d'une feuille de route réaliste.",
+      'NAYGAL Academy propose des formations et ateliers adaptés aux différents niveaux.',
   },
 ]
 
-const principles = [
-  "Des solutions adaptées à votre réalité",
-  "Une approche orientée résultats",
-  "La sécurité intégrée dès la conception",
-  "La transmission des compétences",
+const projects = [
+  {
+    title: 'IXP-Observer',
+    category: 'Infrastructure numérique',
+    description:
+      "Cartographier et mieux comprendre l'écosystème Internet au Cameroun.",
+    href: '/projets',
+    image: '/images/home/ixp-observer.jpg',
+  },
+  {
+    title: 'Sentinelle IA',
+    category: 'Cybersécurité',
+    description:
+      'Un système SOC pensé pour rendre la cybersécurité plus accessible aux PME.',
+    href: '/projets',
+    image: '/images/home/sentinelleia.webp',
+  },
+  {
+    title: 'NAYAC Online',
+    category: 'Éducation numérique',
+    description:
+      'Une plateforme éducative africaine pour apprendre, pratiquer et progresser.',
+    href: '/projets',
+    image: '/images/home/NAYAC ON LINE.jpg',
+  },
 ]
 
+const academyCards = [
+  {
+    title: 'Formations',
+    description:
+      'Des parcours progressifs pour acquérir des compétences numériques utiles.',
+    href: '/academy/formations',
+  },
+  {
+    title: 'Ateliers',
+    description:
+      'Des expériences pratiques autour du numérique, des sciences, de la création et des métiers.',
+    href: '/academy/ateliers',
+  },
+  {
+    title: 'Événements',
+    description:
+      'Des rencontres pour découvrir, expérimenter et partager.',
+    href: '/academy/evenements',
+  },
+]
 
 export default function Home() {
   return (
-    <main className="overflow-hidden">
+    <main className="overflow-hidden bg-white text-[#032965]">
+
       {/* =========================================================
           HERO
       ========================================================= */}
-      <section data-reveal className="relative min-h-[700px] bg-[#021d47] text-white">
-        {/* Background grid */}
-        <div className="absolute inset-0 opacity-[0.08]">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage:
-                "linear-gradient(rgba(255,255,255,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.35) 1px, transparent 1px)",
-              backgroundSize: "70px 70px",
-            }}
-          />
-        </div>
 
-        {/* Glow */}
-        <div className="absolute -right-40 top-20 h-[500px] w-[500px] rounded-full bg-[#52a234]/10 blur-[120px]" />
-        <div className="absolute left-1/3 top-0 h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-[120px]" />
+      <section className="relative min-h-[650px] overflow-hidden bg-[#032965] lg:min-h-[700px]">
 
-        <div className="container-custom relative z-10 flex min-h-[700px] items-center py-28 lg:py-24">
-          <div className="grid w-full items-center gap-16 lg:grid-cols-[1.05fr_.95fr]">
-            {/* Copy */}
-            <div>
-              <div className="mb-7 inline-flex items-center gap-2 border-l-2 border-[#52a234] pl-3 text-sm font-semibold text-[#d2ebc6]">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-[#52a234]" />
-                Transformation numérique pour les organisations d’Afrique
-              </div>
+        {/* Images du carousel */}
+        <div className="absolute inset-0">
 
-              <h1 className="max-w-4xl text-5xl font-semibold leading-[1.07] tracking-[-0.04em] sm:text-6xl lg:text-7xl">
-                Construire aujourd'hui
-                <br />
-                le{" "}
-                <span className="text-[#52a234]">
-                  numérique
-                </span>{" "}
-                de demain.
-              </h1>
-
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300">
-                NAYGAL accompagne les entreprises, les établissements et les
-                organisations dans leur transformation numérique grâce aux
-                infrastructures, à la cybersécurité, au cloud, à
-                l'intelligence artificielle et à la formation.
-              </p>
-
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/contact"
-                  className="bg-[#52a234] px-7 py-4 text-center font-semibold text-white transition hover:bg-[#438a2c] hover:shadow-[0_15px_40px_rgba(82,162,52,.2)]"
-                >
-                  Parlons de votre projet →
-                </Link>
-
-                <Link
-                  href="/expertises"
-                  className="border border-white/35 px-7 py-4 text-center font-semibold text-white transition hover:bg-white/10"
-                >
-                  Découvrir nos expertises
-                </Link>
-              </div>
-
-              <div className="mt-10 grid max-w-xl grid-cols-2 divide-x divide-white/15 sm:grid-cols-4">
-                {[['50+', 'projets réalisés'], ['20+', 'partenaires'], ['300+', 'personnes formées'], ['100%', 'engagement']].map(([value, label]) => (
-                  <div key={label} className="px-3 first:pl-0">
-                    <p className="text-xl font-bold text-white">{value}</p>
-                    <p className="mt-1 text-xs leading-4 text-slate-400">{label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Visual */}
-            <div className="relative hidden min-h-[470px] lg:block">
-              <div className="absolute left-4 top-16 h-[350px] w-[350px] rounded-full border border-cyan-300/10" />
-              <div className="absolute left-20 top-32 h-[210px] w-[210px] rounded-full border border-[#52a234]/20" />
-
-              {/* Main panel */}
-              <div className="absolute right-0 top-12 w-[430px] border border-white/10 bg-[#071d3d]/85 p-6 shadow-2xl backdrop-blur-xl">
-                <div className="mb-7 flex items-center justify-between">
-                  <div>
-                    <p className="text-xs uppercase tracking-[.18em] text-slate-500">
-                      NAYGAL
-                    </p>
-                    <p className="mt-1 font-semibold">Digital Infrastructure</p>
-                  </div>
-
-                  <span className="rounded-full bg-[#52a234]/10 px-3 py-1 text-xs text-[#a4d78f]">
-                    Operational
-                  </span>
-                </div>
-
-                {/* Network visualization */}
-                <div className="relative h-56 border border-white/10 bg-[#031027]">
-                  <div className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 border border-[#52a234]/40 bg-[#52a234]/10 shadow-[0_0_45px_rgba(82,162,52,.12)]">
-                    <div className="flex h-full items-center justify-center text-2xl">
-                      N
-                    </div>
-                  </div>
-
-                  <div className="absolute left-10 top-8 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs">
-                    <span className="text-slate-400">Network</span>
-                    <p className="mt-1 font-semibold">Connected</p>
-                  </div>
-
-                  <div className="absolute right-8 top-10 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs">
-                    <span className="text-slate-400">Security</span>
-                    <p className="mt-1 font-semibold text-[#a4d78f]">
-                      Protected
-                    </p>
-                  </div>
-
-                  <div className="absolute bottom-8 left-16 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs">
-                    <span className="text-slate-400">Storage</span>
-                    <p className="mt-1 font-semibold">Centralized</p>
-                  </div>
-
-                  <div className="absolute bottom-8 right-12 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-xs">
-                    <span className="text-slate-400">Automation</span>
-                    <p className="mt-1 font-semibold">Active</p>
-                  </div>
-
-                  {/* Connection lines */}
-                  <div className="absolute left-[29%] top-[42%] h-px w-[22%] bg-[#52a234]/40" />
-                  <div className="absolute left-[58%] top-[43%] h-px w-[20%] bg-cyan-300/30" />
-                  <div className="absolute bottom-[40%] left-[33%] h-px w-[17%] rotate-[55deg] bg-[#52a234]/30" />
-                  <div className="absolute bottom-[39%] right-[29%] h-px w-[18%] -rotate-[55deg] bg-cyan-300/30" />
-                </div>
-
-                <div className="mt-5 grid grid-cols-3 gap-3">
-                  <div className="rounded-xl bg-white/5 p-3">
-                    <p className="text-xs text-slate-500">Infrastructure</p>
-                    <p className="mt-1 text-sm font-semibold">Reliable</p>
-                  </div>
-                  <div className="rounded-xl bg-white/5 p-3">
-                    <p className="text-xs text-slate-500">Data</p>
-                    <p className="mt-1 text-sm font-semibold">Controlled</p>
-                  </div>
-                  <div className="rounded-xl bg-white/5 p-3">
-                    <p className="text-xs text-slate-500">AI</p>
-                    <p className="mt-1 text-sm font-semibold">Useful</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="absolute bottom-12 left-0 border border-white/10 bg-[#0b2345]/90 p-5 shadow-xl backdrop-blur">
-                <p className="text-xs text-slate-400">Notre approche</p>
-                <p className="mt-1 text-sm font-semibold">
-                  Technologie + stratégie + transmission
-                </p>
-              </div>
-            </div>
+          <div className="hero-slide hero-slide-1">
+            <img
+              src="/images/home/caroussel_principal/Hacking-ARTP-1.webp"
+              alt="Équipe travaillant autour d'un projet numérique"
+            />
           </div>
-        </div>
-      </section>
 
-      {/* =========================================================
-          PROBLEMS
-      ========================================================= */}
-      <section data-reveal className="bg-white py-24">
-        <div className="container-custom">
-          <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
-            <div>
-              <span className="text-sm font-bold uppercase tracking-[.18em] text-[#276f91]">
-                Vous êtes concerné ?
+          <div className="hero-slide hero-slide-2">
+            <img
+              src="/images/home/caroussel_principal/pexels-brett-sayles-2881224.jpg"
+              alt="Équipe collaborative"
+            />
+          </div>
+
+          <div className="hero-slide hero-slide-3">
+            <img
+              src="/images/home/caroussel_principal/pexels-roman-odintsov-11025019.jpg"
+              alt="Formation technologique"
+            />
+          </div>
+
+          <div className="hero-slide hero-slide-4">
+            <img
+              src="/images/home/caroussel_principal/pexels-sejio402-6429140.jpg"
+              alt="Infrastructure informatique"
+            />
+          </div>
+
+          <div className="hero-slide hero-slide-5">
+            <img
+              src="/images/home/caroussel_principal/pexels-magda-ehlers-pexels-34182367.jpg"
+              alt="Technologies numériques"
+            />
+          </div>
+
+          <div className="hero-slide hero-slide-6">
+            <img
+              src="/images/home/caroussel_principal/pexels-ron-lach-10638075.jpg"
+              alt="Collaboration autour d'un projet"
+            />
+          </div>
+
+        </div>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#021d47]/95 via-[#032965]/75 to-[#032965]/25" />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-[#021d47]/80 via-transparent to-[#032965]/20" />
+
+        {/* Hero content */}
+        <div className="container-custom relative z-10 flex min-h-[650px] items-end pb-20 pt-32 lg:min-h-[700px]">
+
+          <div className="max-w-4xl">
+
+            <div className="mb-7 flex items-center gap-3">
+
+              <span className="h-2 w-2 rounded-full bg-[#71b224]" />
+
+              <span className="text-xs font-bold uppercase tracking-[.2em] text-white/80">
+                NAYGAL · Technologie & Innovation
               </span>
 
-              <h2 className="mt-4 text-4xl font-bold tracking-tight text-[#032965] sm:text-5xl">
-                La transformation numérique commence par les vrais problèmes.
-              </h2>
-
-              <p className="mt-6 max-w-lg text-lg leading-8 text-slate-600">
-                Nous ne commençons pas par vous vendre une technologie.
-                Nous commençons par comprendre votre réalité.
-              </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              {problems.map((problem, index) => (
-                <div
-                  key={problem.title}
-                  className="group rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-[#52a234]/40 hover:bg-white hover:shadow-xl"
-                >
-                  <span className="text-sm font-bold text-[#438a2c]">
-                    0{index + 1}
-                  </span>
+            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-[-.05em] text-white sm:text-6xl lg:text-8xl">
 
-                  <h3 className="mt-4 text-lg font-bold text-[#032965]">
-                    {problem.title}
-                  </h3>
+              Le numérique
+              <span className="block text-[#71b224]">
+                commence ici.
+              </span>
 
-                  <p className="mt-2 text-sm leading-6 text-slate-600">
-                    {problem.description}
-                  </p>
-                </div>
-              ))}
+            </h1>
+
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl">
+
+              NAYGAL accompagne les entreprises, établissements et
+              organisations africaines dans la conception, la sécurisation et
+              l'évolution de leurs environnements numériques.
+
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center bg-[#71b224] px-7 py-4 font-semibold text-white transition hover:bg-[#5d9b1c]"
+              >
+                Découvrir nos services
+                <span className="ml-3">→</span>
+              </Link>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center border border-white/50 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur-sm transition hover:bg-white hover:text-[#032965]"
+              >
+                Parlons de votre projet
+              </Link>
+
             </div>
+
           </div>
+
         </div>
+
+        {/* Indicateurs carousel */}
+        <div className="absolute bottom-8 right-8 z-20 hidden items-center gap-2 sm:flex">
+
+          <span className="h-1.5 w-10 bg-white" />
+          <span className="h-1.5 w-5 bg-white/40" />
+          <span className="h-1.5 w-5 bg-white/40" />
+          <span className="h-1.5 w-5 bg-white/40" />
+          <span className="h-1.5 w-5 bg-white/40" />
+          <span className="h-1.5 w-5 bg-white/40" />
+
+        </div>
+
       </section>
 
+
       {/* =========================================================
-          EXPERTISES
+          QUICK LINKS
       ========================================================= */}
-      <section data-reveal className="bg-[#f6f9fc] py-24" id="expertises">
+
+      <section className="border-b border-slate-200 bg-white">
+
         <div className="container-custom">
-          <div className="max-w-3xl">
-            <span className="text-sm font-bold uppercase tracking-[.18em] text-[#276f91]">
-              Nos expertises
-            </span>
 
-            <h2 className="mt-3 text-4xl font-bold tracking-tight text-[#032965] sm:text-5xl">
-              Une vision globale du numérique.
-            </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
 
-            <p className="mt-5 text-lg leading-8 text-slate-600">
-              Infrastructure, sécurité, données, intelligence artificielle et
-              compétences : nous réunissons les briques nécessaires à une
-              transformation numérique cohérente.
-            </p>
-          </div>
+            {quickLinks.map((item) => (
 
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {expertises.map((expertise, index) => (
               <Link
-                href="/expertises"
-                key={expertise.number}
-                className={`group rounded-2xl border border-slate-200 bg-white p-7 transition duration-300 hover:-translate-y-2 hover:shadow-2xl ${
-                  index === 0 ? "lg:col-span-2" : ""
-                }`}
+                key={item.title}
+                href={item.href}
+                className="group border-b border-slate-200 p-5 transition hover:bg-[#f4f8fb] sm:border-r lg:border-b-0"
               >
-                <div className="flex items-start justify-between">
-                  <span className="text-sm font-bold text-[#438a2c]">
-                    {expertise.number}
-                  </span>
 
-                  <span className="text-slate-300 transition group-hover:translate-x-1 group-hover:text-[#438a2c]">
+                <div className="relative mb-5 h-32 overflow-hidden">
+
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-[#032965]/20 transition group-hover:bg-[#032965]/5" />
+
+                </div>
+
+                <div className="flex items-start justify-between">
+
+                  <div>
+
+                    <h2 className="text-lg font-semibold text-[#032965]">
+                      {item.title}
+                    </h2>
+
+                    <p className="mt-2 text-sm leading-5 text-slate-500">
+                      {item.description}
+                    </p>
+
+                  </div>
+
+                  <span className="ml-4 mt-1 shrink-0 text-xl text-[#276f91] transition group-hover:translate-x-1 group-hover:text-[#52a234]">
                     →
                   </span>
+
                 </div>
 
-                <h3 className="mt-12 text-2xl font-bold text-[#032965]">
-                  {expertise.title}
-                </h3>
-
-                <p className="mt-3 max-w-xl text-sm leading-6 text-slate-600">
-                  {expertise.description}
-                </p>
-
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {expertise.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
               </Link>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
 
-      {/* =========================================================
-          APPROCHE
-      ========================================================= */}
-      <section data-reveal className="bg-white py-24">
-        <div className="container-custom">
-          <div className="grid items-center gap-16 lg:grid-cols-2">
-            <div>
-              <span className="text-sm font-bold uppercase tracking-[.18em] text-[#276f91]">
-                Pourquoi NAYGAL ?
-              </span>
 
-              <h2 className="mt-3 text-4xl font-bold tracking-tight text-[#032965] sm:text-5xl">
-                La technologie doit résoudre un problème, pas en créer un.
+      {/* =========================================================
+          INTRODUCTION
+      ========================================================= */}
+
+      <section className="bg-white py-20 sm:py-28">
+
+        <div className="container-custom">
+
+          <div className="grid gap-14 lg:grid-cols-[.8fr_1.2fr]">
+
+            <div>
+
+              <p className="text-xs font-bold uppercase tracking-[.18em] text-[#438a2c]">
+                Notre mission
+              </p>
+
+              <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-.04em] text-[#032965] sm:text-5xl">
+
+                Rendre la technologie utile, accessible et durable.
+
               </h2>
 
-              <p className="mt-6 text-lg leading-8 text-slate-600">
-                Nous privilégions des solutions compréhensibles, utiles et
-                proportionnées aux besoins de chaque organisation.
+            </div>
+
+            <div>
+
+              <p className="text-xl leading-9 text-slate-600">
+
+                Nous croyons que la transformation numérique ne consiste pas
+                simplement à acheter de nouveaux outils.
+
+              </p>
+
+              <p className="mt-6 text-lg leading-8 text-slate-500">
+
+                Elle consiste à comprendre les besoins, concevoir les bonnes
+                solutions, développer les compétences et construire des
+                infrastructures capables d'évoluer avec les organisations.
+
               </p>
 
               <Link
                 href="/a-propos"
-                className="mt-8 inline-flex rounded-xl bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50]"
+                className="mt-8 inline-flex items-center font-semibold text-[#032965] hover:text-[#438a2c]"
               >
-                Découvrir notre approche →
+                Découvrir NAYGAL
+                <span className="ml-2">→</span>
               </Link>
+
             </div>
 
-            <div className="rounded-3xl bg-[#021d47] p-8 text-white sm:p-10">
-              <p className="text-sm font-semibold uppercase tracking-[.18em] text-[#52a234]">
-                Nos principes
-              </p>
-
-              <div className="mt-8 divide-y divide-white/10">
-                {principles.map((principle, index) => (
-                  <div
-                    key={principle}
-                    className="flex items-center gap-5 py-5"
-                  >
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#52a234]/10 text-sm font-bold text-[#a4d78f]">
-                      0{index + 1}
-                    </span>
-                    <span className="font-medium text-slate-200">
-                      {principle}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
+
         </div>
+
       </section>
+
 
       {/* =========================================================
-          PROJECT
+          PROBLEMS
       ========================================================= */}
-      <section data-reveal className="bg-[#f6f9fc] py-24">
+
+      <section className="bg-[#f5f8fb] py-20 sm:py-28">
+
         <div className="container-custom">
-          <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-[#021d47] to-[#276f91] text-white shadow-2xl">
-            <div className="grid lg:grid-cols-2">
-              <div className="min-h-[400px] bg-[radial-gradient(circle_at_50%_35%,rgba(25,214,111,.22),transparent_20%),linear-gradient(135deg,#092f55,#020d20)] p-8 sm:p-12">
-                <div className="flex h-full items-center justify-center">
-                  <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur">
-                    <div className="mb-6 flex items-center justify-between">
-                      <span className="text-sm font-semibold">
-                        Projet en vedette
-                      </span>
-                      <span className="h-2 w-2 rounded-full bg-[#52a234]" />
-                    </div>
 
-                    <div className="space-y-3">
-                      <div className="h-10 rounded-lg bg-white/10" />
-                      <div className="h-10 rounded-lg bg-white/10" />
-                      <div className="h-10 rounded-lg bg-[#52a234]/20" />
-                      <div className="h-10 rounded-lg bg-white/10" />
-                    </div>
+          <div className="max-w-3xl">
 
-                    <p className="mt-6 text-xs uppercase tracking-[.15em] text-[#a4d78f]">
-                      Storage · Network · Security
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <p className="text-xs font-bold uppercase tracking-[.18em] text-[#276f91]">
+              Vous êtes confronté à...
+            </p>
 
-              <div className="p-8 sm:p-12 lg:p-16">
-                <span className="text-sm font-bold uppercase tracking-[.18em] text-[#a4d78f]">
-                  Nos réalisations
+            <h2 className="mt-4 text-4xl font-semibold tracking-[-.04em] text-[#032965] sm:text-5xl">
+
+              Des problèmes numériques concrets ?
+
+            </h2>
+
+            <p className="mt-5 text-lg leading-8 text-slate-600">
+
+              Nous partons du problème avant de choisir la technologie.
+
+            </p>
+
+          </div>
+
+          <div className="mt-12 grid gap-px border border-slate-200 bg-slate-200 md:grid-cols-2">
+
+            {problems.map((problem, index) => (
+
+              <div
+                key={problem.title}
+                className="group bg-white p-8 transition hover:bg-[#f9fbfd] sm:p-10"
+              >
+
+                <span className="text-xs font-bold text-[#52a234]">
+                  0{index + 1}
                 </span>
 
-                <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-                  Des projets concrets, pas seulement des promesses.
-                </h2>
+                <h3 className="mt-8 max-w-md text-2xl font-semibold text-[#032965]">
+                  {problem.title}
+                </h3>
 
-                <p className="mt-5 leading-7 text-slate-300">
-                  Découvrez comment nous transformons des problématiques
-                  réelles en solutions numériques opérationnelles.
+                <p className="mt-4 max-w-lg leading-7 text-slate-600">
+                  {problem.description}
                 </p>
 
-                <ul className="mt-7 space-y-3 text-sm text-slate-200">
-                  <li>✓ Infrastructure & stockage</li>
-                  <li>✓ Maintenance & supervision</li>
-                  <li>✓ Sécurisation des systèmes</li>
-                  <li>✓ Automatisation des processus</li>
-                </ul>
+                <div className="mt-7 h-px w-8 bg-[#52a234] transition-all duration-300 group-hover:w-16" />
 
-                <Link
-                  href="/projets"
-                  className="mt-9 inline-flex rounded-xl bg-[#52a234] px-6 py-3.5 font-semibold text-white transition hover:-translate-y-1 hover:bg-[#438a2c]"
-                >
-                  Voir nos projets →
-                </Link>
               </div>
-            </div>
+
+            ))}
+
           </div>
+
         </div>
+
       </section>
+
+
+      {/* =========================================================
+          SERVICES
+      ========================================================= */}
+
+      <section className="bg-white py-20 sm:py-28">
+
+        <div className="container-custom">
+
+          <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-end">
+
+            <div className="max-w-3xl">
+
+              <p className="text-xs font-bold uppercase tracking-[.18em] text-[#438a2c]">
+                Nos services
+              </p>
+
+              <h2 className="mt-4 text-4xl font-semibold tracking-[-.04em] text-[#032965] sm:text-5xl">
+
+                Tout ce dont votre environnement numérique a besoin.
+
+              </h2>
+
+            </div>
+
+            <Link
+              href="/services"
+              className="font-semibold text-[#032965] hover:text-[#438a2c]"
+            >
+              Voir tous les services →
+            </Link>
+
+          </div>
+
+          <div className="mt-12 grid border-l border-t border-slate-200 sm:grid-cols-2 lg:grid-cols-3">
+
+            {services.map((service) => (
+
+              <Link
+                key={service.number}
+                href={service.href}
+                className="group min-h-[250px] border-b border-r border-slate-200 p-7 transition hover:bg-[#f5f8fb]"
+              >
+
+                <div className="flex items-start justify-between">
+
+                  <span className="text-xs font-bold text-[#52a234]">
+                    {service.number}
+                  </span>
+
+                  <span className="text-lg text-slate-300 transition group-hover:translate-x-1 group-hover:text-[#52a234]">
+                    ↗
+                  </span>
+
+                </div>
+
+                <h3 className="mt-12 text-2xl font-semibold text-[#032965]">
+                  {service.title}
+                </h3>
+
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  {service.description}
+                </p>
+
+                <p className="mt-7 text-sm font-semibold text-[#276f91]">
+                  Découvrir →
+                </p>
+
+              </Link>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          FEATURED PROJECT
+      ========================================================= */}
+
+      <section className="bg-[#f5f8fb] py-20 sm:py-28">
+
+        <div className="container-custom">
+
+          <div className="mb-10 flex items-end justify-between gap-6">
+
+            <div>
+
+              <p className="text-xs font-bold uppercase tracking-[.18em] text-[#276f91]">
+                Projets
+              </p>
+
+              <h2 className="mt-4 text-4xl font-semibold tracking-[-.04em] text-[#032965] sm:text-5xl">
+                Ce que nous construisons.
+              </h2>
+
+            </div>
+
+            <Link
+              href="/projets"
+              className="hidden font-semibold text-[#032965] hover:text-[#438a2c] sm:block"
+            >
+              Tous les projets →
+            </Link>
+
+          </div>
+
+
+          {/* Projet principal */}
+
+          <Link
+            href={projects[0].href}
+            className="group relative block min-h-[500px] overflow-hidden bg-[#032965]"
+          >
+
+            <img
+              src={projects[0].image}
+              alt={projects[0].title}
+              className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/95 via-[#032965]/60 to-transparent" />
+
+            <div className="relative flex min-h-[500px] items-end p-8 sm:p-12 lg:p-16">
+
+              <div className="max-w-2xl text-white">
+
+                <p className="text-xs font-bold uppercase tracking-[.18em] text-[#a4d78f]">
+                  {projects[0].category}
+                </p>
+
+                <h3 className="mt-4 text-4xl font-semibold sm:text-5xl">
+                  {projects[0].title}
+                </h3>
+
+                <p className="mt-5 max-w-xl text-lg leading-8 text-white/80">
+                  {projects[0].description}
+                </p>
+
+                <span className="mt-8 inline-flex bg-white px-6 py-3.5 font-semibold text-[#032965] transition group-hover:bg-[#71b224] group-hover:text-white">
+                  Découvrir le projet →
+                </span>
+
+              </div>
+
+            </div>
+
+          </Link>
+
+
+          {/* Petits projets */}
+
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
+
+            {projects.slice(1).map((project) => (
+
+              <Link
+                key={project.title}
+                href={project.href}
+                className="group relative min-h-[320px] overflow-hidden bg-[#032965]"
+              >
+
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/95 via-[#032965]/30 to-transparent" />
+
+                <div className="relative flex min-h-[320px] items-end p-7 text-white">
+
+                  <div>
+
+                    <p className="text-xs font-bold uppercase tracking-[.16em] text-[#a4d78f]">
+                      {project.category}
+                    </p>
+
+                    <h3 className="mt-3 text-2xl font-semibold">
+                      {project.title}
+                    </h3>
+
+                    <p className="mt-2 max-w-md text-sm leading-6 text-white/75">
+                      {project.description}
+                    </p>
+
+                    <span className="mt-5 inline-block font-semibold text-white">
+                      En savoir plus →
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </Link>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
 
       {/* =========================================================
           ACADEMY
       ========================================================= */}
-      <section data-reveal className="bg-white py-24">
-        <div className="container-custom">
-          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-[#e9f8ff] to-white">
-            <div className="grid items-center lg:grid-cols-2">
-              <div className="p-8 sm:p-12 lg:p-16">
-                <span className="inline-flex rounded-full border border-[#52a234]/30 bg-[#52a234]/10 px-3 py-1 text-xs font-bold uppercase tracking-[.15em] text-[#438a2c]">
-                  NAYGAL Academy · NAYAC
-                </span>
 
-                <h2 className="mt-5 text-4xl font-bold leading-tight text-[#032965]">
-                  Former les talents qui construiront le numérique de demain.
+      <section className="bg-white py-20 sm:py-28">
+
+        <div className="container-custom">
+
+          <div className="grid items-stretch lg:grid-cols-[1.05fr_.95fr]">
+
+            {/* Image */}
+
+            <div className="relative min-h-[480px] overflow-hidden">
+
+              <img
+                src="/images/home/NAYAC/en_salle.jpg"
+                alt="Jeunes apprenants"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/90 via-transparent to-transparent" />
+
+              <div className="absolute bottom-8 left-8 text-white">
+
+                <p className="text-xs font-bold uppercase tracking-[.18em] text-[#a4d78f]">
+                  NAYGAL Academy · NAYAC
+                </p>
+
+                <p className="mt-3 text-3xl font-semibold">
+                  Apprendre.
+                  <br />
+                  Pratiquer.
+                  <br />
+                  Construire.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            {/* Content */}
+
+            <div className="bg-[#eaf3f9] p-8 sm:p-12 lg:p-16">
+
+              <p className="text-xs font-bold uppercase tracking-[.18em] text-[#438a2c]">
+                NAYAC
+              </p>
+
+              <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-.04em] text-[#032965] sm:text-5xl">
+
+                Former les talents numériques de demain.
+
+              </h2>
+
+              <p className="mt-5 text-lg leading-8 text-slate-600">
+
+                Des parcours allant de la découverte du numérique aux
+                compétences professionnelles, avec une approche centrée sur
+                la pratique.
+
+              </p>
+
+              <div className="mt-9 divide-y divide-[#032965]/10 border-y border-[#032965]/10">
+
+                {academyCards.map((card) => (
+
+                  <Link
+                    key={card.title}
+                    href={card.href}
+                    className="group flex items-center justify-between gap-5 py-5"
+                  >
+
+                    <div>
+
+                      <h3 className="font-semibold text-[#032965]">
+                        {card.title}
+                      </h3>
+
+                      <p className="mt-1 text-sm leading-5 text-slate-500">
+                        {card.description}
+                      </p>
+
+                    </div>
+
+                    <span className="shrink-0 text-xl text-[#276f91] transition group-hover:translate-x-1 group-hover:text-[#52a234]">
+                      →
+                    </span>
+
+                  </Link>
+
+                ))}
+
+              </div>
+
+              <Link
+                href="/academy"
+                className="mt-9 inline-flex bg-[#032965] px-7 py-4 font-semibold text-white transition hover:bg-[#021f50]"
+              >
+                Découvrir NAYGAL Academy →
+              </Link>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =========================================================
+          NAYTECH ROOM
+      ========================================================= */}
+
+      <section className="bg-[#f5f8fb] py-20 sm:py-28">
+
+        <div className="container-custom">
+
+          <div className="relative overflow-hidden bg-[#032965]">
+
+            <img
+              src="/images/home/NAYTECH ROOM.png"
+              alt="Salle de formation informatique"
+              className="absolute inset-0 h-full w-full object-cover opacity-60"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-r from-[#032965] via-[#032965]/85 to-[#032965]/30" />
+
+            <div className="relative p-8 sm:p-12 lg:p-16">
+
+              <div className="max-w-3xl">
+
+                <p className="text-xs font-bold uppercase tracking-[.18em] text-[#a4d78f]">
+                  NAYTECH ROOM
+                </p>
+
+                <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-.04em] text-white sm:text-5xl">
+
+                  Une salle pour apprendre la technologie en la pratiquant.
+
                 </h2>
 
-                <p className="mt-5 text-lg leading-8 text-slate-600">
-                  Des formations et ateliers pratiques pour développer les
-                  compétences numériques des étudiants, professionnels et
-                  organisations.
+                <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-100/75">
+
+                  Un espace NAYAC dédié aux formations, ateliers, projets
+                  collaboratifs, réseaux, cybersécurité, robotique,
+                  développement et intelligence artificielle.
+
                 </p>
 
                 <Link
-                  href="/academy"
-                  className="mt-8 inline-flex rounded-xl bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50]"
+                  href="/academy/ateliers"
+                  className="mt-8 inline-flex bg-[#71b224] px-7 py-4 font-semibold text-white transition hover:bg-[#5d9b1c]"
                 >
-                  Découvrir NAYGAL Academy →
+                  Découvrir NAYTECH ROOM →
                 </Link>
+
               </div>
 
-              <div className="relative min-h-[350px] overflow-hidden bg-gradient-to-br from-[#c9efff] to-[#eafdf4]">
-                <div className="absolute left-1/2 top-1/2 h-52 w-52 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#52a234]/20 blur-3xl" />
-
-                <div className="absolute left-[15%] top-[20%] rounded-2xl border border-white/80 bg-white/70 p-5 shadow-xl backdrop-blur">
-                  <span className="text-2xl">01</span>
-                  <p className="mt-1 text-xs font-semibold text-[#0b3970]">
-                    Apprendre
-                  </p>
-                </div>
-
-                <div className="absolute right-[15%] top-[35%] rounded-2xl border border-white/80 bg-white/70 p-5 shadow-xl backdrop-blur">
-                  <span className="text-2xl">02</span>
-                  <p className="mt-1 text-xs font-semibold text-[#0b3970]">
-                    Pratiquer
-                  </p>
-                </div>
-
-                <div className="absolute bottom-[17%] left-[30%] rounded-2xl border border-white/80 bg-white/70 p-5 shadow-xl backdrop-blur">
-                  <span className="text-2xl">03</span>
-                  <p className="mt-1 text-xs font-semibold text-[#0b3970]">
-                    Transmettre
-                  </p>
-                </div>
-              </div>
             </div>
+
           </div>
+
         </div>
+
       </section>
 
+
       {/* =========================================================
-          MOVEMENT
+          MOUVEMENT
       ========================================================= */}
-      <section data-reveal className="bg-[#f6f9fc] py-24">
+
+      <section className="bg-white py-20 sm:py-28">
+
         <div className="container-custom">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#0a9f58] to-[#0b4d8b] p-8 text-white sm:p-12 lg:p-16">
-            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
 
-            <div className="relative max-w-3xl">
-              <span className="text-sm font-bold uppercase tracking-[.18em] text-white/70">
-                Le Mouvement NAYGAL
-              </span>
+          <div className="grid items-stretch lg:grid-cols-2">
 
-              <h2 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
+            <div className="relative min-h-[420px] overflow-hidden">
+
+              <img
+                src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1800&q=90"
+                alt="Communauté réunie autour d'une initiative"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/90 via-transparent to-transparent" />
+
+              <div className="absolute bottom-8 left-8 text-white">
+
+                <p className="text-xs font-bold uppercase tracking-[.18em] text-[#a4d78f]">
+                  Le Mouvement NAYGAL
+                </p>
+
+              </div>
+
+            </div>
+
+            <div className="flex flex-col justify-center bg-[#032965] p-8 text-white sm:p-12 lg:p-16">
+
+              <p className="text-xs font-bold uppercase tracking-[.18em] text-[#a4d78f]">
+                Construire ensemble
+              </p>
+
+              <h2 className="mt-5 text-4xl font-semibold leading-tight sm:text-5xl">
+
                 Et si nous construisions le numérique ensemble ?
+
               </h2>
 
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-white/80">
-                NAYGAL veut rassembler entreprises, experts, établissements,
+              <p className="mt-6 text-lg leading-8 text-blue-100/75">
+
+                NAYGAL rassemble entreprises, experts, établissements,
                 étudiants et partenaires autour d'une même ambition :
                 contribuer à une transformation numérique utile et durable.
+
               </p>
 
               <Link
                 href="/mouvement"
-                className="mt-8 inline-flex rounded-xl bg-white px-6 py-3.5 font-semibold text-[#08325d] transition hover:-translate-y-1"
+                className="mt-8 inline-flex w-fit bg-white px-7 py-4 font-semibold text-[#032965] transition hover:bg-[#edf7e7]"
               >
-                Devenir partenaire du mouvement →
+                Découvrir le mouvement →
               </Link>
+
             </div>
+
           </div>
+
         </div>
+
       </section>
+
 
       {/* =========================================================
           FINAL CTA
       ========================================================= */}
-      <section data-reveal className="bg-[#021d47] py-24 text-white">
-        <div className="container-custom text-center">
-          <span className="text-sm font-bold uppercase tracking-[.18em] text-[#52a234]">
-            Votre prochain projet
-          </span>
 
-          <h2 className="mx-auto mt-4 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">
-            Une idée, un problème ou un projet numérique ?
-          </h2>
+      <section className="bg-[#71b224]">
 
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-400">
-            Commençons par en parler. Nous verrons ensemble ce qui peut être
-            amélioré, automatisé, sécurisé ou construit.
-          </p>
+        <div className="container-custom py-20 sm:py-24">
 
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex rounded-xl bg-[#52a234] px-8 py-4 font-semibold text-white transition hover:-translate-y-1 hover:bg-[#438a2c] hover:shadow-[0_15px_40px_rgba(82,162,52,.2)]"
-          >
-            Parlons de votre projet →
-          </Link>
+          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
+
+            <div>
+
+              <p className="text-xs font-bold uppercase tracking-[.2em] text-white/70">
+                Votre prochain projet
+              </p>
+
+              <h2 className="mt-5 max-w-4xl text-4xl font-semibold leading-[1] tracking-[-.04em] text-white sm:text-6xl">
+
+                Une idée, un problème ou un projet numérique ?
+
+              </h2>
+
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
+
+                Commençons par en parler. Nous verrons ensemble ce qui peut
+                être amélioré, automatisé, sécurisé ou construit.
+
+              </p>
+
+            </div>
+
+            <Link
+              href="/contact"
+              className="inline-flex w-fit items-center bg-[#032965] px-8 py-4 font-semibold text-white transition hover:bg-[#021f50]"
+            >
+              Parlons de votre projet
+              <span className="ml-3">→</span>
+            </Link>
+
+          </div>
+
         </div>
+
       </section>
     </main>
   )
-}
-
-export const metadata = {
-  title: 'NAYGAL — Accueil',
-  description: 'NAYGAL accompagne les entreprises, établissements et organisations dans leur transformation numérique au Cameroun.',
-  openGraph: {
-    title: 'NAYGAL — Accueil',
-    description: 'NAYGAL accompagne les entreprises, établissements et organisations dans leur transformation numérique au Cameroun.',
-    url: 'https://naygal.com',
-  },
 }

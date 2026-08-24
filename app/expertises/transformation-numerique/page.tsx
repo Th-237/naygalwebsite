@@ -77,7 +77,7 @@ export default function TransformationNumeriquePage() {
             <div className="rounded-[32px] border border-white/10 bg-[#031127]/90 p-6 shadow-naygal-card">
               <div className="relative overflow-hidden rounded-[28px] bg-slate-900 h-[420px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80"
+                  src="/images/expertises/transformation-numerique/1.webp"
                   alt="Réunion de transformation numérique"
                   fill
                   className="object-cover"
@@ -145,7 +145,7 @@ export default function TransformationNumeriquePage() {
               <div className="absolute inset-0 opacity-60 bg-black/30" />
               <div className="relative h-[420px] overflow-hidden rounded-[28px] bg-slate-900 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
                 <Image
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
+                  src="/images/expertises/transformation-numerique/2.jpg"
                   alt="Tableau de bord de transformation numérique"
                   fill
                   className="object-cover"

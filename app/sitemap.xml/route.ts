@@ -7,7 +7,7 @@ function urlEntry(loc: string, lastmod?: string) {
 }
 
 export async function GET() {
-  const base = process.env.SITE_URL || 'https://naygal.com'
+  const base = process.env.SITE_URL || 'https://naygal.cm'
   const pages = sitePages.map((p) => `${base}${p.href}`)
   const resourcePages = resources.map((r) => `${base}/ressources/${r.category.toLowerCase()}/${r.slug}`)
 

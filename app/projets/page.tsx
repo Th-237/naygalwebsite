@@ -1,5 +1,20 @@
 import Link from 'next/link'
 
+const SITE = process.env.SITE_URL || 'https://naygal.cm'
+
+export const metadata = {
+  title: 'Projets NAYGAL | Innovation numérique et solutions concrètes',
+  description: 'Découvrez les projets NAYGAL en infrastructure, IA, cybersécurité, traveltech, worktech et innovation numérique pour les organisations africaines.',
+  alternates: {
+    canonical: `${SITE}/projets`,
+  },
+  openGraph: {
+    title: 'Projets NAYGAL | Innovation numérique et solutions concrètes',
+    description: 'Découvrez les projets NAYGAL en infrastructure, IA, cybersécurité, traveltech, worktech et innovation numérique pour les organisations africaines.',
+    url: `${SITE}/projets`,
+  },
+}
+
 const projets = [
   {
     number: '01',
@@ -32,8 +47,7 @@ const projets = [
     solution:
       "OPEP vise à réunir les principales opérations d'une agence au sein d'une même plateforme de gestion.",
     tags: ['TravelTech', 'Gestion', 'Réservations', 'CRM'],
-    image:
-      'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1400&q=85',
+    image: '/images/projets/opep/IMG-20260605-WA0002.jpg',
   },
   {
     number: '03',
@@ -187,7 +201,7 @@ export default function ProjetsPage() {
               <div className="relative overflow-hidden rounded-[2rem] bg-[#032965] shadow-[0_30px_80px_rgba(3,41,101,.22)]">
 
                 <img
-                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85"
+                  src="/images/projets/h-proj.jpg"
                   alt="Technologies et innovation"
                   className="h-72 w-full object-cover opacity-80"
                 />
@@ -280,7 +294,11 @@ export default function ProjetsPage() {
                     <img
                       src={projet.image}
                       alt={projet.title}
-                      className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                      className={
+                        projet.title === 'OPEP'
+                          ? 'absolute inset-0 h-full w-full bg-white object-contain'
+                          : 'absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105'
+                      }
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/80 via-transparent to-transparent" />

@@ -126,7 +126,7 @@ export default function InfrastructurePage() {
       <section className="relative min-h-[700px] overflow-hidden bg-[#021f50] text-white">
 
         <img
-          src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=90"
+          src="/images/services/infrastructure/1.jpg"
           alt="Infrastructure informatique et serveurs"
           className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
@@ -366,7 +366,7 @@ export default function InfrastructurePage() {
             <div className="relative min-h-[400px]">
 
               <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=85"
+                src="/images/services/infrastructure/2.jpg"
                 alt="Technologie et infrastructure"
                 className="absolute inset-0 h-full w-full object-cover opacity-70"
               />

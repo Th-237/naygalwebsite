@@ -3,11 +3,18 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { siteNavigation } from '@/lib/site-map'
 
 export default function Header() {
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [openSection, setOpenSection] = useState<string | null>(null)
+
+  const isCurrentPage = (href: string) => {
+    if (href === '/') return pathname === '/'
+    return pathname === href || pathname.startsWith(`${href}/`)
+  }
 
   return (
     <header className="fixed inset-x-0 top-0 z-[100] border-b border-slate-200 bg-white/95 shadow-[0_1px_0_rgba(15,23,42,.04)] backdrop-blur">
@@ -24,32 +31,52 @@ export default function Header() {
             />
             <span className="leading-none">
               <span className="block text-lg font-bold tracking-[.12em] text-[#032965]">NAYGAL</span>
-              <span className="mt-1 block text-[8px] font-semibold tracking-[.2em] text-slate-500">LE NUMÉRIQUE UTILE</span>
+              <span className="mt-1 block text-[8px] font-semibold tracking-[.2em] text-slate-500">AMELIORONS LE PRESENT</span>
             </span>
           </Link>
 
           <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Navigation principale">
-            <Link href="/" className="rounded-md px-2.5 py-2 text-sm font-semibold text-[#52a234] transition-smooth">Accueil</Link>
-            {siteNavigation.map((item) => (
-              <div key={item.name} className="group relative">
-                <Link href={item.href} className="flex items-center gap-1 rounded-md px-2.5 py-2 text-sm font-medium text-slate-700 transition-smooth hover:bg-slate-50 hover:text-[#52a234]">
-                  {item.name}
-                  {item.children && <span className="text-xs text-slate-400 transition group-hover:rotate-180">⌄</span>}
-                </Link>
-                {item.children && (
-                  <div className="invisible absolute left-0 top-full z-50 w-64 translate-y-2 border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                    <Link href={item.href} className="block border-b border-slate-100 px-3 py-2 text-xs font-bold uppercase tracking-wide text-[#276f91] hover:text-[#52a234]">
-                      Voir {item.name}
-                    </Link>
-                    {item.children.map((child) => (
-                      <Link key={child.href} href={child.href} className="block px-3 py-2.5 text-sm text-slate-700 transition hover:bg-slate-50 hover:text-[#52a234]">
-                        {child.name}
+            <Link
+              href="/"
+              className={`rounded-md px-2.5 py-2 text-sm font-semibold transition-smooth ${isCurrentPage('/') ? 'text-[#52a234]' : 'text-slate-700 hover:text-[#52a234]'}`}
+            >
+              Accueil
+            </Link>
+            {siteNavigation.map((item) => {
+              const isActive = isCurrentPage(item.href)
+
+              return (
+                <div key={item.name} className="group relative">
+                  <Link
+                    href={item.href}
+                    className={`flex items-center gap-1 rounded-md px-2.5 py-2 text-sm font-medium transition-smooth ${isActive ? 'text-[#52a234]' : 'text-slate-700 hover:bg-slate-50 hover:text-[#52a234]'}`}
+                  >
+                    {item.name}
+                    {item.children && <span className="text-xs text-slate-400 transition group-hover:rotate-180">⌄</span>}
+                  </Link>
+                  {item.children && (
+                    <div className="invisible absolute left-0 top-full z-50 w-64 translate-y-2 border border-slate-200 bg-white p-2 opacity-0 shadow-xl transition duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                      <Link href={item.href} className="block border-b border-slate-100 px-3 py-2 text-xs font-bold uppercase tracking-wide text-[#276f91] hover:text-[#52a234]">
+                        Voir {item.name}
                       </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+                      {item.children.map((child) => {
+                        const isChildActive = isCurrentPage(child.href)
+
+                        return (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className={`block px-3 py-2.5 text-sm transition hover:bg-slate-50 ${isChildActive ? 'font-semibold text-[#52a234]' : 'text-slate-700 hover:text-[#52a234]'}`}
+                          >
+                            {child.name}
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
+              )
+            })}
             <Link href="/contact" className="ml-3 rounded-sm bg-[#52a234] px-4 py-2.5 text-sm font-semibold text-white transition-smooth hover:bg-[#438a2c] focus:outline-none focus:ring-2 focus:ring-[#52a234] focus:ring-offset-2">
               Contact
             </Link>
@@ -84,15 +111,23 @@ export default function Header() {
               aria-modal="true"
             >
               <div className="flex flex-col gap-1 px-3">
-              <Link href="/" onClick={() => setIsOpen(false)} className="rounded-md px-3 py-2.5 text-sm font-semibold text-[#52a234]">Accueil</Link>
+              <Link
+                href="/"
+                onClick={() => setIsOpen(false)}
+                className={`rounded-md px-3 py-2.5 text-sm font-semibold ${isCurrentPage('/') ? 'text-[#52a234]' : 'text-slate-700'}`}
+              >
+                Accueil
+              </Link>
               {siteNavigation.map((item) => {
-                const sectionOpen = openSection === item.name
+                const sectionOpen = openSection === item.name || isCurrentPage(item.href)
+                const isActive = isCurrentPage(item.href)
+
                 return (
                   <div key={item.name} className="rounded-md border-b border-slate-200">
                     <button
                       type="button"
                       onClick={() => setOpenSection(sectionOpen ? null : item.name)}
-                      className="flex w-full items-center justify-between px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+                      className={`flex w-full items-center justify-between px-3 py-2.5 text-sm font-semibold ${isActive ? 'text-[#52a234]' : 'text-slate-700'} hover:bg-slate-50`}
                     >
                       <span>{item.name}</span>
                       {item.children ? (
@@ -103,19 +138,23 @@ export default function Header() {
                     </button>
                     {item.children && sectionOpen && (
                       <div className="space-y-1 border-t border-slate-200 bg-slate-50/80 px-3 py-2">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => {
-                              setIsOpen(false)
-                              setOpenSection(null)
-                            }}
-                            className="block rounded-md px-3 py-2 text-sm text-slate-700 hover:bg-white hover:text-[#52a234]"
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
+                        {item.children.map((child) => {
+                          const isChildActive = isCurrentPage(child.href)
+
+                          return (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              onClick={() => {
+                                setIsOpen(false)
+                                setOpenSection(null)
+                              }}
+                              className={`block rounded-md px-3 py-2 text-sm ${isChildActive ? 'font-semibold text-[#52a234]' : 'text-slate-700 hover:bg-white hover:text-[#52a234]'}`}
+                            >
+                              {child.name}
+                            </Link>
+                          )
+                        })}
                       </div>
                     )}
                   </div>

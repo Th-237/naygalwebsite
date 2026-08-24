@@ -13,22 +13,22 @@ type ContactSubject =
 
 const heroImages = [
   {
-    src: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1800&q=85',
+    src: '/images/contact/Grand-caroussel/1.png',
     title: 'Construire ensemble',
     text: 'Des équipes, des idées et des technologies au service de projets utiles.',
   },
   {
-    src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=85',
+    src: '/images/contact/Grand-caroussel/4.jpg',
     title: 'Transformer les idées',
     text: 'De la réflexion à la mise en œuvre, nous vous accompagnons à chaque étape.',
   },
   {
-    src: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1800&q=85',
+    src: '/images/contact/Grand-caroussel/3.jpg',
     title: 'Faire avancer les organisations',
     text: 'Infrastructure, cloud, cybersécurité, logiciels et intelligence artificielle.',
   },
   {
-    src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=85',
+    src: '/images/contact/Grand-caroussel/2.jpg',
     title: 'Préparer demain',
     text: 'Des solutions pensées pour les réalités africaines et les usages de demain.',
   },
@@ -51,7 +51,7 @@ const intentions = [
     id: 'formation' as const,
     number: '03',
     title: 'Formation',
-    short: 'NAYAC, ateliers & montée en compétences',
+    short: 'NAYGAL ACADEMY, ateliers & montée en compétences',
   },
   {
     id: 'partenariat' as const,
@@ -150,13 +150,23 @@ export default function ContactPage() {
     setStatus('sending')
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      })
+      const whatsappMessage = [
+        'Bonjour NAYGAL, je souhaite vous contacter.',
+        '',
+        `Nom: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Téléphone: ${formData.phone || 'Non renseigné'}`,
+        `Organisation: ${formData.organization || 'Non renseignée'}`,
+        `Type de demande: ${getSubjectLabel() || formData.subject || 'Non renseigné'}`,
+        `Précision: ${formData.detail || 'Non renseignée'}`,
+        '',
+        'Message:',
+        formData.message,
+      ].join('\n')
 
-      if (!res.ok) throw new Error('Send failed')
+      const whatsappUrl = `https://wa.me/237655002493?text=${encodeURIComponent(whatsappMessage)}`
+
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
 
       setStatus('sent')
 
@@ -292,10 +302,15 @@ export default function ContactPage() {
                 </button>
 
                 <a
-                  href="tel:+237655002493"
-                  className="border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
+                  href="https://wa.me/237655002493?text=Bonjour%20NAYGAL%2C%20je%20souhaite%20discuter%20de%20mon%20projet."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 border border-[#25D366]/60 bg-[#25D366]/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-[#25D366]/20"
                 >
-                  +237 655 002 493
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
+                    <path d="M20.52 3.48A11.93 11.93 0 0 0 12.05 0C5.5 0 .12 5.36.12 11.92c0 2.1.55 4.15 1.6 5.96L0 24l6.3-1.65A11.92 11.92 0 0 0 12.06 24c6.55 0 11.93-5.36 11.93-11.92 0-3.18-1.24-6.17-3.47-8.6ZM12.06 21.8c-1.9 0-3.77-.5-5.4-1.46l-.39-.23-3.74.98 1-3.64-.25-.38A9.88 9.88 0 0 1 2.15 11.9c0-5.47 4.45-9.92 9.91-9.92 2.64 0 5.13 1.03 7 2.9a9.9 9.9 0 0 1 2.9 7.02c0 5.47-4.45 9.92-9.9 9.92Zm5.43-7.46c-.3-.15-1.77-.87-2.05-.97-.28-.1-.48-.15-.68.15-.2.3-.78.97-.96 1.17-.18.2-.35.22-.65.08-.3-.15-1.27-.47-2.42-1.5-.9-.8-1.5-1.8-1.68-2.1-.18-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.68-1.64-.93-2.24-.25-.58-.5-.5-.68-.5h-.58c-.2 0-.52.08-.8.38-.27.3-1.05 1.03-1.05 2.52s1.08 2.92 1.22 3.13c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.7.63.72.23 1.38.2 1.9.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.43-.08-.13-.28-.2-.58-.35Z" />
+                  </svg>
+                  WhatsApp
                 </a>
 
               </div>
@@ -414,12 +429,14 @@ export default function ContactPage() {
             </a>
 
             <a
-              href="tel:+237655002493"
+              href="https://wa.me/237655002493?text=Bonjour%20NAYGAL%2C%20je%20souhaite%20discuter%20de%20mon%20projet."
+              target="_blank"
+              rel="noreferrer"
               className="border-b border-white/10 p-6 transition hover:bg-white/[.03] sm:border-b-0 sm:border-r"
             >
 
               <p className="text-[10px] font-bold uppercase tracking-[.15em] text-[#6ec34e]">
-                Téléphone
+                WhatsApp
               </p>
 
               <p className="mt-2 text-sm font-semibold text-white">
@@ -552,7 +569,7 @@ export default function ContactPage() {
             <div className="group relative min-h-[220px] md:min-h-[330px] overflow-hidden">
 
               <img
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85"
+                src='/images/contact/expertise.jpg'
                 alt="Équipe travaillant sur un projet"
                 className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />
@@ -962,7 +979,7 @@ export default function ContactPage() {
                     )}
 
                     {status === 'sent' && (
-                      <>✓ Demande envoyée</>
+                      <>✓ Ouvrir WhatsApp</>
                     )}
 
                     {status === 'error' && (
@@ -978,12 +995,12 @@ export default function ContactPage() {
                   <div className="border border-[#52a234]/30 bg-[#52a234]/10 p-4">
 
                     <p className="text-sm font-semibold text-[#a7dc91]">
-                      Votre demande a bien été envoyée.
+                      Votre demande a été préparée dans WhatsApp.
                     </p>
 
                     <p className="mt-1 text-xs text-slate-400">
-                      Notre équipe reviendra vers vous dans les plus brefs
-                      délais.
+                      Vérifiez votre navigateur et envoyez le message pour
+                      finaliser votre demande.
                     </p>
 
                   </div>
@@ -1098,10 +1115,12 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="tel:+237655002493"
-                className="bg-[#52a234] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#438a2c]"
+                href="https://wa.me/237655002493?text=Bonjour%20NAYGAL%2C%20je%20souhaite%20discuter%20de%20mon%20projet."
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1ebc5b]"
               >
-                Appeler NAYGAL →
+                WhatsApp NAYGAL →
               </a>
 
             </div>

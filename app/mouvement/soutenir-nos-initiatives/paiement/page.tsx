@@ -31,7 +31,7 @@ export default function PaiementPage() {
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href="mailto:contact@naygal.com"
+              href="mailto:contact@naygal.cm"
               className="inline-flex items-center justify-center bg-[#52a234] px-7 py-4 font-semibold text-white transition hover:bg-[#438a2c]"
             >
               Contacter l’équipe

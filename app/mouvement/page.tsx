@@ -1,6 +1,21 @@
 import Image from "next/image"
 import Link from "next/link"
 
+const SITE = process.env.SITE_URL || 'https://naygal.cm'
+
+export const metadata = {
+  title: 'Le Mouvement NAYGAL | Innovation, éducation et impact numérique',
+  description: 'Le Mouvement NAYGAL réunit entreprises, institutions et talents autour de solutions utiles et durables pour le numérique en Afrique.',
+  alternates: {
+    canonical: `${SITE}/mouvement`,
+  },
+  openGraph: {
+    title: 'Le Mouvement NAYGAL | Innovation, éducation et impact numérique',
+    description: 'Le Mouvement NAYGAL réunit entreprises, institutions et talents autour de solutions utiles et durables pour le numérique en Afrique.',
+    url: `${SITE}/mouvement`,
+  },
+}
+
 const participation = [
   {
     number: "01",

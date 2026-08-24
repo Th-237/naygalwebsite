@@ -182,12 +182,12 @@ export default function CloudPage() {
       <section className="relative min-h-[850px] overflow-hidden border-b border-[#183747]">
 
         <img
-          src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=90"
+          src="/images/services/cloud/1.jpg"
           alt="Infrastructure cloud et réseau numérique"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
+          className="absolute inset-0 h-full w-full object-cover opacity-70"
         />
 
-        <div className="absolute inset-0 bg-[#041019]/80" />
+        <div className="absolute inset-0 bg-[#041019]/55" />
 
         <div className="absolute left-[-15%] top-[10%] h-[550px] w-[550px] rounded-full bg-[#72b8d8]/10 blur-[130px]" />
 
@@ -295,29 +295,54 @@ export default function CloudPage() {
 
                 <div className="p-7 sm:p-9">
 
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid gap-3">
 
                     {[
-                      ['LOCAL', 'NAS / SERVERS'],
-                      ['AFRICA', 'CLOUDSTORE'],
-                      ['GLOBAL', 'GOOGLE CLOUD'],
-                    ].map(([title, subtitle]) => (
+                      {
+                        title: 'LOCAL',
+                        subtitle: 'NAS / SERVERS',
+                        image: '/images/services/cloud/naygalcloud(local).png',
+                        alt: 'NAYGAL Cloud local',
+                      },
+                      {
+                        title: 'AFRICA',
+                        subtitle: 'CLOUDSTORE',
+                        image: '/images/services/cloud/cloudstoreafrica.jpeg',
+                        alt: 'CloudStore Africa',
+                      },
+                      {
+                        title: 'GLOBAL',
+                        subtitle: 'GOOGLE CLOUD',
+                        image: '/images/services/cloud/google cloud.webp',
+                        alt: 'Google Cloud',
+                      },
+                    ].map((provider) => (
 
                       <div
-                        key={title}
-                        className="border border-[#183747] bg-[#091923] p-4 text-center"
+                        key={provider.title}
+                        className="flex items-center gap-4 border border-[#183747] bg-[#091923] p-3"
                       >
 
-                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-[#72b8d8]/30 bg-[#72b8d8]/10">
+                        <span className="w-14 shrink-0 font-mono text-[9px] font-bold text-[#8ed7f0]">
+                          {provider.title}
+                        </span>
 
-                          <span className="font-mono text-[9px] font-bold text-[#8ed7f0]">
-                            {title}
-                          </span>
+                        <div
+                          className={`flex min-w-0 flex-1 items-center justify-center rounded-md bg-white p-2 ${
+                            provider.title === 'GLOBAL' ? 'h-20' : 'h-14'
+                          }`}
+                        >
+
+                          <img
+                            src={provider.image}
+                            alt={provider.alt}
+                            className="h-full w-full object-contain"
+                          />
 
                         </div>
 
-                        <p className="mt-4 font-mono text-[9px] text-[#8aa3ae]">
-                          {subtitle}
+                        <p className="w-20 shrink-0 text-right font-mono text-[9px] text-[#8aa3ae]">
+                          {provider.subtitle}
                         </p>
 
                       </div>
@@ -823,12 +848,12 @@ export default function CloudPage() {
       <section className="relative overflow-hidden border-b border-[#183747] py-20 sm:py-28">
 
         <img
-          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=90"
+          src="/images/services/cloud/2.jpg"
           alt="Paysage africain sous un ciel nuageux"
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
+          className="absolute inset-0 h-full w-full object-cover opacity-65"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-b from-[#041019]/95 via-[#061923]/80 to-[#041019]/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#041019]/80 via-[#061923]/55 to-[#041019]/80" />
 
         <div className="container-custom relative">
 

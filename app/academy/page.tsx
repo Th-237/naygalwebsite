@@ -1,4 +1,20 @@
 import Link from 'next/link'
+import GrandCarousel from '../../components/GrandCarousel'
+
+const SITE = process.env.SITE_URL || 'https://naygal.cm'
+
+export const metadata = {
+  title: 'NAYGAL Academy | Formations, ateliers et événements numériques',
+  description: 'NAYGAL Academy accompagne les élèves, étudiants, professionnels et organisations avec des formations, ateliers et événements sur le numérique.',
+  alternates: {
+    canonical: `${SITE}/academy`,
+  },
+  openGraph: {
+    title: 'NAYGAL Academy | Formations, ateliers et événements numériques',
+    description: 'NAYGAL Academy accompagne les élèves, étudiants, professionnels et organisations avec des formations, ateliers et événements sur le numérique.',
+    url: `${SITE}/academy`,
+  },
+}
 
 const programmes = [
   {
@@ -9,7 +25,7 @@ const programmes = [
       'Des parcours structurés pour acquérir des compétences numériques recherchées et construire un véritable savoir-faire.',
     href: '/academy/formations',
     image:
-      'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1400&q=85',
+      '/images/academy/NOS-PROGRAMMES-1.png',
     accent: 'bg-[#276f91]',
   },
   {
@@ -20,7 +36,7 @@ const programmes = [
       'Des expériences courtes et pratiques pour manipuler, créer, résoudre des problèmes et apprendre autrement.',
     href: '/academy/ateliers',
     image:
-      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1400&q=85',
+      '/images/academy/NOS-PROGRAMMES-2.webp',
     accent: 'bg-[#52a234]',
   },
   {
@@ -31,7 +47,7 @@ const programmes = [
       'Des rencontres, conférences et initiatives pour rapprocher les apprenants, les professionnels et l’écosystème.',
     href: '/academy/evenements',
     image:
-      'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1400&q=85',
+      '/images/academy/NOS-PROGRAMMES-3.png',
     accent: 'bg-[#df8b18]',
   },
 ]
@@ -42,24 +58,21 @@ const audiences = [
     title: 'Élèves & étudiants',
     description:
       'Construisez vos premières compétences numériques, découvrez les métiers de la technologie et préparez votre avenir.',
-    image:
-      'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=85',
+    image: '/images/academy/POUR-CHAQUE-PARCOUR-1.jpg',
   },
   {
     number: '02',
     title: 'Professionnels',
     description:
       'Développez des compétences directement utiles pour évoluer, gagner en productivité et mieux utiliser le numérique.',
-    image:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=85',
+    image: '/images/academy/POUR-CHAQUE-PARCOUR-2.jpeg',
   },
   {
     number: '03',
     title: 'Organisations',
     description:
       'Faites progresser vos équipes grâce à des formations et ateliers construits autour de vos outils et de vos enjeux.',
-    image:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=85',
+    image: '/images/academy/POUR-CHAQUE-PARCOUR-3.jpg',
   },
 ]
 
@@ -107,17 +120,9 @@ export default function AcademyPage() {
       ========================================================= */}
       <section data-reveal className="relative min-h-[720px] overflow-hidden bg-[#032965] text-white">
 
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=2200&q=90"
-            alt="Apprenants travaillant ensemble"
-            className="h-full w-full object-cover"
-          />
-
-          <div className="absolute inset-0 bg-[#032965]/75" />
-
-          <div className="absolute inset-0 bg-gradient-to-r from-[#032965] via-[#032965]/85 to-[#032965]/35" />
-        </div>
+        <GrandCarousel />
+        <div className="absolute inset-0 bg-[#032965]/75" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#032965] via-[#032965]/85 to-[#032965]/35" />
 
         <div className="container-custom relative z-10">
           <div className="grid min-h-[720px] items-center gap-14 lg:grid-cols-[1.15fr_.85fr]">
@@ -127,7 +132,7 @@ export default function AcademyPage() {
               <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-md">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#68bd49]" />
                 <span className="text-xs font-bold uppercase tracking-[.18em]">
-                  NAYGAL Academy · NAYAC
+                  NAYGAL Academy · Progamme digital
                 </span>
               </div>
 
@@ -139,7 +144,7 @@ export default function AcademyPage() {
               </h1>
 
               <p className="mt-7 max-w-2xl text-lg leading-8 text-blue-100 sm:text-xl">
-                NAYAC rend les compétences numériques accessibles, concrètes
+                NAYAGAL ACADEMY rend les compétences numériques accessibles, concrètes
                 et utiles. Pour apprendre, expérimenter, évoluer et construire
                 des solutions qui répondent aux réalités de notre monde.
               </p>
@@ -179,47 +184,7 @@ export default function AcademyPage() {
 
             </div>
 
-            {/* HERO CARD */}
-            <div className="hidden lg:block">
-
-              <div className="relative">
-
-                <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-[#52a234]/30 blur-2xl" />
-
-                <div className="relative overflow-hidden rounded-[2rem] border border-white/20 bg-white/10 p-5 shadow-2xl backdrop-blur-xl">
-
-                  <div className="relative h-[470px] overflow-hidden rounded-[1.5rem]">
-
-                    <img
-                      src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=85"
-                      alt="Jeunes apprenants en formation"
-                      className="h-full w-full object-cover"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#032965] via-transparent to-transparent" />
-
-                    <div className="absolute bottom-0 left-0 right-0 p-7">
-
-                      <span className="rounded-full bg-[#52a234] px-3 py-1 text-xs font-bold text-white">
-                        NAYAC
-                      </span>
-
-                      <p className="mt-4 text-3xl font-semibold text-white">
-                        Apprendre.
-                        <br />
-                        Expérimenter.
-                        <br />
-                        Construire.
-                      </p>
-
-                    </div>
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
+            {/* HERO CARD removed — grand carousel takes full hero */}
 
           </div>
         </div>
@@ -246,7 +211,7 @@ export default function AcademyPage() {
 
             <div className="max-w-3xl">
               <p className="text-xl leading-9 text-slate-600">
-                NAYAC est né d’une conviction simple : les compétences
+                NAYGAL ACADEMY est né d’une conviction simple : les compétences
                 numériques peuvent ouvrir des portes, créer des opportunités
                 et transformer des parcours.
               </p>
@@ -287,7 +252,7 @@ export default function AcademyPage() {
 
             <p className="max-w-md leading-7 text-slate-600">
               Formation longue, expérience pratique ou événement ponctuel :
-              chacun peut trouver son propre chemin avec NAYAC.
+              chacun peut trouver son propre chemin avec NAYGAL ACADEMY.
             </p>
 
           </div>
@@ -346,7 +311,7 @@ export default function AcademyPage() {
               </Link>
             ))}
 
-          </div>
+          </div>                              
 
         </div>
       </section>
@@ -372,7 +337,7 @@ export default function AcademyPage() {
                 </p>
 
                 <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-600">
-                  Déployez progressivement NAYAC dans votre établissement et
+                  Déployez progressivement NAYGAL ACADEMY dans votre établissement et
                   donnez à vos apprenants un accès concret aux compétences
                   numériques.
                 </p>
@@ -384,7 +349,7 @@ export default function AcademyPage() {
               href="/academy/dans-votre-ecole"
               className="shrink-0 font-semibold text-[#276f91] transition hover:text-[#438a2c]"
             >
-              Découvrir NAYAC dans votre école →
+              Découvrir NAYAGAL ACADEMY dans votre école →
             </Link>
 
           </div>
@@ -412,7 +377,7 @@ export default function AcademyPage() {
               </h2>
 
               <p className="mt-6 leading-8 text-slate-600">
-                Des fondamentaux jusqu’aux technologies émergentes, NAYAC
+                Des fondamentaux jusqu’aux technologies émergentes, NAYGAL ACADEMY
                 construit des parcours permettant de comprendre, pratiquer et
                 progresser.
               </p>
@@ -538,7 +503,7 @@ export default function AcademyPage() {
             <div>
 
               <p className="text-sm font-bold uppercase tracking-[.18em] text-[#a4d78f]">
-                L’esprit NAYAC
+                L’esprit NAYGAL
               </p>
 
               <h2 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -586,7 +551,7 @@ export default function AcademyPage() {
           <div className="relative overflow-hidden rounded-[2rem] bg-[#032965]">
 
             <img
-              src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=2200&q=90"
+              src="/images/academy/NOTRE-VISION.png"
               alt="Jeunes et professionnels collaborant autour de la technologie"
               className="absolute inset-0 h-full w-full object-cover opacity-30"
             />
@@ -658,7 +623,7 @@ export default function AcademyPage() {
                   href="/contact"
                   className="rounded-md border border-white/25 px-7 py-4 font-semibold text-white transition hover:bg-white/10"
                 >
-                  Parler à NAYAC
+                  Parler à NAYAGAL
                 </Link>
 
               </div>

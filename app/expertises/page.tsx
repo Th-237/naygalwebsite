@@ -1,6 +1,21 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+const SITE = process.env.SITE_URL || 'https://naygal.cm'
+
+export const metadata = {
+  title: 'Expertises NAYGAL | Infrastructure, cybersécurité, cloud et IA',
+  description: 'Découvrez les expertises NAYGAL en infrastructure, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
+  alternates: {
+    canonical: `${SITE}/expertises`,
+  },
+  openGraph: {
+    title: 'Expertises NAYGAL | Infrastructure, cybersécurité, cloud et IA',
+    description: 'Découvrez les expertises NAYGAL en infrastructure, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
+    url: `${SITE}/expertises`,
+  },
+}
+
 const expertises = [
   {
     number: '01',
@@ -71,17 +86,17 @@ const africanProjects = [
   {
     title: 'IA pour l’éducation',
     description: 'Solutions adaptatives pour écoles, universités et organismes de formation en Afrique.',
-    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/Education Afrique _ AIworkflow.jpg',
   },
   {
     title: 'Pilotage de la formation',
     description: 'Tableaux de bord intelligents pour suivre l’engagement et la progression des apprenants.',
-    image: 'https://images.unsplash.com/photo-1529068755536-a5ade5d5f8d1?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/36-Tableau-de-bord-dapprentissage-et-de-developpement-de-la-conception-Webworkflow.png',
   },
   {
     title: 'Automatisation des parcours',
     description: 'Des workflows IA qui réduisent la charge opérationnelle des équipes pédagogiques.',
-    image: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/expertises/1786256074959workflow.png',
   },
 ]
 
@@ -225,38 +240,6 @@ export default function ExpertisesPage() {
         </div>
       </section>
 
-      <section className="container-custom py-20 lg:py-28">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[.24em] text-[#52a234]">
-            Réalisations en Afrique
-          </p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-[-.03em] text-[#032965] sm:text-5xl">
-            L’IA au service de la formation, du pilotage et de l’impact local.
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600">
-            Des projets concrets qui montrent comment l’intelligence artificielle renforce les établissements africains et simplifie les parcours pédagogiques.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {africanProjects.map((project) => (
-            <div key={project.title} className="overflow-hidden rounded-[28px] border border-slate-200/80 bg-white shadow-xl transition hover:-translate-y-1 hover:shadow-2xl">
-              <div className="relative h-52 overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition duration-500 hover:scale-105"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-[#032965]">{project.title}</h3>
-                <p className="mt-4 text-sm leading-6 text-slate-600">{project.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       <section className="relative overflow-hidden bg-slate-50 py-20 lg:py-28">
         <div className="absolute right-0 top-0 h-[260px] w-[260px] rounded-full bg-[#52a234]/10 blur-[120px]" />

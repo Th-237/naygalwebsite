@@ -8,8 +8,7 @@ const pillars = [
     description:
       'Comprendre le point de départ de NAYGAL, les idées qui ont donné naissance au projet et les étapes qui façonnent son évolution.',
     href: '/a-propos/notre-histoire',
-    image:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85',
+    image: '/images/a-propos/notre-histoire/pexels-popoola-bolaji-226044498-12286603.jpg',
   },
   {
     number: '02',
@@ -18,8 +17,7 @@ const pillars = [
     description:
       'Imaginer un avenir où la technologie devient un véritable levier d’innovation, de compétences et d’opportunités.',
     href: '/a-propos/vision',
-    image:
-      'https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1400&q=85',
+    image: '/images/a-propos/vision/pexels-josh-toxic-2157548765-36424379.jpg',
   },
   {
     number: '03',
@@ -28,8 +26,7 @@ const pillars = [
     description:
       'Les principes qui déterminent notre façon de travailler, de collaborer, d’innover et de créer de la valeur.',
     href: '/a-propos/valeurs',
-    image:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85',
+    image: '/images/a-propos/valeurs/pexels-ann-h-45017-38748856.jpg',
   },
   {
     number: '04',
@@ -38,8 +35,7 @@ const pillars = [
     description:
       'Les personnes et les compétences qui donnent vie à NAYGAL et transforment les idées en réalisations.',
     href: '/a-propos/equipe',
-    image:
-      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1400&q=85',
+    image: '/images/a-propos/equipe/pexels-harrun-muhammad-116282236-37198881.jpg',
   },
 ]
 
@@ -298,7 +294,7 @@ export default function AboutPage() {
         <div className="relative h-[600px] overflow-hidden">
 
           <img
-            src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=2200&q=90"
+            src="/images/a-propos/jad20250430-ass-benin-tecnologies-numerique.avif"
             alt="Collaboration et innovation"
             className="h-full w-full object-cover"
           />

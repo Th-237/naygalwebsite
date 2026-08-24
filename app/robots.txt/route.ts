@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server'
 
 export async function GET() {
+  const base = process.env.SITE_URL || 'https://naygal.cm'
   const content = `User-agent: *
 Disallow:
 
-Sitemap: ${process.env.SITE_URL || 'https://naygal.com'}/sitemap.xml
+Sitemap: ${base}/sitemap.xml
 `;
 
   return new NextResponse(content, {

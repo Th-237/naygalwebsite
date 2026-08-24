@@ -9,7 +9,7 @@ const techFormations = [
     level: 'Débutant',
     duration: '4 à 6 semaines',
     image:
-      'https://www.avvenire.it/_ipx/f_webp%26s_1536x864/https%3A/avv-naxos-prod-cdn.azureedge.net/avvenire/stories/2026/06/01/1920x1080/8995fd72-5907-4de3-a937-398d3259649d.jpeg%3Fv%3D1780330646',
+      '/images/academy/formations/nayac_start.jpg',
     topics: ['Culture numérique', 'Informatique', 'Internet'],
   },
   {
@@ -20,7 +20,7 @@ const techFormations = [
     level: 'Intermédiaire',
     duration: '6 à 10 semaines',
     image:
-      'https://www.funtech.pro/assets/img/about-us.jpg',
+      '/images/academy/formations/Réseaux&Infrastructures.jpg',
     topics: ['TCP/IP', 'Routage', 'Linux', 'Serveurs'],
   },
   {
@@ -31,7 +31,7 @@ const techFormations = [
     level: 'Intermédiaire',
     duration: '6 à 10 semaines',
     image:
-      'https://assets.weforum.org/article/image/i-kPC-iIiB5-BPzxR7OgWbPrJ0i5bn20yOAjgJZbJEA.jpg',
+      '/images/academy/formations/cybersec.jpg',
     topics: ['Sécurité réseau', 'Linux', 'Menaces', 'Protection'],
   },
   {
@@ -41,8 +41,7 @@ const techFormations = [
       'Découvrez l’IA générative et apprenez à créer des solutions concrètes pour apprendre, travailler et automatiser.',
     level: 'Débutant → Intermédiaire',
     duration: '4 à 8 semaines',
-    image:
-      'https://uploads-ssl.webflow.com/642bdec5539cff71f59d0459/644ce03dffa152af429ddc9d_Lake%20Hub_017%20%282%29.jpg',
+    image: '/images/academy/formations/ia.jpg',
     topics: ['IA générative', 'Prompt', 'Automatisation'],
   },
   {
@@ -52,8 +51,7 @@ const techFormations = [
       'Transformez des idées et des besoins métiers en applications et solutions numériques.',
     level: 'Débutant → Intermédiaire',
     duration: '6 à 10 semaines',
-    image:
-      'https://www.brookings.edu/wp-content/uploads/2022/08/girls-STEM-education-Nigeria.jpg?quality=75',
+    image: '/images/academy/formations/dev&auto.jpg',
     topics: ['Web', 'APIs', 'Automatisation', 'Bases de données'],
   },
   {
@@ -74,24 +72,21 @@ const proFormations = [
     title: 'IA pour les professionnels',
     description:
       'Utilisez l’intelligence artificielle pour gagner du temps, produire plus efficacement et automatiser certaines tâches de votre métier.',
-    image:
-      'https://uploads-ssl.webflow.com/642bdec5539cff71f59d0459/644ce03dffa152af429ddc9d_Lake%20Hub_017%20%282%29.jpg',
+    image: '/images/academy/formations/iapro.png',
     tags: ['IA', 'Productivité', 'Automatisation'],
   },
   {
     title: 'Data & tableaux de bord',
     description:
       'Transformez vos données en informations utiles pour mieux comprendre votre activité et prendre de meilleures décisions.',
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/academy/formations/dash.jpg',
     tags: ['Excel', 'Data', 'Power BI'],
   },
   {
     title: 'Marketing digital',
     description:
       'Développez votre présence numérique, votre communication et votre capacité à atteindre vos clients en ligne.',
-    image:
-      'https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/academy/formations/mark.jpg',
     tags: ['Marketing', 'Réseaux sociaux', 'Contenu'],
   },
   {
@@ -99,39 +94,35 @@ const proFormations = [
     description:
       'Apprenez à organiser, piloter et suivre efficacement des projets dans un environnement numérique.',
     image:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85',
+      '/images/academy/formations/gproj.jpg',
     tags: ['Projet', 'Agile', 'Collaboration'],
   },
   {
     title: 'Cybersécurité pour les professionnels',
     description:
       'Adoptez les bons réflexes pour protéger vos comptes, vos appareils, vos données et votre organisation.',
-    image:
-      'https://assets.weforum.org/article/image/i-kPC-iIiB5-BPzxR7OgWbPrJ0i5bn20yOAjgJZbJEA.jpg',
+    image: '/images/academy/formations/cyberpro.jpg',
     tags: ['Sécurité', 'Données', 'Sensibilisation'],
   },
   {
     title: 'Productivité numérique',
     description:
       'Maîtrisez les outils collaboratifs et les méthodes numériques qui permettent de mieux travailler au quotidien.',
-    image:
-      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/academy/formations/productnum.jpg',
     tags: ['Organisation', 'Collaboration', 'Outils'],
   },
   {
     title: 'Numérique pour les enseignants',
     description:
       'Découvrez comment intégrer les outils numériques et l’IA dans la préparation, l’enseignement et le suivi pédagogique.',
-    image:
-      'https://www.unicef.org/cameroon/sites/unicef.org.cameroon/files/styles/hero_tablet/public/UNICEF_CMR_2024_0.jpg.webp',
+    image: '/images/academy/formations/numense.jpg',
     tags: ['Éducation', 'IA', 'Pédagogie'],
   },
   {
     title: 'Numérique pour les entrepreneurs',
     description:
       'Utilisez les outils numériques pour structurer votre activité, communiquer, vendre et automatiser.',
-    image:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/academy/formations/numentre.jpg',
     tags: ['Entrepreneuriat', 'Digital', 'Business'],
   },
 ]
@@ -176,7 +167,7 @@ export default function FormationsPage() {
       <section className="relative overflow-hidden bg-[#032965] text-white">
         <div className="absolute inset-0">
           <img
-            src="https://assets.weforum.org/article/image/i-kPC-iIiB5-BPzxR7OgWbPrJ0i5bn20yOAjgJZbJEA.jpg"
+            src="/images/academy/formations/nayac.png"
             alt="Apprenants africains utilisant les technologies numériques"
             className="h-full w-full object-cover opacity-40"
           />
@@ -455,9 +446,9 @@ export default function FormationsPage() {
 
             </div>
 
-            <div className="overflow-hidden rounded-2xl">
+              <div className="overflow-hidden rounded-2xl">
               <img
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85"
+                src="/images/academy/formations/nayacpro.jpg"
                 alt="Professionnels africains collaborant autour d'un projet"
                 className="h-[420px] w-full object-cover"
               />

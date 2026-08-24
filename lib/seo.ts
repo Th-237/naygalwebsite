@@ -1,9 +1,11 @@
 export function getOrganizationStructuredData(overrides = {}) {
+  const SITE = process.env.SITE_URL || 'https://naygal.cm'
+
   const data = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "NAYGAL",
-    url: "https://naygal.com",
+    url: SITE,
     contactPoint: [
       {
         "@type": "ContactPoint",

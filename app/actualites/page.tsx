@@ -118,13 +118,15 @@ const resourceCollections = [
   },
 ]
 
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://naygal.cm'
+
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Ressources et actualités numériques | NAYGAL',
   description:
     'Guides, conseils et actualités sur la cybersécurité, le cloud, l’IA et la transformation numérique au service des organisations en Afrique.',
-  url: 'https://naygal.com/actualites',
+  url: `${SITE}/actualites`,
 }
 
 function ArrowIcon() {
@@ -329,12 +331,4 @@ export default function ActualitesPage() {
   )
 }
 
-export const metadata = {
-  title: 'Actualités · NAYGAL',
-  description: 'Les dernières actualités, événements et articles de NAYGAL.',
-  openGraph: {
-    title: 'Actualités · NAYGAL',
-    description: 'Les dernières actualités, événements et articles de NAYGAL.',
-    url: 'https://naygal.com/actualites',
-  },
-}
+// Metadata moved to server-resolved layer to avoid exporting from a client component.

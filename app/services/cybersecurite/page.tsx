@@ -6,8 +6,7 @@ const attackCases = [
     severity: 'CRITIQUE',
     title: 'Ransomware',
     subtitle: 'Quand l’activité peut être paralysée en quelques heures.',
-    image:
-      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1600&q=85',
+    image: '/images/services/cybersecurite/ransomware.jpg',
     vector: 'Phishing, logiciel malveillant ou compte compromis',
     impact: 'Chiffrement de données, interruption des services et indisponibilité des postes.',
     naygal:
@@ -18,8 +17,7 @@ const attackCases = [
     severity: 'ÉLEVÉ',
     title: 'Phishing',
     subtitle: 'Une attaque qui commence parfois par un simple e-mail.',
-    image:
-      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=85',
+    image: '/images/services/cybersecurite/phishing.jpeg',
     vector: 'E-mail frauduleux, faux portail ou usurpation d’identité',
     impact: 'Vol d’identifiants, compromission de comptes et accès à des ressources internes.',
     naygal:
@@ -30,8 +28,7 @@ const attackCases = [
     severity: 'ÉLEVÉ',
     title: 'Compte compromis',
     subtitle: 'Un identifiant peut devenir une porte d’entrée.',
-    image:
-      'https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=1600&q=85',
+    image: '/images/services/cybersecurite/comptecompromis.png',
     vector: 'Mot de passe exposé, réutilisé ou compte insuffisamment protégé',
     impact: 'Accès non autorisé aux applications, fichiers ou infrastructures.',
     naygal:
@@ -42,8 +39,7 @@ const attackCases = [
     severity: 'ÉLEVÉ',
     title: 'Intrusion réseau',
     subtitle: 'Une infrastructure mal segmentée augmente le risque de propagation.',
-    image:
-      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=85',
+    image: '/images/services/cybersecurite/intrusion.png',
     vector: 'Service exposé, équipement vulnérable ou mauvaise configuration',
     impact: 'Intrusion, mouvement latéral et accès à d’autres ressources.',
     naygal:
@@ -54,8 +50,7 @@ const attackCases = [
     severity: 'CRITIQUE',
     title: 'Fuite de données',
     subtitle: 'Les données sensibles doivent rester sous contrôle.',
-    image:
-      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=85',
+    image: '/images/services/cybersecurite/fuite de donnees.webp',
     vector: 'Compte compromis, mauvaise configuration ou accès excessif',
     impact: 'Exposition de documents, informations clients ou données internes.',
     naygal:
@@ -66,8 +61,7 @@ const attackCases = [
     severity: 'MOYEN',
     title: 'Ingénierie sociale',
     subtitle: 'L’humain reste une composante majeure de la cybersécurité.',
-    image:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=85',
+    image: '/images/services/cybersecurite/ingenierie sociale.png',
     vector: 'Manipulation d’un collaborateur ou usurpation',
     impact: 'Divulgation d’informations ou exécution d’une action non autorisée.',
     naygal:
@@ -203,7 +197,7 @@ export default function CybersecuritePage() {
       <section className="relative min-h-[820px] overflow-hidden border-b border-[#17372a]">
 
         <img
-          src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=2400&q=90"
+          src="/images/services/cybersecurite/NAYGALSOC.png"
           alt="Opérateur dans un environnement de cybersécurité"
           className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
@@ -483,7 +477,7 @@ export default function CybersecuritePage() {
               <div className="relative overflow-hidden border border-[#27563b]">
 
                 <img
-                  src="https://images.unsplash.com/photo-1551808525-51a94da548ce?auto=format&fit=crop&w=1600&q=90"
+                  src="/images/services/cybersecurite/SOC_STATUS: READY.webp"
                   alt="Centre de supervision et opérations de sécurité"
                   className="h-[460px] w-full object-cover opacity-65"
                 />
@@ -1033,7 +1027,7 @@ export default function CybersecuritePage() {
               <div className="relative min-h-[380px]">
 
                 <img
-                  src="https://images.unsplash.com/photo-1551808525-51a94da548ce?auto=format&fit=crop&w=1400&q=90"
+                  src="/images/services/cybersecurite/NAYGALSOC.png"
                   alt="Opérations de cybersécurité"
                   className="absolute inset-0 h-full w-full object-cover opacity-50"
                 />

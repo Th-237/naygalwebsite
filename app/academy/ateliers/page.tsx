@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import ImageCarousel from '@/components/ImageCarousel'
+import GrandCarousel from '../../../components/GrandCarousel'
 
 function getIcon(title: string) {
   const size = 16
@@ -57,8 +57,7 @@ const parcours = [
     description:
       'Premiers contacts avec le numérique, la logique, la création et les sciences à travers des activités ludiques et concrètes.',
     themes: ['Éveil numérique', 'Logique', 'Créativité', 'Sciences'],
-    image:
-      'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/academy/ateliers/junior.jpg',
     accent: 'bg-[#e8f3ff]',
     badge: 'bg-[#276f91]',
   },
@@ -76,8 +75,7 @@ const parcours = [
       'Photographie',
       'Drones',
     ],
-    image:
-      'https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/academy/ateliers/explorer.jpg',
     accent: 'bg-[#edf7e7]',
     badge: 'bg-[#52a234]',
   },
@@ -95,8 +93,7 @@ const parcours = [
       'Électronique',
       'Drones',
     ],
-    image:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/academy/ateliers/Tech.jpg',
     accent: 'bg-[#fff4df]',
     badge: 'bg-[#df8b18]',
   },
@@ -114,8 +111,7 @@ const parcours = [
       'Cybersécurité',
       'Automatisation',
     ],
-    image:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/academy/ateliers/pro.jpg',
     accent: 'bg-[#f1ecff]',
     badge: 'bg-[#7654c8]',
   },
@@ -133,8 +129,7 @@ const parcours = [
       'Management',
       'Automatisation',
     ],
-    image:
-      'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=85',
+    image: '/images/academy/ateliers/business.jpg',
     accent: 'bg-[#eaf6f1]',
     badge: 'bg-[#218c6b]',
   },
@@ -146,64 +141,56 @@ const explorations = [
     title: 'Design & création',
     description:
       'Découvrir le design graphique, la création visuelle, l’UI/UX et les outils permettant de transformer une idée en expérience.',
-    image:
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=85',
+    image: '/images/academy/ateliers/Au-delà de la salle.jpg',
   },
   {
     number: '02',
     title: 'Photographie & vidéo',
     description:
       'Apprendre à observer, cadrer, raconter et produire des contenus visuels avec les bases de la photographie et de la vidéo.',
-    image:
-      'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=85',
+    image: '/images/academy/ateliers/Tech.jpg',
   },
   {
     number: '03',
     title: 'Drones & exploration',
     description:
       'Découvrir le fonctionnement des drones, leurs usages, la prise de vue aérienne et les technologies qui rendent ces systèmes possibles.',
-    image:
-      'https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=900&q=85',
+    image: '/images/academy/ateliers/Drones & exploration.jpg',
   },
   {
     number: '04',
     title: 'Sciences & expérimentation',
     description:
       'Observer, manipuler, tester et comprendre les phénomènes scientifiques grâce à des expériences accessibles et concrètes.',
-    image:
-      'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=900&q=85',
+    image: '/images/academy/ateliers/Sciences & expérimentation.jpg',
   },
   {
     number: '05',
     title: 'Découverte des métiers',
     description:
       'Rencontrer des professionnels, comprendre leurs parcours et découvrir des métiers parfois encore inconnus.',
-    image:
-      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85',
+    image: '/images/academy/ateliers/Découverte des métiers.jpg',
   },
   {
     number: '06',
     title: 'Immersion en entreprise',
     description:
       'Visiter des entreprises, observer leur fonctionnement et comprendre comment les technologies sont utilisées dans le monde professionnel.',
-    image:
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=85',
+    image: '/images/academy/ateliers/Immersion en entreprise.jpg',
   },
   {
     number: '07',
     title: 'Visites d’écoles & universités',
     description:
       'Découvrir les établissements, les filières, les métiers associés et les différents parcours possibles après le secondaire.',
-    image:
-      'https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=900&q=85',
+    image: '/images/academy/ateliers/Visites d’écoles & universités.jpg',
   },
   {
     number: '08',
     title: 'Entrepreneuriat & innovation',
     description:
       'Apprendre à transformer une idée en projet, identifier un besoin et découvrir les premières étapes de l’innovation.',
-    image:
-      'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=85',
+    image: '/images/academy/ateliers/Entrepreneuriat & innovation.jpg',
   },
 ]
 
@@ -314,28 +301,20 @@ export default function AteliersPage() {
 
               <div className="relative">
                 {/* Carousel hero */}
-                <div className="relative overflow-hidden rounded-[2rem] p-3 shadow-[0_30px_70px_rgba(3,41,101,.2)]">
+                <div className="relative overflow-hidden min-h-[360px] sm:min-h-[420px] lg:min-h-[520px]">
                   {/* ImageCarousel will be lazy and autoplay */}
-                  <ImageCarousel
-                    slides={[
-                      { src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=90', alt: 'Atelier 1' },
-                      { src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=90', alt: 'Atelier 2' },
-                      { src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=90', alt: 'Atelier 3' },
+                  <GrandCarousel
+                    images={[
+                      '/images/academy/ateliers/Grand-caroussel/img1.jpg',
+                      '/images/academy/ateliers/Grand-caroussel/pexels-domingos-henriques-3418942-17471222.jpg',
+                      '/images/academy/ateliers/Grand-caroussel/pexels-roman-odintsov-11025023(1).jpg',
+                      '/images/academy/ateliers/Grand-caroussel/pexels-zeal-creative-studios-58866141-33920046.jpg',
+                      '/images/academy/ateliers/Grand-caroussel/img2.jpg',
                     ]}
                     interval={4500}
                   />
 
-                  <div className="absolute bottom-8 left-8 right-8 rounded-2xl bg-white/95 p-5 shadow-xl backdrop-blur">
-
-                    <p className="text-xs font-bold uppercase tracking-[.16em] text-[#438a2c]">
-                      La méthode NAYAC
-                    </p>
-
-                    <p className="mt-2 text-xl font-semibold text-[#032965]">
-                      Comprendre · Manipuler · Construire · Partager
-                    </p>
-
-                  </div>
+                  
                 </div>
               </div>
 
@@ -426,7 +405,7 @@ export default function AteliersPage() {
                   <div className="relative min-h-[280px] overflow-hidden">
 
                     <img
-                      src={item.image}
+                      src={encodeURI(item.image)}
                       alt={item.title}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transition-smooth will-change-transform"
                     />
@@ -538,7 +517,7 @@ export default function AteliersPage() {
                 <div className="relative h-48 overflow-hidden">
 
                   <img
-                    src={item.image}
+                    src={encodeURI(item.image)}
                     alt={item.title}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transition-smooth"
                   />
@@ -555,81 +534,13 @@ export default function AteliersPage() {
                 </div>
 
                 <div className="p-6">
-
-                  <h3 className="text-xl font-semibold text-[#032965]">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    {item.description}
-                  </p>
-
+                  <h3 className="text-lg font-semibold text-[#032965]">{item.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{item.description}</p>
                 </div>
 
               </article>
 
             ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* PEDAGOGIE */}
-      <section className="border-y border-slate-100 bg-[#f4f8fd] py-16 sm:py-20">
-
-        <div className="container-custom">
-
-          <div className="grid gap-10 lg:grid-cols-[.75fr_1.25fr]">
-
-            <div>
-
-              <p className="text-sm font-bold uppercase tracking-[.16em] text-[#438a2c]">
-                Notre pédagogie
-              </p>
-
-              <h2 className="mt-3 text-[#032965]">
-                On ne vient pas seulement écouter.
-              </h2>
-
-              <p className="mt-5 leading-8 text-slate-600">
-
-                Les ateliers sont conçus pour mettre les participants en
-                situation. Chaque expérience cherche à transformer une notion
-                abstraite en quelque chose que l’on peut voir, manipuler,
-                construire ou expliquer.
-
-              </p>
-
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-
-              {pedagogie.map((item) => (
-
-                <div
-                  key={item.title}
-                  className="bg-white p-7 shadow-sm transition-smooth hover:-translate-y-1 hover:shadow-lg"
-                >
-
-                  <span className="text-sm font-bold text-[#52a234]">
-                    {item.number}
-                  </span>
-
-                  <h3 className="mt-7 text-xl font-semibold text-[#032965]">
-                    {item.title}
-                  </h3>
-
-                  <p className="mt-3 leading-7 text-slate-600">
-                    {item.description}
-                  </p>
-
-                </div>
-
-              ))}
-
-            </div>
 
           </div>
 
@@ -698,7 +609,7 @@ export default function AteliersPage() {
             <div className="relative overflow-hidden rounded-[1.5rem] group transition-smooth hover:shadow-xl">
 
               <img
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=90"
+                src={encodeURI('/images/academy/ateliers/Au-delà de la salle.jpg')}
                 alt="Jeunes découvrant leur environnement éducatif"
                 className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

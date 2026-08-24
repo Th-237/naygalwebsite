@@ -39,54 +39,88 @@ const footerLinks = {
   ],
 }
 
+const socialLinks = [
+  {
+    name: 'Facebook',
+    href: '#',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
+        <path d="M13.5 22v-8h3l.5-3h-3.5V7.5c0-.9.3-1.5 1.6-1.5H17V3.1c-.3-.1-1.3-.1-2.5-.1-2.4 0-4 1.5-4 4.3V11H8v3h2.5v8h3Z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'X',
+    href: '#',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
+        <path d="M18.9 2h3.4l-7.4 8.5L23 22h-6.7l-5.2-7.2L5.3 22H1.9l7.9-9.1L1 2h6.9l4.7 6.5L18.9 2Zm-1.2 18h1.9L7.1 3.9H5.1L17.7 20Z" />
+      </svg>
+    ),
+  },
+  {
+    name: 'LinkedIn',
+    href: '#',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden="true">
+        <path d="M6.9 8.5A1.8 1.8 0 1 1 6.9 5a1.8 1.8 0 0 1 0 3.5ZM5.2 9.8h3.3V19H5.2V9.8Zm5.5 0h3.1v1.2h.1c.4-.8 1.6-1.7 3.3-1.7 3.5 0 4.1 2.3 4.1 5.3V19h-3.3v-17.9h3.3V19h-3.3v-5.6c0-1.4-.1-3.1-1.9-3.1-1.9 0-2.2 1.5-2.2 3V19H10.7V9.8Z" />
+      </svg>
+    ),
+  },
+]
+
 export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-naygal-dark text-white pb-0">
-      <div className="container-custom pt-6 pb-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center space-x-3 mb-4">
-              <Image
-                src="/images/logo.png"
-                alt="Logo NAYGAL"
-                width={64}
-                height={64}
-                className="h-14 w-14 object-contain"
-              />
-              <span className="text-2xl font-bold">
-                <span className="text-naygal-blue">NAY</span>
-                <span className="text-naygal-green">GAL</span>
-              </span>
+    <footer className="relative overflow-hidden bg-naygal-dark text-white">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#52a234] to-transparent" />
+
+      <div className="container-custom relative py-12 lg:py-16">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[1.5fr_1fr_1fr_1fr_1.3fr]">
+          <div className="xl:pr-8">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-lg shadow-emerald-900/10">
+                <Image
+                  src="/images/logo.png"
+                  alt="Logo NAYGAL"
+                  width={56}
+                  height={56}
+                  className="h-11 w-11 object-contain"
+                />
+              </div>
+              <div>
+                <div className="text-2xl font-bold tracking-tight">
+                  <span className="text-naygal-blue">NAY</span>
+                  <span className="text-naygal-green">GAL</span>
+                </div>
+              </div>
             </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Le numérique de demain, aujourd'hui. Expert en infrastructures, cybersécurité, IA et cloud.
+
+            <p className="max-w-xs text-sm leading-7 text-slate-300">
+              Le numérique de demain, aujourd&apos;hui. Nous aidons les organisations à transformer leurs infrastructures, leurs services et leur expérience client avec des solutions durables et performantes.
             </p>
-            <p className="mt-4 text-gray-400 text-sm leading-relaxed">
-              Nous accompagnons les organisations africaines pour transformer leur IT, leurs services et leur expérience client.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <a href="#" className="text-gray-400 hover:text-white transition-smooth transition-colors" aria-label="Facebook">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-smooth transition-colors" aria-label="X">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-smooth transition-colors" aria-label="LinkedIn">
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              </a>
+
+            <div className="mt-6 flex items-center gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  aria-label={social.name}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-300 transition-all duration-200 hover:border-[#52a234]/60 hover:bg-[#52a234]/10 hover:text-white"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Entreprise */}
           <div>
-            <h3 className="font-semibold mb-4 text-lg">Entreprise</h3>
-            <ul className="space-y-2">
+            <h3 className="mb-5 text-base font-semibold uppercase tracking-[0.14em] text-slate-200">Entreprise</h3>
+            <ul className="space-y-3 text-sm text-slate-300">
               {footerLinks.entreprise.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">
+                  <Link href={link.href} className="transition-colors hover:text-white">
                     {link.name}
                   </Link>
                 </li>
@@ -94,13 +128,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
           <div>
-            <h3 className="font-semibold mb-4 text-lg">Services</h3>
-            <ul className="space-y-2">
+            <h3 className="mb-5 text-base font-semibold uppercase tracking-[0.14em] text-slate-200">Services</h3>
+            <ul className="space-y-3 text-sm text-slate-300">
               {footerLinks.services.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">
+                  <Link href={link.href} className="transition-colors hover:text-white">
                     {link.name}
                   </Link>
                 </li>
@@ -108,69 +141,60 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Academy */}
           <div>
-            <h3 className="font-semibold mb-4 text-lg">NAYGAL Academy</h3>
-            <ul className="space-y-2">
+            <h3 className="mb-5 text-base font-semibold uppercase tracking-[0.14em] text-slate-200">NAYGAL Academy</h3>
+            <ul className="space-y-3 text-sm text-slate-300">
               {footerLinks.academy.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">
+                  <Link href={link.href} className="transition-colors hover:text-white">
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="mt-4 p-4 bg-white/5 rounded-lg">
-              <p className="text-sm text-gray-400">
-                <span className="text-naygal-green font-semibold">contact@naygal.cm</span>
-              </p>
-              <p className="text-sm text-gray-400 mt-1">+237 655 002 493</p>
-              <p className="text-sm text-gray-400 mt-3">Réponse rapide en journée ouvrée.</p>
-            </div>
           </div>
 
-          {/* Ressources + Mouvement */}
           <div>
-            <h3 className="font-semibold mb-4 text-lg">Ressources & Mouvement</h3>
-            <ul className="space-y-2">
-              {footerLinks.ressources.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-              {footerLinks.mouvement.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-gray-800 grid gap-4 text-sm text-gray-400 md:grid-cols-[1.5fr_1fr] md:items-center">
-          <div className="space-y-2">
-            <p className="font-semibold text-white">Envie d’en discuter ?</p>
-            <p>Contactez notre équipe pour une étude rapide de votre projet numérique.</p>
-            <p>Nous respectons le RGPD : plus d’informations sur le site officiel de la CNIL.</p>
-          </div>
-          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-end">
-            <Link href="/contact" className="inline-flex items-center justify-center rounded-full bg-[#52a234] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#438a2c]">
-              Nous contacter
-            </Link>
-            <div className="flex flex-wrap gap-4">
-              <Link href="#" className="hover:text-white transition-colors">Mentions légales</Link>
-              <Link href="#" className="hover:text-white transition-colors">Politique de confidentialité</Link>
-              <Link href="#" className="hover:text-white transition-colors">CGU</Link>
-              <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees" target="_blank" rel="noreferrer" className="hover:text-white transition-colors">RGPD</a>
+            <h3 className="mb-5 text-base font-semibold uppercase tracking-[0.14em] text-slate-200">Contact</h3>
+            <div className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-300">
+              <div>
+                <p className="text-slate-400">Email</p>
+                <a href="mailto:contact@naygal.cm" className="mt-1 block font-medium text-white hover:text-[#8ed15b]">
+                  contact@naygal.cm
+                </a>
+              </div>
+              <div>
+                <p className="text-slate-400">Téléphone</p>
+                <a href="tel:+237655002493" className="mt-1 block font-medium text-white hover:text-[#8ed15b]">
+                  +237 655 002 493
+                </a>
+              </div>
+              <div>
+                <p className="text-slate-400">Disponible</p>
+                <p className="mt-1 font-medium text-white">Du lundi au vendredi</p>
+              </div>
+              <Link
+                href="/contact"
+                className="mt-2 inline-flex items-center justify-center rounded-full bg-[#52a234] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#448b2b]"
+              >
+                Demander un devis
+              </Link>
             </div>
           </div>
         </div>
-        <div className="mt-6 border-t border-white/5 pt-6 pb-0 text-center text-xs text-gray-400">
-          © {currentYear} NAYGAL TECHNOLOGY — Tous droits réservés.
+
+        <div className="mt-12 border-t border-white/10 pt-7">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+              {footerLinks.legal.map((link) => (
+                <Link key={link.name} href={link.href} className="transition-colors hover:text-white">
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+
+            <p className="text-sm text-slate-400">© {currentYear} NAYGAL TECHNOLOGY — Tous droits réservés.</p>
+          </div>
         </div>
       </div>
     </footer>

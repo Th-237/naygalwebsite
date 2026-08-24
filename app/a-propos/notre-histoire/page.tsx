@@ -6,16 +6,14 @@ const milestones = [
     label: 'ORIGINE',
     title: 'Une conviction avant une entreprise.',
     text: "NAYGAL naît d'une conviction : le numérique peut devenir un puissant levier de transformation lorsqu'il est pensé à partir des réalités du terrain.",
-    image:
-      'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1800&q=90',
+    image: '/images/a-propos/notre-histoire/time-line/1.jpg',
   },
   {
     number: '02',
     label: 'CONSTRUCTION',
     title: 'Transformer une idée en projet.',
     text: "La vision prend progressivement forme autour d'un objectif concret : réunir expertise technologique, accompagnement et transmission des compétences au sein d'un même écosystème.",
-    image:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1800&q=90',
+    image: '/images/a-propos/notre-histoire/time-line/2.jpg',
   },
   {
     number: '03',
@@ -30,8 +28,7 @@ const milestones = [
     label: 'TRANSMISSION',
     title: 'Parce que la technologie a besoin de talents.',
     text: "Avec NAYGAL Academy, l'ambition s'étend au-delà des solutions : développer les compétences, favoriser l'apprentissage pratique et préparer davantage de personnes aux opportunités numériques.",
-    image:
-      'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1800&q=90',
+    image: '/images/a-propos/notre-histoire/time-line/4.jpg',
   },
   {
     number: '05',

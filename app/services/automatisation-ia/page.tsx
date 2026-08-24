@@ -33,7 +33,7 @@ const logiciels = [
     items: [
       'KPI',
       'Reporting',
-      'Suivi d’activité',
+      "Suivi d'activité",
       'Visualisation des données',
     ],
   },
@@ -41,7 +41,7 @@ const logiciels = [
     number: '04',
     title: 'Outils personnalisés',
     description:
-      'Lorsque les solutions existantes ne répondent pas à votre besoin, nous développons l’outil adapté à votre organisation.',
+      "Lorsque les solutions existantes ne répondent pas à votre besoin, nous développons l’outil adapté à votre organisation.",
     items: [
       'Solutions sur mesure',
       'Formulaires intelligents',
@@ -62,7 +62,7 @@ const automatisations = [
     number: '02',
     title: 'Workflows automatisés',
     description:
-      'Transformez une succession d’actions manuelles en processus structurés qui s’exécutent automatiquement.',
+      "Transformez une succession d’actions manuelles en processus structurés qui s’exécutent automatiquement.",
   },
   {
     number: '03',
@@ -83,7 +83,7 @@ const iaServices = [
     number: '01',
     title: 'Assistants IA',
     description:
-      'Des assistants capables d’accompagner vos équipes dans la recherche, la rédaction, la synthèse et l’exploitation de l’information.',
+      "Des assistants capables d’accompagner vos équipes dans la recherche, la rédaction, la synthèse et l’exploitation de l’information.",
   },
   {
     number: '02',
@@ -95,13 +95,13 @@ const iaServices = [
     number: '03',
     title: 'Analyse intelligente',
     description:
-      'Exploitez l’intelligence artificielle pour analyser de grandes quantités d’informations, identifier des tendances ou détecter des anomalies.',
+      "Exploitez l’intelligence artificielle pour analyser de grandes quantités d’informations, identifier des tendances ou détecter des anomalies.",
   },
   {
     number: '04',
     title: 'Agents et workflows IA',
     description:
-      'Des systèmes capables d’enchaîner plusieurs actions et d’assister vos collaborateurs dans des processus métier.',
+      "Des systèmes capables d’enchaîner plusieurs actions et d’assister vos collaborateurs dans des processus métier.",
   },
 ]
 
@@ -109,7 +109,7 @@ const casUsage = [
   {
     title: 'Gestion administrative',
     description:
-      'Automatiser la réception d’une demande, sa classification, son attribution et le suivi jusqu’à sa résolution.',
+      "Automatiser la réception d’une demande, sa classification, son attribution et le suivi jusqu’à sa résolution.",
   },
   {
     title: 'Gestion commerciale',
@@ -195,7 +195,7 @@ export default function AutomatisationIAPage() {
 
               <div className="relative overflow-hidden rounded-[2rem] bg-[#032965] shadow-[0_30px_80px_rgba(3,41,101,.22)]">
                 <img
-                  src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=85"
+                  src="/images/services/automatisation-ia/1.webp"
                   alt="Équipe travaillant sur des solutions numériques"
                   className="h-80 w-full object-cover opacity-80"
                 />
@@ -368,7 +368,7 @@ export default function AutomatisationIAPage() {
 
             <div className="min-h-[380px]">
               <img
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85"
+                src="/images/services/automatisation-ia/2.webp"
                 alt="Développement et utilisation d'une plateforme numérique"
                 className="h-full w-full object-cover"
               />
@@ -474,7 +474,7 @@ export default function AutomatisationIAPage() {
                 ['02', 'Détection', 'Le système identifie automatiquement le type de demande.'],
                 ['03', 'Traitement', 'Les informations sont enregistrées et traitées.'],
                 ['04', 'Action', 'Les personnes concernées sont automatiquement informées.'],
-                ['05', 'Suivi', 'Le dossier est suivi jusqu’à sa résolution.'],
+                ['05', 'Suivi', "Le dossier est suivi jusqu’à sa résolution."],
               ].map(([number, title, description], index) => (
                 <div
                   key={title}

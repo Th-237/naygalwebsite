@@ -77,7 +77,7 @@ export default function CloudPage() {
             <div className="rounded-[32px] border border-white/10 bg-[#031127]/90 p-6 shadow-naygal-card">
               <div className="relative overflow-hidden rounded-[28px] bg-slate-900 h-[420px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1600&q=80"
+                  src="/images/expertises/cloud/1.jpg"
                   alt="Vue d’une architecture cloud moderne"
                   fill
                   className="object-cover"
@@ -123,7 +123,7 @@ export default function CloudPage() {
               <div className="absolute inset-0 opacity-60 bg-black/30" />
               <div className="relative h-[420px] overflow-hidden rounded-[28px] bg-slate-900 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
                 <Image
-                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80"
+                  src="/images/expertises/cloud/2.jpeg"
                   alt="Tableau de bord cloud et données"
                   fill
                   className="object-cover"

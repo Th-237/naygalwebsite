@@ -1,5 +1,20 @@
 import Link from 'next/link'
 
+const SITE = process.env.SITE_URL || 'https://naygal.cm'
+
+export const metadata = {
+  title: 'Services IT NAYGAL | Infrastructure, cybersécurité, cloud et IA',
+  description: 'Bénéficiez de services IT adaptés à votre organisation : infrastructure, réseaux, cybersécurité, cloud, maintenance et automatisation IA.',
+  alternates: {
+    canonical: `${SITE}/services`,
+  },
+  openGraph: {
+    title: 'Services IT NAYGAL | Infrastructure, cybersécurité, cloud et IA',
+    description: 'Bénéficiez de services IT adaptés à votre organisation : infrastructure, réseaux, cybersécurité, cloud, maintenance et automatisation IA.',
+    url: `${SITE}/services`,
+  },
+}
+
 const services = [
   {
     number: '01',

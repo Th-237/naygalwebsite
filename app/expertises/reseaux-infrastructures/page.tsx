@@ -40,7 +40,15 @@ export default function ReseauxInfrastructuresPage() {
   return (
     <main className="min-h-screen bg-[#021d47] text-white pt-[72px]">
       <section className="relative overflow-hidden py-24">
-        <div className="absolute inset-0 bg-naygal-dark opacity-80" />
+        <Image
+          src="/images/expertises/reseaux-infrastructures/1.jpg"
+          alt="Infrastructure réseau"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-70"
+        />
+        <div className="absolute inset-0 bg-naygal-dark opacity-60" />
         <div className="absolute right-0 top-16 h-[420px] w-[420px] rounded-full bg-[#52a234]/10 blur-[140px]" />
         <div className="absolute left-0 top-40 h-[300px] w-[300px] rounded-full bg-white/5 blur-[120px]" />
 
@@ -111,7 +119,7 @@ export default function ReseauxInfrastructuresPage() {
               <div className="absolute inset-0 opacity-60 bg-black/30" />
               <div className="relative h-[420px] overflow-hidden rounded-[28px] bg-slate-900 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
                 <Image
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80"
+                  src="/images/expertises/reseaux-infrastructures/2.jpg"
                   alt="Professionnels africains travaillant sur un réseau informatique"
                   fill
                   className="object-cover"

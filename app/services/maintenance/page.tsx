@@ -179,7 +179,7 @@ export default function MaintenancePage() {
       <section className="relative min-h-[700px] overflow-hidden bg-[#021f50] text-white">
 
         <img
-          src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=2200&q=90"
+          src="/images/services/maintenance/1.jpg"
           alt="Maintenance et intervention informatique"
           className="absolute inset-0 h-full w-full object-cover opacity-35"
         />
@@ -425,7 +425,7 @@ export default function MaintenancePage() {
             <div className="relative min-h-[430px]">
 
               <img
-                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85"
+                src="/images/services/maintenance/2.jpg"
                 alt="Équipe travaillant sur un environnement informatique"
                 className="absolute inset-0 h-full w-full object-cover opacity-70"
               />

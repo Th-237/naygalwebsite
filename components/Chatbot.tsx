@@ -15,50 +15,59 @@ type Message = {
 const welcomeMessage: Message = {
   id: 1,
   sender: 'bot',
-  text: 'Bonjour ! Je suis l’assistant NAYGAL. Je peux vous orienter vers nos expertises, formations et ressources.',
+  text: 'Bonjour ! Je suis NAYILIE, votre guide virtuel pour naviguer sur le site. Je peux vous orienter vers nos expertises, formations, ressources et contacts.',
 }
 
 const quickQuestions = [
-  'Contribuer au Mouvement',
-  'Notre mission',
-  'Découvrir NAYAC',
+  'Explorer les expertises',
+  'Trouver une formation',
+  'Contact / Devis',
 ]
 
 function getAnswer(question: string): Pick<Message, 'text' | 'actionHref' | 'actionLabel' | 'actionSummary'> {
   const normalizedQuestion = question.toLowerCase()
 
+  const routeMap: { keywords: RegExp; href: string; label: string; summary: string; text: string }[] = [
+    { keywords: /(contribu|don|soutien|payer|paiement|offre|montant|financier)/, href: '/mouvement/soutenir-nos-initiatives', label: 'Voir les contributions', summary: 'Soutenir NAYGAL : contributions financières, matérielles et partage d’expertise.', text: 'Vous pouvez soutenir NAYGAL de plusieurs manières.' },
+    { keywords: /(mission|notre mission|mouvement)/, href: '/mouvement/notre-mission', label: 'Notre mission', summary: 'Découvrez la mission et les domaines d’action de NAYGAL.', text: 'La mission de NAYGAL est de rendre le numérique utile, accessible et construit localement.' },
+    { keywords: /(éducation|education|scolaire|école|ecole|étudiant|etudiant|élève|eleve|nayac|formation|apprendre|ateliers)/, href: '/academy/ateliers', label: 'Voir les formations', summary: 'Parcours et ateliers pratiques proposés par NAYGAL Academy.', text: 'Avec NAYGAL Academy, nous proposons des formations et ateliers pratiques pour établissements et professionnels.' },
+    { keywords: /(cyber|sécur|secur|pirat|menace)/, href: '/expertises/cybersecurite', label: 'Cybersécurité', summary: 'Audit, protection des accès, sauvegarde et sensibilisation.', text: "Nous accompagnons sur l'audit, la protection et la sensibilisation en cybersécurité." },
+    { keywords: /(ia|intelligence artificielle|automati)/, href: '/expertises/intelligence-artificielle', label: 'Intelligence artificielle', summary: 'Cas d’usage IA, sécurité des données et déploiement pilote.', text: 'Nous aidons à identifier des cas d’usage IA utiles et sécurisés.' },
+    { keywords: /(cloud|réseau|reseau|infrastructure|serveur)/, href: '/expertises/reseaux-infrastructures', label: 'Réseaux & infra', summary: 'Conception et évolution d’infrastructures et environnements cloud.', text: 'NAYGAL conçoit et fait évoluer les infrastructures et réseaux.' },
+    { keywords: /(service|expertise|offre|proposez|expertises)/, href: '/expertises', label: 'Toutes les expertises', summary: 'Découvrez l’ensemble des expertises proposées par NAYGAL.', text: 'Nos expertises couvrent infrastructures, cybersécurité, cloud, IA et transformation numérique.' },
+    { keywords: /(contact|expert|devis|projet|rendez-vous|rdv)/, href: '/contact', label: 'Nous contacter', summary: 'Formulaire de contact pour présenter votre besoin et demander un devis.', text: "Notre équipe peut échanger avec vous pour comprendre votre besoin." },
+    { keywords: /(ressource|article|guide|blog|actualit|news|publication)/, href: '/ressources', label: 'Ressources', summary: 'Guides, articles et outils pour vos projets numériques.', text: 'Je peux vous diriger vers notre bibliothèque de contenus utiles.' },
+    { keywords: /(projet|projets)/, href: '/projets', label: 'Projets', summary: 'Découvrez les projets accompagnés par NAYGAL.', text: 'Voici nos projets récents et exemples d’accompagnement.' },
+    { keywords: /(services|service)/, href: '/services', label: 'Services', summary: 'Présentation des services et offres techniques.', text: 'Voici les services proposés par NAYGAL.' },
+  ]
+
   if (/(merci|thanks|super|parfait)/.test(normalizedQuestion)) {
-    return { text: 'Avec plaisir ! Je reste disponible si vous avez une autre question sur NAYGAL ou vos projets numériques.' }
+    return { text: "Avec plaisir ! Je reste disponible si vous avez une autre question." }
   }
   if (/(bonjour|salut|bonsoir)/.test(normalizedQuestion)) {
     return { text: 'Bonjour ! Comment puis-je vous aider aujourd’hui ?' }
   }
-  if (/(contribu|don|soutien|payer|paiement|offre|montant|financier)/.test(normalizedQuestion)) {
-    return { text: 'Vous pouvez soutenir NAYGAL de plusieurs manières : contribution financière, don de matériel, partage d’expertise ou mise en réseau. Voulez-vous découvrir le Mouvement et les offres de soutien ?', actionHref: '/mouvement/soutenir-nos-initiatives', actionLabel: 'Oui, voir les contributions', actionSummary: 'Le Mouvement NAYGAL propose des contributions financières, matérielles et humaines pour soutenir les initiatives, les formations et les projets sur le terrain.' }
-  }
-  if (/(mission|notre mission|mouvement)/.test(normalizedQuestion)) {
-    return { text: 'La mission de NAYGAL est de rendre le numérique utile, accessible et construit localement. Voulez-vous en savoir plus sur notre mission et nos domaines d’action ?', actionHref: '/mouvement/notre-mission', actionLabel: 'Oui, voir la mission', actionSummary: 'Découvrez comment NAYGAL agit sur l’éducation numérique, les infrastructures, l’innovation, la collaboration et la transformation numérique.' }
-  }
-  if (/(éducation|education|scolaire|école|ecole|étudiant|etudiant|élève|eleve|nayac|formation|apprendre)/.test(normalizedQuestion)) {
-    return { text: 'Oui. Avec NAYGAL Academy et NAYAC, nous proposons des formations, ateliers et parcours pratiques pour les établissements, les élèves, les étudiants et les professionnels. Souhaitez-vous que je vous présente NAYGAL Academy ?', actionHref: '/academy', actionLabel: 'Oui, présenter NAYGAL Academy', actionSummary: 'NAYGAL Academy propose des parcours pratiques en réseaux, cybersécurité, intelligence artificielle et numérique, pour les écoles, les professionnels et les organisations.' }
-  }
-  if (/(cyber|sécur|secur|pirat|menace)/.test(normalizedQuestion)) {
-    return { text: 'NAYGAL accompagne les organisations sur l’audit, la protection des accès, la sauvegarde et la sensibilisation des équipes. Souhaitez-vous découvrir nos solutions cybersécurité ?', actionHref: '/expertises/cybersecurite', actionLabel: 'Oui, voir la cybersécurité', actionSummary: 'Nos solutions cybersécurité couvrent l’audit, la protection des accès, les sauvegardes et la sensibilisation de vos équipes.' }
-  }
-  if (/(ia|intelligence artificielle|automati)/.test(normalizedQuestion)) {
-    return { text: 'Nous vous aidons à identifier des cas d’usage IA utiles, sécurisés et adaptés à vos équipes, avant de les déployer progressivement. Voulez-vous explorer notre expertise IA ?', actionHref: '/expertises/intelligence-artificielle', actionLabel: 'Oui, explorer l’IA', actionSummary: 'L’expertise IA vous aide à sélectionner des cas d’usage pertinents, sécuriser les données et déployer un premier pilote utile.' }
-  }
-  if (/(cloud|réseau|reseau|infrastructure|serveur)/.test(normalizedQuestion)) {
-    return { text: 'NAYGAL conçoit et fait évoluer les infrastructures, réseaux, serveurs et environnements cloud selon les besoins réels de votre organisation. Voulez-vous explorer ces expertises ?', actionHref: '/expertises/reseaux-infrastructures', actionLabel: 'Oui, voir les expertises', actionSummary: 'Cette expertise réunit réseaux, serveurs, stockage et environnements cloud, pour une infrastructure fiable et évolutive.' }
-  }
-  if (/(service|expertise|offre|proposez)/.test(normalizedQuestion)) {
-    return { text: 'Nos expertises couvrent les infrastructures & réseaux, la cybersécurité, le cloud & les données, l’IA & l’automatisation et la transformation numérique. Souhaitez-vous voir l’ensemble de nos expertises ?', actionHref: '/expertises', actionLabel: 'Oui, voir les expertises', actionSummary: 'Découvrez les domaines techniques qui permettent à NAYGAL d’accompagner votre organisation de manière cohérente et progressive.' }
-  }
-  if (/(contact|expert|devis|projet|rendez-vous|rdv)/.test(normalizedQuestion)) {
-    return { text: 'Notre équipe peut échanger avec vous pour comprendre votre besoin et identifier les prochaines étapes. Souhaitez-vous accéder à notre formulaire de contact ?', actionHref: '/contact', actionLabel: 'Oui, nous contacter', actionSummary: 'Le formulaire vous permet de présenter votre besoin ; notre équipe vous recontactera pour organiser les prochaines étapes.' }
+
+  // Try to match a known route by keywords
+  for (const route of routeMap) {
+    if (route.keywords.test(normalizedQuestion)) {
+      return { text: route.text, actionHref: route.href, actionLabel: route.label, actionSummary: route.summary }
+    }
   }
 
-  return { text: 'Je peux vous renseigner sur nos services, la cybersécurité, le cloud, l’IA, NAYAC, le Mouvement NAYGAL et nos ressources. Souhaitez-vous parcourir notre bibliothèque de contenus utiles ?', actionHref: '/ressources', actionLabel: 'Oui, voir les ressources', actionSummary: 'La bibliothèque NAYGAL rassemble des guides, conseils, articles et outils pour mieux décider et faire avancer vos projets.' }
+  // Handle explicit "où est" style questions with a loose keyword match
+  if (/où|ou se trouve|ou trouver|où trouver|trouve/.test(normalizedQuestion)) {
+    for (const route of routeMap) {
+      // try to find the target keyword inside the question
+      const wordMatch = route.label.toLowerCase().split(' ')[0]
+      if (normalizedQuestion.includes(wordMatch)) {
+        return { text: `Je peux vous y conduire : ${route.label}`, actionHref: route.href, actionLabel: route.label, actionSummary: route.summary }
+      }
+    }
+  }
+
+  // default fallback
+  return { text: 'Je peux vous renseigner sur nos expertises, formations, ressources ou contacts. Que cherchez-vous précisément ?', actionHref: '/ressources', actionLabel: 'Explorer les ressources', actionSummary: 'La bibliothèque NAYGAL rassemble des guides, conseils, articles et outils.' }
 }
 
 export default function Chatbot() {
@@ -106,22 +115,47 @@ export default function Chatbot() {
       return
     }
 
-    const answer = getAnswer(question)
-    setMessages((current) => [
-      ...current,
-      { id: Date.now(), sender: 'user', text: question },
-      { id: Date.now() + 1, sender: 'bot', ...answer },
-    ])
-    setPendingAction(answer.actionHref && answer.actionLabel && answer.actionSummary ? { href: answer.actionHref, label: answer.actionLabel, summary: answer.actionSummary } : null)
-    setInput('')
+    // First try server-side retrieval (RAG-like). If fails, fallback to local rule-based answers
+    ;(async () => {
+      setMessages((current) => [...current, { id: Date.now(), sender: 'user', text: question }])
+      setInput('')
+      try {
+        const res = await fetch('/api/nayilie/search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ q: question }),
+        })
+        const payload = await res.json()
+        if (payload && payload.answer) {
+          const candidate = payload.candidates && payload.candidates[0]
+          setMessages((current) => [
+            ...current,
+            { id: Date.now() + 1, sender: 'bot', text: payload.answer, actionHref: candidate?.path, actionLabel: candidate ? `Voir ${candidate.title}` : undefined, actionSummary: candidate?.excerpt },
+          ])
+          setPendingAction(payload.candidates && payload.candidates[0] ? { href: payload.candidates[0].path, label: `Voir ${payload.candidates[0].title}`, summary: payload.candidates[0].excerpt } : null)
+          return
+        }
+      } catch (e) {
+        // ignore and fallback
+        // console.error('Search API error', e)
+      }
+
+      // fallback to simple rule-based reply
+      const answer = getAnswer(question)
+      setMessages((current) => [
+        ...current,
+        { id: Date.now() + 1, sender: 'bot', ...answer },
+      ])
+      setPendingAction(answer.actionHref && answer.actionLabel && answer.actionSummary ? { href: answer.actionHref, label: answer.actionLabel, summary: answer.actionSummary } : null)
+    })()
   }
 
   return (
     <div className="fixed bottom-5 right-5 z-[60] sm:bottom-6 sm:right-6">
       {isOpen && (
-        <section id="naygal-chatbot" role="dialog" aria-modal="false" aria-labelledby="chatbot-title" className="mb-4 flex h-[min(560px,calc(100vh-7rem))] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-2xl shadow-slate-900/25">
+        <section id="nayilie-chatbot" role="dialog" aria-modal="false" aria-labelledby="chatbot-title" className="mb-4 flex h-[min(560px,calc(100vh-7rem))] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-2xl shadow-slate-900/25">
           <header className="flex items-center justify-between bg-[#021d47] px-5 py-4 text-white">
-            <div className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#52a234] font-bold text-[#021d47]">N</span><div><h2 id="chatbot-title" className="font-semibold">Assistant NAYGAL</h2><p className="text-xs text-[#b8dfa7]">En ligne pour vous orienter</p></div></div>
+            <div className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#52a234] font-bold text-[#021d47]">Ni</span><div><h2 id="chatbot-title" className="font-semibold">NAYILIE — Guide</h2><p className="text-xs text-[#b8dfa7]">En ligne pour vous orienter</p></div></div>
             <button type="button" onClick={() => setIsOpen(false)} className="rounded-lg p-2 text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#b8dfa7]" aria-label="Fermer l’assistant"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path strokeLinecap="round" d="m6 6 12 12M18 6 6 18" /></svg></button>
           </header>
           <div className="flex-1 space-y-3 overflow-y-auto bg-slate-50 p-4" aria-live="polite" aria-label="Conversation avec l’assistant">
@@ -133,7 +167,7 @@ export default function Chatbot() {
           </div>
         </section>
       )}
-      <button type="button" onClick={() => setIsOpen((open) => !open)} aria-expanded={isOpen} aria-controls="naygal-chatbot" className="group flex items-center gap-3 rounded-full bg-[#021d47] py-2 pl-2 pr-4 text-sm font-bold text-white shadow-xl shadow-[#021d47]/30 transition hover:-translate-y-0.5 hover:bg-[#032965] focus:outline-none focus:ring-2 focus:ring-[#52a234] focus:ring-offset-2 sm:pr-5">
+      <button type="button" onClick={() => setIsOpen((open) => !open)} aria-expanded={isOpen} aria-controls="nayilie-chatbot" className="group flex items-center gap-3 rounded-full bg-[#021d47] py-2 pl-2 pr-4 text-sm font-bold text-white shadow-xl shadow-[#021d47]/30 transition hover:-translate-y-0.5 hover:bg-[#032965] focus:outline-none focus:ring-2 focus:ring-[#52a234] focus:ring-offset-2 sm:pr-5">
         <span className="relative flex h-11 w-11 items-center justify-center rounded-full bg-[#52a234] text-[#021d47]"><span className="absolute right-0 top-0 h-3 w-3 rounded-full border-2 border-[#021d47] bg-white" /><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-6 w-6"><path strokeLinecap="round" strokeLinejoin="round" d="M20 11.5a7.5 7.5 0 0 1-8 7.48A8.3 8.3 0 0 1 8.3 18L4 20l1.25-3.55A7.47 7.47 0 1 1 20 11.5Z" /></svg></span><span>{isOpen ? 'Fermer' : 'Besoin d’aide ?'}</span>
       </button>
     </div>

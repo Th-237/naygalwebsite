@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Font loading strategy:
+  - Prefer locally installed Microsoft fonts (Segoe UI, etc.) via `local()`.
+  - If you have licensed webfont files, place them under `public/fonts/` (e.g. SegoeUI.woff2)
+    and the `url()` src below will be used as fallback.
+  - Do NOT commit proprietary font files unless you have the right to distribute them.
+*/
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe UI'), local('SegoeUI'),
+       url('/fonts/SegoeUI.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Segoe UI Variable';
+  src: local('Segoe UI Variable'), url('/fonts/SegoeUIVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -14,6 +39,9 @@
 
   body {
     @apply bg-white text-slate-900 antialiased;
+    font-family: 'Inter', 'Segoe UI', 'Segoe UI Variable', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', system-ui, -apple-system, 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
@@ -199,6 +227,34 @@
 }
 
 @layer utilities {
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    animation: heroCarousel 30s infinite;
+  }
+
+  .hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-slide-1 { animation-delay: 0s; }
+  .hero-slide-2 { animation-delay: 5s; }
+  .hero-slide-3 { animation-delay: 10s; }
+  .hero-slide-4 { animation-delay: 15s; }
+  .hero-slide-5 { animation-delay: 20s; }
+  .hero-slide-6 { animation-delay: 25s; }
+
+  @keyframes heroCarousel {
+    0% { opacity: 0; }
+    3% { opacity: 1; }
+    14% { opacity: 1; }
+    17% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+
   @keyframes carousel-copy-in {
     from {
       opacity: 0;
