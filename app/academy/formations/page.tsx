@@ -171,10 +171,10 @@ export default function FormationsPage() {
             src="/images/academy/formations/nayac.png"
             alt="Apprenants africains utilisant les technologies numériques"
             fill
-            sizes="100vw"
-            className="h-full w-full object-cover opacity-40"
+            sizes="(max-width: 768px) 100vw, 100vw"
+            className="h-full w-full object-cover object-center opacity-30 sm:opacity-40"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#032965] via-[#032965]/95 to-[#032965]/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/90 via-[#032965]/90 to-[#032965]/60 sm:from-[#032965] sm:via-[#032965]/95 sm:to-[#032965]/50" />
         </div>
 
         <div className="container-custom relative z-10">
@@ -344,11 +344,13 @@ export default function FormationsPage() {
                 className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
 
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-44 overflow-hidden sm:h-52 lg:h-52">
                   <Image
                     src={formation.image}
                     alt={formation.title}
-                     fill sizes="100vw"   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/80 to-transparent" />
@@ -449,13 +451,13 @@ export default function FormationsPage() {
 
             </div>
 
-              <div className="relative h-[420px] overflow-hidden rounded-2xl">
+              <div className="relative h-[240px] overflow-hidden rounded-2xl sm:h-[300px] lg:h-[420px]">
               <Image
                 src="/images/academy/formations/nayacpro.jpg"
                 alt="Professionnels africains collaborant autour d'un projet"
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-center"
               />
             </div>
 
@@ -469,11 +471,13 @@ export default function FormationsPage() {
                 className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-1 hover:shadow-xl"
               >
 
-                <div className="relative h-44 overflow-hidden">
+                <div className="relative h-40 overflow-hidden sm:h-44 lg:h-44">
                   <Image
                     src={formation.image}
                     alt={formation.title}
-                     fill sizes="100vw"   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/70 to-transparent" />

@@ -329,7 +329,7 @@ export default function CloudPage() {
                         </span>
 
                         <div
-                          className={`flex min-w-0 flex-1 items-center justify-center rounded-md bg-white p-2 ${
+                          className={`relative flex min-w-0 flex-1 items-center justify-center overflow-hidden rounded-md bg-white p-2 ${
                             provider.title === 'GLOBAL' ? 'h-20' : 'h-14'
                           }`}
                         >
@@ -337,7 +337,9 @@ export default function CloudPage() {
                           <Image
                             src={provider.image}
                             alt={provider.alt}
-                             fill sizes="100vw"   className="h-full w-full object-contain"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 25vw"
+                            className="object-contain p-2"
                           />
 
                         </div>

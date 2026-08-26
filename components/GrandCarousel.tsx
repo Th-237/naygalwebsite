@@ -33,9 +33,9 @@ export default function GrandCarousel({ interval = 5000, images }: Props) {
         alt={`Slide ${index + 1}`}
         fill
         priority
-        quality={100}
+        quality={85}
         sizes="100vw"
-        className="object-cover"
+        className="object-cover object-center"
       />
       {slides.length > 1 && (
         <Image
@@ -45,9 +45,9 @@ export default function GrandCarousel({ interval = 5000, images }: Props) {
           aria-hidden="true"
           fill
           loading="lazy"
-          quality={100}
+          quality={85}
           sizes="100vw"
-          className="pointer-events-none object-cover opacity-0"
+          className="pointer-events-none object-cover object-center opacity-0"
         />
       )}
     </div>

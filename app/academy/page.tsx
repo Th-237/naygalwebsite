@@ -122,8 +122,8 @@ export default function AcademyPage() {
       <section data-reveal className="relative min-h-[720px] overflow-hidden bg-[#032965] text-white">
 
         <GrandCarousel />
-        <div className="absolute inset-0 bg-[#032965]/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/50 via-[#032965]/25 to-[#032965]/10" />
+        <div className="absolute inset-0 bg-[#032965]/10 sm:bg-[#032965]/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/70 via-[#032965]/45 to-[#032965]/25 sm:from-[#032965]/50 sm:via-[#032965]/25 sm:to-[#032965]/10" />
 
         <div className="container-custom relative z-10">
           <div className="grid min-h-[720px] items-center gap-14 lg:grid-cols-[1.15fr_.85fr]">
