@@ -19,20 +19,19 @@ export const metadata = {
 const projets = [
   {
     number: '01',
-    title: 'IXP-Observer',
-    subtitle: "Cartographie de l'Internet au Cameroun",
+    title: 'INTERNET-Observer',
+    subtitle: "Plateforme d'évaluation décentralisée de la qualité de service des FAIs au Cameroun",
     category: 'Infrastructure & Internet',
     status: 'En conception',
     statusColor: 'bg-[#e8f3ff] text-[#276f91]',
     description:
-      "Un projet d'observation et de cartographie destiné à mieux comprendre la structure, les interconnexions et l'évolution de l'écosystème Internet au Cameroun.",
+      "IXP-OBSERVER, c’est un thermomètre de la qualité Internet au Cameroun : il montre en temps réel ce qui fonctionne bien, ce qui coince, et qui est le meilleur opérateur dans chaque quartier. Un outil au service des citoyens, des entreprises et du régulateur.",
     problem:
-      "L'écosystème Internet est complexe à observer : réseaux, opérateurs, infrastructures, interconnexions et échanges de trafic forment un environnement difficile à représenter simplement.",
+      "Au Cameroun, des millions de personnes utilisent Internet chaque jour, mais personne ne peut mesurer objectivement la qualité réelle de sa connexion.",
     solution:
-      "IXP-Observer ambitionne de proposer une représentation accessible des infrastructures et interconnexions qui participent au fonctionnement de l'Internet camerounais.",
+      "Nous proposons une plateforme indépendante qui mesure en temps réel la qualité d’Internet au Cameroun. Elle croise des tests citoyens et une écoute du trafic au point d’échange CAMIX, pour attribuer un score de qualité à chaque opérateur, quartier par quartier. Objectif : éclairer le choix des citoyens et outiller le régulateur.",
     tags: ['Internet', 'IXP', 'Réseaux', 'Data', 'Cartographie'],
-    image:
-      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=85',
+    image: '/images/projets/io/io.png',
   },
   {
     number: '02',
@@ -64,8 +63,7 @@ const projets = [
     solution:
       "Une solution adaptée aux PME permettant de centraliser le suivi des collaborateurs et de faciliter l'exploitation des données de présence.",
     tags: ['RH', 'PME', 'Présence', 'Gestion'],
-    image:
-      'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85',
+    image:'/images/projets/presence/presence.png',
   },
   {
     number: '04',
@@ -82,7 +80,7 @@ const projets = [
       "Sentinelle IA explore une approche combinant automatisation, analyse et intelligence artificielle afin de proposer une surveillance adaptée aux moyens des PME.",
     tags: ['SOC', 'IA', 'Cybersécurité', 'PME'],
     image:
-      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=85',
+      '/images/projets/si/si.png',
   },
   {
     number: '05',
@@ -99,11 +97,11 @@ const projets = [
       "Une offre combinant stratégie digitale, création de contenu, présence en ligne, campagnes numériques et accompagnement.",
     tags: ['Marketing', 'Digital', 'Communication', 'Branding'],
     image:
-      'https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&w=1400&q=85',
+      '/images/projets/mak/mak.png',
   },
   {
     number: '06',
-    title: 'NAYAC Online',
+    title: 'NAYGAL ACADEMY Online',
     subtitle: 'Plateforme éducative africaine',
     category: 'EdTech',
     status: 'À finaliser',
@@ -116,7 +114,7 @@ const projets = [
       "NAYAC Online ambitionne de proposer un environnement numérique permettant d'apprendre, de pratiquer et de progresser autour de compétences adaptées aux réalités africaines.",
     tags: ['EdTech', 'Formation', 'E-learning', 'NAYAC'],
     image:
-      'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1400&q=85',
+      '/images/projets/acad/acad.png',
   },
   {
     number: '07',
@@ -133,7 +131,7 @@ const projets = [
       "Une plateforme permettant aux structures de publier leurs activités et aux familles de découvrir plus facilement les opportunités disponibles.",
     tags: ['Jeunesse', 'Éducation', 'Vacances', 'Plateforme'],
     image:
-      'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=85',
+      '/images/projets/vaca/vaca.png',
   },
 ]
 
