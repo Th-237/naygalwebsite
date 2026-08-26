@@ -26,45 +26,30 @@ export default function GrandCarousel({ interval = 5000, images }: Props) {
   const nextIndex = (index + 1) % slides.length
 
   return (
-    <>
-      <div className="absolute inset-0 hidden md:block">
+    <div className="absolute inset-0">
+      <Image
+        key={slides[index]}
+        src={slides[index]}
+        alt={`Slide ${index + 1}`}
+        fill
+        priority
+        quality={85}
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      {slides.length > 1 && (
         <Image
-          key={slides[index]}
-          src={slides[index]}
-          alt={`Slide ${index + 1}`}
+          key={slides[nextIndex]}
+          src={slides[nextIndex]}
+          alt=""
+          aria-hidden="true"
           fill
-          priority
-          quality={80}
+          loading="lazy"
+          quality={85}
           sizes="100vw"
-          className="object-cover object-center"
+          className="pointer-events-none object-cover object-center opacity-0"
         />
-        {slides.length > 1 && (
-          <Image
-            key={slides[nextIndex]}
-            src={slides[nextIndex]}
-            alt=""
-            aria-hidden="true"
-            fill
-            loading="lazy"
-            quality={80}
-            sizes="100vw"
-            className="pointer-events-none object-cover object-center opacity-0"
-          />
-        )}
-      </div>
-
-      <div className="absolute inset-0 block md:hidden">
-        <Image
-          key={slides[0]}
-          src={slides[0]}
-          alt="Présentation NAYGAL Academy"
-          fill
-          priority
-          quality={72}
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </div>
-    </>
+      )}
+    </div>
   )
 }

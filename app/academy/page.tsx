@@ -137,14 +137,14 @@ export default function AcademyPage() {
                 </span>
               </div>
 
-              <h1 className="mt-7 max-w-4xl text-5xl font-semibold leading-[1.04] tracking-[-.05em] sm:text-6xl lg:text-7xl">
+              <h1 className="mt-7 max-w-4xl text-4xl font-semibold leading-[1.04] tracking-[-.05em] sm:text-6xl lg:text-7xl">
                 Les compétences qui
                 <span className="block text-[#68bd49]">
                   construisent l’avenir.
                 </span>
               </h1>
 
-              <p className="mt-7 max-w-2xl text-lg leading-8 text-blue-100 sm:text-xl">
+              <p className="mt-7 max-w-2xl text-base leading-7 text-blue-100 sm:text-xl md:text-lg md:leading-8">
                 NAYAGAL ACADEMY rend les compétences numériques accessibles, concrètes
                 et utiles. Pour apprendre, expérimenter, évoluer et construire
                 des solutions qui répondent aux réalités de notre monde.

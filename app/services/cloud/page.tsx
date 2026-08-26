@@ -180,15 +180,17 @@ export default function CloudPage() {
           HERO
       ========================================================== */}
 
-      <section className="relative min-h-[850px] overflow-hidden border-b border-[#183747]">
+      <section className="relative min-h-[620px] overflow-hidden border-b border-[#183747] md:min-h-[850px]">
 
         <Image
           src="/images/services/cloud/1.jpg"
           alt="Infrastructure cloud et réseau numérique"
-           fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-70"
+          fill
+          sizes="100vw"
+          className="absolute inset-0 h-full w-full object-cover opacity-60 md:opacity-70"
         />
 
-        <div className="absolute inset-0 bg-[#041019]/55" />
+        <div className="absolute inset-0 bg-[#041019]/65 md:bg-[#041019]/55" />
 
         <div className="absolute left-[-15%] top-[10%] h-[550px] w-[550px] rounded-full bg-[#72b8d8]/10 blur-[130px]" />
 
@@ -203,9 +205,9 @@ export default function CloudPage() {
           }}
         />
 
-        <div className="container-custom relative flex min-h-[850px] items-center">
+        <div className="container-custom relative flex min-h-[620px] items-center md:min-h-[850px]">
 
-          <div className="grid w-full gap-16 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
+          <div className="grid w-full gap-10 pt-8 md:gap-16 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
 
             <div>
 
@@ -224,7 +226,7 @@ export default function CloudPage() {
 
               </div>
 
-              <h1 className="mt-6 max-w-4xl font-mono text-5xl font-bold leading-[.98] tracking-[-.05em] text-white sm:text-7xl">
+              <h1 className="mt-6 max-w-4xl font-mono text-4xl font-bold leading-[.98] tracking-[-.05em] text-white sm:text-6xl md:text-7xl">
 
                 Le cloud adapté
                 <br />
@@ -235,7 +237,7 @@ export default function CloudPage() {
 
               </h1>
 
-              <p className="mt-8 max-w-2xl text-lg leading-8 text-[#9db5c0] sm:text-xl">
+              <p className="mt-8 max-w-2xl text-base leading-7 text-[#9db5c0] sm:text-xl md:text-lg md:leading-8">
 
                 NAYGAL vous accompagne dans le choix, le déploiement,
                 la sécurisation et l'exploitation de vos infrastructures

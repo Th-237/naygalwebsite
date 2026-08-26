@@ -195,11 +195,15 @@ export default function AutomatisationIAPage() {
               <div className="absolute -bottom-8 -right-8 h-40 w-40 rounded-full bg-[#d7ebc9]" />
 
               <div className="relative overflow-hidden rounded-[2rem] bg-[#032965] shadow-[0_30px_80px_rgba(3,41,101,.22)]">
-                <Image
-                  src="/images/services/automatisation-ia/1.webp"
-                  alt="Équipe travaillant sur des solutions numériques"
-                   fill sizes="100vw"   className="h-80 w-full object-cover opacity-80"
-                />
+                <div className="relative h-[350px] w-full sm:h-[430px]">
+                  <Image
+                    src="/images/services/automatisation-ia/1.webp"
+                    alt="Équipe travaillant sur des solutions numériques"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover opacity-80"
+                  />
+                </div>
 
                 <div className="p-7">
                   <p className="text-sm font-semibold text-blue-100">
@@ -367,11 +371,13 @@ export default function AutomatisationIAPage() {
         <div className="container-custom">
           <div className="grid overflow-hidden bg-[#032965] lg:grid-cols-2">
 
-            <div className="min-h-[380px]">
+            <div className="relative min-h-[320px] lg:min-h-[100%]">
               <Image
                 src="/images/services/automatisation-ia/2.webp"
                 alt="Développement et utilisation d'une plateforme numérique"
-                 fill sizes="100vw"   className="h-full w-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
 
@@ -547,11 +553,15 @@ export default function AutomatisationIAPage() {
 
             <div className="overflow-hidden rounded-[2rem] bg-white shadow-xl">
 
-              <Image
-                src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=85"
-                alt="Intelligence artificielle et technologies numériques"
-                 fill sizes="100vw"   className="h-72 w-full object-cover"
-              />
+              <div className="relative h-72 w-full">
+                <Image
+                  src="/images/services/automatisation-ia/1.webp"
+                  alt="Intelligence artificielle et technologies numériques"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
 
               <div className="grid gap-px bg-slate-100 sm:grid-cols-2">
                 {iaServices.map((service) => (
@@ -635,11 +645,15 @@ export default function AutomatisationIAPage() {
 
           <div className="relative overflow-hidden rounded-[2rem]">
 
-            <Image
-              src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=2200&q=85"
-              alt="Technologie numérique"
-               fill sizes="100vw"   className="h-[430px] w-full object-cover"
-            />
+            <div className="relative h-[430px] w-full">
+              <Image
+                src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=2200&q=85"
+                alt="Technologie numérique"
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
 
             <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/90 via-[#032965]/60 to-transparent" />
 
