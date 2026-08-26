@@ -130,8 +130,8 @@ export default function SoutenirPage() {
       <section className="relative min-h-[700px] overflow-hidden bg-[#032965]">
 
         <Image
-          src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=2200&q=90"
-          alt="Communauté réunie autour d'une initiative"
+          src="/images/home/NAYACONLINE.jpg"
+          alt="Communauté africaine réunie autour d'une initiative"
           fill
           priority
           className="object-cover"
@@ -602,7 +602,7 @@ export default function SoutenirPage() {
       <section className="relative min-h-[520px] overflow-hidden">
 
         <Image
-          src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=2200&q=90"
+          src="https://images.pexels.com/photos/11025058/pexels-photo-11025058.jpeg?auto=compress&cs=tinysrgb&w=2200"
           alt="Équipement informatique utilisé dans un environnement numérique"
           fill
           className="object-cover"

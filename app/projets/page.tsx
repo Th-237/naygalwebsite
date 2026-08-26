@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const SITE = process.env.SITE_URL || 'https://naygal.cm'
 
@@ -151,25 +152,34 @@ export default function ProjetsPage() {
     <main className="overflow-hidden bg-white pt-[72px] text-[#032965]">
 
       {/* HERO */}
-      <section className="relative overflow-hidden bg-[#f4f8fd] pb-20 pt-16 sm:pb-28 sm:pt-24">
-        <div className="absolute right-[-100px] top-[-120px] h-[420px] w-[420px] rounded-full bg-[#d7ebc9] blur-3xl" />
-        <div className="absolute bottom-[-100px] left-[-100px] h-[350px] w-[350px] rounded-full bg-[#d9ebf7] blur-3xl" />
+      <section className="relative min-h-[720px] overflow-hidden bg-[#032965] text-white">
+        <Image
+          src="/images/projets/h-proj.webp"
+          alt="Technologies et innovation"
+          fill
+          priority
+          className="object-cover opacity-80"
+          sizes="100vw"
+        />
 
-        <div className="container-custom relative">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_.95fr]">
+        <div className="absolute inset-0 bg-[#032965]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/75 via-[#032965]/45 to-[#032965]/25" />
 
-            <div>
-              <p className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-[.16em] text-[#438a2c] shadow-sm">
+        <div className="container-custom relative z-10">
+          <div className="grid min-h-[720px] items-center gap-14 lg:grid-cols-[1.1fr_.9fr]">
+
+            <div className="py-20 lg:max-w-3xl">
+              <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[.16em] text-white backdrop-blur-md">
                 <span className="h-2 w-2 rounded-full bg-[#52a234]" />
                 NAYGAL · Projets & Innovation
               </p>
 
-              <h1 className="mt-7 max-w-4xl text-5xl font-semibold leading-[1.05] tracking-[-.045em] text-[#032965] sm:text-6xl lg:text-7xl">
+              <h1 className="mt-7 text-5xl font-semibold leading-[1.05] tracking-[-.045em] text-white sm:text-6xl lg:text-7xl">
                 Transformer les idées en
-                <span className="text-[#52a234]"> solutions.</span>
+                <span className="block text-[#77bb43]"> solutions.</span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-blue-100 sm:text-xl">
                 NAYGAL développe et expérimente des solutions numériques
                 répondant à des problématiques concrètes dans les domaines
                 de l'éducation, des infrastructures, de la cybersécurité,
@@ -186,56 +196,14 @@ export default function ProjetsPage() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex justify-center border border-[#032965] px-7 py-4 font-semibold text-[#032965] transition hover:bg-white"
+                  className="inline-flex justify-center border border-white/30 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur transition hover:bg-white/10"
                 >
                   Proposer un projet
                 </Link>
               </div>
             </div>
 
-            <div className="relative mx-auto w-full max-w-xl">
-
-              <div className="absolute -left-7 top-8 h-28 w-28 rounded-full bg-[#b8d7f1]" />
-              <div className="absolute -bottom-8 -right-7 h-36 w-36 rounded-full bg-[#d7ebc9]" />
-
-              <div className="relative overflow-hidden rounded-[2rem] bg-[#032965] shadow-[0_30px_80px_rgba(3,41,101,.22)]">
-
-                <img
-                  src="/images/projets/h-proj.jpg"
-                  alt="Technologies et innovation"
-                  className="h-72 w-full object-cover opacity-80"
-                />
-
-                <div className="p-7">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold tracking-[.16em] text-white">
-                      NAYGAL LAB
-                    </span>
-
-                    <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-blue-100">
-                      R&D
-                    </span>
-                  </div>
-
-                  <div className="mt-7 grid grid-cols-2 gap-3">
-                    <div className="rounded-2xl bg-white/10 p-5">
-                      <p className="text-3xl font-bold text-white">07</p>
-                      <p className="mt-1 text-sm text-blue-100">
-                        projets présentés
-                      </p>
-                    </div>
-
-                    <div className="rounded-2xl bg-white/10 p-5">
-                      <p className="text-3xl font-bold text-white">07</p>
-                      <p className="mt-1 text-sm text-blue-100">
-                        domaines explorés
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
+            <div className="hidden lg:block" />
 
           </div>
         </div>
@@ -291,10 +259,10 @@ export default function ProjetsPage() {
                   {/* IMAGE */}
                   <div className="relative min-h-[300px] overflow-hidden">
 
-                    <img
+                    <Image
                       src={projet.image}
                       alt={projet.title}
-                      className={
+                       fill sizes="100vw"   className={
                         projet.title === 'OPEP'
                           ? 'absolute inset-0 h-full w-full bg-white object-contain'
                           : 'absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105'

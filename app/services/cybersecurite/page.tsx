@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const attackCases = [
   {
@@ -196,9 +197,11 @@ export default function CybersecuritePage() {
 
       <section className="relative min-h-[820px] overflow-hidden border-b border-[#17372a]">
 
-        <img
-          src="/images/services/cybersecurite/NAYGALSOC.png"
+        <Image
+          src="/images/services/cybersecurite/NAYGALSOC.webp"
           alt="Opérateur dans un environnement de cybersécurité"
+          fill
+          sizes="100vw"
           className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
 
@@ -476,10 +479,10 @@ export default function CybersecuritePage() {
 
               <div className="relative overflow-hidden border border-[#27563b]">
 
-                <img
+                <Image
                   src="/images/services/cybersecurite/SOC_STATUS: READY.webp"
                   alt="Centre de supervision et opérations de sécurité"
-                  className="h-[460px] w-full object-cover opacity-65"
+                   fill sizes="100vw"   className="h-[460px] w-full object-cover opacity-65"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020706] via-transparent to-[#020706]/20" />
@@ -710,10 +713,10 @@ export default function CybersecuritePage() {
 
                 <div className="relative h-64 overflow-hidden">
 
-                  <img
+                  <Image
                     src={attack.image}
                     alt={attack.title}
-                    className="h-full w-full object-cover opacity-50 transition duration-700 group-hover:scale-105 group-hover:opacity-70"
+                     fill sizes="100vw"   className="h-full w-full object-cover opacity-50 transition duration-700 group-hover:scale-105 group-hover:opacity-70"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#06100c] via-[#06100c]/30 to-transparent" />
@@ -800,10 +803,10 @@ export default function CybersecuritePage() {
 
       <section className="relative overflow-hidden border-b border-[#17372a] py-20 sm:py-28">
 
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=90"
           alt="Infrastructure technologique"
-          className="absolute inset-0 h-full w-full object-cover opacity-10"
+           fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-10"
         />
 
         <div className="absolute inset-0 bg-[#020706]/90" />
@@ -1026,10 +1029,10 @@ export default function CybersecuritePage() {
 
               <div className="relative min-h-[380px]">
 
-                <img
-                  src="/images/services/cybersecurite/NAYGALSOC.png"
+                <Image
+                  src="/images/services/cybersecurite/NAYGALSOC.webp"
                   alt="Opérations de cybersécurité"
-                  className="absolute inset-0 h-full w-full object-cover opacity-50"
+                   fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-50"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-r from-[#06100c]/20 via-[#06100c]/30 to-[#06100c]" />

@@ -23,8 +23,7 @@ const participation = [
     description:
       "Entreprises, établissements, associations ou acteurs technologiques : construisons ensemble des initiatives utiles et durables.",
     href: "/mouvement/devenir-partenaire",
-    image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=85",
+    image: "/images/home/NAYACONLINE.jpg",
   },
   {
     number: "02",
@@ -32,8 +31,7 @@ const participation = [
     description:
       "Vous avez une idée, une problématique ou une initiative ? Présentez-nous votre projet et explorons ensemble ce qu'il est possible de construire.",
     href: "/mouvement/proposer-un-projet",
-    image:
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85",
+    image: "/images/home/NAYAC/en_salle.jpg",
   },
   {
     number: "03",
@@ -41,8 +39,7 @@ const participation = [
     description:
       "Contribuez à nos initiatives par un financement, du matériel, votre expertise, votre réseau ou simplement votre temps.",
     href: "/mouvement/soutenir-nos-initiatives",
-    image:
-      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1400&q=85",
+    image: "/images/a-propos/jad20250430-ass-benin-tecnologies-numerique.avif",
   },
 ]
 
@@ -79,8 +76,8 @@ export default function MouvementPage() {
       <section className="relative min-h-[720px] overflow-hidden bg-[#032965]">
 
         <Image
-          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2200&q=90"
-          alt="Jeunes travaillant ensemble"
+          src="/images/home/NAYACONLINE.webp"
+          alt="Jeunes africains apprenant et travaillant ensemble"
           fill
           priority
           className="object-cover"
@@ -100,14 +97,14 @@ export default function MouvementPage() {
               LE MOUVEMENT NAYGAL
             </div>
 
-            <h1 className="mt-7 max-w-5xl text-5xl font-bold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-8xl">
+            <h1 className="mt-7 max-w-5xl text-4xl font-bold leading-[1.02] tracking-tight text-white sm:text-6xl lg:text-8xl">
               Le numérique est plus puissant{" "}
               <span className="text-[#77bb43]">
                 lorsqu&apos;il est partagé.
               </span>
             </h1>
 
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-blue-50 sm:text-xl">
+            <p className="mt-7 max-w-2xl text-base leading-7 text-blue-50 sm:text-xl sm:leading-8">
               NAYGAL ne veut pas seulement créer des solutions technologiques.
               Nous voulons contribuer à créer un environnement où les
               compétences, les idées, les ressources et les personnes peuvent
@@ -118,14 +115,14 @@ export default function MouvementPage() {
 
               <Link
                 href="/mouvement/devenir-partenaire"
-                className="inline-flex items-center justify-center bg-[#52a234] px-7 py-4 font-semibold text-white transition hover:bg-[#438a2c]"
+                className="inline-flex w-full items-center justify-center bg-[#52a234] px-7 py-4 font-semibold text-white transition hover:bg-[#438a2c] sm:w-auto"
               >
                 Devenir partenaire
               </Link>
 
               <Link
                 href="/mouvement/proposer-un-projet"
-                className="inline-flex items-center justify-center border border-white/30 bg-white/10 px-7 py-4 font-semibold text-white backdrop-blur transition hover:bg-white/20"
+                className="inline-flex w-full items-center justify-center border border-white/30 bg-white/10 px-7 py-4 font-semibold text-white backdrop-blur transition hover:bg-white/20 sm:w-auto"
               >
                 Proposer un projet
               </Link>
@@ -204,8 +201,8 @@ export default function MouvementPage() {
             <div className="relative min-h-[520px] overflow-hidden rounded-[2rem]">
 
               <Image
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1800&q=90"
-                alt="Équipe travaillant sur un projet"
+                src="/images/a-propos/notre-histoire/pexels-popoola-bolaji-226044498-12286603.jpg"
+                alt="Équipe africaine travaillant sur un projet"
                 fill
                 className="object-cover transition duration-700 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 70vw"
@@ -232,8 +229,8 @@ export default function MouvementPage() {
             <div className="relative min-h-[520px] overflow-hidden rounded-[2rem]">
 
               <Image
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1100&q=90"
-                alt="Personne travaillant sur une technologie numérique"
+                src="/images/academy/Grand caroussel/mozambique_picture_4.jpg"
+                alt="Professionnel africain connecté à une technologie numérique"
                 fill
                 className="object-cover transition duration-700 hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 30vw"
@@ -336,8 +333,8 @@ export default function MouvementPage() {
             <div className="relative min-h-[480px]">
 
               <Image
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1500&q=90"
-                alt="Jeunes en situation d'apprentissage"
+                src="/images/home/NAYACONLINE.jpg"
+                alt="Jeunes africains en apprentissage numérique"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -475,8 +472,8 @@ export default function MouvementPage() {
       <section className="relative min-h-[560px] overflow-hidden">
 
         <Image
-          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2200&q=90"
-          alt="Personnes collaborant autour d'un projet"
+          src="/images/a-propos/jad20250430-ass-benin-tecnologies-numerique.avif"
+          alt="Personnes africaines collaborant autour d'un projet"
           fill
           className="object-cover"
           sizes="100vw"

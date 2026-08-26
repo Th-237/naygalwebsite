@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const pillars = [
   {
@@ -80,10 +81,10 @@ export default function AboutPage() {
 
         {/* Background image */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=90"
             alt="Technologie et réseau numérique"
-            className="h-full w-full object-cover"
+             fill sizes="100vw"   className="h-full w-full object-cover"
           />
 
           <div className="absolute inset-0 bg-[#020817]/85" />
@@ -293,10 +294,10 @@ export default function AboutPage() {
 
         <div className="relative h-[600px] overflow-hidden">
 
-          <img
+          <Image
             src="/images/a-propos/jad20250430-ass-benin-tecnologies-numerique.avif"
             alt="Collaboration et innovation"
-            className="h-full w-full object-cover"
+             fill sizes="100vw"   className="h-full w-full object-cover"
           />
 
           <div className="absolute inset-0 bg-[#020817]/65" />
@@ -382,10 +383,10 @@ export default function AboutPage() {
                 className="group relative min-h-[430px] overflow-hidden bg-[#061226]"
               >
 
-                <img
+                <Image
                   src={pillar.image}
                   alt={pillar.title}
-                  className="absolute inset-0 h-full w-full object-cover opacity-30 grayscale transition duration-700 group-hover:scale-105 group-hover:opacity-45 group-hover:grayscale-0"
+                   fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-30 grayscale transition duration-700 group-hover:scale-105 group-hover:opacity-45 group-hover:grayscale-0"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/70 to-transparent" />

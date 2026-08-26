@@ -53,7 +53,7 @@ export default function RootLayout({
     <html lang="fr" data-scroll-behavior="smooth">
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="" />
-        <link rel="preconnect" href="https://source.unsplash.com" crossOrigin="" />
+        <link rel="preconnect" href="https://images.pexels.com" crossOrigin="" />
         <script
           key="ld-org"
           type="application/ld+json"

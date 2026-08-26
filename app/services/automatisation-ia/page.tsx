@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const logiciels = [
   {
@@ -194,10 +195,10 @@ export default function AutomatisationIAPage() {
               <div className="absolute -bottom-8 -right-8 h-40 w-40 rounded-full bg-[#d7ebc9]" />
 
               <div className="relative overflow-hidden rounded-[2rem] bg-[#032965] shadow-[0_30px_80px_rgba(3,41,101,.22)]">
-                <img
+                <Image
                   src="/images/services/automatisation-ia/1.webp"
                   alt="Équipe travaillant sur des solutions numériques"
-                  className="h-80 w-full object-cover opacity-80"
+                   fill sizes="100vw"   className="h-80 w-full object-cover opacity-80"
                 />
 
                 <div className="p-7">
@@ -367,10 +368,10 @@ export default function AutomatisationIAPage() {
           <div className="grid overflow-hidden bg-[#032965] lg:grid-cols-2">
 
             <div className="min-h-[380px]">
-              <img
+              <Image
                 src="/images/services/automatisation-ia/2.webp"
                 alt="Développement et utilisation d'une plateforme numérique"
-                className="h-full w-full object-cover"
+                 fill sizes="100vw"   className="h-full w-full object-cover"
               />
             </div>
 
@@ -546,10 +547,10 @@ export default function AutomatisationIAPage() {
 
             <div className="overflow-hidden rounded-[2rem] bg-white shadow-xl">
 
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=85"
                 alt="Intelligence artificielle et technologies numériques"
-                className="h-72 w-full object-cover"
+                 fill sizes="100vw"   className="h-72 w-full object-cover"
               />
 
               <div className="grid gap-px bg-slate-100 sm:grid-cols-2">
@@ -634,10 +635,10 @@ export default function AutomatisationIAPage() {
 
           <div className="relative overflow-hidden rounded-[2rem]">
 
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=2200&q=85"
               alt="Technologie numérique"
-              className="h-[430px] w-full object-cover"
+               fill sizes="100vw"   className="h-[430px] w-full object-cover"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/90 via-[#032965]/60 to-transparent" />

@@ -34,28 +34,28 @@ const areas = [
     description:
       "Créer des opportunités d'apprentissage et d'expérimentation pour les jeunes, les étudiants et les professionnels.",
     image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=85",
+      "https://images.pexels.com/photos/11025058/pexels-photo-11025058.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },
   {
     title: "Technologies & infrastructures",
     description:
       "Contribuer à la mise en place d'infrastructures numériques fiables, sécurisées et adaptées aux besoins des organisations.",
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=85",
+      "https://images.pexels.com/photos/5940713/pexels-photo-5940713.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },
   {
     title: "Innovation & IA",
     description:
       "Explorer les nouvelles technologies et identifier les usages capables d'améliorer concrètement les processus et les services.",
     image:
-      "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=85",
+      "https://images.pexels.com/photos/11025020/pexels-photo-11025020.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },
   {
     title: "Collaboration",
     description:
       "Créer des passerelles entre entreprises, établissements, experts, associations et communautés autour de projets communs.",
     image:
-      "https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85",
+      "https://images.pexels.com/photos/11025019/pexels-photo-11025019.jpeg?auto=compress&cs=tinysrgb&w=1200",
   },
 ]
 
@@ -69,8 +69,8 @@ export default function MissionPage() {
       <section className="relative min-h-[680px] overflow-hidden bg-[#032965]">
 
         <Image
-          src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=2200&q=90"
-          alt="Personnes collaborant autour d'un projet"
+          src="https://images.pexels.com/photos/11025060/pexels-photo-11025060.jpeg?auto=compress&cs=tinysrgb&w=2200"
+          alt="Personnes africaines collaborant autour d'un projet"
           fill
           priority
           className="object-cover"
@@ -202,8 +202,8 @@ export default function MissionPage() {
             <div className="relative min-h-[560px] overflow-hidden rounded-[2rem]">
 
               <Image
-                src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=1400&q=85"
-                alt="Jeunes participant à une activité collaborative"
+                src="https://images.pexels.com/photos/11025058/pexels-photo-11025058.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                alt="Jeunes africains participant à une activité collaborative"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -448,7 +448,7 @@ export default function MissionPage() {
             <div className="relative min-h-[480px] overflow-hidden rounded-[2rem]">
 
               <Image
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=90"
+                src="https://images.pexels.com/photos/11025019/pexels-photo-11025019.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 alt="Étudiants travaillant ensemble"
                 fill
                 className="object-cover"
@@ -470,7 +470,7 @@ export default function MissionPage() {
       <section className="relative min-h-[600px] overflow-hidden">
 
         <Image
-          src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2200&q=90"
+          src="https://images.pexels.com/photos/5965920/pexels-photo-5965920.jpeg?auto=compress&cs=tinysrgb&w=2200"
           alt="Environnement professionnel moderne"
           fill
           className="object-cover"

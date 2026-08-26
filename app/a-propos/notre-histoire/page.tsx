@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const milestones = [
   {
@@ -73,10 +74,10 @@ export default function NotreHistoirePage() {
       <section className="relative min-h-[720px] overflow-hidden">
 
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=90"
             alt="Technologie et innovation"
-            className="h-full w-full object-cover"
+             fill sizes="100vw"   className="h-full w-full object-cover"
           />
 
           <div className="absolute inset-0 bg-[#020817]/85" />
@@ -311,10 +312,10 @@ export default function NotreHistoirePage() {
 
                       <div className="relative min-h-[350px] overflow-hidden">
 
-                        <img
+                        <Image
                           src={milestone.image}
                           alt={milestone.title}
-                          className="absolute inset-0 h-full w-full object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0"
+                           fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0"
                         />
 
                         <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-transparent to-transparent" />

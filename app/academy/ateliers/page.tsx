@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import GrandCarousel from '../../../components/GrandCarousel'
+import Image from 'next/image'
 
 function getIcon(title: string) {
   const size = 16
@@ -404,10 +405,10 @@ export default function AteliersPage() {
 
                   <div className="relative min-h-[280px] overflow-hidden">
 
-                    <img
+                    <Image
                       src={encodeURI(item.image)}
                       alt={item.title}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transition-smooth will-change-transform"
+                       fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transition-smooth will-change-transform"
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/80 via-[#032965]/20 to-transparent" />
@@ -516,10 +517,10 @@ export default function AteliersPage() {
 
                 <div className="relative h-48 overflow-hidden">
 
-                  <img
+                  <Image
                     src={encodeURI(item.image)}
                     alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transition-smooth"
+                     fill sizes="100vw"   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 transition-smooth"
                   />
 
                   <div className="absolute left-4 top-4 flex items-center gap-3">
@@ -608,10 +609,10 @@ export default function AteliersPage() {
 
             <div className="relative overflow-hidden rounded-[1.5rem] group transition-smooth hover:shadow-xl">
 
-              <img
+              <Image
                 src={encodeURI('/images/academy/ateliers/Au-delà de la salle.jpg')}
                 alt="Jeunes découvrant leur environnement éducatif"
-                className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                 fill sizes="100vw"   className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#032965] via-transparent to-transparent transition-opacity duration-500" />

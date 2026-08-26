@@ -46,7 +46,7 @@ export default function CybersecuritePage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-70"
+           className="object-cover opacity-70"
         />
         <div className="absolute inset-0 bg-naygal-dark opacity-60" />
         <div className="absolute left-0 top-12 h-[420px] w-[420px] rounded-full bg-[#ff5c4b]/15 blur-[140px]" />
@@ -119,7 +119,7 @@ export default function CybersecuritePage() {
             <div className="rounded-[32px] border border-white/10 bg-[#021d47]/90 p-6 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
               <div className="relative overflow-hidden rounded-[28px] bg-slate-900 h-[440px]">
                 <Image
-                  src="/images/expertises/cybersecurite/2.jpg"
+                  src="/images/expertises/cybersecurite/2.webp"
                   alt="Experts en cybersécurité en réunion"
                   fill
                   className="object-cover"

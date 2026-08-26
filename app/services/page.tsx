@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const SITE = process.env.SITE_URL || 'https://naygal.cm'
 
@@ -205,10 +206,10 @@ export default function ServicesPage() {
 
       <section className="relative min-h-[680px] overflow-hidden bg-[#021f50] text-white">
 
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2200&q=90"
           alt="Infrastructure informatique"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
+           fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#02152f] via-[#021f50]/90 to-[#021f50]/40" />
@@ -388,10 +389,10 @@ export default function ServicesPage() {
                   }`}
                 >
 
-                  <img
+                  <Image
                     src={service.image}
                     alt={service.title}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                     fill sizes="100vw"   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#021f50]/80 via-transparent to-transparent" />

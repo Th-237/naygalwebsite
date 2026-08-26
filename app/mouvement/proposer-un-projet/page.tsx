@@ -74,8 +74,8 @@ export default function ProposerProjetPage() {
       <section className="relative min-h-[680px] overflow-hidden bg-[#032965]">
 
         <Image
-          src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=2200&q=90"
-          alt="Équipe travaillant sur un projet"
+          src="https://images.pexels.com/photos/11025019/pexels-photo-11025019.jpeg?auto=compress&cs=tinysrgb&w=2200"
+          alt="Équipe africaine travaillant sur une idée de projet"
           fill
           priority
           className="object-cover"
@@ -296,7 +296,7 @@ export default function ProposerProjetPage() {
       <section className="relative min-h-[560px] overflow-hidden">
 
         <Image
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2200&q=90"
+          src="https://images.pexels.com/photos/11025020/pexels-photo-11025020.jpeg?auto=compress&cs=tinysrgb&w=2200"
           alt="Équipe collaborant sur une idée"
           fill
           className="object-cover"

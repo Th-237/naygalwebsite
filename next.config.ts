@@ -3,6 +3,7 @@ import type { NextConfig } from "next"
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['10.111.166.142'],
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
         protocol: "https",
@@ -11,6 +12,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "source.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
       },
     ],
   },

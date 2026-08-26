@@ -1,5 +1,33 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import HeroCarousel from '@/components/HeroCarousel'
+
+const heroSlides = [
+  {
+    src: '/images/home/caroussel_principal/Hacking-ARTP-1.webp',
+    alt: "Équipe travaillant autour d'un projet numérique",
+  },
+  {
+    src: '/images/home/caroussel_principal/pexels-brett-sayles-2881224.jpg',
+    alt: 'Équipe collaborative',
+  },
+  {
+    src: '/images/home/caroussel_principal/pexels-roman-odintsov-11025019.jpg',
+    alt: 'Formation technologique',
+  },
+  {
+    src: '/images/home/caroussel_principal/pexels-sejio402-6429140.jpg',
+    alt: 'Infrastructure informatique',
+  },
+  {
+    src: '/images/home/caroussel_principal/pexels-magda-ehlers-pexels-34182367.jpg',
+    alt: 'Technologies numériques',
+  },
+  {
+    src: '/images/home/caroussel_principal/pexels-ron-lach-10638075.jpg',
+    alt: 'Collaboration autour d’un projet',
+  },
+]
 
 const quickLinks = [
   {
@@ -155,51 +183,8 @@ export default function Home() {
 
       <section className="relative min-h-[650px] overflow-hidden bg-[#032965] lg:min-h-[700px]">
 
-        {/* Images du carousel */}
         <div className="absolute inset-0">
-
-          <div className="hero-slide hero-slide-1">
-            <img
-              src="/images/home/caroussel_principal/Hacking-ARTP-1.webp"
-              alt="Équipe travaillant autour d'un projet numérique"
-            />
-          </div>
-
-          <div className="hero-slide hero-slide-2">
-            <img
-              src="/images/home/caroussel_principal/pexels-brett-sayles-2881224.jpg"
-              alt="Équipe collaborative"
-            />
-          </div>
-
-          <div className="hero-slide hero-slide-3">
-            <img
-              src="/images/home/caroussel_principal/pexels-roman-odintsov-11025019.jpg"
-              alt="Formation technologique"
-            />
-          </div>
-
-          <div className="hero-slide hero-slide-4">
-            <img
-              src="/images/home/caroussel_principal/pexels-sejio402-6429140.jpg"
-              alt="Infrastructure informatique"
-            />
-          </div>
-
-          <div className="hero-slide hero-slide-5">
-            <img
-              src="/images/home/caroussel_principal/pexels-magda-ehlers-pexels-34182367.jpg"
-              alt="Technologies numériques"
-            />
-          </div>
-
-          <div className="hero-slide hero-slide-6">
-            <img
-              src="/images/home/caroussel_principal/pexels-ron-lach-10638075.jpg"
-              alt="Collaboration autour d'un projet"
-            />
-          </div>
-
+          <HeroCarousel slides={heroSlides} />
         </div>
 
         {/* Overlay */}
@@ -297,10 +282,12 @@ export default function Home() {
 
                 <div className="relative mb-5 h-32 overflow-hidden">
 
-                  <img
+                  <Image
                     src={item.image}
                     alt=""
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      className="object-cover transition duration-500 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-[#032965]/20 transition group-hover:bg-[#032965]/5" />
@@ -575,10 +562,12 @@ export default function Home() {
             className="group relative block min-h-[500px] overflow-hidden bg-[#032965]"
           >
 
-            <img
+            <Image
               src={projects[0].image}
               alt={projects[0].title}
-              className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1200px"
+                className="object-cover transition duration-700 group-hover:scale-105"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/95 via-[#032965]/60 to-transparent" />
@@ -622,10 +611,12 @@ export default function Home() {
                 className="group relative min-h-[320px] overflow-hidden bg-[#032965]"
               >
 
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/95 via-[#032965]/30 to-transparent" />
@@ -679,10 +670,12 @@ export default function Home() {
 
             <div className="relative min-h-[480px] overflow-hidden">
 
-              <img
+              <Image
                 src="/images/home/NAYAC/en_salle.jpg"
                 alt="Jeunes apprenants"
-                className="absolute inset-0 h-full w-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                  className="object-cover"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/90 via-transparent to-transparent" />
@@ -786,10 +779,12 @@ export default function Home() {
 
           <div className="relative overflow-hidden bg-[#032965]">
 
-            <img
+            <Image
               src="/images/home/NAYTECHROOM.png"
               alt="Salle de formation informatique"
-              className="absolute inset-0 h-full w-full object-cover opacity-60"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1200px"
+                className="object-cover opacity-60"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-[#032965] via-[#032965]/85 to-[#032965]/30" />
@@ -846,10 +841,12 @@ export default function Home() {
 
             <div className="relative min-h-[420px] overflow-hidden">
 
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1800&q=90"
                 alt="Communauté réunie autour d'une initiative"
-                className="absolute inset-0 h-full w-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/90 via-transparent to-transparent" />

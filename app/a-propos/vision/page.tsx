@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const pillars = [
   {
@@ -56,10 +57,10 @@ export default function VisionPage() {
       <section className="relative min-h-[760px] overflow-hidden">
 
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=90"
             alt="Technologie et monde connecté"
-            className="h-full w-full object-cover"
+             fill sizes="100vw"   className="h-full w-full object-cover"
           />
 
           <div className="absolute inset-0 bg-[#020817]/80" />
@@ -328,10 +329,10 @@ export default function VisionPage() {
 
         <div className="absolute inset-0">
 
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=2200&q=90"
             alt="Communauté et innovation"
-            className="h-full w-full object-cover opacity-20"
+             fill sizes="100vw"   className="h-full w-full object-cover opacity-20"
           />
 
           <div className="absolute inset-0 bg-[#032965]/80" />

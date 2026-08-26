@@ -124,20 +124,40 @@ export default function Header() {
 
                 return (
                   <div key={item.name} className="rounded-md border-b border-slate-200">
-                    <button
-                      type="button"
-                      onClick={() => setOpenSection(sectionOpen ? null : item.name)}
-                      className={`flex w-full items-center justify-between px-3 py-2.5 text-sm font-semibold ${isActive ? 'text-[#52a234]' : 'text-slate-700'} hover:bg-slate-50`}
-                    >
-                      <span>{item.name}</span>
+                    <div className="flex items-center gap-2">
+                      <Link
+                        href={item.href}
+                        onClick={() => {
+                          setIsOpen(false)
+                          setOpenSection(null)
+                        }}
+                        className={`flex-1 px-3 py-2.5 text-left text-sm font-semibold ${isActive ? 'text-[#52a234]' : 'text-slate-700'} hover:bg-slate-50`}
+                      >
+                        {item.name}
+                      </Link>
                       {item.children ? (
-                        <span className={`text-xs text-slate-500 transition ${sectionOpen ? 'rotate-180' : ''}`}>
-                          ⌄
-                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setOpenSection(sectionOpen ? null : item.name)}
+                          className="flex h-9 w-9 items-center justify-center rounded-md text-sm text-slate-500 transition hover:bg-slate-100"
+                          aria-label={sectionOpen ? `Fermer ${item.name}` : `Ouvrir ${item.name}`}
+                        >
+                          <span className={`transition ${sectionOpen ? 'rotate-180' : ''}`}>⌄</span>
+                        </button>
                       ) : null}
-                    </button>
+                    </div>
                     {item.children && sectionOpen && (
                       <div className="space-y-1 border-t border-slate-200 bg-slate-50/80 px-3 py-2">
+                        <Link
+                          href={item.href}
+                          onClick={() => {
+                            setIsOpen(false)
+                            setOpenSection(null)
+                          }}
+                          className="block rounded-md px-3 py-2 text-sm font-semibold text-[#276f91] hover:bg-white hover:text-[#52a234]"
+                        >
+                          Voir {item.name}
+                        </Link>
                         {item.children.map((child) => {
                           const isChildActive = isCurrentPage(child.href)
 

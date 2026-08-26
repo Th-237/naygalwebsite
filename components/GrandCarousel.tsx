@@ -1,4 +1,5 @@
 "use client"
+import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
 type Props = { interval?: number; images?: string[] }
@@ -20,27 +21,35 @@ export default function GrandCarousel({ interval = 5000, images }: Props) {
     return () => clearInterval(id)
   }, [interval, slides.length])
 
+  if (!slides.length) return null
+
+  const nextIndex = (index + 1) % slides.length
+
   return (
     <div className="absolute inset-0">
-      {slides.map((src, i) => {
-        const uri = encodeURI(src)
-        return (
-          <img
-            key={src}
-            src={uri}
-            alt={`Slide ${i + 1}`}
-            onError={(e) => {
-              const t = e.currentTarget as HTMLImageElement
-              t.style.display = 'none'
-              // eslint-disable-next-line no-console
-              console.warn('GrandCarousel: failed to load', uri)
-            }}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
-              i === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
-            }`}
-          />
-        )
-      })}
+      <Image
+        key={slides[index]}
+        src={slides[index]}
+        alt={`Slide ${index + 1}`}
+        fill
+        priority
+        quality={100}
+        sizes="100vw"
+        className="object-cover"
+      />
+      {slides.length > 1 && (
+        <Image
+          key={slides[nextIndex]}
+          src={slides[nextIndex]}
+          alt=""
+          aria-hidden="true"
+          fill
+          loading="lazy"
+          quality={100}
+          sizes="100vw"
+          className="pointer-events-none object-cover opacity-0"
+        />
+      )}
     </div>
   )
 }

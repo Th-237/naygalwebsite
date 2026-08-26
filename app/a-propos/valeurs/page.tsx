@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const values = [
   {
@@ -64,10 +65,10 @@ export default function ValeursPage() {
       <section className="relative min-h-[720px] overflow-hidden">
 
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=2400&q=90"
             alt="Collaboration et communauté"
-            className="h-full w-full object-cover"
+             fill sizes="100vw"   className="h-full w-full object-cover"
           />
 
           <div className="absolute inset-0 bg-[#020817]/85" />
@@ -300,10 +301,10 @@ export default function ValeursPage() {
 
         <div className="absolute inset-0">
 
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2200&q=90"
             alt="Équipe travaillant ensemble"
-            className="h-full w-full object-cover opacity-15"
+             fill sizes="100vw"   className="h-full w-full object-cover opacity-15"
           />
 
           <div className="absolute inset-0 bg-[#032965]/90" />
@@ -405,10 +406,10 @@ export default function ValeursPage() {
 
             <div className="relative overflow-hidden border border-white/10">
 
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=90"
                 alt="Technologie et réseau numérique"
-                className="h-[480px] w-full object-cover grayscale"
+                 fill sizes="100vw"   className="h-[480px] w-full object-cover grayscale"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-transparent to-transparent" />

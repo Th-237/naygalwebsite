@@ -91,7 +91,7 @@ export default function IntelligenceArtificiellePage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+           className="object-cover"
         />
         <div className="absolute inset-0 bg-naygal-dark opacity-60" />
         <div className="absolute left-0 top-16 h-[380px] w-[380px] rounded-full bg-[#52a234]/10 blur-[140px]" />

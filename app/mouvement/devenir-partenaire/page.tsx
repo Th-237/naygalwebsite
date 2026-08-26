@@ -81,8 +81,8 @@ export default function PartnerPage() {
       <section className="relative min-h-[680px] overflow-hidden bg-[#032965]">
 
         <Image
-          src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=2200&q=90"
-          alt="Équipe travaillant ensemble autour d'un projet"
+          src="https://images.pexels.com/photos/11025060/pexels-photo-11025060.jpeg?auto=compress&cs=tinysrgb&w=2200"
+          alt="Partenaires africains réunis autour d'un projet"
           fill
           priority
           className="object-cover"
@@ -294,7 +294,7 @@ export default function PartnerPage() {
             <div className="relative min-h-[520px] overflow-hidden rounded-[2rem]">
 
               <Image
-                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=90"
+                src="https://images.pexels.com/photos/5940713/pexels-photo-5940713.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 alt="Personnes collaborant sur un projet"
                 fill
                 className="object-cover"

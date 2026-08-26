@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import GrandCarousel from '../../components/GrandCarousel'
 
 const SITE = process.env.SITE_URL || 'https://naygal.cm'
@@ -121,8 +122,8 @@ export default function AcademyPage() {
       <section data-reveal className="relative min-h-[720px] overflow-hidden bg-[#032965] text-white">
 
         <GrandCarousel />
-        <div className="absolute inset-0 bg-[#032965]/75" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#032965] via-[#032965]/85 to-[#032965]/35" />
+        <div className="absolute inset-0 bg-[#032965]/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/50 via-[#032965]/25 to-[#032965]/10" />
 
         <div className="container-custom relative z-10">
           <div className="grid min-h-[720px] items-center gap-14 lg:grid-cols-[1.15fr_.85fr]">
@@ -268,10 +269,12 @@ export default function AcademyPage() {
 
                 <div className="relative h-64 overflow-hidden">
 
-                  <img
+                  <Image
                     src={programme.image}
                     alt={programme.title}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/90 via-[#032965]/20 to-transparent" />
@@ -457,10 +460,12 @@ export default function AcademyPage() {
 
                 <div className="relative h-60 overflow-hidden">
 
-                  <img
+                  <Image
                     src={audience.image}
                     alt={audience.title}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition duration-700 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/80 to-transparent" />
@@ -550,10 +555,12 @@ export default function AcademyPage() {
 
           <div className="relative overflow-hidden rounded-[2rem] bg-[#032965]">
 
-            <img
-              src="/images/academy/NOTRE-VISION.png"
+            <Image
+              src="/images/academy/NOTRE-VISION.webp"
               alt="Jeunes et professionnels collaborant autour de la technologie"
-              className="absolute inset-0 h-full w-full object-cover opacity-30"
+              fill
+              sizes="(max-width: 1280px) 100vw, 1200px"
+              className="object-cover opacity-30"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-[#032965] via-[#032965]/90 to-transparent" />

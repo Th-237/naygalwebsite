@@ -45,10 +45,13 @@ export default function AcademyInSchoolPage() {
     <main className="bg-white pt-[72px] text-[#032965]">
       <section className="relative overflow-hidden bg-[#021d47] py-20 text-white sm:py-28">
         <div className="absolute inset-0">
-          <img
-            src="/images/academy/dans-votre-ecole/1.png"
+          <Image
+            src="/images/academy/dans-votre-ecole/1.webp"
             alt="NAYGAL ACADEMY dans votre école"
-            className="h-full w-full object-cover"
+            fill
+            preload
+            sizes="100vw"
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-[#021d47]/55" />
         </div>
@@ -99,7 +102,7 @@ export default function AcademyInSchoolPage() {
                     alt={img.alt}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 hover:scale-105"
+                      className="object-cover transition-transform duration-700 hover:scale-105"
                   />
                 </div>
                 <figcaption className="p-3 text-sm text-slate-600">{img.caption}</figcaption>

@@ -46,7 +46,7 @@ export default function ReseauxInfrastructuresPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-70"
+           className="object-cover opacity-70"
         />
         <div className="absolute inset-0 bg-naygal-dark opacity-60" />
         <div className="absolute right-0 top-16 h-[420px] w-[420px] rounded-full bg-[#52a234]/10 blur-[140px]" />

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const solutions = [
   {
@@ -125,10 +126,10 @@ export default function InfrastructurePage() {
 
       <section className="relative min-h-[700px] overflow-hidden bg-[#021f50] text-white">
 
-        <img
+        <Image
           src="/images/services/infrastructure/1.jpg"
           alt="Infrastructure informatique et serveurs"
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
+           fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-30"
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#01152f] via-[#021f50]/90 to-[#021f50]/40" />
@@ -365,10 +366,10 @@ export default function InfrastructurePage() {
 
             <div className="relative min-h-[400px]">
 
-              <img
+              <Image
                 src="/images/services/infrastructure/2.jpg"
                 alt="Technologie et infrastructure"
-                className="absolute inset-0 h-full w-full object-cover opacity-70"
+                 fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-70"
               />
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/20 to-[#032965]/80" />

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import PhoneSelect from '@/components/PhoneSelect'
+import Image from 'next/image'
 
 type ContactSubject =
   | ''
@@ -233,10 +234,10 @@ export default function ContactPage() {
                 : 'opacity-0'
             }`}
           >
-            <img
+            <Image
               src={image.src}
               alt={image.title}
-              className={`h-full w-full object-cover transition-transform duration-[7000ms] ${
+               fill sizes="100vw"   className={`h-full w-full object-cover transition-transform duration-[7000ms] ${
                 currentHero === index
                   ? 'scale-105'
                   : 'scale-100'
@@ -568,10 +569,10 @@ export default function ContactPage() {
 
             <div className="group relative min-h-[220px] md:min-h-[330px] overflow-hidden">
 
-              <img
+              <Image
                 src='/images/contact/expertise.jpg'
                 alt="Équipe travaillant sur un projet"
-                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                 fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#03101f]/95 via-[#03101f]/50 to-transparent" />
@@ -1042,10 +1043,10 @@ export default function ContactPage() {
 
             <div className="relative min-h-[220px] sm:min-h-[360px] overflow-hidden">
 
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1800&q=85"
               alt="Paysage africain"
-              className="absolute inset-0 h-full w-full object-cover"
+               fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover"
             />
 
             <div className="absolute inset-0 bg-[#03101f]/70" />

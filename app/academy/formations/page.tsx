@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const techFormations = [
   {
@@ -108,7 +109,7 @@ const proFormations = [
     title: 'Productivité numérique',
     description:
       'Maîtrisez les outils collaboratifs et les méthodes numériques qui permettent de mieux travailler au quotidien.',
-    image: '/images/academy/formations/productnum.jpg',
+    image: '/images/academy/formations/productnum.webp',
     tags: ['Organisation', 'Collaboration', 'Outils'],
   },
   {
@@ -166,9 +167,11 @@ export default function FormationsPage() {
       {/* HERO */}
       <section className="relative overflow-hidden bg-[#032965] text-white">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/academy/formations/nayac.png"
             alt="Apprenants africains utilisant les technologies numériques"
+            fill
+            sizes="100vw"
             className="h-full w-full object-cover opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#032965] via-[#032965]/95 to-[#032965]/50" />
@@ -207,14 +210,14 @@ export default function FormationsPage() {
                   href="#tech"
                   className="rounded-md bg-[#52a234] px-7 py-4 text-center font-semibold transition hover:bg-[#438a2c]"
                 >
-                  Découvrir NAYAC TECH
+                  Découvrir NAYGAL ACADEMY TECH
                 </a>
 
                 <a
                   href="#pro"
                   className="rounded-md border border-white/30 px-7 py-4 text-center font-semibold transition hover:bg-white/10"
                 >
-                  Découvrir NAYAC PRO
+                  Découvrir NAYGAL ACADEMY PRO
                 </a>
               </div>
             </div>
@@ -237,7 +240,7 @@ export default function FormationsPage() {
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-bold text-[#52a234]">
-                        NAYAC TECH
+                        NAYGAL ACADEMY TECH
                       </span>
                       <span>→</span>
                     </div>
@@ -257,7 +260,7 @@ export default function FormationsPage() {
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-bold text-green-300">
-                        NAYAC PRO
+                        NAYGAL ACADEMY PRO
                       </span>
                       <span>→</span>
                     </div>
@@ -342,10 +345,10 @@ export default function FormationsPage() {
               >
 
                 <div className="relative h-52 overflow-hidden">
-                  <img
+                  <Image
                     src={formation.image}
                     alt={formation.title}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                     fill sizes="100vw"   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/80 to-transparent" />
@@ -415,7 +418,7 @@ export default function FormationsPage() {
 
             <div>
               <p className="text-sm font-bold uppercase tracking-[.18em] text-[#52a234]">
-                NAYAC PRO
+                NAYGAL ACADEMY PRO
               </p>
 
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#032965] sm:text-4xl">
@@ -428,7 +431,7 @@ export default function FormationsPage() {
               </p>
 
               <p className="mt-4 leading-7 text-slate-600">
-                NAYAC PRO accompagne les professionnels dans l’adoption des
+                NAYGAL ACADEMY PRO accompagne les professionnels dans l’adoption des
                 outils numériques, de l’intelligence artificielle, de la data
                 et des nouvelles méthodes de travail.
               </p>
@@ -446,11 +449,13 @@ export default function FormationsPage() {
 
             </div>
 
-              <div className="overflow-hidden rounded-2xl">
-              <img
+              <div className="relative h-[420px] overflow-hidden rounded-2xl">
+              <Image
                 src="/images/academy/formations/nayacpro.jpg"
                 alt="Professionnels africains collaborant autour d'un projet"
-                className="h-[420px] w-full object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
 
@@ -465,10 +470,10 @@ export default function FormationsPage() {
               >
 
                 <div className="relative h-44 overflow-hidden">
-                  <img
+                  <Image
                     src={formation.image}
                     alt={formation.title}
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                     fill sizes="100vw"   className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/70 to-transparent" />
@@ -531,7 +536,7 @@ export default function FormationsPage() {
 
               <p className="mt-6 text-lg leading-8 text-blue-100">
                 Une entreprise, une école, une association ou une ONG n’a pas
-                toujours les mêmes besoins. NAYAC peut construire des
+                toujours les mêmes besoins. NAYGAL ACADEMY peut construire des
                 programmes personnalisés autour de vos outils, vos métiers,
                 votre niveau et vos objectifs.
               </p>

@@ -96,7 +96,7 @@ const africanProjects = [
   {
     title: 'Automatisation des parcours',
     description: 'Des workflows IA qui réduisent la charge opérationnelle des équipes pédagogiques.',
-    image: '/images/expertises/1786256074959workflow.png',
+    image: '/images/expertises/1786256074959workflow.webp',
   },
 ]
 

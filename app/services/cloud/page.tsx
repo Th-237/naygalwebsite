@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const providers = [
   {
@@ -181,10 +182,10 @@ export default function CloudPage() {
 
       <section className="relative min-h-[850px] overflow-hidden border-b border-[#183747]">
 
-        <img
+        <Image
           src="/images/services/cloud/1.jpg"
           alt="Infrastructure cloud et réseau numérique"
-          className="absolute inset-0 h-full w-full object-cover opacity-70"
+           fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-70"
         />
 
         <div className="absolute inset-0 bg-[#041019]/55" />
@@ -333,10 +334,10 @@ export default function CloudPage() {
                           }`}
                         >
 
-                          <img
+                          <Image
                             src={provider.image}
                             alt={provider.alt}
-                            className="h-full w-full object-contain"
+                             fill sizes="100vw"   className="h-full w-full object-contain"
                           />
 
                         </div>
@@ -847,10 +848,10 @@ export default function CloudPage() {
 
       <section className="relative overflow-hidden border-b border-[#183747] py-20 sm:py-28">
 
-        <img
+        <Image
           src="/images/services/cloud/2.jpg"
           alt="Paysage africain sous un ciel nuageux"
-          className="absolute inset-0 h-full w-full object-cover opacity-65"
+           fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-65"
         />
 
         <div className="absolute inset-0 bg-gradient-to-b from-[#041019]/80 via-[#061923]/55 to-[#041019]/80" />

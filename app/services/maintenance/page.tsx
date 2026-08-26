@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const services = [
   {
@@ -178,10 +179,10 @@ export default function MaintenancePage() {
 
       <section className="relative min-h-[700px] overflow-hidden bg-[#021f50] text-white">
 
-        <img
+        <Image
           src="/images/services/maintenance/1.jpg"
           alt="Maintenance et intervention informatique"
-          className="absolute inset-0 h-full w-full object-cover opacity-35"
+           fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-35"
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#01152f] via-[#021f50]/90 to-[#021f50]/40" />
@@ -424,10 +425,10 @@ export default function MaintenancePage() {
 
             <div className="relative min-h-[430px]">
 
-              <img
+              <Image
                 src="/images/services/maintenance/2.jpg"
                 alt="Équipe travaillant sur un environnement informatique"
-                className="absolute inset-0 h-full w-full object-cover opacity-70"
+                 fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-70"
               />
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/10 to-[#032965]/90" />

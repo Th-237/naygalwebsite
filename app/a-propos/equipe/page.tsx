@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const team = [
   {
@@ -72,10 +73,10 @@ export default function EquipePage() {
       <section className="relative min-h-[720px] overflow-hidden">
 
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2400&q=90"
             alt="Équipe travaillant ensemble"
-            className="h-full w-full object-cover"
+             fill sizes="100vw"   className="h-full w-full object-cover"
           />
 
           <div className="absolute inset-0 bg-[#020817]/85" />
@@ -248,7 +249,7 @@ export default function EquipePage() {
                 {/* IMAGE */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-[#0a1b33]">
 
-                  <img
+                  <Image
                     src={`https://images.unsplash.com/photo-${[
                       '1560250097-0b93528c311a',
                       '1519085360753-af0119f7cbe7',
@@ -256,7 +257,7 @@ export default function EquipePage() {
                       '1551836022-d5d88e9218df',
                     ][Number(member.number) - 1]}?auto=format&fit=crop&w=1200&q=85`}
                     alt={member.name}
-                    className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
+                     fill sizes="100vw"   className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-transparent to-transparent" />
@@ -388,10 +389,10 @@ export default function EquipePage() {
 
         <div className="absolute inset-0">
 
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2200&q=90"
             alt="Collaboration professionnelle"
-            className="h-full w-full object-cover opacity-15"
+             fill sizes="100vw"   className="h-full w-full object-cover opacity-15"
           />
 
           <div className="absolute inset-0 bg-[#032965]/90" />
