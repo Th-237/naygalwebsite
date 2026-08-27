@@ -197,7 +197,7 @@ export default function AutomatisationIAPage() {
               <div className="relative overflow-hidden rounded-[2rem] bg-[#032965] shadow-[0_30px_80px_rgba(3,41,101,.22)]">
                 <div className="relative h-[350px] w-full sm:h-[430px]">
                   <Image
-                    src="/images/services/automatisation-ia/1.webp"
+                    src="/images/services/automatisation-ia/i.jpg"
                     alt="Équipe travaillant sur des solutions numériques"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -373,7 +373,7 @@ export default function AutomatisationIAPage() {
 
             <div className="relative min-h-[320px] lg:min-h-[100%]">
               <Image
-                src="/images/services/automatisation-ia/2.webp"
+                src="/images/services/automatisation-ia/2.jpg"
                 alt="Développement et utilisation d'une plateforme numérique"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -555,7 +555,7 @@ export default function AutomatisationIAPage() {
 
               <div className="relative h-72 w-full">
                 <Image
-                  src="/images/services/automatisation-ia/1.webp"
+                  src="/images/services/automatisation-ia/i3.jpg"
                   alt="Intelligence artificielle et technologies numériques"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"

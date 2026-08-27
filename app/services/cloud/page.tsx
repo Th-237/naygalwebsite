@@ -183,7 +183,7 @@ export default function CloudPage() {
       <section className="relative min-h-[620px] overflow-hidden border-b border-[#183747] md:min-h-[850px]">
 
         <Image
-          src="/images/services/cloud/1.jpg"
+          src="/images/services/cloud/im1.jpg"
           alt="Infrastructure cloud et réseau numérique"
           fill
           sizes="100vw"
@@ -853,7 +853,7 @@ export default function CloudPage() {
       <section className="relative overflow-hidden border-b border-[#183747] py-20 sm:py-28">
 
         <Image
-          src="/images/services/cloud/2.jpg"
+          src="/images/services/cloud/st-digital.jpeg"
           alt="Paysage africain sous un ciel nuageux"
            fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-65"
         />

@@ -477,12 +477,14 @@ export default function CybersecuritePage() {
 
             <div>
 
-              <div className="relative overflow-hidden border border-[#27563b]">
+              <div className="relative h-[460px] overflow-hidden border border-[#27563b]">
 
                 <Image
                   src="/images/services/cybersecurite/SOC_STATUS: READY.webp"
                   alt="Centre de supervision et opérations de sécurité"
-                   fill sizes="100vw"   className="h-[460px] w-full object-cover opacity-65"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover opacity-65"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020706] via-transparent to-[#020706]/20" />
@@ -716,7 +718,9 @@ export default function CybersecuritePage() {
                   <Image
                     src={attack.image}
                     alt={attack.title}
-                     fill sizes="100vw"   className="h-full w-full object-cover opacity-50 transition duration-700 group-hover:scale-105 group-hover:opacity-70"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover opacity-50 transition duration-700 group-hover:scale-105 group-hover:opacity-70"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-[#06100c] via-[#06100c]/30 to-transparent" />

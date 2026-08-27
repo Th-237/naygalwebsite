@@ -23,7 +23,7 @@ const participation = [
     description:
       "Entreprises, établissements, associations ou acteurs technologiques : construisons ensemble des initiatives utiles et durables.",
     href: "/mouvement/devenir-partenaire",
-    image: "/images/home/NAYACONLINE.jpg",
+    image: "/images/mouvement/devenir-partenaire/part.jpg",
   },
   {
     number: "02",
@@ -31,7 +31,7 @@ const participation = [
     description:
       "Vous avez une idée, une problématique ou une initiative ? Présentez-nous votre projet et explorons ensemble ce qu'il est possible de construire.",
     href: "/mouvement/proposer-un-projet",
-    image: "/images/home/NAYAC/en_salle.jpg",
+    image: "/images/mouvement/proposer-un-projet/proj.jpg",
   },
   {
     number: "03",
@@ -39,7 +39,7 @@ const participation = [
     description:
       "Contribuez à nos initiatives par un financement, du matériel, votre expertise, votre réseau ou simplement votre temps.",
     href: "/mouvement/soutenir-nos-initiatives",
-    image: "/images/a-propos/jad20250430-ass-benin-tecnologies-numerique.avif",
+    image: "/images/mouvement/soutenir-nos-initiatives/sout.jpg",
   },
 ]
 
@@ -76,7 +76,7 @@ export default function MouvementPage() {
       <section className="relative min-h-[720px] overflow-hidden bg-[#032965]">
 
         <Image
-          src="/images/home/NAYACONLINE.webp"
+          src="/images/mouvement/img1.jpg"
           alt="Jeunes africains apprenant et travaillant ensemble"
           fill
           priority
@@ -201,7 +201,7 @@ export default function MouvementPage() {
             <div className="relative min-h-[520px] overflow-hidden rounded-[2rem]">
 
               <Image
-                src="/images/a-propos/notre-histoire/pexels-popoola-bolaji-226044498-12286603.jpg"
+                src="/images/mouvement/renc.jpg"
                 alt="Équipe africaine travaillant sur un projet"
                 fill
                 className="object-cover transition duration-700 hover:scale-105"
@@ -229,7 +229,7 @@ export default function MouvementPage() {
             <div className="relative min-h-[520px] overflow-hidden rounded-[2rem]">
 
               <Image
-                src="/images/academy/Grand caroussel/mozambique_picture_4.jpg"
+                src="/images/academy/Grand caroussel/img5.jpg"
                 alt="Professionnel africain connecté à une technologie numérique"
                 fill
                 className="object-cover transition duration-700 hover:scale-105"

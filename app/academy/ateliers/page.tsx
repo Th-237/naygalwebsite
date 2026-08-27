@@ -607,12 +607,14 @@ export default function AteliersPage() {
 
             </div>
 
-            <div className="relative overflow-hidden rounded-[1.5rem] group transition-smooth hover:shadow-xl">
+            <div className="group relative h-[420px] overflow-hidden rounded-[1.5rem] transition-smooth hover:shadow-xl">
 
               <Image
-                src={encodeURI('/images/academy/ateliers/Au-delà de la salle.jpg')}
+                src={encodeURI('/images/academy/ateliers/Decouvrir_son_environnement.jpg')}
                 alt="Jeunes découvrant leur environnement éducatif"
-                 fill sizes="100vw"   className="h-[420px] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#032965] via-transparent to-transparent transition-opacity duration-500" />

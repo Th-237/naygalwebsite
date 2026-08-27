@@ -41,21 +41,20 @@ const areas = [
     description:
       "Contribuer à la mise en place d'infrastructures numériques fiables, sécurisées et adaptées aux besoins des organisations.",
     image:
-      "https://images.pexels.com/photos/5940713/pexels-photo-5940713.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "/images/mouvement/notre-mission/inf.webp",
   },
   {
     title: "Innovation & IA",
     description:
       "Explorer les nouvelles technologies et identifier les usages capables d'améliorer concrètement les processus et les services.",
-    image:
-      "https://images.pexels.com/photos/11025020/pexels-photo-11025020.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    image: "/images/mouvement/notre-mission/ia.jpg",
   },
   {
     title: "Collaboration",
     description:
       "Créer des passerelles entre entreprises, établissements, experts, associations et communautés autour de projets communs.",
     image:
-      "https://images.pexels.com/photos/11025019/pexels-photo-11025019.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "/images/mouvement/notre-mission/colla.jpg",
   },
 ]
 
@@ -448,7 +447,7 @@ export default function MissionPage() {
             <div className="relative min-h-[480px] overflow-hidden rounded-[2rem]">
 
               <Image
-                src="https://images.pexels.com/photos/11025019/pexels-photo-11025019.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                src="/images/mouvement/notre-mission/comp.jpg"
                 alt="Étudiants travaillant ensemble"
                 fill
                 className="object-cover"
@@ -470,7 +469,7 @@ export default function MissionPage() {
       <section className="relative min-h-[600px] overflow-hidden">
 
         <Image
-          src="https://images.pexels.com/photos/5965920/pexels-photo-5965920.jpeg?auto=compress&cs=tinysrgb&w=2200"
+          src="/images/mouvement/notre-mission/vis.jpg"
           alt="Environnement professionnel moderne"
           fill
           className="object-cover"

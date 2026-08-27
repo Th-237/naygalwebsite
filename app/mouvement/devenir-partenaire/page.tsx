@@ -81,7 +81,7 @@ export default function PartnerPage() {
       <section className="relative min-h-[680px] overflow-hidden bg-[#032965]">
 
         <Image
-          src="https://images.pexels.com/photos/11025060/pexels-photo-11025060.jpeg?auto=compress&cs=tinysrgb&w=2200"
+          src="/images/mouvement/devenir-partenaire/devp.jpg"
           alt="Partenaires africains réunis autour d'un projet"
           fill
           priority

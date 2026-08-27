@@ -1,5 +1,8 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 
 const criteria = [
   {
@@ -65,6 +68,47 @@ const steps = [
 ]
 
 export default function ProposerProjetPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    organization: "",
+    type: "",
+    title: "",
+    problem: "",
+    solution: "",
+    support: "",
+  })
+  const [status, setStatus] = useState<"idle" | "sent">("idle")
+
+  const updateField = (field: keyof typeof formData, value: string) => {
+    setFormData((current) => ({ ...current, [field]: value }))
+    setStatus("idle")
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const whatsappMessage = [
+      "Bonjour NAYGAL, je souhaite présenter un projet.",
+      "",
+      `Nom complet: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Organisation: ${formData.organization || "Non renseignée"}`,
+      `Type de projet: ${formData.type}`,
+      `Nom du projet: ${formData.title}`,
+      "",
+      `Problème à résoudre:\n${formData.problem}`,
+      "",
+      `Idée / solution:\n${formData.solution}`,
+      "",
+      `Besoin d'accompagnement:\n${formData.support}`,
+    ].join("\n")
+
+    const whatsappUrl = `https://wa.me/237655002493?text=${encodeURIComponent(whatsappMessage)}`
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer")
+    setStatus("sent")
+  }
+
   return (
     <main className="bg-white">
 
@@ -74,7 +118,7 @@ export default function ProposerProjetPage() {
       <section className="relative min-h-[680px] overflow-hidden bg-[#032965]">
 
         <Image
-          src="https://images.pexels.com/photos/11025019/pexels-photo-11025019.jpeg?auto=compress&cs=tinysrgb&w=2200"
+          src="/images/mouvement/proposer-un-projet/proj2.jpg"
           alt="Équipe africaine travaillant sur une idée de projet"
           fill
           priority
@@ -296,7 +340,7 @@ export default function ProposerProjetPage() {
       <section className="relative min-h-[560px] overflow-hidden">
 
         <Image
-          src="https://images.pexels.com/photos/11025020/pexels-photo-11025020.jpeg?auto=compress&cs=tinysrgb&w=2200"
+          src="/images/mouvement/proposer-un-projet/idee.jpg"
           alt="Équipe collaborant sur une idée"
           fill
           className="object-cover"
@@ -457,7 +501,7 @@ export default function ProposerProjetPage() {
 
             <div className="border border-slate-200 bg-white p-7 shadow-sm sm:p-10">
 
-              <form className="space-y-7">
+              <form className="space-y-7" onSubmit={handleSubmit}>
 
                 <div className="grid gap-6 sm:grid-cols-2">
 
@@ -473,6 +517,9 @@ export default function ProposerProjetPage() {
                     <input
                       id="name"
                       type="text"
+                      value={formData.name}
+                      onChange={(event) => updateField("name", event.target.value)}
+                      required
                       placeholder="Votre nom"
                       className="w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/10"
                     />
@@ -492,6 +539,9 @@ export default function ProposerProjetPage() {
                     <input
                       id="email"
                       type="email"
+                      value={formData.email}
+                      onChange={(event) => updateField("email", event.target.value)}
+                      required
                       placeholder="vous@example.com"
                       className="w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/10"
                     />
@@ -515,6 +565,8 @@ export default function ProposerProjetPage() {
                     <input
                       id="organization"
                       type="text"
+                      value={formData.organization}
+                      onChange={(event) => updateField("organization", event.target.value)}
                       placeholder="Entreprise, école, association..."
                       className="w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/10"
                     />
@@ -533,8 +585,10 @@ export default function ProposerProjetPage() {
 
                     <select
                       id="type"
+                      value={formData.type}
+                      onChange={(event) => updateField("type", event.target.value)}
+                      required
                       className="w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/10"
-                      defaultValue=""
                     >
 
                       <option value="" disabled>
@@ -566,6 +620,9 @@ export default function ProposerProjetPage() {
                   <input
                     id="title"
                     type="text"
+                      value={formData.title}
+                      onChange={(event) => updateField("title", event.target.value)}
+                      required
                     placeholder="Comment s'appelle votre projet ?"
                     className="w-full border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/10"
                   />
@@ -585,6 +642,9 @@ export default function ProposerProjetPage() {
                   <textarea
                     id="problem"
                     rows={5}
+                    value={formData.problem}
+                    onChange={(event) => updateField("problem", event.target.value)}
+                    required
                     placeholder="Expliquez le problème ou le besoin auquel votre projet répond..."
                     className="w-full resize-none border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/10"
                   />
@@ -604,6 +664,9 @@ export default function ProposerProjetPage() {
                   <textarea
                     id="solution"
                     rows={5}
+                    value={formData.solution}
+                    onChange={(event) => updateField("solution", event.target.value)}
+                    required
                     placeholder="Décrivez votre solution, votre approche ou votre vision..."
                     className="w-full resize-none border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/10"
                   />
@@ -623,6 +686,9 @@ export default function ProposerProjetPage() {
                   <textarea
                     id="support"
                     rows={4}
+                    value={formData.support}
+                    onChange={(event) => updateField("support", event.target.value)}
+                    required
                     placeholder="Expertise, technologie, accompagnement, financement, réseau..."
                     className="w-full resize-none border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/10"
                   />
@@ -638,6 +704,12 @@ export default function ProposerProjetPage() {
                   >
                     Envoyer ma proposition →
                   </button>
+
+                  {status === "sent" && (
+                    <p className="mt-4 text-center text-sm font-semibold text-[#438a2c]" role="status">
+                      Votre proposition a été préparée dans WhatsApp.
+                    </p>
+                  )}
 
                   <p className="mt-4 text-center text-xs leading-5 text-slate-500">
                     En envoyant cette proposition, vous acceptez que NAYGAL

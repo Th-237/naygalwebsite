@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import GrandCarousel from '../../../components/GrandCarousel'
 
 const etapes = [
   ['01', 'Présentation', 'Nous échangeons avec la direction sur les besoins, le calendrier et les conditions de mise en œuvre.'],
@@ -46,7 +45,7 @@ export default function AcademyInSchoolPage() {
       <section className="relative overflow-hidden bg-[#021d47] py-20 text-white sm:py-28">
         <div className="absolute inset-0">
           <Image
-            src="/images/academy/dans-votre-ecole/1.webp"
+            src="/images/academy/dans-votre-ecole/nay.jpg"
             alt="NAYGAL ACADEMY dans votre école"
             fill
             preload
@@ -174,30 +173,30 @@ export default function AcademyInSchoolPage() {
               </div>
             ))}
           </div>
-          <div className="group mt-8 overflow-hidden border-y border-slate-200 bg-white py-5" aria-label="Partenaires de NAYGAL Academy">
-            <div className="animate-partner-marquee flex w-max items-center gap-5 group-hover:[animation-play-state:paused]">
+          <div className="partner-marquee-shell group mt-8" aria-label="Partenaires de NAYGAL Academy">
+            <div className="animate-partner-marquee flex w-max items-center gap-5 px-1 group-hover:[animation-play-state:paused]">
               {[...partners, ...partners].map((partner, index) => (
-                <div key={`${partner.name}-${index}`} aria-hidden={index >= partners.length} className="flex h-20 w-44 shrink-0 items-center justify-center border border-slate-100 bg-slate-50 px-6">
+                <div key={`${partner.name}-${index}`} aria-hidden={index >= partners.length} className="partner-logo-card flex h-24 w-48 shrink-0 items-center justify-center px-7">
                   {partner.logo ? (
-                    <Image src={partner.logo} alt={`Logo ${partner.name}`} width={160} height={80} className="h-14 w-32 object-contain" />
+                    <Image src={partner.logo} alt={`Logo ${partner.name}`} width={160} height={80} className="h-14 w-36 object-contain" />
                   ) : (
-                    <span className="text-base font-bold tracking-wide text-[#276f91]">{partner.name}</span>
+                    <span className="text-center text-base font-bold tracking-wide text-[#276f91]">{partner.name}</span>
                   )}
                 </div>
               ))}
             </div>
           </div>
-          <p className="mt-5 text-sm text-slate-500">Les logos IUT, ISTAG et KAVENOR sont intégrés. ISGA et MPT apparaissent en attendant leurs logos officiels.</p>
+          <p className="mt-5 text-sm text-slate-500"></p>
 
           <div className="mt-14 max-w-3xl">
             <p className="eyebrow text-[#438a2c]">Ouverture internationale</p>
             <h3 className="mt-3 text-2xl font-semibold text-[#032965]">Des plateformes de référence pour enrichir chaque parcours.</h3>
             <p className="mt-3 leading-7 text-slate-600">NAYGAL ACADEMY oriente les apprenants les plus motivés vers des plateformes reconnues, afin de compléter les ateliers locaux par des ressources, parcours et certifications à portée internationale.</p>
           </div>
-          <div className="group mt-7 overflow-hidden border-y border-slate-200 bg-white py-5" aria-label="Plateformes éducatives internationales">
-            <div className="animate-partner-marquee flex w-max items-center gap-5 group-hover:[animation-play-state:paused]">
+          <div className="partner-marquee-shell group mt-7" aria-label="Plateformes éducatives internationales">
+            <div className="animate-partner-marquee animate-partner-marquee-slower flex w-max items-center gap-5 px-1 group-hover:[animation-play-state:paused]">
               {[...internationalPlatforms, ...internationalPlatforms].map((platform, index) => (
-                <div key={`${platform.name}-${index}`} aria-hidden={index >= internationalPlatforms.length} className="flex h-20 w-56 shrink-0 items-center justify-center border border-slate-100 bg-slate-50 px-6 text-center">
+                <div key={`${platform.name}-${index}`} aria-hidden={index >= internationalPlatforms.length} className="partner-logo-card flex h-24 w-60 shrink-0 items-center justify-center px-7 text-center">
                   <Image src={platform.logo} alt={`Logo ${platform.name}`} width={180} height={80} className="h-14 w-40 object-contain" />
                 </div>
               ))}

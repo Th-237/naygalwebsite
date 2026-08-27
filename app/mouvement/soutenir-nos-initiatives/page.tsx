@@ -50,7 +50,7 @@ const contributions = [
     display: "5 000 FCFA",
     title: "Faciliter l'accès",
     description:
-      "Votre contribution peut participer à l'accès à des ressources pédagogiques, supports d'apprentissage ou consommables nécessaires à une activité.",
+      "Votre contribution peut aider à rendre une ressource, une action de sensibilisation ou un accompagnement plus accessible.",
     icon: "📚",
   },
   {
@@ -58,32 +58,32 @@ const contributions = [
     display: "10 000 FCFA",
     title: "Préparer les ressources",
     description:
-      "Votre soutien peut contribuer à la préparation de supports de formation, de ressources numériques ou de matériel pédagogique.",
+      "Votre soutien peut contribuer à préparer des ressources numériques, de la documentation ou les outils nécessaires à une initiative.",
     icon: "🧰",
   },
   {
     amount: 25000,
     display: "25 000 FCFA",
-    title: "Faire fonctionner un atelier",
+    title: "Lancer une action",
     description:
-      "Une contribution qui peut participer à l'acquisition de consommables et de petits équipements nécessaires à une session pratique.",
+      "Une contribution qui peut participer à une action de terrain, un atelier, une rencontre ou une première expérimentation.",
     icon: "🛠️",
   },
   {
     amount: 50000,
     display: "50 000 FCFA",
-    title: "Équiper pour apprendre",
+    title: "Équiper une initiative",
     description:
-      "Votre contribution peut participer à l'acquisition, la remise en état ou la mise à disposition d'un équipement informatique destiné aux activités de NAYGAL.",
+      "Votre contribution peut participer à l'acquisition, la remise en état ou la mise à disposition d'un équipement destiné à une initiative NAYGAL.",
     icon: "💻",
     featured: true,
   },
   {
     amount: 100000,
     display: "100 000 FCFA",
-    title: "Déployer une activité éducative",
+    title: "Déployer une initiative",
     description:
-      "Votre soutien peut contribuer à la mise en place d'un atelier, d'une session de sensibilisation ou d'une activité éducative sur le terrain.",
+      "Votre soutien peut contribuer au déploiement d'une action éducative, technique, communautaire ou de sensibilisation sur le terrain.",
     icon: "🏫",
   },
   {
@@ -119,6 +119,29 @@ const expertiseExamples = [
   "Formation & mentorat",
 ]
 
+const impactAreas = [
+  {
+    number: "01",
+    title: "Éducation & transmission",
+    description: "Rendre les compétences numériques, les ateliers et le mentorat plus accessibles.",
+  },
+  {
+    number: "02",
+    title: "Inclusion numérique",
+    description: "Créer des opportunités pour les publics, territoires et organisations moins équipés.",
+  },
+  {
+    number: "03",
+    title: "Innovation & projets",
+    description: "Faire émerger et expérimenter des solutions utiles pour répondre à des besoins réels.",
+  },
+  {
+    number: "04",
+    title: "Résilience numérique",
+    description: "Renforcer les infrastructures, la cybersécurité et l’autonomie technologique locale.",
+  },
+]
+
 export default function SoutenirPage() {
   return (
     <main className="bg-white">
@@ -130,7 +153,7 @@ export default function SoutenirPage() {
       <section className="relative min-h-[700px] overflow-hidden bg-[#032965]">
 
         <Image
-          src="/images/home/NAYACONLINE.jpg"
+          src="/images/mouvement/soutenir-nos-initiatives/sout2.jpg"
           alt="Communauté africaine réunie autour d'une initiative"
           fill
           priority
@@ -332,9 +355,20 @@ export default function SoutenirPage() {
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
               Chaque niveau de contribution correspond à un ordre de grandeur
-              permettant de soutenir différents besoins de nos initiatives.
+                permettant de soutenir différents besoins de nos initiatives. Les
+                contributions ne sont pas réservées à un seul programme.
             </p>
 
+          </div>
+
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {impactAreas.map((area) => (
+              <div key={area.number} className="border-t-2 border-[#52a234] bg-[#f4f8fd] p-5">
+                <p className="text-xs font-bold tracking-[.16em] text-[#438a2c]">{area.number}</p>
+                <h3 className="mt-5 text-lg text-[#032965]">{area.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{area.description}</p>
+              </div>
+            ))}
           </div>
 
 

@@ -1,33 +1,28 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import HeroCarousel from '@/components/HeroCarousel'
 
-const heroSlides = [
-  {
-    src: '/images/home/caroussel_principal/Hacking-ARTP-1.webp',
-    alt: "Équipe travaillant autour d'un projet numérique",
+export const metadata = {
+  title: 'NAYGAL | Solutions IT, cybersécurité, cloud et IA au Cameroun',
+  description:
+    'NAYGAL aide les organisations à renforcer leur infrastructure, sécuriser leurs systèmes, adopter le cloud et accélérer leur transformation numérique au Cameroun.',
+  alternates: {
+    canonical: `${process.env.SITE_URL || 'https://naygal.cm'}`,
   },
-  {
-    src: '/images/home/caroussel_principal/pexels-brett-sayles-2881224.jpg',
-    alt: 'Équipe collaborative',
+  openGraph: {
+    title: 'NAYGAL | Solutions IT, cybersécurité, cloud et IA au Cameroun',
+    description:
+      'NAYGAL aide les organisations à renforcer leur infrastructure, sécuriser leurs systèmes, adopter le cloud et accélérer leur transformation numérique au Cameroun.',
+    url: `${process.env.SITE_URL || 'https://naygal.cm'}`,
+    images: ['/images/home/NAYTECHROOM.png'],
   },
-  {
-    src: '/images/home/caroussel_principal/pexels-roman-odintsov-11025019.jpg',
-    alt: 'Formation technologique',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NAYGAL | Solutions IT, cybersécurité, cloud et IA au Cameroun',
+    description:
+      'NAYGAL aide les organisations à renforcer leur infrastructure, sécuriser leurs systèmes, adopter le cloud et accélérer leur transformation numérique au Cameroun.',
+    images: ['/images/home/NAYTECHROOM.png'],
   },
-  {
-    src: '/images/home/caroussel_principal/pexels-sejio402-6429140.jpg',
-    alt: 'Infrastructure informatique',
-  },
-  {
-    src: '/images/home/caroussel_principal/pexels-magda-ehlers-pexels-34182367.jpg',
-    alt: 'Technologies numériques',
-  },
-  {
-    src: '/images/home/caroussel_principal/pexels-ron-lach-10638075.jpg',
-    alt: 'Collaboration autour d’un projet',
-  },
-]
+}
 
 const quickLinks = [
   {
@@ -127,12 +122,12 @@ const problems = [
 
 const projects = [
   {
-    title: 'IXP-Observer',
+    title: 'INTERNET-Observer',
     category: 'Infrastructure numérique',
     description:
       "Cartographier et mieux comprendre l'écosystème Internet au Cameroun.",
     href: '/projets',
-    image: '/images/home/ixp-observer.jpg',
+    image: '/images/projets/io/io.png',
   },
   {
     title: 'Sentinelle IA',
@@ -140,15 +135,15 @@ const projects = [
     description:
       'Un système SOC pensé pour rendre la cybersécurité plus accessible aux PME.',
     href: '/projets',
-    image: '/images/home/sentinelleia.webp',
+    image: '/images/projets/si/si.png',
   },
   {
-    title: 'NAYAC Online',
+    title: 'NAYGAL ACADEMY Online',
     category: 'Éducation numérique',
     description:
       'Une plateforme éducative africaine pour apprendre, pratiquer et progresser.',
     href: '/projets',
-    image: '/images/home/NAYACONLINE.jpg',
+    image: '/images/projets/acad/acad.png',
   },
 ]
 
@@ -183,8 +178,70 @@ export default function Home() {
 
       <section className="relative min-h-[650px] overflow-hidden bg-[#032965] lg:min-h-[700px]">
 
+        {/* Images du carousel */}
         <div className="absolute inset-0">
-          <HeroCarousel slides={heroSlides} />
+
+          <div className="hero-slide hero-slide-1">
+            <Image
+              src="/images/home/caroussel_principal/Hacking-ARTP-1.webp"
+              alt="Équipe travaillant autour d'un projet numérique"
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="hero-slide hero-slide-2">
+            <Image
+              src="/images/home/caroussel_principal/pexels-brett-sayles-2881224.jpg"
+              alt="Équipe collaborative"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="hero-slide hero-slide-3">
+            <Image
+              src="/images/home/caroussel_principal/pexels-roman-odintsov-11025019.jpg"
+              alt="Formation technologique"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="hero-slide hero-slide-4">
+            <Image
+              src="/images/home/caroussel_principal/pexels-sejio402-6429140.jpg"
+              alt="Infrastructure informatique"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="hero-slide hero-slide-5">
+            <Image
+              src="/images/home/caroussel_principal/pexels-magda-ehlers-pexels-34182367.jpg"
+              alt="Technologies numériques"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
+          <div className="hero-slide hero-slide-6">
+            <Image
+              src="/images/home/caroussel_principal/pexels-ron-lach-10638075.jpg"
+              alt="Collaboration autour d'un projet"
+              fill
+              sizes="100vw"
+              className="object-cover"
+            />
+          </div>
+
         </div>
 
         {/* Overlay */}
@@ -207,7 +264,7 @@ export default function Home() {
 
             </div>
 
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.02] tracking-[-.05em] text-white sm:text-6xl lg:text-8xl">
+            <h1 className="max-w-4xl text-4xl font-semibold leading-[1.02] tracking-[-.05em] text-white sm:text-6xl lg:text-8xl">
 
               Le numérique
               <span className="block text-[#71b224]">
@@ -216,7 +273,7 @@ export default function Home() {
 
             </h1>
 
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-white/85 sm:text-xl">
+            <p className="mt-7 max-w-2xl text-base leading-7 text-white/85 sm:text-xl sm:leading-8">
 
               NAYGAL accompagne les entreprises, établissements et
               organisations africaines dans la conception, la sécurisation et
@@ -228,7 +285,7 @@ export default function Home() {
 
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center bg-[#71b224] px-7 py-4 font-semibold text-white transition hover:bg-[#5d9b1c]"
+                className="inline-flex w-full items-center justify-center bg-[#71b224] px-7 py-4 font-semibold text-white transition hover:bg-[#5d9b1c] sm:w-auto"
               >
                 Découvrir nos services
                 <span className="ml-3">→</span>
@@ -236,7 +293,7 @@ export default function Home() {
 
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center border border-white/50 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur-sm transition hover:bg-white hover:text-[#032965]"
+                className="inline-flex w-full items-center justify-center border border-white/50 bg-white/5 px-7 py-4 font-semibold text-white backdrop-blur-sm transition hover:bg-white hover:text-[#032965] sm:w-auto"
               >
                 Parlons de votre projet
               </Link>
@@ -286,8 +343,8 @@ export default function Home() {
                     src={item.image}
                     alt=""
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover transition duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 25vw"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
 
                   <div className="absolute inset-0 bg-[#032965]/20 transition group-hover:bg-[#032965]/5" />
@@ -566,8 +623,8 @@ export default function Home() {
               src={projects[0].image}
               alt={projects[0].title}
               fill
-              sizes="(max-width: 1280px) 100vw, 1200px"
-                className="object-cover transition duration-700 group-hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 80vw"
+              className="object-cover transition duration-700 group-hover:scale-105"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/95 via-[#032965]/60 to-transparent" />
@@ -616,7 +673,7 @@ export default function Home() {
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition duration-700 group-hover:scale-105"
+                  className="object-cover transition duration-700 group-hover:scale-105"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/95 via-[#032965]/30 to-transparent" />
@@ -674,8 +731,8 @@ export default function Home() {
                 src="/images/home/NAYAC/en_salle.jpg"
                 alt="Jeunes apprenants"
                 fill
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                  className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/90 via-transparent to-transparent" />
@@ -780,11 +837,11 @@ export default function Home() {
           <div className="relative overflow-hidden bg-[#032965]">
 
             <Image
-              src="/images/home/NAYTECHROOM.png"
+              src="/images/home/NAYTECHROOM.webp"
               alt="Salle de formation informatique"
               fill
-              sizes="(max-width: 1280px) 100vw, 1200px"
-                className="object-cover opacity-60"
+              sizes="100vw"
+              className="object-cover opacity-60"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-[#032965] via-[#032965]/85 to-[#032965]/30" />
@@ -846,7 +903,7 @@ export default function Home() {
                 alt="Communauté réunie autour d'une initiative"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
+                className="object-cover"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#032965]/90 via-transparent to-transparent" />

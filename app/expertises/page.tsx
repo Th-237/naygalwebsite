@@ -4,15 +4,25 @@ import Link from 'next/link'
 const SITE = process.env.SITE_URL || 'https://naygal.cm'
 
 export const metadata = {
-  title: 'Expertises NAYGAL | Infrastructure, cybersécurité, cloud et IA',
-  description: 'Découvrez les expertises NAYGAL en infrastructure, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
+  title: 'Expertises IT et transformation numérique | NAYGAL',
+  description:
+    'Découvrez les expertises NAYGAL en infrastructure informatique, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
   alternates: {
     canonical: `${SITE}/expertises`,
   },
   openGraph: {
-    title: 'Expertises NAYGAL | Infrastructure, cybersécurité, cloud et IA',
-    description: 'Découvrez les expertises NAYGAL en infrastructure, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
+    title: 'Expertises IT et transformation numérique | NAYGAL',
+    description:
+      'Découvrez les expertises NAYGAL en infrastructure informatique, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
     url: `${SITE}/expertises`,
+    images: ['/images/home/NAYTECHROOM.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Expertises IT et transformation numérique | NAYGAL',
+    description:
+      'Découvrez les expertises NAYGAL en infrastructure informatique, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
+    images: ['/images/home/NAYTECHROOM.png'],
   },
 }
 

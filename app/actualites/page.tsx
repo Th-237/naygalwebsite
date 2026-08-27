@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 
 const featuredStory = {
   category: 'IA & automatisation',
@@ -11,47 +11,8 @@ const featuredStory = {
   description:
     'Les organisations accélèrent l’adoption de solutions d’IA pour automatiser les tâches répétitives, réduire les délais d’intervention et mieux piloter leurs données.',
   meta: 'Publié le 8 août 2026 • 6 min de lecture',
-  image:
-    'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=85',
+  image: '/images/expertises/Education Afrique _ AIworkflow.jpg',
 }
-
-const heroImages = [
-  {
-    src: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1400&q=85',
-    alt: 'Vue aérienne de cultures agricoles',
-    eyebrow: 'Agritech',
-    title: 'L’agriculture se pilote aussi depuis le ciel.',
-    description: 'Drones, capteurs et données aident les exploitants à mieux suivre les cultures et optimiser les ressources.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=85',
-    alt: 'Élèves en apprentissage dans une salle de classe',
-    eyebrow: 'Éducation en Afrique',
-    title: 'Apprendre autrement, partout sur le continent.',
-    description: 'Les outils numériques ouvrent l’accès à des contenus, à la formation et à de nouvelles pédagogies.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=85',
-    alt: 'Cadenas numérique symbolisant la cybersécurité',
-    eyebrow: 'Cybermenaces',
-    title: 'La sécurité est devenue une priorité quotidienne.',
-    description: 'Comprendre les risques, renforcer les accès et préparer les équipes : les bases d’une organisation résiliente.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=85',
-    alt: 'Jeunes professionnels réunis autour d’ordinateurs',
-    eyebrow: 'Opportunités tech',
-    title: 'La technologie crée de nouvelles possibilités.',
-    description: 'Entrepreneuriat, services numériques et intelligence artificielle ouvrent des perspectives concrètes pour les organisations.',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85',
-    alt: 'Professionnel travaillant sur un ordinateur portable',
-    eyebrow: 'Écosystème mondial',
-    title: 'Google, Microsoft et les grands acteurs façonnent les usages.',
-    description: 'L’enjeu est de tirer parti de leurs plateformes tout en gardant la maîtrise de ses données, de ses coûts et de ses choix.',
-  },
-]
 
 const categories = [
   { label: 'Tous les sujets', shortLabel: 'Tout' },
@@ -69,7 +30,7 @@ const articles = [
     title: 'Comment sécuriser les accès à distance sans freiner la productivité des équipes',
     description: 'Des pratiques simples et concrètes pour renforcer la protection des postes de travail et des services cloud.',
     meta: '4 min de lecture',
-    image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=85',
+    image: '/images/services/cybersecurite/phishing.jpeg',
   },
   {
     category: 'Cloud',
@@ -77,7 +38,7 @@ const articles = [
     title: 'Le cloud hybride devient la référence pour les organisations qui veulent garder le contrôle',
     description: 'Un modèle qui combine flexibilité, continuité de service et meilleure maîtrise des coûts.',
     meta: '5 min de lecture',
-    image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=85',
+    image: '/images/services/cloud/st-digital.jpeg',
   },
   {
     category: 'Réseaux',
@@ -85,7 +46,7 @@ const articles = [
     title: 'Les infrastructures modernes s’appuient sur une connectivité plus intelligente et plus résiliente',
     description: 'Les besoins en performance, qualité de service et observabilité redéfinissent la conception des réseaux.',
     meta: '3 min de lecture',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=85',
+    image: '/images/services/reseaux/1.jpg',
   },
   {
     category: 'Formation',
@@ -93,7 +54,7 @@ const articles = [
     title: 'Former les équipes aux outils numériques, un levier essentiel de la transformation',
     description: 'Les organisations qui investissent dans la montée en compétences gagnent en autonomie et en rapidité.',
     meta: '2 min de lecture',
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=85',
+    image: '/images/academy/formations/pexels-divinetechygirl-1181319.jpg',
   },
 ]
 
@@ -140,31 +101,6 @@ function ArrowIcon() {
 export default function ActualitesPage() {
   const [activeCategory, setActiveCategory] = useState('Tous les sujets')
   const [query, setQuery] = useState('')
-  const [activeSlide, setActiveSlide] = useState(0)
-  const [isSliding, setIsSliding] = useState(true)
-
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setIsSliding(true)
-      setActiveSlide((current) => (current + 1) % heroImages.length)
-    }, 5000)
-
-    return () => window.clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    if (!isSliding) return
-
-    const timeout = window.setTimeout(() => setIsSliding(false), 850)
-    return () => window.clearTimeout(timeout)
-  }, [activeSlide, isSliding])
-
-  const currentSlide = heroImages[activeSlide]
-
-  const selectSlide = (index: number) => {
-    setIsSliding(true)
-    setActiveSlide(index)
-  }
 
   const filteredArticles = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -181,45 +117,22 @@ export default function ActualitesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
 
       <section className="relative isolate overflow-hidden bg-[#021d47] text-white">
+        <Image
+          src="/images/actualites/act.jpg"
+          alt="Équipe africaine réunie autour d’un projet numérique"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#021d47]/95 via-[#021d47]/75 to-[#021d47]/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#021d47]/80 via-transparent to-[#021d47]/20" />
         <div className="absolute inset-0 opacity-[0.10]" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.65) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.65) 1px, transparent 1px)', backgroundSize: '64px 64px' }} />
-        <div className="absolute -right-20 top-0 h-80 w-80 rounded-full bg-[#55a837]/20 blur-[110px]" />
-        <div className="container-custom relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:gap-16 lg:py-16">
-          <div className="relative mx-auto hidden h-[430px] w-full max-w-xl overflow-hidden rounded-[2rem] border border-white/15 bg-white/[0.04] shadow-2xl shadow-black/25 lg:block">
-            <div className="flex h-full w-[500%]" style={{ transform: `translateX(-${activeSlide * 20}%)`, transition: isSliding ? 'transform 850ms cubic-bezier(0.16, 1, 0.3, 1)' : 'none' }}>
-              {heroImages.map((image, index) => (
-                <div key={`slide-${index}`} className="relative h-full w-1/5 shrink-0">
-                  <div className="relative h-full w-full">
-                    <Image src={image.src} alt={image.alt} fill className="scale-105 object-cover transition-transform duration-[5000ms] ease-out" sizes="(max-width: 1024px) 100vw, 20vw" />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#021d47]/55 via-[#021d47]/10 to-transparent" />
-                  <div className="absolute inset-x-7 top-7 flex items-center justify-between text-xs font-bold uppercase tracking-[0.16em] text-white/85"><span className="rounded-full border border-white/20 bg-[#021d47]/30 px-3 py-1.5 backdrop-blur-sm">{image.eyebrow}</span><span>0{index + 1} / 05</span></div>
-                </div>
-              ))}
-            </div>
-            <div className="absolute bottom-6 left-7 right-7 z-10 flex items-center gap-2">
-              {heroImages.map((image, index) => (
-                <button key={image.eyebrow} type="button" onClick={() => selectSlide(index)} aria-label={`Afficher : ${image.eyebrow}`} aria-current={index === activeSlide} className={`h-1.5 rounded-full transition-all duration-500 ${index === activeSlide ? 'w-12 bg-naygal-green' : 'w-5 bg-white/45 hover:bg-white'}`} />
-              ))}
-            </div>
-          </div>
-          {/* Mobile: show the current slide image as a large banner */}
-          <div className="mx-auto block relative h-56 w-full max-w-3xl overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] shadow-lg lg:hidden">
-            <div className="relative h-full w-full">
-              <Image src={currentSlide.src} alt={currentSlide.alt || currentSlide.title} fill className="object-cover transition-opacity duration-700" sizes="100vw" />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#021d47]/60 to-transparent" />
-            <button type="button" onClick={() => setActiveSlide((current) => (current + heroImages.length - 1) % heroImages.length)} className="absolute left-3 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-[#021d47] shadow-md">‹</button>
-            <button type="button" onClick={() => setActiveSlide((current) => (current + 1) % heroImages.length)} className="absolute right-3 top-1/2 z-20 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-[#021d47] shadow-md">›</button>
-            <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 gap-2">
-              {heroImages.map((_, index) => (
-                <button key={index} type="button" onClick={() => selectSlide(index)} className={`h-2.5 w-8 rounded-full transition ${index === activeSlide ? 'bg-white' : 'bg-white/40 hover:bg-white'}`} />
-              ))}
-            </div>
-          </div>
-          <div key={activeSlide} className="animate-carousel-copy max-w-3xl lg:justify-self-end">
-            <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#b8dfa7]"><span className="h-2 w-2 rounded-full bg-naygal-green" /> {currentSlide.eyebrow}</p>
-            <h1 className="mt-5 text-4xl font-bold tracking-[-0.04em] sm:text-5xl lg:text-6xl">{currentSlide.title}</h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">{currentSlide.description}</p>
+        <div className="container-custom relative flex min-h-[560px] items-end py-20 sm:min-h-[620px] sm:py-24">
+          <div className="animate-carousel-copy max-w-4xl">
+            <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#b8dfa7]"><span className="h-2 w-2 rounded-full bg-naygal-green" /> Actualités numériques en Afrique</p>
+            <h1 className="mt-5 text-4xl font-bold tracking-[-0.04em] sm:text-5xl lg:text-7xl">Comprendre les transformations qui façonnent notre avenir numérique.</h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">Analyses, conseils et retours de terrain sur la cybersécurité, le cloud, l’intelligence artificielle et les compétences numériques.</p>
             <div className="mt-8 h-px w-20 bg-gradient-to-r from-naygal-green to-transparent" />
           </div>
         </div>

@@ -82,30 +82,32 @@ export default function Header() {
             </Link>
           </nav>
 
-          <Link href="/contact" className="hidden rounded-sm bg-[#52a234] px-4 py-2.5 text-sm font-semibold text-white lg:inline-flex xl:hidden">
-            Contact
-          </Link>
+          <div className="flex items-center gap-2">
+            <Link href="/contact" className="hidden rounded-sm bg-[#52a234] px-4 py-2.5 text-sm font-semibold text-white lg:inline-flex xl:hidden">
+              Contact
+            </Link>
 
-          <button
-            type="button"
-            onClick={() => setIsOpen((open) => !open)}
-            className="relative z-[101] rounded-md p-2 text-[#032965] hover:bg-slate-100 lg:hidden"
-            aria-expanded={isOpen}
-            aria-controls="mobile-navigation"
-            aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-          >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              {isOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
-            </svg>
-          </button>
+            <button
+              type="button"
+              onClick={() => setIsOpen((open) => !open)}
+              className="relative z-[101] rounded-md p-2 text-[#032965] hover:bg-slate-100 xl:hidden"
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                {isOpen ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 18 6M6 6l12 12" /> : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {isOpen && (
           <>
-            <div className="fixed inset-0 z-[105] bg-slate-900/30 backdrop-blur-sm lg:hidden" onClick={() => setIsOpen(false)} aria-hidden="true" />
+            <div className="fixed inset-0 z-[105] bg-slate-900/30 backdrop-blur-sm xl:hidden" onClick={() => setIsOpen(false)} aria-hidden="true" />
             <nav
               id="mobile-navigation"
-              className="fixed inset-x-0 top-16 z-[110] max-h-[calc(100vh-4rem)] overflow-auto border-t border-slate-200 bg-white/95 py-3 lg:hidden"
+              className="fixed inset-x-0 top-16 z-[110] max-h-[calc(100vh-4rem)] overflow-auto border-t border-slate-200 bg-white/95 py-3 lg:top-[72px] lg:max-h-[calc(100vh-4.5rem)] xl:hidden"
               aria-label="Navigation mobile"
               role="dialog"
               aria-modal="true"

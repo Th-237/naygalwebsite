@@ -4,15 +4,25 @@ import Image from 'next/image'
 const SITE = process.env.SITE_URL || 'https://naygal.cm'
 
 export const metadata = {
-  title: 'Projets NAYGAL | Innovation numérique et solutions concrètes',
-  description: 'Découvrez les projets NAYGAL en infrastructure, IA, cybersécurité, traveltech, worktech et innovation numérique pour les organisations africaines.',
+  title: 'Projets innovants en IA, cybersécurité et digital | NAYGAL',
+  description:
+    'Découvrez les projets NAYGAL en infrastructure, cybersécurité, IA, TravelTech, WorkTech et innovation numérique conçus pour les organisations africaines.',
   alternates: {
     canonical: `${SITE}/projets`,
   },
   openGraph: {
-    title: 'Projets NAYGAL | Innovation numérique et solutions concrètes',
-    description: 'Découvrez les projets NAYGAL en infrastructure, IA, cybersécurité, traveltech, worktech et innovation numérique pour les organisations africaines.',
+    title: 'Projets innovants en IA, cybersécurité et digital | NAYGAL',
+    description:
+      'Découvrez les projets NAYGAL en infrastructure, cybersécurité, IA, TravelTech, WorkTech et innovation numérique conçus pour les organisations africaines.',
     url: `${SITE}/projets`,
+    images: ['/images/home/NAYTECHROOM.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Projets innovants en IA, cybersécurité et digital | NAYGAL',
+    description:
+      'Découvrez les projets NAYGAL en infrastructure, cybersécurité, IA, TravelTech, WorkTech et innovation numérique conçus pour les organisations africaines.',
+    images: ['/images/home/NAYTECHROOM.png'],
   },
 }
 
@@ -152,7 +162,7 @@ export default function ProjetsPage() {
       {/* HERO */}
       <section className="relative min-h-[720px] overflow-hidden bg-[#032965] text-white">
         <Image
-          src="/images/projets/h-proj.webp"
+          src="/images/projets/is.jpg"
           alt="Technologies et innovation"
           fill
           priority
