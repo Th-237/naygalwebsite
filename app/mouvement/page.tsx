@@ -352,12 +352,12 @@ export default function MouvementPage() {
               <h2 className="mt-4 text-white">
                 NAYGAL Academy
                 <span className="block text-[#77bb43]">
-                  NAYAC
+                  NAYGAL ACADEMY
                 </span>
               </h2>
 
               <p className="mt-6 text-lg leading-8 text-blue-100">
-                Le Mouvement commence par la transmission. À travers NAYAC,
+                Le Mouvement commence par la transmission. À travers NAYGAL ACADEMY,
                 nous voulons rendre les compétences numériques plus
                 accessibles, plus concrètes et davantage orientées vers la
                 pratique.
@@ -369,7 +369,7 @@ export default function MouvementPage() {
                   href="/academy"
                   className="inline-flex items-center font-semibold text-white transition hover:text-[#a4d78f]"
                 >
-                  Découvrir NAYAC
+                  Découvrir NAYGAL ACADEMY
                   <span className="ml-2">→</span>
                 </Link>
 

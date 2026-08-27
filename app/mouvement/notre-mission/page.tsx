@@ -403,7 +403,7 @@ export default function MissionPage() {
 
 
       {/* =====================================================
-          NAYAC / TRANSMISSION
+          NAYGAL ACADEMY / TRANSMISSION
       ===================================================== */}
       <section className="bg-[#edf7e7] py-20 sm:py-24">
 
@@ -422,7 +422,7 @@ export default function MissionPage() {
               </h2>
 
               <p className="mt-6 text-lg leading-8 text-slate-600">
-                C'est notamment pour cette raison que NAYGAL Academy, NAYAC,
+                C'est notamment pour cette raison que NAYGAL Academy, NAYGAL ACADEMY,
                 occupe une place importante dans notre vision.
               </p>
 
@@ -437,7 +437,7 @@ export default function MissionPage() {
                 href="/academy"
                 className="mt-8 inline-flex items-center font-semibold text-[#032965] transition hover:text-[#438a2c]"
               >
-                Découvrir NAYAC
+                Découvrir NAYGAL ACADEMY
                 <span className="ml-2">→</span>
               </Link>
 

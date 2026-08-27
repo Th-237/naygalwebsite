@@ -504,7 +504,7 @@ export default function AboutPage() {
       </section>
 
       {/* =====================================================
-          NAYGAL / NAYAC / MOVEMENT
+          NAYGAL / NAYGAL ACADEMY / MOVEMENT
       ===================================================== */}
       <section className="bg-[#020817] py-24 sm:py-32">
 
@@ -558,7 +558,7 @@ export default function AboutPage() {
             >
 
               <span className="text-xs font-bold tracking-[.2em] text-[#68bd49]">
-                NAYAC
+                NAYGAL ACADEMY
               </span>
 
               <h3 className="mt-12 text-3xl font-semibold">

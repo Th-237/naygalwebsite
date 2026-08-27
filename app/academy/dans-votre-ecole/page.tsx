@@ -76,7 +76,7 @@ export default function AcademyInSchoolPage() {
         </div>
       </section>
 
-      {/* GALERIE NAYAC */}
+      {/* GALERIE NAYGAL ACADEMY */}
       <section className="bg-white py-12">
         <div className="container-custom">
           <div className="max-w-3xl">

@@ -4,36 +4,36 @@ import Image from 'next/image'
 const team = [
   {
     number: '01',
-    name: 'Nom & Prénom',
+    name: 'Les éclaireurs',
     role: 'Direction & Stratégie',
-    category: 'Leadership',
+    category: 'Vision',
     description:
       'Pilote la vision de NAYGAL, son développement stratégique et la construction de partenariats durables.',
     expertise: ['Stratégie', 'Innovation', 'Développement'],
   },
   {
     number: '02',
-    name: 'Nom & Prénom',
+    name: 'Les bâtisseurs',
     role: 'Infrastructure & Réseaux',
-    category: 'Technology',
+    category: 'Technologie',
     description:
       'Conçoit et déploie les architectures réseaux, systèmes et infrastructures nécessaires aux organisations.',
     expertise: ['Réseaux', 'Systèmes', 'Infrastructure'],
   },
   {
     number: '03',
-    name: 'Nom & Prénom',
+    name: 'Les défenseurs',
     role: 'Cybersécurité',
-    category: 'Security',
+    category: 'Protection',
     description:
       'Accompagne les organisations dans la sécurisation de leurs infrastructures, données et environnements numériques.',
     expertise: ['Cybersecurity', 'Audit', 'Protection'],
   },
   {
     number: '04',
-    name: 'Nom & Prénom',
+    name: 'Les passeurs',
     role: 'NAYGAL Academy',
-    category: 'Education',
+    category: 'Transmission',
     description:
       'Contribue au développement des programmes de formation, des ateliers et des initiatives de transmission des compétences.',
     expertise: ['Formation', 'Pédagogie', 'Numérique'],
@@ -222,87 +222,69 @@ export default function EquipePage() {
 
             <h2 className="mt-6 text-4xl font-semibold tracking-[-.05em] sm:text-6xl">
 
-              Les personnes
+              Le collectif
               <span className="text-slate-500">
-                {' '}qui construisent NAYGAL.
+                {' '}derrière NAYGAL.
               </span>
 
             </h2>
 
             <p className="mt-6 leading-8 text-slate-400">
-              Une équipe en construction permanente, réunie autour de
-              compétences complémentaires et d’une volonté commune :
-              créer des solutions utiles et transmettre les connaissances.
+              NAYGAL rassemble des profils complémentaires sans exposer
+              les identités individuelles. Ce sont les expertises, les
+              responsabilités et les projets qui parlent avant tout.
             </p>
 
           </div>
 
-          <div className="mt-16 grid gap-px border border-white/10 bg-white/10 md:grid-cols-2">
+          <div className="mt-16 border-t border-white/15">
 
             {team.map((member) => (
 
               <article
                 key={member.number}
-                className="group bg-[#020817] transition duration-300 hover:bg-[#08172d]"
+                className="group relative grid gap-8 border-b border-white/15 py-10 transition duration-500 hover:bg-white/[0.025] sm:py-12 lg:grid-cols-[120px_1.1fr_1fr] lg:items-center lg:gap-12"
               >
 
-                {/* IMAGE */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-[#0a1b33]">
+                <div className="relative overflow-hidden">
 
-                  <Image
-                    src={`https://images.unsplash.com/photo-${[
-                      '1560250097-0b93528c311a',
-                      '1519085360753-af0119f7cbe7',
-                      '1573496359142-b8d87734a5a2',
-                      '1551836022-d5d88e9218df',
-                    ][Number(member.number) - 1]}?auto=format&fit=crop&w=1200&q=85`}
-                    alt={member.name}
-                     fill sizes="100vw"   className="h-full w-full object-cover grayscale transition duration-700 group-hover:scale-105 group-hover:grayscale-0"
-                  />
+                  <span className="text-7xl font-semibold leading-none tracking-[-.1em] text-white/[0.08] transition duration-500 group-hover:text-[#68bd49]/30 sm:text-8xl">
+                    {member.number}
+                  </span>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-transparent to-transparent" />
-
-                  <div className="absolute left-6 top-6">
-
-                    <span className="rounded-full border border-white/20 bg-black/30 px-3 py-1 text-[10px] font-bold uppercase tracking-[.18em] backdrop-blur-md">
-                      {member.category}
-                    </span>
-
-                  </div>
-
-                  <div className="absolute bottom-6 left-6">
-
-                    <span className="text-xs font-bold text-[#68bd49]">
-                      {member.number}
-                    </span>
-
-                  </div>
+                  <span className="absolute left-1 top-1/2 h-px w-16 bg-[#68bd49] opacity-0 transition duration-500 group-hover:opacity-100" />
 
                 </div>
 
-                {/* CONTENT */}
+                <div>
 
-                <div className="p-8 sm:p-10">
-
-                  <p className="text-sm font-semibold text-[#68bd49]">
-                    {member.role}
+                  <p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#68bd49]">
+                    {member.category}
                   </p>
 
-                  <h3 className="mt-2 text-3xl font-semibold tracking-tight">
+                  <h3 className="mt-3 text-3xl font-semibold tracking-[-.04em] sm:text-4xl">
                     {member.name}
                   </h3>
 
-                  <p className="mt-5 leading-7 text-slate-400">
+                  <p className="mt-2 text-sm text-slate-500">
+                    {member.role}
+                  </p>
+
+                </div>
+
+                <div>
+
+                  <p className="max-w-xl leading-7 text-slate-400">
                     {member.description}
                   </p>
 
-                  <div className="mt-7 flex flex-wrap gap-2">
+                  <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
 
                     {member.expertise.map((item) => (
 
                       <span
                         key={item}
-                        className="border border-white/10 px-3 py-1.5 text-xs text-slate-400"
+                        className="text-xs uppercase tracking-[.12em] text-slate-500 transition-colors group-hover:text-slate-300"
                       >
                         {item}
                       </span>

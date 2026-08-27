@@ -92,7 +92,7 @@ const formationOptions = [
   'Formation professionnelle',
   'Formation entreprise',
   'Atelier',
-  'NAYAC',
+  'NAYGAL ACADEMY',
   'Formation scolaire',
   'Événement éducatif',
 ]
@@ -611,7 +611,7 @@ export default function ContactPage() {
                   'Cloud',
                   'Logiciels',
                   'Intelligence artificielle',
-                  'NAYAC',
+                  'NAYGAL ACADEMY',
                 ].map((item, index) => (
 
                   <div

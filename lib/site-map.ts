@@ -49,7 +49,7 @@ export const siteNavigation: NavigationItem[] = [
     href: '/academy',
     description: 'Développer les compétences qui feront avancer le numérique.',
     children: [
-      { name: 'NAYAC dans votre école', href: '/academy/dans-votre-ecole' },
+      { name: 'NAYGAL ACADEMY dans votre école', href: '/academy/dans-votre-ecole' },
       { name: 'Formations', href: '/academy/formations' },
       { name: 'Ateliers', href: '/academy/ateliers' },
       { name: 'Événements', href: '/academy/evenements' },

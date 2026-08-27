@@ -259,7 +259,7 @@ export default function AteliersPage() {
 
               <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
 
-                Les ateliers NAYAC proposent des expériences pratiques pour
+                Les ateliers NAYGAL ACADEMY proposent des expériences pratiques pour
                 découvrir le numérique, les sciences, la création, les métiers
                 et les technologies qui façonnent notre monde.
 
@@ -352,7 +352,7 @@ export default function AteliersPage() {
               petit jeu. Un adolescent peut découvrir un métier en visitant
               une entreprise. Un étudiant peut expérimenter l’intelligence
               artificielle. Un professionnel peut automatiser une tâche
-              réelle. C’est cette diversité d’expériences que NAYAC souhaite
+              réelle. C’est cette diversité d’expériences que NAYGAL ACADEMY souhaite
               rendre accessible.
 
             </p>
@@ -384,7 +384,7 @@ export default function AteliersPage() {
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
 
-              NAYAC accompagne les participants progressivement, avec des
+              NAYGAL ACADEMY accompagne les participants progressivement, avec des
               contenus et des expériences adaptés à leur âge, leur niveau et
               leurs objectifs.
 
@@ -497,7 +497,7 @@ export default function AteliersPage() {
 
             <p className="max-w-3xl text-lg leading-8 text-slate-600">
 
-              Les ateliers NAYAC ouvrent aussi les portes de la création,
+              Les ateliers NAYGAL ACADEMY ouvrent aussi les portes de la création,
               des sciences, de la culture technologique et du monde
               professionnel. L’objectif : permettre à chacun d’explorer des
               domaines différents avant de choisir ceux qui lui correspondent.
@@ -570,7 +570,7 @@ export default function AteliersPage() {
 
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
 
-                NAYAC souhaite créer des passerelles entre les apprenants,
+                NAYGAL ACADEMY souhaite créer des passerelles entre les apprenants,
                 les écoles, les universités, les entreprises et les
                 professionnels.
 
@@ -649,7 +649,7 @@ export default function AteliersPage() {
           </p>
 
           <h2 className="mx-auto mt-3 max-w-3xl text-[#032965]">
-            Vous souhaitez organiser un atelier NAYAC ?
+            Vous souhaitez organiser un atelier NAYGAL ACADEMY ?
           </h2>
 
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-600">

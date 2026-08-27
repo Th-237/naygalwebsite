@@ -4,7 +4,7 @@ import Image from 'next/image'
 const techFormations = [
   {
     title: 'Fondamentaux du numérique',
-    category: 'NAYAC START',
+    category: 'NAYGAL ACADEMY START',
     description:
       'Construisez une base solide pour comprendre les outils, les usages et les environnements numériques.',
     level: 'Débutant',
@@ -15,7 +15,7 @@ const techFormations = [
   },
   {
     title: 'Réseaux & Infrastructures',
-    category: 'NAYAC TECH',
+    category: 'NAYGAL ACADEMY TECH',
     description:
       'Apprenez à concevoir, déployer et administrer des réseaux, serveurs et infrastructures modernes.',
     level: 'Intermédiaire',
@@ -26,7 +26,7 @@ const techFormations = [
   },
   {
     title: 'Cybersécurité',
-    category: 'NAYAC TECH',
+    category: 'NAYGAL ACADEMY TECH',
     description:
       'Développez les compétences nécessaires pour comprendre les menaces et protéger les systèmes numériques.',
     level: 'Intermédiaire',
@@ -37,7 +37,7 @@ const techFormations = [
   },
   {
     title: 'Intelligence artificielle',
-    category: 'NAYAC AI',
+    category: 'NAYGAL ACADEMY AI',
     description:
       'Découvrez l’IA générative et apprenez à créer des solutions concrètes pour apprendre, travailler et automatiser.',
     level: 'Débutant → Intermédiaire',
@@ -47,7 +47,7 @@ const techFormations = [
   },
   {
     title: 'Développement & automatisation',
-    category: 'NAYAC TECH',
+    category: 'NAYGAL ACADEMY TECH',
     description:
       'Transformez des idées et des besoins métiers en applications et solutions numériques.',
     level: 'Débutant → Intermédiaire',
@@ -57,7 +57,7 @@ const techFormations = [
   },
   {
     title: 'Cloud & systèmes',
-    category: 'NAYAC TECH',
+    category: 'NAYGAL ACADEMY TECH',
     description:
       'Comprenez les architectures cloud et apprenez à administrer des environnements modernes.',
     level: 'Intermédiaire',
@@ -184,7 +184,7 @@ export default function FormationsPage() {
               <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur">
                 <span className="h-2 w-2 rounded-full bg-[#52a234]" />
                 <span className="text-sm font-semibold">
-                  NAYGAL ACADEMY · NAYAC
+                  NAYGAL ACADEMY
                 </span>
               </div>
 
@@ -312,7 +312,7 @@ export default function FormationsPage() {
         </div>
       </section>
 
-      {/* NAYAC TECH */}
+      {/* NAYGAL ACADEMY TECH */}
       <section id="tech" className="scroll-mt-20 bg-[#f5f8fc] py-20 sm:py-28">
         <div className="container-custom">
 
@@ -320,7 +320,7 @@ export default function FormationsPage() {
 
             <div>
               <p className="text-sm font-bold uppercase tracking-[.18em] text-[#52a234]">
-                NAYAC TECH
+                NAYGAL ACADEMY TECH
               </p>
 
               <h2 className="mt-3 text-3xl font-bold tracking-tight text-[#032965] sm:text-4xl">
@@ -412,7 +412,7 @@ export default function FormationsPage() {
         </div>
       </section>
 
-      {/* NAYAC PRO */}
+      {/* NAYGAL ACADEMY PRO */}
       <section id="pro" className="scroll-mt-20 bg-white py-20 sm:py-28">
         <div className="container-custom">
 
@@ -601,7 +601,7 @@ export default function FormationsPage() {
             </h2>
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              NAYAC cherche à réduire l’écart entre ce que l’on apprend et ce
+              NAYGAL ACADEMY cherche à réduire l’écart entre ce que l’on apprend et ce
               que l’on est capable de réaliser.
             </p>
           </div>
@@ -646,7 +646,7 @@ export default function FormationsPage() {
               </p>
 
               <h2 className="mt-3 text-3xl font-bold text-[#032965]">
-                NAYAC s’adresse à toute personne qui veut progresser.
+                NAYGAL ACADEMY s’adresse à toute personne qui veut progresser.
               </h2>
             </div>
 
@@ -690,7 +690,7 @@ export default function FormationsPage() {
 
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-blue-100">
               Que vous souhaitiez apprendre la technologie ou simplement
-              mieux l’utiliser dans votre métier, NAYAC peut vous accompagner.
+                mieux l’utiliser dans votre métier, NAYGAL ACADEMY peut vous accompagner.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
@@ -699,14 +699,14 @@ export default function FormationsPage() {
                 href="/contact"
                 className="rounded-md bg-[#52a234] px-7 py-4 font-semibold text-white transition hover:bg-[#438a2c]"
               >
-                Parler à NAYAC
+                Parler à NAYGAL ACADEMY
               </Link>
 
               <Link
                 href="/academy"
                 className="rounded-md border border-white/25 px-7 py-4 font-semibold text-white transition hover:bg-white/10"
               >
-                Découvrir NAYAC
+                Découvrir NAYGAL ACADEMY
               </Link>
 
             </div>

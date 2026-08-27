@@ -65,7 +65,7 @@ export default function AcademyEvenementsPage() {
                   Parler de votre événement
                 </Link>
                 <Link href="/academy/dans-votre-ecole" className="inline-flex items-center justify-center rounded-full border border-[#032965] bg-white px-6 py-3.5 text-sm font-semibold text-[#032965] transition hover:bg-slate-50">
-                  En savoir plus sur NAYAC
+                  En savoir plus sur NAYGAL ACADEMY
                 </Link>
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function AcademyEvenementsPage() {
           <div>
             <p className="eyebrow text-[#438a2c]">Événement académique</p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">JTECH à l’IUT : innovation, projets et montée en compétences</h2>
-            <p className="mt-6 text-lg leading-8 text-slate-600">Cette journée technologique a permis aux étudiants et aux partenaires de présenter des projets concrets en IA, cybersécurité, réseaux et développement. Elle a aussi été l’occasion de découvrir les métiers du numérique et les parcours NAYAC disponibles en partenariat avec l’IUT.</p>
+            <p className="mt-6 text-lg leading-8 text-slate-600">Cette journée technologique a permis aux étudiants et aux partenaires de présenter des projets concrets en IA, cybersécurité, réseaux et développement. Elle a aussi été l’occasion de découvrir les métiers du numérique et les parcours NAYGAL ACADEMY disponibles en partenariat avec l’IUT.</p>
           </div>
 
           <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">

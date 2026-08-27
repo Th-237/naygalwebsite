@@ -320,7 +320,7 @@ export default function AcademyPage() {
       </section>
 
       {/* =========================================================
-          NAYAC DANS VOTRE ECOLE
+          NAYGAL ACADEMY DANS VOTRE ECOLE
       ========================================================= */}
       <section data-reveal className="border-y border-[#cfe1ef] bg-[#e8f3ff] py-10">
 

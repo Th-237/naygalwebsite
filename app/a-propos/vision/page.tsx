@@ -543,7 +543,7 @@ export default function VisionPage() {
               </span>
 
               <h3 className="mt-12 text-2xl font-semibold">
-                NAYAC
+                NAYGAL ACADEMY
               </h3>
 
               <p className="mt-4 leading-7 text-slate-400">
@@ -552,7 +552,7 @@ export default function VisionPage() {
               </p>
 
               <span className="mt-8 block text-sm font-semibold text-[#68bd49]">
-                Découvrir NAYAC →
+                Découvrir NAYGAL ACADEMY →
               </span>
 
             </Link>

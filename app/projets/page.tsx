@@ -121,8 +121,8 @@ const projets = [
     problem:
       "L'accès à certaines ressources éducatives et compétences numériques reste inégal, tandis que de nombreux contenus sont peu adaptés aux contextes locaux.",
     solution:
-      "NAYAC Online ambitionne de proposer un environnement numérique permettant d'apprendre, de pratiquer et de progresser autour de compétences adaptées aux réalités africaines.",
-    tags: ['EdTech', 'Formation', 'E-learning', 'NAYAC'],
+      "NAYGAL ACADEMY Online ambitionne de proposer un environnement numérique permettant d'apprendre, de pratiquer et de progresser autour de compétences adaptées aux réalités africaines.",
+    tags: ['EdTech', 'Formation', 'E-learning', 'NAYGAL ACADEMY'],
     image:
       '/images/projets/acad/acad.png',
   },

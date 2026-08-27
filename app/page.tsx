@@ -721,7 +721,7 @@ export default function Home() {
               <div className="absolute bottom-8 left-8 text-white">
 
                 <p className="text-xs font-bold uppercase tracking-[.18em] text-[#a4d78f]">
-                  NAYGAL Academy · NAYAC
+                  NAYGAL Academy · NAYGAL ACADEMY
                 </p>
 
                 <p className="mt-3 text-3xl font-semibold">
@@ -742,7 +742,7 @@ export default function Home() {
             <div className="bg-[#eaf3f9] p-8 sm:p-12 lg:p-16">
 
               <p className="text-xs font-bold uppercase tracking-[.18em] text-[#438a2c]">
-                NAYAC
+                  NAYGAL ACADEMY
               </p>
 
               <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-.04em] text-[#032965] sm:text-5xl">
@@ -843,7 +843,7 @@ export default function Home() {
 
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-blue-100/75">
 
-                  Un espace NAYAC dédié aux formations, ateliers, projets
+                  Un espace NAYGAL ACADEMY dédié aux formations, ateliers, projets
                   collaboratifs, réseaux, cybersécurité, robotique,
                   développement et intelligence artificielle.
 
