@@ -35,6 +35,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE,
   },
+  icons: {
+    icon: '/images/favico(1).ico',
+    shortcut: '/images/favico(1).ico',
+  },
   openGraph: {
     title: 'NAYGAL | Expert IT, cybersécurité, cloud et IA au Cameroun',
     description:
