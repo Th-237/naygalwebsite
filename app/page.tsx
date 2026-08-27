@@ -182,64 +182,45 @@ export default function Home() {
         <div className="absolute inset-0">
 
           <div className="hero-slide hero-slide-1">
-            <Image
-              src="/images/home/caroussel_principal/Hacking-ARTP-1.webp"
-              alt="Équipe travaillant autour d'un projet numérique"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover"
-            />
+            <picture>
+              <source media="(max-width: 640px)" srcSet="/images/home/caroussel_principal/mobile/Hacking-ARTP-1.webp" />
+              <Image src="/images/home/caroussel_principal/Hacking-ARTP-1.webp" alt="Équipe travaillant autour d'un projet numérique" fill priority sizes="100vw" className="object-cover" />
+            </picture>
           </div>
 
           <div className="hero-slide hero-slide-2">
-            <Image
-              src="/images/home/caroussel_principal/pexels-brett-sayles-2881224.jpg"
-              alt="Équipe collaborative"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+            <picture>
+              <source media="(max-width: 640px)" srcSet="/images/home/caroussel_principal/mobile/pexels-brett-sayles-2881224.webp" />
+              <Image src="/images/home/caroussel_principal/pexels-brett-sayles-2881224.jpg" alt="Équipe collaborative" fill sizes="100vw" className="object-cover" />
+            </picture>
           </div>
 
           <div className="hero-slide hero-slide-3">
-            <Image
-              src="/images/home/caroussel_principal/pexels-roman-odintsov-11025019.jpg"
-              alt="Formation technologique"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+            <picture>
+              <source media="(max-width: 640px)" srcSet="/images/home/caroussel_principal/mobile/pexels-roman-odintsov-11025019.webp" />
+              <Image src="/images/home/caroussel_principal/pexels-roman-odintsov-11025019.jpg" alt="Formation technologique" fill sizes="100vw" className="object-cover" />
+            </picture>
           </div>
 
           <div className="hero-slide hero-slide-4">
-            <Image
-              src="/images/home/caroussel_principal/pexels-sejio402-6429140.jpg"
-              alt="Infrastructure informatique"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+            <picture>
+              <source media="(max-width: 640px)" srcSet="/images/home/caroussel_principal/mobile/pexels-sejio402-6429140.webp" />
+              <Image src="/images/home/caroussel_principal/pexels-sejio402-6429140.jpg" alt="Infrastructure informatique" fill sizes="100vw" className="object-cover" />
+            </picture>
           </div>
 
           <div className="hero-slide hero-slide-5">
-            <Image
-              src="/images/home/caroussel_principal/pexels-magda-ehlers-pexels-34182367.jpg"
-              alt="Technologies numériques"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+            <picture>
+              <source media="(max-width: 640px)" srcSet="/images/home/caroussel_principal/mobile/pexels-magda-ehlers-pexels-34182367.webp" />
+              <Image src="/images/home/caroussel_principal/pexels-magda-ehlers-pexels-34182367.jpg" alt="Technologies numériques" fill sizes="100vw" className="object-cover" />
+            </picture>
           </div>
 
           <div className="hero-slide hero-slide-6">
-            <Image
-              src="/images/home/caroussel_principal/pexels-ron-lach-10638075.jpg"
-              alt="Collaboration autour d'un projet"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+            <picture>
+              <source media="(max-width: 640px)" srcSet="/images/home/caroussel_principal/mobile/pexels-ron-lach-10638075.webp" />
+              <Image src="/images/home/caroussel_principal/pexels-ron-lach-10638075.jpg" alt="Collaboration autour d'un projet" fill sizes="100vw" className="object-cover" />
+            </picture>
           </div>
 
         </div>
