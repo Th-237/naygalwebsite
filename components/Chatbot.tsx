@@ -22,6 +22,7 @@ const quickQuestions = [
   'Explorer les expertises',
   'Trouver une formation',
   'Contact / Devis',
+  'Quel service me conseillez-vous ?',
 ]
 
 function getAnswer(question: string): Pick<Message, 'text' | 'actionHref' | 'actionLabel' | 'actionSummary'> {
@@ -76,6 +77,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('')
   const [messages, setMessages] = useState<Message[]>([welcomeMessage])
   const [pendingAction, setPendingAction] = useState<{ href: string; label: string; summary: string } | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -98,6 +100,7 @@ export default function Chatbot() {
 
   const sendMessage = (event?: FormEvent, suggestedQuestion?: string) => {
     event?.preventDefault()
+    if (isLoading) return
     const question = (suggestedQuestion ?? input).trim()
     if (!question) return
 
@@ -117,8 +120,10 @@ export default function Chatbot() {
 
     // First try server-side retrieval (RAG-like). If fails, fallback to local rule-based answers
     ;(async () => {
-      setMessages((current) => [...current, { id: Date.now(), sender: 'user', text: question }])
+      const messageId = Date.now()
+      setMessages((current) => [...current, { id: messageId, sender: 'user', text: question }])
       setInput('')
+      setIsLoading(true)
       try {
         const res = await fetch('/api/nayilie/search', {
           method: 'POST',
@@ -133,11 +138,11 @@ export default function Chatbot() {
             { id: Date.now() + 1, sender: 'bot', text: payload.answer, actionHref: candidate?.path, actionLabel: candidate ? `Voir ${candidate.title}` : undefined, actionSummary: candidate?.excerpt },
           ])
           setPendingAction(payload.candidates && payload.candidates[0] ? { href: payload.candidates[0].path, label: `Voir ${payload.candidates[0].title}`, summary: payload.candidates[0].excerpt } : null)
+          setIsLoading(false)
           return
         }
       } catch (e) {
-        // ignore and fallback
-        // console.error('Search API error', e)
+        // The local responder below keeps the assistant useful if the API is temporarily unavailable.
       }
 
       // fallback to simple rule-based reply
@@ -147,23 +152,25 @@ export default function Chatbot() {
         { id: Date.now() + 1, sender: 'bot', ...answer },
       ])
       setPendingAction(answer.actionHref && answer.actionLabel && answer.actionSummary ? { href: answer.actionHref, label: answer.actionLabel, summary: answer.actionSummary } : null)
+      setIsLoading(false)
     })()
   }
 
   return (
     <div className="fixed bottom-5 right-5 z-[60] sm:bottom-6 sm:right-6">
       {isOpen && (
-        <section id="nayilie-chatbot" role="dialog" aria-modal="false" aria-labelledby="chatbot-title" className="mb-4 flex h-[min(560px,calc(100vh-7rem))] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-2xl shadow-slate-900/25">
+        <section id="nayilie-chatbot" role="dialog" aria-modal="false" aria-labelledby="chatbot-title" className="mb-3 flex h-[min(640px,calc(100dvh-5.5rem))] w-[calc(100vw-1.5rem)] max-w-sm flex-col overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-2xl shadow-slate-900/25 sm:mb-4 sm:h-[min(560px,calc(100vh-7rem))] sm:w-[calc(100vw-2.5rem)]">
           <header className="flex items-center justify-between bg-[#021d47] px-5 py-4 text-white">
             <div className="flex items-center gap-3"><span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#52a234] font-bold text-[#021d47]">Ni</span><div><h2 id="chatbot-title" className="font-semibold">NAYILIE — Guide</h2><p className="text-xs text-[#b8dfa7]">En ligne pour vous orienter</p></div></div>
             <button type="button" onClick={() => setIsOpen(false)} className="rounded-lg p-2 text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#b8dfa7]" aria-label="Fermer l’assistant"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path strokeLinecap="round" d="m6 6 12 12M18 6 6 18" /></svg></button>
           </header>
           <div className="flex-1 space-y-3 overflow-y-auto bg-slate-50 p-4" aria-live="polite" aria-label="Conversation avec l’assistant">
-            {messages.map((message) => <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}><div className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-6 ${message.sender === 'user' ? 'rounded-br-md bg-[#021d47] text-white' : 'rounded-bl-md bg-white text-slate-700 shadow-sm ring-1 ring-slate-200'}`}><p>{message.text}</p>{message.actionHref && message.actionLabel && message.actionSummary && <div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => redirectToAction({ href: message.actionHref!, label: message.actionLabel!, summary: message.actionSummary! })} className="rounded-lg bg-[#52a234] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#438a2c]">{message.actionLabel}</button><button type="button" onClick={() => setPendingAction(null)} className="rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-slate-600 transition hover:bg-slate-50">Non merci</button></div>}</div></div>)}
+            {messages.map((message) => <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}><div className={`max-w-[88%] rounded-2xl px-4 py-3 text-sm leading-6 ${message.sender === 'user' ? 'rounded-br-md bg-[#021d47] text-white' : 'rounded-bl-md bg-white text-slate-700 shadow-sm ring-1 ring-slate-200'}`}><p>{message.text}</p>{message.actionHref && message.actionLabel && message.actionSummary && <div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => redirectToAction({ href: message.actionHref!, label: message.actionLabel!, summary: message.actionSummary! })} className="rounded-lg bg-[#52a234] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#438a2c]">{message.actionLabel}</button><button type="button" onClick={() => setPendingAction(null)} className="rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-slate-600 transition hover:bg-slate-50">Non merci</button></div>}</div></div>)}
+            {isLoading && <div className="flex justify-start"><div className="rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm text-slate-500 shadow-sm ring-1 ring-slate-200" aria-label="NAYILIE prépare une réponse"><span className="inline-flex gap-1"><span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#52a234] [animation-delay:-.2s]" /><span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#52a234] [animation-delay:-.1s]" /><span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#52a234]" /></span></div></div>}
           </div>
           <div className="border-t border-slate-100 bg-white p-4">
             <div className="mb-3 flex gap-2 overflow-x-auto pb-1">{quickQuestions.map((question) => <button key={question} type="button" onClick={() => sendMessage(undefined, question)} className="shrink-0 rounded-full border border-[#52a234]/30 bg-[#edf7e7] px-3 py-1.5 text-xs font-semibold text-[#276f91] transition hover:bg-[#52a234] hover:text-white">{question}</button>)}</div>
-            <form onSubmit={sendMessage} className="flex items-center gap-2"><label className="sr-only" htmlFor="chatbot-input">Votre message</label><input ref={inputRef} id="chatbot-input" value={input} onChange={(event) => setInput(event.target.value)} className="min-w-0 flex-1 rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20" placeholder="Écrivez votre message…" /><button type="submit" className="rounded-xl bg-[#52a234] p-3 text-white transition hover:bg-[#438a2c] focus:outline-none focus:ring-2 focus:ring-[#52a234] focus:ring-offset-2" aria-label="Envoyer le message"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="m22 2-7 20-4-9-9-4Z" /></svg></button></form>
+            <form onSubmit={sendMessage} className="flex items-center gap-2"><label className="sr-only" htmlFor="chatbot-input">Votre message</label><input ref={inputRef} id="chatbot-input" value={input} onChange={(event) => setInput(event.target.value)} disabled={isLoading} className="min-w-0 flex-1 rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20 disabled:bg-slate-50" placeholder="Écrivez votre question…" /><button type="submit" disabled={isLoading} className="rounded-xl bg-[#52a234] p-3 text-white transition hover:bg-[#438a2c] focus:outline-none focus:ring-2 focus:ring-[#52a234] focus:ring-offset-2 disabled:cursor-wait disabled:opacity-60" aria-label="Envoyer le message"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path strokeLinecap="round" strokeLinejoin="round" d="m22 2-7 20-4-9-9-4Z" /></svg></button></form>
           </div>
         </section>
       )}
