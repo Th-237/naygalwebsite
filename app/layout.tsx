@@ -4,6 +4,7 @@ import Footer from '@/components/Footer'
 import Chatbot from '@/components/Chatbot'
 import SectionTransitionLoader from '@/components/SectionTransitionLoader'
 import ScrollReveal from '@/components/ScrollReveal'
+import MobileExperienceNotice from '@/components/MobileExperienceNotice'
 import { getOrganizationStructuredData, getWebsiteStructuredData } from '@/lib/seo'
 
 
@@ -96,6 +97,7 @@ export default function RootLayout({
         <Header />
         <SectionTransitionLoader />
         <ScrollReveal />
+        <MobileExperienceNotice />
         <main className="min-h-screen">{children}</main>
         <Footer />
         <Chatbot />
