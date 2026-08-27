@@ -440,7 +440,7 @@ export default function AcademyPage() {
             </p>
 
             <h2 className="mt-3 text-4xl font-semibold tracking-tight text-[#032965] sm:text-5xl">
-              Une Academy pensée pour des profils différents.
+              Une Academie pensée pour des profils différents.
             </h2>
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
