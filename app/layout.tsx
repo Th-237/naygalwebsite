@@ -7,6 +7,8 @@ import ScrollReveal from '@/components/ScrollReveal'
 import MobileExperienceNotice from '@/components/MobileExperienceNotice'
 import { getOrganizationStructuredData, getWebsiteStructuredData } from '@/lib/seo'
 
+// 1. IMPORTATION CORRECTE DE VERCEL ANALYTICS ICI :
+import { Analytics } from "@vercel/analytics/next"
 
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -98,9 +100,15 @@ export default function RootLayout({
         <SectionTransitionLoader />
         <ScrollReveal />
         <MobileExperienceNotice />
+        
         <main className="min-h-screen">{children}</main>
+        
         <Footer />
         <Chatbot />
+
+        {/* 2. LE COMPOSANT ANALYTICS EST PLACÉ PROPREMENT ICI AVANT LA FERMETURE DU BODY : */}
+        <Analytics />
+        
       </body>
     </html>
   )
