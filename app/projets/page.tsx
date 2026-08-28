@@ -270,7 +270,7 @@ export default function ProjetsPage() {
                     <Image
                       src={projet.image}
                       alt={projet.title}
-                       fill sizes="100vw"   className={
+                       fill sizes="(max-width: 1024px) 100vw, 45vw"   className={
                         projet.title === 'OPEP'
                           ? 'absolute inset-0 h-full w-full bg-white object-contain'
                           : 'absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105'

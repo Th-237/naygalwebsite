@@ -386,7 +386,7 @@ export default function AboutPage() {
                 <Image
                   src={pillar.image}
                   alt={pillar.title}
-                   fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-30 grayscale transition duration-700 group-hover:scale-105 group-hover:opacity-45 group-hover:grayscale-0"
+                   fill sizes="(max-width: 768px) 100vw, 50vw"   className="absolute inset-0 h-full w-full object-cover opacity-30 grayscale transition duration-700 group-hover:scale-105 group-hover:opacity-45 group-hover:grayscale-0"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-[#020817]/70 to-transparent" />

@@ -20,16 +20,18 @@ const SITE = process.env.SITE_URL || 'https://naygal.cm'
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
   title: {
-    default: 'NAYGAL | Expert IT, cybersécurité, cloud et IA au Cameroun',
+    default: 'NAYGAL | Expert IT, cybersécurité, formation et IA au Cameroun',
     template: '%s | NAYGAL',
   },
   description:
-    'NAYGAL accompagne les organisations au Cameroun dans leur infrastructure IT, cybersécurité, cloud, intelligence artificielle et transformation numérique.',
+    'NAYGAL accompagne les organisations au Cameroun dans leur infrastructure IT, cybersécurité, cloud, intelligence artificielle, la formation et transformation numérique.',
   keywords: [
     'NAYGAL',
     'infrastructure réseau Cameroun',
     'cybersécurité Cameroun',
     'cloud entreprise Cameroun',
+    'education technologique Cameroun',
+    'numerique',
     'intelligence artificielle Cameroun',
     'transformation numérique Cameroun',
     'technologie Africa',
@@ -39,13 +41,13 @@ export const metadata: Metadata = {
     canonical: SITE,
   },
   icons: {
-    icon: '/images/favico(1).ico',
-    shortcut: '/images/favico(1).ico',
+    icon: '/images/favico.ico',
+    shortcut: '/images/favico.ico',
   },
   openGraph: {
-    title: 'NAYGAL | Expert IT, cybersécurité, cloud et IA au Cameroun',
+    title: 'NAYGAL | Expert IT, cybersécurité, formation et IA au Cameroun',
     description:
-      'NAYGAL accompagne les organisations au Cameroun dans leur infrastructure IT, cybersécurité, cloud, intelligence artificielle et transformation numérique.',
+      'NAYGAL accompagne les organisations au Cameroun dans leur infrastructure IT, cybersécurité, cloud, intelligence artificielle, la formation et transformation numérique.',
     url: SITE,
     siteName: 'NAYGAL',
     locale: 'fr_FR',
@@ -61,9 +63,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'NAYGAL | Expert IT, cybersécurité, cloud et IA au Cameroun',
+    title: 'NAYGAL | Expert IT, cybersécurité, formation et IA au Cameroun',
     description:
-      'NAYGAL accompagne les organisations au Cameroun dans leur infrastructure IT, cybersécurité, cloud, intelligence artificielle et transformation numérique.',
+      'NAYGAL accompagne les organisations au Cameroun dans leur infrastructure IT, cybersécurité, cloud, intelligence artificielle, la formation et transformation numérique.',
     images: ['/images/home/NAYTECHROOM.png'],
   },
   robots: {

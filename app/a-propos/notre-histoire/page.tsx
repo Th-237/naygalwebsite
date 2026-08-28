@@ -315,7 +315,7 @@ export default function NotreHistoirePage() {
                         <Image
                           src={milestone.image}
                           alt={milestone.title}
-                           fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0"
+                           fill sizes="(max-width: 1024px) 100vw, 50vw"   className="absolute inset-0 h-full w-full object-cover grayscale transition duration-700 hover:scale-105 hover:grayscale-0"
                         />
 
                         <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-transparent to-transparent" />

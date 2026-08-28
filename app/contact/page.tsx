@@ -572,7 +572,7 @@ export default function ContactPage() {
               <Image
                 src='/images/contact/expertise.jpg'
                 alt="Équipe travaillant sur un projet"
-                 fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                  fill sizes="(max-width: 768px) calc(100vw - 2rem), 70vw"   className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#03101f]/95 via-[#03101f]/50 to-transparent" />

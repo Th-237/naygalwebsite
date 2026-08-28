@@ -404,12 +404,12 @@ export default function ValeursPage() {
 
             </div>
 
-            <div className="relative overflow-hidden border border-white/10">
+            <div className="relative h-[480px] overflow-hidden border border-white/10">
 
               <Image
                 src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=90"
                 alt="Technologie et réseau numérique"
-                 fill sizes="100vw"   className="h-[480px] w-full object-cover grayscale"
+                 fill sizes="(max-width: 1024px) 100vw, 50vw"   className="absolute inset-0 h-full w-full object-cover grayscale"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#020817] via-transparent to-transparent" />

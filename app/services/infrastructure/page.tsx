@@ -369,7 +369,7 @@ export default function InfrastructurePage() {
               <Image
                 src="/images/services/infrastructure/2.jpg"
                 alt="Technologie et infrastructure"
-                 fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-70"
+                  fill sizes="(max-width: 1024px) 100vw, 50vw"   className="absolute inset-0 h-full w-full object-cover opacity-70"
               />
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/20 to-[#032965]/80" />

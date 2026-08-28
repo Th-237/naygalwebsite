@@ -1036,7 +1036,7 @@ export default function CybersecuritePage() {
                 <Image
                   src="/images/services/cybersecurite/NAYGALSOC.webp"
                   alt="Opérations de cybersécurité"
-                   fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-50"
+                   fill sizes="(max-width: 1024px) 100vw, 40vw"   className="absolute inset-0 h-full w-full object-cover opacity-50"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-r from-[#06100c]/20 via-[#06100c]/30 to-[#06100c]" />

@@ -428,7 +428,7 @@ export default function MaintenancePage() {
               <Image
                 src="/images/services/maintenance/2.jpg"
                 alt="Équipe travaillant sur un environnement informatique"
-                 fill sizes="100vw"   className="absolute inset-0 h-full w-full object-cover opacity-70"
+                 fill sizes="(max-width: 1024px) 100vw, 50vw"   className="absolute inset-0 h-full w-full object-cover opacity-70"
               />
 
               <div className="absolute inset-0 bg-gradient-to-r from-[#032965]/10 to-[#032965]/90" />
