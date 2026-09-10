@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
 import { findResourceBySlug } from '../../../../lib/resources'
 
 // ✅ Définir SITE à l'extérieur, au niveau du module
@@ -43,6 +45,12 @@ export default async function ResourceDetailPage({ params }: Props) {
     return notFound()
   }
 
+  const htmlPath = 'htmlPath' in resource ? resource.htmlPath : null
+  const articleHtml = htmlPath
+    ? await readFile(path.join(process.cwd(), 'public/documents/ressources/articles', path.basename(htmlPath)), 'utf8')
+    : null
+  const articleBody = articleHtml?.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1] || articleHtml
+
   return (
     <main className="container-custom py-16">
       {/* Structured data for resource */}
@@ -63,12 +71,24 @@ export default async function ResourceDetailPage({ params }: Props) {
           ).replace(/</g, '\\u003c'),
         }}
       />
-      <div className="max-w-3xl">
+      <div className="max-w-5xl">
         <p className="text-sm font-bold uppercase tracking-[.12em] text-[#438a2c]">{resource.type}</p>
         <h1 className="mt-4 text-3xl font-semibold">{resource.title}</h1>
         <p className="mt-4 text-sm text-slate-600">{resource.description}</p>
 
-        {resource.href && resource.href.endsWith('.pdf') ? (
+        {articleBody ? (
+          <article className="article-document mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+            <div className="px-4 py-3 text-sm font-semibold text-slate-600 sm:px-8">Lecture en ligne</div>
+            <div
+              className="border-t border-slate-200"
+              // The source is a versioned article stored in this repository.
+              dangerouslySetInnerHTML={{ __html: articleBody }}
+            />
+            <footer className="border-t border-slate-200 px-6 py-6 text-center text-sm font-semibold text-slate-500 sm:px-8">
+              Éditeur : NAYGAL Cameroun
+            </footer>
+          </article>
+        ) : resource.href && resource.href.endsWith('.pdf') ? (
           <div className="mt-8 flex gap-4">
             <a href={resource.href} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#021d47] px-4 py-2 text-sm font-bold text-white">Ouvrir le PDF</a>
             <a href={resource.href} download className="rounded-full border px-4 py-2 text-sm font-semibold">Télécharger</a>

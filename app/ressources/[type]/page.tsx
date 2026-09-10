@@ -8,12 +8,13 @@ const collections = {
     description: 'Des analyses pour comprendre les évolutions du numérique et leurs effets concrets sur les organisations.',
     color: 'bg-[#e8f3ff]',
     items: [
-      ['IA & automatisation', 'L’intelligence artificielle, une opportunité à structurer dès aujourd’hui', '6 min'],
-      ['Cloud', 'Cloud hybride : trouver le bon équilibre entre agilité et maîtrise', '5 min'],
-      ['Infrastructures', 'Ce que les réseaux modernes changent pour la continuité des activités', '4 min'],
-      ['Agritech', 'Données, capteurs et drones : des leviers concrets pour mieux cultiver', '7 min'],
-      ['Éducation', 'Le numérique au service de l’apprentissage et de l’accès aux compétences', '5 min'],
-      ['Écosystème', 'Les plateformes mondiales et les choix locaux : créer une stratégie durable', '6 min'],
+      ['Portrait', 'Théophile Begnomo : l’ambition d’un jeune entrepreneur pour une transformation numérique durable au Cameroun', '8 min', '/ressources/articles/theophile-begnomo-article-web'],
+      ['Pédagogie & IA', "L'enseignant et l'IA au Cameroun", '8 min', '/ressources/articles/enseignement-ia-cameroun'],
+      ['IA & automatisation', 'L’intelligence artificielle, une opportunité à structurer dès aujourd’hui', '6 min', '/contact'],
+      ['Cloud', 'Cloud hybride : trouver le bon équilibre entre agilité et maîtrise', '5 min', '/contact'],
+      ['Infrastructures', 'Ce que les réseaux modernes changent pour la continuité des activités', '4 min', '/contact'],
+      ['Agritech', 'Données, capteurs et drones : des leviers concrets pour mieux cultiver', '7 min', '/contact'],
+      ['Éducation', 'Le numérique au service de l’apprentissage et de l’accès aux compétences', '5 min', '/contact'],
     ],
   },
   conseils: {
@@ -75,12 +76,12 @@ export default async function ResourceCollectionPage({ params }: { params: Promi
       <section className="container-custom py-14 sm:py-20">
         <div className="mb-10 flex items-end justify-between"><div><p className="eyebrow">À explorer</p><h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Des contenus pour avancer</h2></div><p className="hidden text-sm text-slate-500 sm:block">{collection.items.length} ressources</p></div>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {collection.items.map(([category, title, duration], index) => (
+          {collection.items.map(([category, title, duration, href], index) => (
             <article key={title} className="group flex min-h-72 flex-col rounded-3xl bg-white p-7 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-1 hover:shadow-xl">
               <div className="flex items-start justify-between"><span className={`flex h-12 w-12 items-center justify-center rounded-2xl ${collection.color} text-sm font-bold`}>0{index + 1}</span><span className="text-xs font-bold uppercase tracking-[.12em] text-slate-400">{duration}</span></div>
               <p className="mt-10 text-xs font-bold uppercase tracking-[.14em] text-[#438a2c]">{category}</p>
               <h3 className="mt-2 text-2xl font-semibold leading-tight tracking-tight">{title}</h3>
-              <Link href="/contact" className="mt-auto pt-7 text-sm font-bold text-[#032965] group-hover:text-[#438a2c]">Consulter la ressource →</Link>
+              <Link href={href || '/contact'} className="mt-auto pt-7 text-sm font-bold text-[#032965] group-hover:text-[#438a2c]">Consulter la ressource →</Link>
             </article>
           ))}
         </div>
