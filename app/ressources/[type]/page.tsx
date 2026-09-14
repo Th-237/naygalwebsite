@@ -10,6 +10,7 @@ const collections = {
     items: [
       ['Portrait', 'Théophile Begnomo : l’ambition d’un jeune entrepreneur pour une transformation numérique durable au Cameroun', '8 min', '/ressources/articles/theophile-begnomo-article-web'],
       ['Pédagogie & IA', "L'enseignant et l'IA au Cameroun", '8 min', '/ressources/articles/enseignement-ia-cameroun'],
+      ['Portrait', 'Richelle Abega : le choix d’incarner une nouvelle génération du numérique camerounais', '6 min', '/ressources/articles/portrait-richelle-abega'],
       ['IA & automatisation', 'L’intelligence artificielle, une opportunité à structurer dès aujourd’hui', '6 min', '/contact'],
       ['Cloud', 'Cloud hybride : trouver le bon équilibre entre agilité et maîtrise', '5 min', '/contact'],
       ['Infrastructures', 'Ce que les réseaux modernes changent pour la continuité des activités', '4 min', '/contact'],

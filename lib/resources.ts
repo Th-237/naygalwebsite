@@ -8,6 +8,7 @@ export const resources = [
   { slug: 'theophile-begnomo-article-web', type: 'Article', category: 'Articles', title: 'Théophile Begnomo : L’ambition d’un jeune entrepreneur pour une transformation numérique durable au Cameroun', description: 'Portrait de Théophile Begnomo et de la vision de NAYGAL pour un numérique utile, durable et ancré localement.', duration: '8 min', color: 'bg-[#fff4df]', icon: '📰', htmlPath: 'public/documents/ressources/articles/Theophile_Begnomo_Article_Web.html' },
   // PDF resource placed in public/documents/ressources/articles/
   { slug: 'enseignement-ia-cameroun', type: 'Article', category: 'Articles', title: "L'enseignant et l'IA au Cameroun", description: 'Transformer l’innovation en puissance pédagogique pour nos salles de classe.', duration: '8 min', color: 'bg-[#fff4df]', icon: '📰', htmlPath: 'public/documents/ressources/articles/enseignement-ia-cameroun.html', href: '/documents/ressources/articles/article_ia_enseignants_cameroun.pdf' },
+  { slug: 'portrait-richelle-abega', type: 'Article', category: 'Articles', title: 'Richelle Abega : le choix d’incarner une nouvelle génération du numérique camerounais', description: 'Portrait de Richelle Abega, Directrice de NAYGAL Academy, engagée pour la jeunesse numérique camerounaise.', duration: '6 min', color: 'bg-[#fff4df]', icon: '📰', htmlPath: 'public/documents/ressources/articles/portrait-richelle-abega.html' },
 ]
 
 export function findResourceBySlug(slug: string) {
