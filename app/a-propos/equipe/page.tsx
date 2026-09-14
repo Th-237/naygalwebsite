@@ -4,12 +4,13 @@ import Image from 'next/image'
 const team = [
   {
     number: '01',
-    name: 'Les éclaireurs',
-    role: 'Direction & Stratégie',
+    name: 'Théophile Begnomo',
+    role: 'CEO & Co-fondateur',
     category: 'Vision',
     description:
-      'Pilote la vision de NAYGAL, son développement stratégique et la construction de partenariats durables.',
+      'Porte la vision de NAYGAL, son développement stratégique et la construction de partenariats durables au service d’un numérique utile.',
     expertise: ['Stratégie', 'Innovation', 'Développement'],
+    image: '/images/a-propos/equipe/membre-naygal/theo.jpg',
   },
   {
     number: '02',
@@ -31,12 +32,13 @@ const team = [
   },
   {
     number: '04',
-    name: 'Les passeurs',
-    role: 'NAYGAL Academy',
+    name: 'Richelle Abega',
+    role: 'Responsable NAYGAL Academy',
     category: 'Transmission',
     description:
-      'Contribue au développement des programmes de formation, des ateliers et des initiatives de transmission des compétences.',
+      'Pilote NAYGAL Academy, ses programmes de formation et ses initiatives de transmission des compétences auprès des établissements scolaires.',
     expertise: ['Formation', 'Pédagogie', 'Numérique'],
+    image: '/images/a-propos/equipe/membre-naygal/Richelle.jpg',
   },
 ]
 
@@ -230,69 +232,57 @@ export default function EquipePage() {
             </h2>
 
             <p className="mt-6 leading-8 text-slate-400">
-              NAYGAL rassemble des profils complémentaires sans exposer
-              les identités individuelles. Ce sont les expertises, les
-              responsabilités et les projets qui parlent avant tout.
+              NAYGAL rassemble des profils complémentaires. Les expertises,
+              les responsabilités et les projets avancent ensemble au service
+              d’une même ambition.
             </p>
 
           </div>
 
-          <div className="mt-16 border-t border-white/15">
+          <div className="mt-16 grid gap-5 sm:grid-cols-2">
 
             {team.map((member) => (
 
               <article
                 key={member.number}
-                className="group relative grid gap-8 border-b border-white/15 py-10 transition duration-500 hover:bg-white/[0.025] sm:py-12 lg:grid-cols-[120px_1.1fr_1fr] lg:items-center lg:gap-12"
+                className="group overflow-hidden border border-white/10 bg-[#0a1b33] transition duration-500 hover:-translate-y-1 hover:border-[#68bd49]/50"
               >
 
-                <div className="relative overflow-hidden">
+                <div className="relative flex h-72 items-end overflow-hidden bg-[#102442] p-7 sm:h-80">
 
-                  <span className="text-7xl font-semibold leading-none tracking-[-.1em] text-white/[0.08] transition duration-500 group-hover:text-[#68bd49]/30 sm:text-8xl">
-                    {member.number}
-                  </span>
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={`Portrait de ${member.name}`}
+                      fill
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                      className="object-contain object-top grayscale transition duration-700 group-hover:scale-[1.02] group-hover:grayscale-0"
+                    />
+                  ) : (
+                    <span className="absolute -right-3 -top-8 text-[11rem] font-semibold leading-none tracking-[-.12em] text-white/[0.06] transition duration-500 group-hover:text-[#68bd49]/20">
+                      {member.number}
+                    </span>
+                  )}
 
-                  <span className="absolute left-1 top-1/2 h-px w-16 bg-[#68bd49] opacity-0 transition duration-500 group-hover:opacity-100" />
-
-                </div>
-
-                <div>
-
-                  <p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#68bd49]">
-                    {member.category}
-                  </p>
-
-                  <h3 className="mt-3 text-3xl font-semibold tracking-[-.04em] sm:text-4xl">
-                    {member.name}
-                  </h3>
-
-                  <p className="mt-2 text-sm text-slate-500">
-                    {member.role}
-                  </p>
-
-                </div>
-
-                <div>
-
-                  <p className="max-w-xl leading-7 text-slate-400">
-                    {member.description}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
-
-                    {member.expertise.map((item) => (
-
-                      <span
-                        key={item}
-                        className="text-xs uppercase tracking-[.12em] text-slate-500 transition-colors group-hover:text-slate-300"
-                      >
-                        {item}
-                      </span>
-
-                    ))}
-
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#061226] via-[#061226]/30 to-transparent" />
+                  <div className="relative z-10">
+                    <p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#68bd49]">{member.category}</p>
+                    <h3 className="mt-2 text-3xl font-semibold tracking-[-.04em] text-white">{member.name}</h3>
+                    <p className="mt-2 text-sm text-slate-300">{member.role}</p>
                   </div>
 
+                </div>
+
+                <div className="p-7">
+                  <p className="text-sm leading-7 text-slate-400">{member.description}</p>
+
+                  <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 border-t border-white/10 pt-5">
+                    {member.expertise.map((item) => (
+                      <span key={item} className="text-xs uppercase tracking-[.12em] text-slate-500 transition-colors group-hover:text-slate-300">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
               </article>
