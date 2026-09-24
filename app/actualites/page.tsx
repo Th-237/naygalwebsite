@@ -5,13 +5,13 @@ import Image from 'next/image'
 import { useMemo, useState } from 'react'
 
 const featuredStory = {
-  category: 'IA & automatisation',
-  type: 'Dossier à la une',
-  title: 'L’IA générative transforme les équipes IT : vers une nouvelle gouvernance des outils numériques',
+  category: 'NAYGAL Academy',
+  type: 'Actualité terrain',
+  title: 'NAYGAL Academy déploie ses ateliers numériques au Collège DAN & CHLOÉ',
   description:
-    'Les organisations accélèrent l’adoption de solutions d’IA pour automatiser les tâches répétitives, réduire les délais d’intervention et mieux piloter leurs données.',
-  meta: 'Publié le 8 août 2026 • 6 min de lecture',
-  image: '/images/expertises/Education Afrique _ AIworkflow.jpg',
+    'Le numérique s’apprend aussi par la pratique. À travers des ateliers concrets, les apprenants découvrent l’informatique, développent leur autonomie et construisent les compétences numériques de demain.',
+  meta: 'Une initiative pour les jeunes',
+  image: '/images/actualites/naygal_academy/dan_chloe.jpeg',
 }
 
 const categories = [
@@ -167,7 +167,7 @@ export default function ActualitesPage() {
           <article className="group relative min-h-[460px] overflow-hidden rounded-[2rem] bg-naygal-dark shadow-xl shadow-naygal-dark/10">
             <div className="absolute inset-0">
               <div className="relative h-full w-full">
-                <Image src={featuredStory.image} alt="Équipe collaborant autour d’un projet numérique" fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 50vw" />
+                <Image src={featuredStory.image} alt="Apprenants découvrant les outils numériques pendant un atelier NAYGAL Academy" fill className="object-cover transition duration-700 group-hover:scale-105" sizes="(max-width: 1024px) 100vw, 50vw" />
               </div>
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#021d47] via-[#021d47]/75 to-[#021d47]/10" />
@@ -176,7 +176,7 @@ export default function ActualitesPage() {
               <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#b8dfa7]">{featuredStory.category}</p>
               <h3 className="mt-3 max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">{featuredStory.title}</h3>
               <p className="mt-4 max-w-2xl leading-7 text-slate-200">{featuredStory.description}</p>
-              <Link href="/contact" className="group mt-7 inline-flex w-fit items-center gap-2 font-semibold text-white">Découvrir le dossier <ArrowIcon /></Link>
+              <Link href="/contact" className="group mt-7 inline-flex w-fit items-center gap-2 font-semibold text-white">Découvrir les ateliers <ArrowIcon /></Link>
             </div>
           </article>
 
@@ -224,7 +224,7 @@ export default function ActualitesPage() {
             <article key={article.title} className="group overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-200 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/80">
               <div className="relative h-48 overflow-hidden">
                 <div className="relative h-full w-full">
-                  <Image src={article.image} alt={article.title} fill className="object-cover transition duration-500 group-hover:scale-105" sizes="(max-width: 640px) 100vw, 33vw" />
+                  <Image src={article.image} alt={article.title} fill className="object-cover object-center transition duration-500 group-hover:scale-105" sizes="(max-width: 640px) 100vw, 33vw" />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-naygal-dark/25 to-transparent" />
               </div>
