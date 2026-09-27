@@ -10,7 +10,7 @@ const team = [
     description:
       'Porte la vision de NAYGAL, son développement stratégique et la construction de partenariats durables au service d’un numérique utile.',
     expertise: ['Stratégie', 'Innovation', 'Développement'],
-    image: '/images/a-propos/equipe/membre-naygal/theo.jpg',
+    image: '/images/a-propos/equipe/membre-naygal/CEO_Theo.jpeg',
   },
   {
     number: '02',
@@ -78,6 +78,7 @@ export default function EquipePage() {
           <Image
             src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=2400&q=90"
             alt="Équipe travaillant ensemble"
+            loading="eager"
              fill sizes="100vw"   className="h-full w-full object-cover"
           />
 

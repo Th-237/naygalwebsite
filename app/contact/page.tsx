@@ -125,6 +125,42 @@ export default function ContactPage() {
     return () => clearInterval(timer)
   }, [])
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const requestedSubject = params.get('subject')
+    const requestedMessage = params.get('message')
+    const allowedSubjects: ContactSubject[] = [
+      'services',
+      'projet',
+      'formation',
+      'partenariat',
+      'autre',
+    ]
+
+    if (
+      (!requestedSubject || !allowedSubjects.includes(requestedSubject as ContactSubject)) &&
+      !requestedMessage
+    ) {
+      return
+    }
+
+    const prefillTimer = window.setTimeout(() => {
+      setFormData((current) => ({
+        ...current,
+        subject: requestedSubject && allowedSubjects.includes(requestedSubject as ContactSubject)
+          ? (requestedSubject as ContactSubject)
+          : current.subject,
+        message: requestedMessage ?? current.message,
+      }))
+      document.getElementById('contact-form')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }, 100)
+
+    return () => window.clearTimeout(prefillTimer)
+  }, [])
+
   const selectHero = (index: number) => {
     setCurrentHero(index)
   }

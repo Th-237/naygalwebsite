@@ -352,7 +352,7 @@ export default function AcademyPage() {
               href="/academy/dans-votre-ecole"
               className="shrink-0 font-semibold text-[#276f91] transition hover:text-[#438a2c]"
             >
-              Découvrir NAYAGAL ACADEMY dans votre école →
+              Découvrir NAYGAL ACADEMY dans votre école →
             </Link>
 
           </div>

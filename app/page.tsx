@@ -808,7 +808,7 @@ export default function Home() {
 
 
       {/* =========================================================
-          NAYTECH ROOM
+          NAYGAL Technonoly Club (NAYTECH CLUB)
       ========================================================= */}
 
       <section className="bg-[#f5f8fb] py-20 sm:py-28">
@@ -832,7 +832,7 @@ export default function Home() {
               <div className="max-w-3xl">
 
                 <p className="text-xs font-bold uppercase tracking-[.18em] text-[#a4d78f]">
-                  NAYTECH ROOM
+                  NAYGAL Technonoly Club (NAYTECH CLUB)
                 </p>
 
                 <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-[-.04em] text-white sm:text-5xl">
@@ -853,7 +853,7 @@ export default function Home() {
                   href="/academy/ateliers"
                   className="mt-8 inline-flex bg-[#71b224] px-7 py-4 font-semibold text-white transition hover:bg-[#5d9b1c]"
                 >
-                  Découvrir NAYTECH ROOM →
+                  Découvrir le NAYTECH CLUB →
                 </Link>
 
               </div>
