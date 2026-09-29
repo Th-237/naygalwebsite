@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -172,6 +173,8 @@ const architectures = [
   },
 ]
 
+export const metadata = createPageMetadata('/services/cloud', 'Services cloud et stockage de données', 'Hébergement, stockage et solutions cloud pour les organisations au Cameroun, avec NAYGAL.')
+
 export default function CloudPage() {
   return (
     <main className="overflow-hidden bg-[#041019] text-[#dceaf0]">
@@ -261,6 +264,15 @@ export default function CloudPage() {
                 >
                   Demander une étude
                 </Link>
+
+                <a
+                  href="https://cloudstore.africa/?ref=ER9E-NKHM"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-[#72bd4f] bg-[#72bd4f] px-7 py-4 text-center font-mono text-sm font-bold text-[#041019] transition hover:border-[#8ddd67] hover:bg-[#8ddd67]"
+                >
+                  Souscrire à un abonnement cloud
+                </a>
 
               </div>
 

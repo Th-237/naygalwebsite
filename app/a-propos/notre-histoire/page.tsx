@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -63,6 +64,8 @@ const principles = [
     text: 'Faire de la collaboration un moteur d’innovation et d’impact.',
   },
 ]
+
+export const metadata = createPageMetadata('/a-propos/notre-histoire', 'Histoire de NAYGAL', 'Les étapes de la création et du développement de NAYGAL, entreprise technologique fondée au Cameroun.')
 
 export default function NotreHistoirePage() {
   return (

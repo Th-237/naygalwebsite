@@ -10,6 +10,7 @@ type Message = {
   actionHref?: string
   actionLabel?: string
   actionSummary?: string
+  actions?: { href: string; label: string; summary: string }[]
 }
 
 const welcomeMessage: Message = {
@@ -19,22 +20,34 @@ const welcomeMessage: Message = {
 }
 
 const quickQuestions = [
-  'Explorer les expertises',
-  'Trouver une formation',
-  'Contact / Devis',
-  'Quel service me conseillez-vous ?',
+  'Je cherche une formation en cybersécurité',
+  'IA et automatisation pour mon entreprise',
+  'Réseau, cloud et devis',
+  'Quels services proposez-vous ?',
 ]
 
 function getAnswer(question: string): Pick<Message, 'text' | 'actionHref' | 'actionLabel' | 'actionSummary'> {
-  const normalizedQuestion = question.toLowerCase()
+  const normalizedQuestion = question.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+
+  if (/qui es tu|qui etes vous|tu es qui|qui est nayilie/.test(normalizedQuestion)) {
+    return { text: 'Je suis NAYILIE, l’assistant virtuel de NAYGAL. Je peux vous orienter vers nos services, formations, actualités et contacts.' }
+  }
+  if (/actualit|news|annonce/.test(normalizedQuestion)) {
+    return { text: 'Voici les dernières actualités et initiatives de NAYGAL.', actionHref: '/actualites', actionLabel: 'Voir les actualités', actionSummary: 'Retrouvez les actualités, annonces et initiatives de NAYGAL.' }
+  }
+  if (/souscri|abonn|commander/.test(normalizedQuestion)) {
+    return { text: 'Pour souscrire à une offre, contactez l’équipe NAYGAL afin de préciser votre besoin et les modalités adaptées.', actionHref: '/contact', actionLabel: 'Contacter NAYGAL', actionSummary: 'Présentez votre besoin à l’équipe NAYGAL.' }
+  }
 
   const routeMap: { keywords: RegExp; href: string; label: string; summary: string; text: string }[] = [
     { keywords: /(contribu|don|soutien|payer|paiement|offre|montant|financier)/, href: '/mouvement/soutenir-nos-initiatives', label: 'Voir les contributions', summary: 'Soutenir NAYGAL : contributions financières, matérielles et partage d’expertise.', text: 'Vous pouvez soutenir NAYGAL de plusieurs manières.' },
     { keywords: /(mission|notre mission|mouvement)/, href: '/mouvement/notre-mission', label: 'Notre mission', summary: 'Découvrez la mission et les domaines d’action de NAYGAL.', text: 'La mission de NAYGAL est de rendre le numérique utile, accessible et construit localement.' },
-    { keywords: /(éducation|education|scolaire|école|ecole|étudiant|etudiant|élève|eleve|nayac|formation|apprendre|ateliers)/, href: '/academy/ateliers', label: 'Voir les formations', summary: 'Parcours et ateliers pratiques proposés par NAYGAL Academy.', text: 'Avec NAYGAL Academy, nous proposons des formations et ateliers pratiques pour établissements et professionnels.' },
-    { keywords: /(cyber|sécur|secur|pirat|menace)/, href: '/expertises/cybersecurite', label: 'Cybersécurité', summary: 'Audit, protection des accès, sauvegarde et sensibilisation.', text: "Nous accompagnons sur l'audit, la protection et la sensibilisation en cybersécurité." },
-    { keywords: /(ia|intelligence artificielle|automati)/, href: '/expertises/intelligence-artificielle', label: 'Intelligence artificielle', summary: 'Cas d’usage IA, sécurité des données et déploiement pilote.', text: 'Nous aidons à identifier des cas d’usage IA utiles et sécurisés.' },
-    { keywords: /(cloud|réseau|reseau|infrastructure|serveur)/, href: '/expertises/reseaux-infrastructures', label: 'Réseaux & infra', summary: 'Conception et évolution d’infrastructures et environnements cloud.', text: 'NAYGAL conçoit et fait évoluer les infrastructures et réseaux.' },
+    { keywords: /(éducation|education|scolaire|école|ecole|étudiant|etudiant|élève|eleve|nayac|academy|formation|apprendre|atelier|cours|enseignant)/, href: '/academy/ateliers', label: 'Voir les formations', summary: 'Parcours et ateliers pratiques proposés par NAYGAL Academy.', text: 'Avec NAYGAL Academy, nous proposons des formations et ateliers pratiques pour établissements et professionnels.' },
+    { keywords: /(cyber|sécur|secur|pirat|menace|virus|ransom|phishing|protection)/, href: '/expertises/cybersecurite', label: 'Cybersécurité', summary: 'Audit, protection des accès, sauvegarde et sensibilisation.', text: "Nous accompagnons sur l'audit, la protection et la sensibilisation en cybersécurité." },
+    { keywords: /(ia|intelligence artificielle|automati|chatbot|assistant|nayilie|agent)/, href: '/expertises/intelligence-artificielle', label: 'Intelligence artificielle', summary: 'Cas d’usage IA, sécurité des données et déploiement pilote.', text: 'Nous aidons à identifier des cas d’usage IA utiles et sécurisés.' },
+    { keywords: /(cloud|héberg|heberg|stockage|sauvegarde)/, href: '/expertises/cloud', label: 'Cloud', summary: 'Solutions cloud, hébergement et stockage adaptés à vos besoins.', text: 'Nous pouvons vous orienter sur vos besoins cloud et de stockage.' },
+    { keywords: /(réseau|reseau|wifi|internet|infrastructure|serveur|connexion|nas)/, href: '/expertises/reseaux-infrastructures', label: 'Réseaux & infrastructures', summary: 'Conception et évolution d’infrastructures et environnements cloud.', text: 'NAYGAL conçoit et fait évoluer les infrastructures et réseaux.' },
+    { keywords: /(transformation|digitalisation|numéris|numeris|modernis)/, href: '/expertises/transformation-numerique', label: 'Transformation numérique', summary: 'Faites évoluer vos usages et vos processus numériques avec méthode.', text: 'Nous aidons les organisations à structurer leur transformation numérique.' },
     { keywords: /(service|expertise|offre|proposez|expertises)/, href: '/expertises', label: 'Toutes les expertises', summary: 'Découvrez l’ensemble des expertises proposées par NAYGAL.', text: 'Nos expertises couvrent infrastructures, cybersécurité, cloud, IA et transformation numérique.' },
     { keywords: /(contact|expert|devis|projet|rendez-vous|rdv)/, href: '/contact', label: 'Nous contacter', summary: 'Formulaire de contact pour présenter votre besoin et demander un devis.', text: "Notre équipe peut échanger avec vous pour comprendre votre besoin." },
     { keywords: /(ressource|article|guide|blog|actualit|news|publication)/, href: '/ressources', label: 'Ressources', summary: 'Guides, articles et outils pour vos projets numériques.', text: 'Je peux vous diriger vers notre bibliothèque de contenus utiles.' },
@@ -132,12 +145,18 @@ export default function Chatbot() {
         })
         const payload = await res.json()
         if (payload && payload.answer) {
-          const candidate = payload.candidates && payload.candidates[0]
+          const actions = Array.isArray(payload.candidates)
+            ? payload.candidates.map((candidate: { path: string; title: string; excerpt: string }) => ({
+                href: candidate.path,
+                label: `Voir ${candidate.title}`,
+                summary: candidate.excerpt,
+              }))
+            : []
           setMessages((current) => [
             ...current,
-            { id: Date.now() + 1, sender: 'bot', text: payload.answer, actionHref: candidate?.path, actionLabel: candidate ? `Voir ${candidate.title}` : undefined, actionSummary: candidate?.excerpt },
+            { id: Date.now() + 1, sender: 'bot', text: payload.answer, actions },
           ])
-          setPendingAction(payload.candidates && payload.candidates[0] ? { href: payload.candidates[0].path, label: `Voir ${payload.candidates[0].title}`, summary: payload.candidates[0].excerpt } : null)
+          setPendingAction(actions[0] ?? null)
           setIsLoading(false)
           return
         }
@@ -165,7 +184,12 @@ export default function Chatbot() {
             <button type="button" onClick={() => setIsOpen(false)} className="rounded-lg p-2 text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-[#b8dfa7]" aria-label="Fermer l’assistant"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5"><path strokeLinecap="round" d="m6 6 12 12M18 6 6 18" /></svg></button>
           </header>
           <div className="flex-1 space-y-3 overflow-y-auto bg-slate-50 p-3 sm:p-4" aria-live="polite" aria-label="Conversation avec l’assistant">
-            {messages.map((message) => <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}><div className={`max-w-[88%] rounded-2xl px-4 py-3 text-sm leading-6 ${message.sender === 'user' ? 'rounded-br-md bg-[#021d47] text-white' : 'rounded-bl-md bg-white text-slate-700 shadow-sm ring-1 ring-slate-200'}`}><p>{message.text}</p>{message.actionHref && message.actionLabel && message.actionSummary && <div className="mt-3 flex flex-wrap gap-2"><button type="button" onClick={() => redirectToAction({ href: message.actionHref!, label: message.actionLabel!, summary: message.actionSummary! })} className="rounded-lg bg-[#52a234] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#438a2c]">{message.actionLabel}</button><button type="button" onClick={() => setPendingAction(null)} className="rounded-lg border border-slate-200 px-3 py-2 text-xs font-bold text-slate-600 transition hover:bg-slate-50">Non merci</button></div>}</div></div>)}
+            {messages.map((message) => {
+              const actions = message.actions ?? (message.actionHref && message.actionLabel && message.actionSummary
+                ? [{ href: message.actionHref, label: message.actionLabel, summary: message.actionSummary }]
+                : [])
+              return <div key={message.id} className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}><div className={`max-w-[88%] rounded-2xl px-4 py-3 text-sm leading-6 ${message.sender === 'user' ? 'rounded-br-md bg-[#021d47] text-white' : 'rounded-bl-md bg-white text-slate-700 shadow-sm ring-1 ring-slate-200'}`}><p>{message.text}</p>{actions.length > 0 && <div className="mt-3 flex flex-wrap gap-2">{actions.map((action) => <button key={action.href} type="button" onClick={() => redirectToAction(action)} className="rounded-lg bg-[#52a234] px-3 py-2 text-xs font-bold text-white transition hover:bg-[#438a2c]">{action.label}</button>)}</div>}</div></div>
+            })}
             {isLoading && <div className="flex justify-start"><div className="rounded-2xl rounded-bl-md bg-white px-4 py-3 text-sm text-slate-500 shadow-sm ring-1 ring-slate-200" aria-label="NAYILIE prépare une réponse"><span className="inline-flex gap-1"><span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#52a234] [animation-delay:-.2s]" /><span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#52a234] [animation-delay:-.1s]" /><span className="h-1.5 w-1.5 animate-bounce rounded-full bg-[#52a234]" /></span></div></div>}
           </div>
           <div className="border-t border-slate-100 bg-white p-3 sm:p-4">

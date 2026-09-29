@@ -130,12 +130,12 @@ const projects = [
     image: '/images/projets/io/io.png',
   },
   {
-    title: 'Sentinelle IA',
-    category: 'Cybersécurité',
+    title: 'OPEP',
+    category: 'TravelTech',
     description:
-      'Un système SOC pensé pour rendre la cybersécurité plus accessible aux PME.',
+      'Une solution de gestion destinée aux agences de voyage pour centraliser leurs opérations et simplifier leur gestion quotidienne.',
     href: '/projets',
-    image: '/images/projets/si/si.png',
+    image: '/images/projets/opep/IMG-20260605-WA0002.jpg',
   },
   {
     title: 'NAYGAL ACADEMY Online',
@@ -166,6 +166,21 @@ const academyCards = [
       'Des rencontres pour découvrir, expérimenter et partager.',
     href: '/academy/evenements',
   },
+]
+
+const partnerLogos = [
+  { name: 'IUT', logo: '/images/partners/iut.png', type: 'Partenaire académique' },
+  { name: 'ISTAG', logo: '/images/partners/istag.png', type: 'Partenaire académique' },
+  { name: 'ISGA', type: 'Partenaire académique' },
+  { name: 'MPT', type: 'Partenaire professionnel' },
+  { name: 'Kavenor', logo: '/images/partners/kavenor.png', type: 'Partenaire professionnel' },
+  { name: 'ST Digital', logo: '/images/partners/ST DIGITAL.png', type: 'Partenaire cloud' },
+  { name: 'Cloudstore Africa', logo: '/images/partners/logo_cloudstore_africa.jpg', type: 'Partenaire cloud' },
+  { name: 'Cisco Networking Academy', logo: '/images/platforms/img.png', type: 'Plateforme de formation' },
+  { name: 'Fortinet Training Institute', logo: '/images/platforms/fortinet.png', type: 'Plateforme de formation' },
+  { name: 'OpenClassrooms', logo: '/images/platforms/openclassrooms.png', type: 'Plateforme de formation' },
+  { name: 'Google for Education', logo: '/images/platforms/google-for-ed.png', type: 'Plateforme de formation' },
+  { name: 'edX', logo: '/images/platforms/edx.png', type: 'Plateforme de formation' },
 ]
 
 export default function Home() {
@@ -297,6 +312,30 @@ export default function Home() {
 
         </div>
 
+      </section>
+
+      <section className="relative z-10 border-b border-slate-200 bg-white py-4 sm:py-5" aria-label="Partenaires et plateformes de NAYGAL">
+        <div className="container-custom mb-2.5 text-center sm:mb-3">
+          <h2 className="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500 sm:text-[11px]">Ils nous font confiance</h2>
+        </div>
+        <div className="partner-marquee-shell partner-marquee-home group" aria-label="Défilement des logos des partenaires de NAYGAL">
+          <div className="animate-partner-marquee animate-partner-marquee-home flex w-max items-center gap-3 px-2 group-hover:[animation-play-state:paused] sm:gap-4">
+            {[...partnerLogos, ...partnerLogos].map((partner, index) => (
+              <div
+                key={`${partner.name}-${index}`}
+                aria-hidden={index >= partnerLogos.length}
+                title={`${partner.name} · ${partner.type}`}
+                className="partner-logo-card flex h-12 w-32 shrink-0 items-center justify-center px-4 sm:h-14 sm:w-40 sm:px-5"
+              >
+                {partner.logo ? (
+                  <Image src={partner.logo} alt={`Logo ${partner.name}`} width={150} height={65} className="h-8 w-full object-contain sm:h-10" sizes="160px" />
+                ) : (
+                  <span className="text-center text-xs font-bold tracking-wide text-[#276f91] sm:text-sm">{partner.name}</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
 

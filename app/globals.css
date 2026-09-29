@@ -316,6 +316,27 @@
     padding: 1.25rem 0;
   }
 
+  .partner-marquee-home {
+    border: 0;
+    background: #fff;
+    padding-block: .35rem;
+    animation-duration: 42s;
+  }
+
+  .partner-marquee-hero {
+    border: 0;
+    background: transparent;
+    padding-block: .15rem;
+  }
+
+  .partner-marquee-hero::before {
+    background: linear-gradient(90deg, #03172b, rgb(3 23 43 / 0));
+  }
+
+  .partner-marquee-hero::after {
+    background: linear-gradient(270deg, #03172b, rgb(3 23 43 / 0));
+  }
+
   .partner-marquee-shell::before,
   .partner-marquee-shell::after {
     position: absolute;
@@ -335,6 +356,14 @@
   .partner-marquee-shell::after {
     right: 0;
     background: linear-gradient(270deg, #f8fafc, rgb(248 250 252 / 0));
+  }
+
+  .partner-marquee-home::before {
+    background: linear-gradient(90deg, #fff, rgb(255 255 255 / 0));
+  }
+
+  .partner-marquee-home::after {
+    background: linear-gradient(270deg, #fff, rgb(255 255 255 / 0));
   }
 
   .partner-logo-card {

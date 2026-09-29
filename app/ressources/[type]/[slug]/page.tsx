@@ -5,7 +5,7 @@ import path from 'node:path'
 import { findResourceBySlug } from '../../../../lib/resources'
 
 // ✅ Définir SITE à l'extérieur, au niveau du module
-const SITE = process.env.SITE_URL || 'https://naygal.cm'
+const SITE = (process.env.SITE_URL || 'https://naygal.cm').replace(/\/+$/, '')
 
 type Props = { params: Promise<{ type: string; slug: string }> }
 
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props) {
   }
 
   return {
-    title: `${resource.title} | NAYGAL`,
+    title: { absolute: `${resource.title} | NAYGAL` },
     description: resource.description,
     alternates: {
       canonical: `${SITE}/ressources/${resource.category.toLowerCase()}/${resource.slug}`,
@@ -49,14 +49,15 @@ export default async function ResourceDetailPage({ params }: Props) {
   const articleHtml = htmlPath
     ? await readFile(path.join(process.cwd(), 'public/documents/ressources/articles', path.basename(htmlPath)), 'utf8')
     : null
+  const articleStyles = articleHtml?.match(/<style\b[^>]*>[\s\S]*?<\/style>/gi)?.join('') || ''
   const articleBody = articleHtml?.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1] || articleHtml
+  const renderedArticle = articleBody ? `${articleStyles}${articleBody}` : null
 
   return (
     <main className="container-custom py-16">
       {/* Structured data for resource */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             resource.type === 'Article'
@@ -72,29 +73,30 @@ export default async function ResourceDetailPage({ params }: Props) {
         }}
       />
       <div className="max-w-5xl">
-        <p className="text-sm font-bold uppercase tracking-[.12em] text-[#438a2c]">{resource.type}</p>
-        <h1 className="mt-4 text-3xl font-semibold">{resource.title}</h1>
-        <p className="mt-4 text-sm text-slate-600">{resource.description}</p>
-
-        {articleBody ? (
-          <article className="article-document mt-8 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-            <div className="px-4 py-3 text-sm font-semibold text-slate-600 sm:px-8">Lecture en ligne</div>
+        {renderedArticle ? (
+          <article className="article-document overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
             <div
-              className="border-t border-slate-200"
               // The source is a versioned article stored in this repository.
-              dangerouslySetInnerHTML={{ __html: articleBody }}
+              dangerouslySetInnerHTML={{ __html: renderedArticle }}
             />
-            <footer className="border-t border-slate-200 px-6 py-6 text-center text-sm font-semibold text-slate-500 sm:px-8">
-              Éditeur : NAYGAL Cameroun
-            </footer>
           </article>
         ) : resource.href && resource.href.endsWith('.pdf') ? (
-          <div className="mt-8 flex gap-4">
-            <a href={resource.href} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#021d47] px-4 py-2 text-sm font-bold text-white">Ouvrir le PDF</a>
-            <a href={resource.href} download className="rounded-full border px-4 py-2 text-sm font-semibold">Télécharger</a>
-          </div>
+          <>
+            <p className="text-sm font-bold uppercase tracking-[.12em] text-[#438a2c]">{resource.type}</p>
+            <h1 className="mt-4 text-3xl font-semibold">{resource.title}</h1>
+            <p className="mt-4 text-sm text-slate-600">{resource.description}</p>
+            <div className="mt-8 flex gap-4">
+              <a href={resource.href} target="_blank" rel="noopener noreferrer" className="rounded-full bg-[#021d47] px-4 py-2 text-sm font-bold text-white">Ouvrir le PDF</a>
+              <a href={resource.href} download className="rounded-full border px-4 py-2 text-sm font-semibold">Télécharger</a>
+            </div>
+          </>
         ) : (
-          <div className="mt-8 text-sm text-slate-600">Contenu détaillé disponible prochainement.</div>
+          <>
+            <p className="text-sm font-bold uppercase tracking-[.12em] text-[#438a2c]">{resource.type}</p>
+            <h1 className="mt-4 text-3xl font-semibold">{resource.title}</h1>
+            <p className="mt-4 text-sm text-slate-600">{resource.description}</p>
+            <div className="mt-8 text-sm text-slate-600">Contenu détaillé disponible prochainement.</div>
+          </>
         )}
 
         <div className="mt-12">

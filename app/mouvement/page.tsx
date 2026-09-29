@@ -1,20 +1,8 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from "next/image"
 import Link from "next/link"
 
-const SITE = process.env.SITE_URL || 'https://naygal.cm'
-
-export const metadata = {
-  title: 'Le Mouvement NAYGAL | Innovation, éducation et impact numérique',
-  description: 'Le Mouvement NAYGAL réunit entreprises, institutions et talents autour de solutions utiles et durables pour le numérique en Afrique.',
-  alternates: {
-    canonical: `${SITE}/mouvement`,
-  },
-  openGraph: {
-    title: 'Le Mouvement NAYGAL | Innovation, éducation et impact numérique',
-    description: 'Le Mouvement NAYGAL réunit entreprises, institutions et talents autour de solutions utiles et durables pour le numérique en Afrique.',
-    url: `${SITE}/mouvement`,
-  },
-}
+export const metadata = createPageMetadata('/mouvement', 'Le Mouvement NAYGAL', 'Rejoignez les initiatives NAYGAL pour développer les compétences, l’innovation et un numérique utile en Afrique.')
 
 const participation = [
   {

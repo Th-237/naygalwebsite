@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from "next/image"
 import Link from "next/link"
 
@@ -57,6 +58,8 @@ const areas = [
       "/images/mouvement/notre-mission/colla.jpg",
   },
 ]
+
+export const metadata = createPageMetadata('/mouvement/notre-mission', 'Notre mission numérique', 'La mission de NAYGAL est de rendre la technologie utile, accessible et porteuse de compétences et d’impact en Afrique.')
 
 export default function MissionPage() {
   return (

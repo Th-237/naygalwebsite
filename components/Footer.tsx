@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { CookieSettingsButton } from '@/components/CookieConsent'
 
 const footerLinks = {
   entreprise: [
@@ -165,8 +166,8 @@ export default function Footer() {
               </div>
               <div>
                 <p className="text-slate-400">Téléphone</p>
-                <a href="tel:+237655002493" className="mt-1 block font-medium text-white hover:text-[#8ed15b]">
-                  +237 655 002 493
+                <a href="tel:+237674509721" className="mt-1 block font-medium text-white hover:text-[#8ed15b]">
+                  +237 674 509 721
                 </a>
               </div>
               <div>
@@ -191,6 +192,7 @@ export default function Footer() {
                   {link.name}
                 </Link>
               ))}
+              <CookieSettingsButton />
             </div>
 
             <p className="text-sm text-slate-400">© {currentYear} NAYGAL TECHNOLOGY — Tous droits réservés.</p>

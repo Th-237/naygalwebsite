@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from "next/image"
 import Link from "next/link"
 
@@ -70,6 +71,8 @@ const contributions = [
     text: "Soutenez financièrement ou matériellement une initiative qui correspond à vos valeurs.",
   },
 ]
+
+export const metadata = createPageMetadata('/mouvement/devenir-partenaire', 'Devenir partenaire de NAYGAL', 'Associez-vous à NAYGAL pour développer des projets numériques, éducatifs et technologiques au Cameroun.')
 
 export default function PartnerPage() {
   return (

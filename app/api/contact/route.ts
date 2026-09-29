@@ -65,7 +65,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Invalid form data' }, { status: 400 })
     }
 
-    const to = process.env.CONTACT_TO || 'naygalcameroun@gmail.com'
+    const to = process.env.CONTACT_TO || 'contact@naygal.cm'
 
     if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
       return NextResponse.json({ error: 'SMTP not configured' }, { status: 500 })

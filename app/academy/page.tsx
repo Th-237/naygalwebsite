@@ -1,21 +1,9 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 import GrandCarousel from '../../components/GrandCarousel'
 
-const SITE = process.env.SITE_URL || 'https://naygal.cm'
-
-export const metadata = {
-  title: 'NAYGAL Academy | Formations, ateliers et événements numériques',
-  description: 'NAYGAL Academy accompagne les élèves, étudiants, professionnels et organisations avec des formations, ateliers et événements sur le numérique.',
-  alternates: {
-    canonical: `${SITE}/academy`,
-  },
-  openGraph: {
-    title: 'NAYGAL Academy | Formations, ateliers et événements numériques',
-    description: 'NAYGAL Academy accompagne les élèves, étudiants, professionnels et organisations avec des formations, ateliers et événements sur le numérique.',
-    url: `${SITE}/academy`,
-  },
-}
+export const metadata = createPageMetadata('/academy', 'NAYGAL Academy : formations et ateliers numériques', 'Formations, ateliers et événements pour développer les compétences numériques des jeunes, professionnels et organisations.')
 
 const programmes = [
   {

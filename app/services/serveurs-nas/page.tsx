@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -110,6 +111,8 @@ const backupLayers = [
     text: 'Une copie indépendante protège contre certains incidents affectant le site principal.',
   },
 ]
+
+export const metadata = createPageMetadata('/services/serveurs-nas', 'Serveurs NAS et sauvegarde', 'Stockage centralisé, sauvegarde des données et accès sécurisé aux fichiers avec les solutions serveurs NAS de NAYGAL.')
 
 export default function ServeursNASPage() {
   return (

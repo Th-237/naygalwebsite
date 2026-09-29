@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { createPageMetadata } from '@/lib/seo'
 
 const collections = {
   articles: {
@@ -9,8 +10,10 @@ const collections = {
     color: 'bg-[#e8f3ff]',
     items: [
       ['Portrait', 'Théophile Begnomo : l’ambition d’un jeune entrepreneur pour une transformation numérique durable au Cameroun', '8 min', '/ressources/articles/theophile-begnomo-article-web'],
+      ['Portrait', 'Richelle Abega : transmettre le numérique et accompagner la jeunesse camerounaise', '6 min', '/ressources/articles/portrait-richelle-abega'],
+      ['Portrait', 'NCHARE Adrian : l’ingénierie opérationnelle au service de l’excellence et de la croissance de NAYGAL', '5 min', '/ressources/articles/nchare-adrian-article-web'],
       ['Pédagogie & IA', "L'enseignant et l'IA au Cameroun", '8 min', '/ressources/articles/enseignement-ia-cameroun'],
-      ['Portrait', 'Richelle Abega : le choix d’incarner une nouvelle génération du numérique camerounais', '6 min', '/ressources/articles/portrait-richelle-abega'],
+      ['Partenariat Cloud', 'NAYGAL × Cloudstore Africa : apprendre le Cloud en passant à la pratique', '6 min', '/ressources/articles/naygal-cloudstore-africa-partenariat'],
       ['IA & automatisation', 'L’intelligence artificielle, une opportunité à structurer dès aujourd’hui', '6 min', '/contact'],
       ['Cloud', 'Cloud hybride : trouver le bon équilibre entre agilité et maîtrise', '5 min', '/contact'],
       ['Infrastructures', 'Ce que les réseaux modernes changent pour la continuité des activités', '4 min', '/contact'],
@@ -49,6 +52,28 @@ const collections = {
 } as const
 
 type CollectionType = keyof typeof collections
+
+export async function generateMetadata({ params }: { params: Promise<{ type: string }> }) {
+  const { type } = await params
+  const collection = collections[type as CollectionType]
+
+  if (!collection) {
+    return { title: 'Ressource introuvable | NAYGAL', robots: { index: false, follow: false } }
+  }
+
+  const descriptions: Record<CollectionType, string> = {
+    articles: 'Lisez les articles et portraits de NAYGAL sur les technologies, l’éducation numérique et la transformation des organisations au Cameroun.',
+    conseils: 'Des conseils pratiques de NAYGAL pour avancer en cybersécurité, cloud, intelligence artificielle et transformation numérique.',
+    guides: 'Des guides NAYGAL pour planifier vos projets numériques, renforcer votre sécurité et développer les compétences de vos équipes.',
+  }
+  const titles: Record<CollectionType, string> = {
+    articles: 'Articles et portraits numériques',
+    conseils: 'Conseils numériques pratiques',
+    guides: 'Guides de transformation numérique',
+  }
+
+  return createPageMetadata(`/ressources/${type}`, titles[type as CollectionType], descriptions[type as CollectionType])
+}
 
 export function generateStaticParams() {
   return Object.keys(collections).map((type) => ({ type }))

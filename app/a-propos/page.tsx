@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -69,6 +70,8 @@ const signals = [
   ['IA', 'Intelligence'],
   ['IMPACT', 'Engagement'],
 ]
+
+export const metadata = createPageMetadata('/a-propos', 'À propos de NAYGAL', 'Découvrez l’histoire, la vision, les valeurs et l’équipe de NAYGAL, entreprise numérique engagée au Cameroun.')
 
 export default function AboutPage() {
   return (

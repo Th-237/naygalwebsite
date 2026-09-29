@@ -1,10 +1,8 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const metadata = {
-  title: 'IA & Automatisation | NAYGAL',
-  description: 'Valoriser l’intelligence artificielle et l’automatisation pour accélérer votre transformation numérique.',
-}
+export const metadata = createPageMetadata('/expertises/intelligence-artificielle', 'Intelligence artificielle et automatisation', 'Solutions d’intelligence artificielle, assistants métiers et automatisation pour les organisations.')
 
 const features = [
   {

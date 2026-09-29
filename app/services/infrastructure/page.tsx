@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -115,6 +116,8 @@ const benefits = [
   'Une meilleure visibilité sur votre système informatique',
   'Une architecture capable d’évoluer avec votre organisation',
 ]
+
+export const metadata = createPageMetadata('/services/infrastructure', 'Infrastructure informatique', 'Conception, déploiement et évolution d’infrastructures informatiques, serveurs et systèmes pour les organisations.')
 
 export default function InfrastructurePage() {
   return (

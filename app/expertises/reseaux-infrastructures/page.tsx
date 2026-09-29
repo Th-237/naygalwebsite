@@ -1,10 +1,8 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const metadata = {
-  title: 'Infrastructure & Réseaux | NAYGAL',
-  description: "Solutions d'infrastructure, réseaux et virtualisation pour une IT plus résiliente.",
-}
+export const metadata = createPageMetadata('/expertises/reseaux-infrastructures', 'Réseaux et infrastructures informatiques', 'Conception de réseaux, serveurs et infrastructures informatiques fiables, évolutives et adaptées au contexte local.')
 
 const services = [
   {

@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -186,6 +187,8 @@ const services = [
   'Réponse à incident',
   'Sensibilisation',
 ]
+
+export const metadata = createPageMetadata('/services/cybersecurite', 'Services de cybersécurité', 'Protégez vos systèmes, comptes et données avec les services de cybersécurité de NAYGAL au Cameroun.')
 
 export default function CybersecuritePage() {
   return (

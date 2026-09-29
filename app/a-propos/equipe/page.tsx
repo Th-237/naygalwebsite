@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -14,6 +15,26 @@ const team = [
   },
   {
     number: '02',
+    name: 'NCHARE Adrian',
+    role: 'COO & Co-fondateur',
+    category: 'Opérations',
+    description:
+      'Pilote l’ensemble des opérations de NAYGAL, le déploiement sur le terrain et la rigueur d’exécution au service de la performance globale.',
+    expertise: ['Opérations', 'Exécution', 'Performance'],
+    image: '/images/a-propos/equipe/membre-naygal/COO_Adrian.jpg',
+  },
+  {
+    number: '03',
+    name: 'Richelle Abega',
+    role: 'Responsable NAYGAL Academy',
+    category: 'Transmission',
+    description:
+      'Pilote NAYGAL Academy, ses programmes de formation et ses initiatives de transmission des compétences auprès des établissements scolaires.',
+    expertise: ['Formation', 'Pédagogie', 'Numérique'],
+    image: '/images/a-propos/equipe/membre-naygal/Richelle.jpg',
+  },
+  {
+    number: '04',
     name: 'Les bâtisseurs',
     role: 'Infrastructure & Réseaux',
     category: 'Technologie',
@@ -22,23 +43,13 @@ const team = [
     expertise: ['Réseaux', 'Systèmes', 'Infrastructure'],
   },
   {
-    number: '03',
+    number: '05',
     name: 'Les défenseurs',
     role: 'Cybersécurité',
     category: 'Protection',
     description:
       'Accompagne les organisations dans la sécurisation de leurs infrastructures, données et environnements numériques.',
     expertise: ['Cybersecurity', 'Audit', 'Protection'],
-  },
-  {
-    number: '04',
-    name: 'Richelle Abega',
-    role: 'Responsable NAYGAL Academy',
-    category: 'Transmission',
-    description:
-      'Pilote NAYGAL Academy, ses programmes de formation et ses initiatives de transmission des compétences auprès des établissements scolaires.',
-    expertise: ['Formation', 'Pédagogie', 'Numérique'],
-    image: '/images/a-propos/equipe/membre-naygal/Richelle.jpg',
   },
 ]
 
@@ -64,6 +75,8 @@ const disciplines = [
     text: 'Formation, transmission des compétences et développement des talents.',
   },
 ]
+
+export const metadata = createPageMetadata('/a-propos/equipe', 'Équipe NAYGAL', 'Rencontrez l’équipe de NAYGAL et découvrez les expertises qui soutiennent ses projets numériques au Cameroun.')
 
 export default function EquipePage() {
   return (

@@ -1,29 +1,7 @@
-import type { Metadata } from 'next'
+import { createPageMetadata } from '@/lib/seo'
 
-const SITE = process.env.SITE_URL || 'https://naygal.cm'
 
-export const metadata: Metadata = {
-  title: 'Actualités tech et transformation numérique | NAYGAL',
-  description:
-    'Suivez les dernières tendances en cybersécurité, cloud, IA, infrastructure et transformation numérique avec NAYGAL au Cameroun.',
-  alternates: {
-    canonical: `${SITE}/actualites`,
-  },
-  openGraph: {
-    title: 'Actualités tech et transformation numérique | NAYGAL',
-    description:
-      'Suivez les dernières tendances en cybersécurité, cloud, IA, infrastructure et transformation numérique avec NAYGAL au Cameroun.',
-    url: `${SITE}/actualites`,
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Actualités tech et transformation numérique | NAYGAL',
-    description:
-      'Suivez les dernières tendances en cybersécurité, cloud, IA, infrastructure et transformation numérique avec NAYGAL au Cameroun.',
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-}
+export const metadata = createPageMetadata('/actualites', 'Actualités numériques NAYGAL', 'Suivez les actualités, événements et initiatives de NAYGAL autour du numérique, de la formation, du cloud et de la cybersécurité.')
 
 export default function ActualitesLayout({ children }: { children: React.ReactNode }) {
   return children

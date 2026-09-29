@@ -2,13 +2,11 @@ import type { Metadata } from 'next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Chatbot from '@/components/Chatbot'
+import CookieConsent from '@/components/CookieConsent'
 import SectionTransitionLoader from '@/components/SectionTransitionLoader'
 import ScrollReveal from '@/components/ScrollReveal'
 import MobileExperienceNotice from '@/components/MobileExperienceNotice'
 import { getOrganizationStructuredData, getWebsiteStructuredData } from '@/lib/seo'
-
-// 1. IMPORTATION CORRECTE DE VERCEL ANALYTICS ICI :
-import { Analytics } from "@vercel/analytics/next"
 
 import { Inter } from 'next/font/google'
 import './globals.css'
@@ -37,9 +35,6 @@ export const metadata: Metadata = {
     'technologie Africa',
     'solutions IT Cameroun',
   ],
-  alternates: {
-    canonical: SITE,
-  },
   icons: {
     icon: '/images/favico.ico',
     shortcut: '/images/favico.ico',
@@ -107,10 +102,7 @@ export default function RootLayout({
         
         <Footer />
         <Chatbot />
-
-        {/* 2. LE COMPOSANT ANALYTICS EST PLACÉ PROPREMENT ICI AVANT LA FERMETURE DU BODY : */}
-        <Analytics />
-        
+        <CookieConsent />
       </body>
     </html>
   )

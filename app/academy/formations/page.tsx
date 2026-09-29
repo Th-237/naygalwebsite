@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -159,6 +160,8 @@ const audiences = [
   'Organisations',
   'Associations & ONG',
 ]
+
+export const metadata = createPageMetadata('/academy/formations', 'Formations numériques professionnelles', 'Formations NAYGAL Academy en informatique, réseaux, cybersécurité, intelligence artificielle et gestion de projets au Cameroun.')
 
 export default function FormationsPage() {
   return (

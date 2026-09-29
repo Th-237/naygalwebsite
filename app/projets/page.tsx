@@ -1,30 +1,8 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const SITE = process.env.SITE_URL || 'https://naygal.cm'
-
-export const metadata = {
-  title: 'Projets innovants en IA, cybersécurité et digital | NAYGAL',
-  description:
-    'Découvrez les projets NAYGAL en infrastructure, cybersécurité, IA, TravelTech, WorkTech et innovation numérique conçus pour les organisations africaines.',
-  alternates: {
-    canonical: `${SITE}/projets`,
-  },
-  openGraph: {
-    title: 'Projets innovants en IA, cybersécurité et digital | NAYGAL',
-    description:
-      'Découvrez les projets NAYGAL en infrastructure, cybersécurité, IA, TravelTech, WorkTech et innovation numérique conçus pour les organisations africaines.',
-    url: `${SITE}/projets`,
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Projets innovants en IA, cybersécurité et digital | NAYGAL',
-    description:
-      'Découvrez les projets NAYGAL en infrastructure, cybersécurité, IA, TravelTech, WorkTech et innovation numérique conçus pour les organisations africaines.',
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-}
+export const metadata = createPageMetadata('/projets', 'Projets numériques et innovation', 'Découvrez les projets NAYGAL en infrastructure Internet, éducation, TravelTech, WorkTech et innovation numérique.')
 
 const projets = [
   {
@@ -77,23 +55,6 @@ const projets = [
   },
   {
     number: '04',
-    title: 'Sentinelle IA',
-    subtitle: 'Un SOC accessible aux PME',
-    category: 'Cybersécurité & IA',
-    status: 'En conception',
-    statusColor: 'bg-[#edf7e7] text-[#438a2c]',
-    description:
-      "Un projet de Security Operations Center assisté par l'intelligence artificielle, conçu pour rendre la surveillance de sécurité plus accessible aux PME.",
-    problem:
-      "Les PME disposent rarement des ressources nécessaires pour mettre en place une surveillance de sécurité avancée comparable à celle des grandes organisations.",
-    solution:
-      "Sentinelle IA explore une approche combinant automatisation, analyse et intelligence artificielle afin de proposer une surveillance adaptée aux moyens des PME.",
-    tags: ['SOC', 'IA', 'Cybersécurité', 'PME'],
-    image:
-      '/images/projets/si/si.png',
-  },
-  {
-    number: '05',
     title: 'NAYGAL Marketing',
     subtitle: 'Agence de marketing en ligne',
     category: 'Marketing digital',
@@ -110,7 +71,7 @@ const projets = [
       '/images/projets/mak/mak.png',
   },
   {
-    number: '06',
+    number: '05',
     title: 'NAYGAL ACADEMY Online',
     subtitle: 'Plateforme éducative africaine',
     category: 'EdTech',
@@ -127,7 +88,7 @@ const projets = [
       '/images/projets/acad/acad.png',
   },
   {
-    number: '07',
+    number: '06',
     title: 'Vacances Actives',
     subtitle: 'Plateforme de publication des activités pendant les vacances',
     category: 'Education & Jeunesse',

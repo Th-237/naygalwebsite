@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import GrandCarousel from '../../../components/GrandCarousel'
 import Image from 'next/image'
@@ -221,6 +222,8 @@ const pedagogie = [
       'Présenter son travail, expliquer ses choix et apprendre à collaborer avec les autres.',
   },
 ]
+
+export const metadata = createPageMetadata('/academy/ateliers', 'Ateliers numériques NAYGAL Academy', 'Découvrez les ateliers pratiques de NAYGAL Academy en programmation, robotique, intelligence artificielle, cybersécurité et création numérique.')
 
 export default function AteliersPage() {
   return (

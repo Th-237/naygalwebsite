@@ -34,6 +34,15 @@ const articles = [
   },
   {
     category: 'Cloud',
+    type: 'Partenariat',
+    title: 'NAYGAL × Cloudstore Africa : un partenariat pour apprendre le Cloud par la pratique',
+    description: 'Le partenariat rapproche les apprenants et les établissements des infrastructures Cloud professionnelles, du déploiement des projets aux fondamentaux DevOps et à la souveraineté numérique.',
+    meta: '6 min de lecture',
+    image: '/images/services/cloud/cloudstoreafrica.jpeg',
+    href: '/ressources/articles/naygal-cloudstore-africa-partenariat',
+  },
+  {
+    category: 'Cloud',
     type: 'Décryptage',
     title: 'Le cloud hybride devient la référence pour les organisations qui veulent garder le contrôle',
     description: 'Un modèle qui combine flexibilité, continuité de service et meilleure maîtrise des coûts.',
@@ -228,7 +237,7 @@ export default function ActualitesPage() {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-naygal-dark/25 to-transparent" />
               </div>
-              <div className="p-6"><div className="flex items-center justify-between gap-3 text-xs font-semibold"><span className="text-[#438a2c]">{article.category}</span><span className="text-slate-400">{article.meta}</span></div><p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">{article.type}</p><h3 className="mt-2 text-xl font-semibold leading-snug tracking-tight">{article.title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{article.description}</p><Link href="/contact" className="group mt-5 inline-flex items-center gap-2 text-sm font-bold text-naygal-dark">Lire la ressource <ArrowIcon /></Link></div>
+              <div className="p-6"><div className="flex items-center justify-between gap-3 text-xs font-semibold"><span className="text-[#438a2c]">{article.category}</span><span className="text-slate-400">{article.meta}</span></div><p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-slate-400">{article.type}</p><h3 className="mt-2 text-xl font-semibold leading-snug tracking-tight">{article.title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{article.description}</p><Link href={'href' in article && article.href ? article.href : '/contact'} className="group mt-5 inline-flex items-center gap-2 text-sm font-bold text-naygal-dark">Lire la ressource <ArrowIcon /></Link></div>
             </article>
           )) : <div className="col-span-full rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center text-sm text-slate-600">Aucune ressource ne correspond à votre recherche pour le moment.</div>}
         </div>

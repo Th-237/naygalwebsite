@@ -1,29 +1,8 @@
-import type { Metadata } from 'next'
+import { createPageMetadata } from '@/lib/seo'
 
 const SITE = process.env.SITE_URL || 'https://naygal.cm'
 
-export const metadata: Metadata = {
-  title: 'Ressources IA, cloud, cybersécurité et transformation numérique | NAYGAL',
-  description:
-    'Accédez à des guides, articles et conseils pratiques sur l’IA, le cloud, la cybersécurité, les réseaux et la transformation numérique.',
-  alternates: {
-    canonical: `${SITE}/ressources`,
-  },
-  openGraph: {
-    title: 'Ressources IA, cloud, cybersécurité et transformation numérique | NAYGAL',
-    description:
-      'Accédez à des guides, articles et conseils pratiques sur l’IA, le cloud, la cybersécurité, les réseaux et la transformation numérique.',
-    url: `${SITE}/ressources`,
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Ressources IA, cloud, cybersécurité et transformation numérique | NAYGAL',
-    description:
-      'Accédez à des guides, articles et conseils pratiques sur l’IA, le cloud, la cybersécurité, les réseaux et la transformation numérique.',
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-}
+export const metadata = createPageMetadata('/ressources', 'Ressources numériques NAYGAL', 'Consultez les articles, guides et conseils NAYGAL sur la cybersécurité, le cloud, les réseaux, l’intelligence artificielle et la transformation numérique.')
 
 export default function RessourcesLayout({ children }: { children: React.ReactNode }) {
   return children

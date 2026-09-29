@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PageProps) {
   const SITE = process.env.SITE_URL || 'https://naygal.cm'
 
   return {
-    title: `${page.name} | NAYGAL`,
+    title: { absolute: `${page.name} | NAYGAL` },
     description: page.description,
     alternates: {
       canonical: `${SITE}${page.href}`,

@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -147,6 +148,8 @@ const networkLayers = [
       'Segmentation, contrôle des accès, VPN et filtrage des communications.',
   },
 ]
+
+export const metadata = createPageMetadata('/services/reseaux', 'Installation et gestion de réseaux', 'Conception et déploiement de réseaux LAN, Wi-Fi professionnel, segmentation et interconnexion par NAYGAL.')
 
 export default function ReseauxPage() {
   return (

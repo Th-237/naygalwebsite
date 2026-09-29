@@ -447,7 +447,7 @@ export default function ContactPage() {
           <div className="grid sm:grid-cols-3">
 
             <a
-              href="mailto:naygalcameroun@gmail.com"
+              href="mailto:contact@naygal.cm"
               className="border-b border-white/10 p-6 transition hover:bg-white/[.03] sm:border-b-0 sm:border-r"
             >
 
@@ -456,7 +456,7 @@ export default function ContactPage() {
               </p>
 
               <p className="mt-2 text-sm font-semibold text-white">
-                naygalcameroun@gmail.com
+                contact@naygal.cm
               </p>
 
               <p className="mt-1 text-xs text-slate-500">
@@ -750,7 +750,7 @@ export default function ContactPage() {
                   </p>
 
                   <p className="mt-3 text-sm text-slate-300">
-                    naygalcameroun@gmail.com
+                    contact@naygal.cm
                   </p>
 
                   <p className="mt-1 text-sm text-slate-300">
@@ -1145,10 +1145,10 @@ export default function ContactPage() {
             <div className="flex flex-wrap gap-3">
 
               <a
-                href="mailto:naygalcameroun@gmail.com"
+                href="mailto:contact@naygal.cm"
                 className="border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/5"
               >
-                naygalcameroun@gmail.com
+                contact@naygal.cm
               </a>
 
               <a

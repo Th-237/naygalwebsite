@@ -17,7 +17,7 @@ async function main() {
 
   const info = await transporter.sendMail({
     from: `"NAYGAL Test" <${testAccount.user}>`,
-    to: 'naygalcameroun@gmail.com',
+    to: 'contact@naygal.cm',
     subject: 'NAYGAL — Test email (Ethereal)',
     text: 'Ceci est un test d\'envoi SMTP via Ethereal.',
     html: '<p>Ceci est un test d\'envoi SMTP via Ethereal.</p>',

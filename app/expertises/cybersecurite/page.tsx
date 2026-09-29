@@ -1,10 +1,8 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const metadata = {
-  title: 'Cybersécurité | NAYGAL',
-  description: 'Protection des systèmes, des données et des utilisateurs avec une cybersécurité adaptée aux besoins africains.',
-}
+export const metadata = createPageMetadata('/expertises/cybersecurite', 'Cybersécurité pour les organisations', 'Audit, protection des accès, sécurité des données et réponse aux incidents adaptés aux organisations africaines.')
 
 const pillars = [
   {

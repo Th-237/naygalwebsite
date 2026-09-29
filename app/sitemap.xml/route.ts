@@ -7,11 +7,11 @@ function urlEntry(loc: string, lastmod?: string) {
 }
 
 export async function GET() {
-  const base = process.env.SITE_URL || 'https://naygal.cm'
-  const pages = sitePages.map((p) => `${base}${p.href}`)
+  const base = (process.env.SITE_URL || 'https://naygal.cm').replace(/\/+$/, '')
+  const pages = [base, `${base}/contact`, ...sitePages.map((p) => `${base}${p.href}`)]
   const resourcePages = resources.map((r) => `${base}/ressources/${r.category.toLowerCase()}/${r.slug}`)
 
-  const urls = [...pages, ...resourcePages]
+  const urls = [...new Set([...pages, ...resourcePages])]
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

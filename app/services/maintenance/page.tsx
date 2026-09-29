@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -168,6 +169,8 @@ const contracts = [
     tag: 'Suivi',
   },
 ]
+
+export const metadata = createPageMetadata('/services/maintenance', 'Maintenance informatique', 'Maintenance préventive et corrective, supervision et assistance informatique pour les entreprises accompagnées par NAYGAL.')
 
 export default function MaintenancePage() {
   return (

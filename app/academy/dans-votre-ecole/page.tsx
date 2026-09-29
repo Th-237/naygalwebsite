@@ -73,6 +73,8 @@ const academicPartners = [
   { name: 'ISGA' },
   { name: 'MPT' },
   { name: 'KAVENOR', logo: '/images/partners/kavenor.png' },
+  { name: 'ST Digital', logo: '/images/partners/ST DIGITAL.png' },
+  { name: 'Cloudstore Africa', logo: '/images/partners/logo_cloudstore_africa.jpg' },
 ]
 
 const learningPlatforms = [
@@ -316,7 +318,7 @@ export default function AcademyInSchoolPage() {
                       <p className="text-xs font-bold uppercase tracking-[.18em] text-emerald-200">Construisons ensemble</p>
                       <h4 className="mt-3 text-2xl font-semibold sm:text-3xl">La réussite de vos étudiants mérite un accompagnement à la hauteur.</h4>
                       <p className="mt-3 text-sm leading-7 text-blue-100">Définissons la formule d’assistance adaptée à vos effectifs, vos filières et vos programmes.</p>
-                      <p className="mt-4 text-sm text-blue-100">+237 655 002 493 <span className="mx-2 text-white/40">·</span> contact@naygal.cm <span className="mx-2 text-white/40">·</span> Yaoundé, Cameroun</p>
+                      <p className="mt-4 text-sm text-blue-100">+237 674 509 721 <span className="mx-2 text-white/40">·</span> contact@naygal.cm <span className="mx-2 text-white/40">·</span> Yaoundé, Cameroun</p>
                     </div>
                     <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col">
                       <Link href="/contact?subject=formation&message=Demande%20d%27accompagnement%20pour%20nos%20%C3%A9tudiants%20IT#contact-form" className="inline-flex items-center justify-center rounded-full bg-[#52a234] px-5 py-3.5 text-center text-sm font-semibold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-[#438a2c]">Demander un accompagnement</Link>
@@ -464,7 +466,7 @@ export default function AcademyInSchoolPage() {
                       <p className="text-xs font-bold uppercase tracking-[.18em] text-amber-200">NAYGAL Academy Kids · Yaoundé</p>
                       <h4 className="mt-3 text-2xl font-semibold sm:text-3xl">Prêt à transformer l’apprentissage numérique ?</h4>
                       <p className="mt-3 max-w-2xl text-sm leading-7 text-violet-100">Contactez notre équipe pour planifier une démonstration gratuite ou recevoir une proposition adaptée à votre établissement.</p>
-                      <p className="mt-4 text-sm text-violet-100">+237 655 002 493 <span className="mx-2 text-white/40">·</span> contact@naygal.cm</p>
+                      <p className="mt-4 text-sm text-violet-100">+237 674 509 721 <span className="mx-2 text-white/40">·</span> contact@naygal.cm</p>
                     </div>
                     <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                       <Link href="/contact?subject=formation&message=Demande%20de%20s%C3%A9ance%20d%C3%A9couverte%20gratuite%20NAYGAL%20Academy%20Kids%20(primaire)#contact-form" className="inline-flex items-center justify-center rounded-full bg-amber-400 px-5 py-3 text-center text-sm font-semibold text-[#2c2042] transition hover:bg-amber-300">Demander une séance découverte gratuite</Link>

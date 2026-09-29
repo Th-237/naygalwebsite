@@ -1,10 +1,8 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const metadata = {
-  title: 'Transformation numérique | NAYGAL',
-  description: 'Accompagner la transformation numérique des organisations avec une feuille de route pragmatique et des résultats concrets.',
-}
+export const metadata = createPageMetadata('/expertises/transformation-numerique', 'Conseil en transformation numérique', 'NAYGAL aide les organisations à structurer leurs projets numériques avec une feuille de route pragmatique et des résultats concrets.')
 
 const outcomes = [
   {

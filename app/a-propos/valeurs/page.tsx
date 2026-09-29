@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -54,6 +55,8 @@ const commitments = [
   'Nous valorisons la collaboration plutôt que le travail en silo.',
   'Nous mesurons notre réussite par la valeur réellement créée.',
 ]
+
+export const metadata = createPageMetadata('/a-propos/valeurs', 'Nos valeurs', 'Les valeurs de NAYGAL : intégrité, excellence, utilité, transmission, innovation et impact.')
 
 export default function ValeursPage() {
   return (

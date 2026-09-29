@@ -1,30 +1,8 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const SITE = process.env.SITE_URL || 'https://naygal.cm'
-
-export const metadata = {
-  title: 'Services IT pour entreprises au Cameroun | NAYGAL',
-  description:
-    'Besoin d’infrastructure, réseaux, cybersécurité, cloud ou automatisation IA pour votre entreprise ? NAYGAL conçoit des solutions IT fiables et sur mesure.',
-  alternates: {
-    canonical: `${SITE}/services`,
-  },
-  openGraph: {
-    title: 'Services IT pour entreprises au Cameroun | NAYGAL',
-    description:
-      'Besoin d’infrastructure, réseaux, cybersécurité, cloud ou automatisation IA pour votre entreprise ? NAYGAL conçoit des solutions IT fiables et sur mesure.',
-    url: `${SITE}/services`,
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Services IT pour entreprises au Cameroun | NAYGAL',
-    description:
-      'Besoin d’infrastructure, réseaux, cybersécurité, cloud ou automatisation IA pour votre entreprise ? NAYGAL conçoit des solutions IT fiables et sur mesure.',
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-}
+export const metadata = createPageMetadata('/services', 'Services informatiques pour entreprises', 'Infrastructure, réseaux, cybersécurité, cloud, maintenance et automatisation pour les entreprises au Cameroun.')
 
 const services = [
   {

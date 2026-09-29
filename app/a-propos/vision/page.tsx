@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -46,6 +47,8 @@ const horizons = [
     text: 'Accompagner les organisations dans leur évolution vers des modèles plus numériques, agiles et résilients.',
   },
 ]
+
+export const metadata = createPageMetadata('/a-propos/vision', 'Notre vision numérique', 'La vision de NAYGAL : rendre la technologie utile, développer les compétences locales et soutenir l’innovation africaine.')
 
 export default function VisionPage() {
   return (

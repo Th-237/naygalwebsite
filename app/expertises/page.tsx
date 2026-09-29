@@ -1,30 +1,8 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const SITE = process.env.SITE_URL || 'https://naygal.cm'
-
-export const metadata = {
-  title: 'Expertises IT et transformation numérique | NAYGAL',
-  description:
-    'Découvrez les expertises NAYGAL en infrastructure informatique, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
-  alternates: {
-    canonical: `${SITE}/expertises`,
-  },
-  openGraph: {
-    title: 'Expertises IT et transformation numérique | NAYGAL',
-    description:
-      'Découvrez les expertises NAYGAL en infrastructure informatique, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
-    url: `${SITE}/expertises`,
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Expertises IT et transformation numérique | NAYGAL',
-    description:
-      'Découvrez les expertises NAYGAL en infrastructure informatique, réseaux, cybersécurité, cloud, IA et transformation numérique pour les organisations africaines.',
-    images: ['/images/home/NAYTECHROOM.png'],
-  },
-}
+export const metadata = createPageMetadata('/expertises', 'Expertises IT au Cameroun', 'Découvrez les services de NAYGAL en cybersécurité, cloud, réseaux, infrastructures, intelligence artificielle et transformation numérique.')
 
 const expertises = [
   {

@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from "next/image"
 import Link from "next/link"
 
@@ -141,6 +142,8 @@ const impactAreas = [
     description: "Renforcer les infrastructures, la cybersécurité et l’autonomie technologique locale.",
   },
 ]
+
+export const metadata = createPageMetadata('/mouvement/soutenir-nos-initiatives', 'Soutenir les initiatives NAYGAL', 'Soutenez les initiatives de NAYGAL par une contribution financière, du matériel, du bénévolat ou un partage d’expertise.')
 
 export default function SoutenirPage() {
   return (

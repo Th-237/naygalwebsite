@@ -1,10 +1,8 @@
+import { createPageMetadata } from '@/lib/seo'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export const metadata = {
-  title: 'Cloud & Données | NAYGAL',
-  description: 'Déployer des solutions cloud et data sécurisées pour accélérer votre transformation numérique.',
-}
+export const metadata = createPageMetadata('/expertises/cloud', 'Cloud et gestion des données', 'Conception de solutions cloud, stockage et gouvernance des données pour les entreprises et organisations au Cameroun.')
 
 const pillars = [
   {

@@ -1,3 +1,4 @@
+import { createPageMetadata } from '@/lib/seo'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -136,6 +137,8 @@ const approche = [
   ['04', 'Automatiser', 'Supprimer progressivement les tâches répétitives et les points de friction.'],
   ['05', 'Faire évoluer', 'Améliorer la solution au fur et à mesure que vos besoins évoluent.'],
 ]
+
+export const metadata = createPageMetadata('/services/automatisation-ia', 'Automatisation et intelligence artificielle', 'NAYGAL accompagne les entreprises au Cameroun dans l’automatisation des tâches et la mise en place de solutions d’intelligence artificielle.')
 
 export default function AutomatisationIAPage() {
   return (
