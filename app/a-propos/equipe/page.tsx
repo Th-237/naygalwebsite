@@ -76,11 +76,66 @@ const disciplines = [
   },
 ]
 
-export const metadata = createPageMetadata('/a-propos/equipe', 'Équipe NAYGAL', 'Rencontrez l’équipe de NAYGAL et découvrez les expertises qui soutiennent ses projets numériques au Cameroun.')
+const SITE_URL = (process.env.SITE_URL || 'https://naygal.cm').replace(/\/+$/, '')
+const profileUrls: Record<string, string> = {
+  'Théophile Begnomo': '/ressources/articles/theophile-begnomo-article-web',
+  'NCHARE Adrian': '/ressources/articles/nchare-adrian-article-web',
+  'Richelle Abega': '/ressources/articles/portrait-richelle-abega',
+}
+const teamDescription = 'Rencontrez l’équipe de NAYGAL au Cameroun : ses cofondateurs, ses responsables et les expertises qui accompagnent les projets numériques.'
+const teamProfiles = team.filter((member) => member.image)
+const absoluteTeamImages = teamProfiles.map((member) => `${SITE_URL}${member.image}`)
+const baseTeamMetadata = createPageMetadata('/a-propos/equipe', 'Équipe NAYGAL au Cameroun', teamDescription)
+
+export const metadata = {
+  ...baseTeamMetadata,
+  openGraph: {
+    ...baseTeamMetadata.openGraph,
+    images: absoluteTeamImages.map((url, index) => ({ url, alt: `Portrait de ${teamProfiles[index].name}` })),
+  },
+  twitter: {
+    card: 'summary_large_image' as const,
+    title: 'Équipe NAYGAL au Cameroun',
+    description: teamDescription,
+    images: absoluteTeamImages.slice(0, 1),
+  },
+}
 
 export default function EquipePage() {
+  const teamStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Équipe NAYGAL au Cameroun',
+    description: teamDescription,
+    url: `${SITE_URL}/a-propos/equipe`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: teamProfiles.map((member, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Person',
+          name: member.name,
+          jobTitle: member.role,
+          description: member.description,
+          image: absoluteTeamImages[index],
+          worksFor: {
+            '@type': 'Organization',
+            name: 'NAYGAL',
+            url: SITE_URL,
+          },
+          ...(profileUrls[member.name] ? { url: `${SITE_URL}${profileUrls[member.name]}` } : {}),
+        },
+      })),
+    },
+  }
+
   return (
     <main className="overflow-hidden bg-[#020817] pt-[72px] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(teamStructuredData).replace(/</g, '\\u003c') }}
+      />
 
       {/* =====================================================
           HERO

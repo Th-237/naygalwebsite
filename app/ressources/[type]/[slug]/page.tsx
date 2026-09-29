@@ -7,6 +7,13 @@ import { findResourceBySlug } from '../../../../lib/resources'
 // ✅ Définir SITE à l'extérieur, au niveau du module
 const SITE = (process.env.SITE_URL || 'https://naygal.cm').replace(/\/+$/, '')
 
+const articleImageBySlug: Record<string, { path: string; alt: string }> = {
+  'theophile-begnomo-article-web': { path: '/images/a-propos/equipe/membre-naygal/CEO_Theo.jpeg', alt: 'Portrait de Théophile Begnomo' },
+  'nchare-adrian-article-web': { path: '/images/a-propos/equipe/membre-naygal/COO_Adrian.jpg', alt: 'Portrait de NCHARE Adrian' },
+  'portrait-richelle-abega': { path: '/images/a-propos/equipe/membre-naygal/Richelle.jpg', alt: 'Portrait de Richelle Abega' },
+  'naygal-cloudstore-africa-partenariat': { path: '/images/partners/logo_cloudstore_africa.jpg', alt: 'Logo Cloudstore Africa' },
+}
+
 type Props = { params: Promise<{ type: string; slug: string }> }
 
 export async function generateMetadata({ params }: Props) {
@@ -20,6 +27,9 @@ export async function generateMetadata({ params }: Props) {
     }
   }
 
+  const articleImage = articleImageBySlug[slug]
+  const socialImage = articleImage ? `${SITE}${articleImage.path}` : null
+
   return {
     title: { absolute: `${resource.title} | NAYGAL` },
     description: resource.description,
@@ -30,7 +40,9 @@ export async function generateMetadata({ params }: Props) {
       title: `${resource.title} | NAYGAL`,
       description: resource.description,
       url: `${SITE}/ressources/${resource.category.toLowerCase()}/${resource.slug}`,
+      ...(socialImage ? { images: [{ url: socialImage, alt: articleImage.alt }] } : {}),
     },
+    ...(socialImage ? { twitter: { card: 'summary_large_image' as const, images: [socialImage] } } : {}),
   }
 }
 
@@ -38,6 +50,8 @@ export default async function ResourceDetailPage({ params }: Props) {
   const { type, slug } = await params
   const resource = findResourceBySlug(slug)
   if (!resource) return notFound()
+  const articleImage = articleImageBySlug[slug]
+  const socialImage = articleImage ? `${SITE}${articleImage.path}` : null
 
   // Optional: ensure category matches the URL type
   if (resource.category.toLowerCase() !== type) {
@@ -66,6 +80,7 @@ export default async function ResourceDetailPage({ params }: Props) {
                   '@type': 'Article',
                   headline: resource.title,
                   description: resource.description,
+                  ...(socialImage ? { image: socialImage } : {}),
                   url: `${SITE}/ressources/${resource.category.toLowerCase()}/${resource.slug}`,
                 }
               : { '@context': 'https://schema.org', '@type': 'CreativeWork', name: resource.title, description: resource.description }
