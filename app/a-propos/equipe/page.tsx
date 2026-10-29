@@ -6,7 +6,7 @@ const team = [
   {
     number: '01',
     name: 'Théophile Begnomo',
-    role: 'CEO & Co-fondateur',
+    role: 'Co-fondateur & Président',
     category: 'Vision',
     description:
       'Porte la vision de NAYGAL, son développement stratégique et la construction de partenariats durables au service d’un numérique utile.',
