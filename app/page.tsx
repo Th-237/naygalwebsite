@@ -316,7 +316,7 @@ export default function Home() {
 
       <section className="relative z-10 border-b border-slate-200 bg-white py-4 sm:py-5" aria-label="Partenaires et plateformes de NAYGAL">
         <div className="container-custom mb-2.5 text-center sm:mb-3">
-          <h2 className="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500 sm:text-[11px]">Ils nous font confiance</h2>
+          <h2 className="text-[10px] font-bold uppercase tracking-[.2em] text-slate-500 sm:text-[11px]">Ils nous accompagnent</h2>
         </div>
         <div className="partner-marquee-shell partner-marquee-home group" aria-label="Défilement des logos des partenaires de NAYGAL">
           <div className="animate-partner-marquee animate-partner-marquee-home flex w-max items-center gap-3 px-2 group-hover:[animation-play-state:paused] sm:gap-4">
