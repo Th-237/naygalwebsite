@@ -152,6 +152,13 @@ export default function AcademyPage() {
                 >
                   Explorer les ateliers
                 </Link>
+
+                <Link
+                  href="/academy/passacad"
+                  className="inline-flex justify-center rounded-md border border-[#a4d78f]/60 bg-[#a4d78f]/10 px-7 py-4 font-semibold text-white backdrop-blur transition hover:bg-[#a4d78f]/20"
+                >
+                  Rejoindre PassAcad
+                </Link>
               </div>
 
               <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-blue-100">
@@ -304,6 +311,29 @@ export default function AcademyPage() {
 
           </div>                              
 
+        </div>
+      </section>
+
+      <section data-reveal className="bg-[#032965] py-16 text-white sm:py-20">
+        <div className="container-custom grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="max-w-3xl">
+            <p className="text-sm font-bold uppercase tracking-[.18em] text-[#a4d78f]">
+              NAYGAL ACADEMY · PASSACAD
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              Une communauté tech ouverte aux profils IT et non-IT.
+            </h2>
+            <p className="mt-4 leading-7 text-blue-100/80">
+              Passe le test d’entrée, puis rejoins un espace pour apprendre, partager tes projets
+              et rencontrer d’autres passionnés du numérique.
+            </p>
+          </div>
+          <Link
+            href="/academy/passacad"
+            className="inline-flex w-fit items-center gap-3 rounded-md bg-[#71b224] px-6 py-4 font-semibold text-white transition hover:bg-[#5d9b1c]"
+          >
+            Découvrir PassAcad <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
 

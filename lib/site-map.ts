@@ -53,6 +53,7 @@ export const siteNavigation: NavigationItem[] = [
       { name: 'Formations', href: '/academy/formations' },
       { name: 'Ateliers', href: '/academy/ateliers' },
       { name: 'Événements', href: '/academy/evenements' },
+      { name: 'PassAcad', href: '/academy/passacad' },
     ],
   },
   {

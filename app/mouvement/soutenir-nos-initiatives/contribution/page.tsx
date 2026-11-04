@@ -142,7 +142,7 @@ function ContributionContent() {
             </Link>
 
             <Link
-              href="/mouvement/soutenir"
+              href="/mouvement/soutenir-nos-initiatives"
               className="text-sm font-semibold text-slate-600 transition hover:text-[#032965]"
             >
               ← Retour
@@ -171,7 +171,7 @@ function ContributionContent() {
             </p>
 
             <Link
-              href="/mouvement/soutenir"
+              href="/mouvement/soutenir-nos-initiatives"
               className="mt-8 inline-flex bg-[#52a234] px-7 py-4 font-semibold text-white transition hover:bg-[#438a2c]"
             >
               Voir les initiatives
@@ -293,7 +293,7 @@ function ContributionContent() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
 
               <Link
-                href="/mouvement/soutenir"
+                href="/mouvement/soutenir-nos-initiatives"
                 className="flex-1 border border-[#032965] px-6 py-4 font-semibold text-[#032965] transition hover:bg-[#032965] hover:text-white"
               >
                 Retour aux initiatives
@@ -352,7 +352,7 @@ function ContributionContent() {
           </Link>
 
           <Link
-            href="/mouvement/soutenir"
+            href="/mouvement/soutenir-nos-initiatives"
             className="text-sm font-semibold text-slate-600 transition hover:text-[#032965]"
           >
             ← Retour
@@ -936,7 +936,7 @@ function ContributionContent() {
 
 
                 <Link
-                  href="/mouvement/soutenir"
+                  href="/mouvement/soutenir-nos-initiatives"
                   className="mt-5 inline-block text-sm font-bold text-[#438a2c] transition hover:underline"
                 >
                   Voir les autres possibilités →

@@ -174,6 +174,7 @@ const partnerLogos = [
   { name: 'ISGA', type: 'Partenaire académique' },
   { name: 'MPT', type: 'Partenaire professionnel' },
   { name: 'Kavenor', logo: '/images/partners/kavenor.png', type: 'Partenaire professionnel' },
+  { name: 'ITGes', logo: '/images/partners/logo ITGes.jpeg', type: 'Partenaire professionnel' },
   { name: 'ST Digital', logo: '/images/partners/ST DIGITAL.png', type: 'Partenaire cloud' },
   { name: 'Cloudstore Africa', logo: '/images/partners/logo_cloudstore_africa.jpg', type: 'Partenaire cloud' },
   { name: 'Cisco Networking Academy', logo: '/images/platforms/img.png', type: 'Plateforme de formation' },
@@ -839,6 +840,67 @@ export default function Home() {
 
             </div>
 
+          </div>
+
+          <div className="mt-8 overflow-hidden rounded-2xl bg-[#032965] text-white">
+            <div className="grid lg:grid-cols-[.9fr_1.1fr]">
+              <div className="p-8 sm:p-10 lg:p-12">
+                <p className="text-xs font-bold uppercase tracking-[.18em] text-[#a4d78f]">
+                  NAYGAL ACADEMY ONLINE
+                </p>
+                <h3 className="mt-4 text-3xl font-semibold leading-tight tracking-[-.03em] sm:text-4xl">
+                  Trouvez le cours qui vous fera avancer.
+                </h3>
+                <p className="mt-4 max-w-xl leading-7 text-blue-100/80">
+                  Explorez nos parcours en numérique, technologie et compétences professionnelles.
+                  Consultez les programmes et choisissez la formation adaptée à vos objectifs.
+                </p>
+                <Link
+                  href="/academy/formations"
+                  className="mt-7 inline-flex items-center gap-3 bg-[#71b224] px-6 py-3.5 font-semibold text-white transition hover:bg-[#5d9b1c]"
+                >
+                  Explorer les formations <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+
+              <div className="grid gap-3 p-5 sm:p-8 lg:py-10 lg:pr-10">
+                {[
+                  {
+                    title: 'Réseaux & cybersécurité',
+                    category: 'Parcours techniques',
+                    href: '/academy/formations#tech',
+                  },
+                  {
+                    title: 'Intelligence artificielle & productivité',
+                    category: 'Parcours professionnels',
+                    href: '/academy/formations#pro',
+                  },
+                  {
+                    title: 'Data, marketing & gestion de projet',
+                    category: 'Compétences métier',
+                    href: '/academy/formations#pro',
+                  },
+                ].map((course) => (
+                  <Link
+                    key={course.title}
+                    href={course.href}
+                    className="group flex items-center justify-between gap-4 rounded-xl border border-white/15 bg-white/[.06] px-5 py-4 transition hover:border-[#a4d78f]/60 hover:bg-white/10"
+                  >
+                    <span>
+                      <span className="block text-xs font-semibold uppercase tracking-[.12em] text-[#a4d78f]">
+                        {course.category}
+                      </span>
+                      <span className="mt-1 block font-semibold text-white">
+                        {course.title}
+                      </span>
+                    </span>
+                    <span className="shrink-0 text-xl text-[#a4d78f] transition group-hover:translate-x-1" aria-hidden="true">
+                      →
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
 
         </div>

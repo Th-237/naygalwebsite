@@ -19,6 +19,9 @@
 
 # production
 /build
+/data/passacad-attempts.json
+/data/passacad-attempts.json.lock
+/data/passacad-attempts.json.*.tmp
 
 # misc
 .DS_Store
