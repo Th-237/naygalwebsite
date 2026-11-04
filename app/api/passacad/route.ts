@@ -1,6 +1,6 @@
-import { randomInt, randomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 import { NextResponse } from 'next/server'
-import { passingScore, quizQuestionCount, studentTests } from '@/lib/passacad-questions'
+import { passingScore, quizQuestionCount, createStudentQuiz } from '@/lib/passacad-student-quiz'
 import type { StudyDomain, StoredQuizQuestion } from '@/lib/passacad-types'
 import {
   createPassAcadSession,
@@ -56,34 +56,6 @@ function getAttemptStatus(member: {
   }
 }
 
-function shuffle<T>(items: T[]) {
-  const result = [...items]
-  for (let index = result.length - 1; index > 0; index -= 1) {
-    const swapIndex = randomInt(index + 1)
-    const current = result[index]
-    const swap = result[swapIndex]
-    if (current !== undefined && swap !== undefined) {
-      result[index] = swap
-      result[swapIndex] = current
-    }
-  }
-  return result
-}
-
-function createQuizQuestions(domain: StudyDomain): StoredQuizQuestion[] {
-  return shuffle(studentTests[domain])
-    .slice(0, quizQuestionCount)
-    .map((question) => {
-      const optionIndexes = shuffle(question.options.map((_, index) => index))
-      const answer = optionIndexes.indexOf(question.answer)
-      return {
-        ...question,
-        options: optionIndexes.map((index) => question.options[index] ?? ''),
-        answer,
-      }
-    })
-}
-
 function publicQuestions(questions: StoredQuizQuestion[]) {
   return questions.map(({ id, prompt, options }) => ({ id, prompt, options }))
 }
@@ -124,11 +96,16 @@ async function handleQuizStart(body: RequestBody) {
       }
     }
 
-    if (member.activeQuiz && member.activeQuiz.expiresAt > now && member.activeQuiz.domain === domain) {
+    if (
+      member.activeQuiz &&
+      member.activeQuiz.expiresAt > now &&
+      member.activeQuiz.domain === domain &&
+      member.activeQuiz.questions.length === quizQuestionCount
+    ) {
       return { quizId: member.activeQuiz.id, questions: publicQuestions(member.activeQuiz.questions), ...getAttemptStatus(member, now) }
     }
 
-    const questions = createQuizQuestions(domain)
+    const questions = createStudentQuiz(domain)
     const quizId = randomUUID()
     member.activeQuiz = { id: quizId, domain, expiresAt: now + quizDurationMs, questions }
     return { quizId, questions: publicQuestions(questions), ...getAttemptStatus(member, now) }

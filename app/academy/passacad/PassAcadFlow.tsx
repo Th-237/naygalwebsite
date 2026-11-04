@@ -6,7 +6,7 @@ import type { QuizQuestion, StudyDomain } from '@/lib/passacad-types'
 
 const whatsappNumber = '237655002493'
 const membershipFee = '5 000 FCFA'
-const passingScore = 3
+const passingScore = 4
 
 type Profile = 'student' | 'professional' | 'curious'
 type Stage = 'profile' | 'quiz' | 'result' | 'payment'
@@ -634,8 +634,7 @@ export default function PassAcadFlow() {
                           placeholder="nom@exemple.com"
                         />
                         <span className="mt-1 block text-xs font-normal text-slate-500">
-                          Elle sera conservée en clair dans le fichier JSON PassAcad du serveur, puis supprimée après 90 jours sans activité.
-                          Aucun code ne sera envoyé : l’adresse n’est pas vérifiée et peut être remplacée par une autre.
+                          Chaque adresse est rattachée à un dossier PassAcad. Tes tentatives sont enregistrées et contrôlées côté serveur ; après trois échecs, l’accès est suspendu pendant une heure. Renseigne une adresse valide et personnelle pour assurer le suivi de ton parcours.
                         </span>
                       </label>
                       <label className="block text-sm font-semibold text-slate-700">
@@ -684,7 +683,7 @@ export default function PassAcadFlow() {
                     <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <p className="text-sm text-slate-500">
                         {isStudent
-                          ? `5 questions aléatoires parmi 8 · seuil indicatif : 3/5 · essais restants : ${attemptsRemaining}`
+                          ? `7 QCM aléatoires · logique, NAYGAL et enjeux du numérique · seuil : 4/7 · essais restants : ${attemptsRemaining}`
                           : '3 questions · aucun score éliminatoire'}
                       </p>
                       {isStudent ? (
@@ -809,7 +808,7 @@ export default function PassAcadFlow() {
                   </h2>
                   {isStudent && score !== null && (
                     <p className="mt-4 text-lg text-slate-600">
-                      Ton score : <strong className="text-[#032965]">{score}/5</strong>
+                      Ton score : <strong className="text-[#032965]">{score}/{currentQuestions.length}</strong>
                     </p>
                   )}
                   {passed ? (
