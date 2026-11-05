@@ -1,9 +1,6 @@
-import 'server-only'
-import { randomInt } from 'node:crypto'
 import type { StudyDomain, StoredQuizQuestion } from './passacad-types'
 
 export const passingScore = 4
-export const quizQuestionCount = 7
 
 const naygalQuestions: StoredQuizQuestion[] = [
   {
@@ -326,7 +323,7 @@ const futureJobsQuestions: StoredQuizQuestion[] = [
 function shuffle<T>(items: T[]) {
   const result = [...items]
   for (let index = result.length - 1; index > 0; index -= 1) {
-    const swapIndex = randomInt(index + 1)
+    const swapIndex = Math.floor(Math.random() * (index + 1))
     const current = result[index]
     const swap = result[swapIndex]
     if (current !== undefined && swap !== undefined) {
@@ -338,7 +335,7 @@ function shuffle<T>(items: T[]) {
 }
 
 function pickQuestion(pool: StoredQuizQuestion[]) {
-  const question = pool[randomInt(pool.length)]
+  const question = pool[Math.floor(Math.random() * pool.length)]
   if (!question) throw new Error('A PassAcad student question pool is empty.')
   return question
 }

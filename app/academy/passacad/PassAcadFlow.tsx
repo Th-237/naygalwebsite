@@ -2,11 +2,11 @@
 
 import { useEffect, useState, type FormEvent } from 'react'
 import Image from 'next/image'
-import type { QuizQuestion, StudyDomain } from '@/lib/passacad-types'
+import { createStudentQuiz, passingScore } from '@/lib/passacad-student-quiz'
+import type { StudyDomain } from '@/lib/passacad-types'
 
 const whatsappNumber = '237655002493'
 const membershipFee = '5 000 FCFA'
-const passingScore = 4
 
 type Profile = 'student' | 'professional' | 'curious'
 type Stage = 'profile' | 'quiz' | 'result' | 'payment'
@@ -15,12 +15,7 @@ type Question = {
   id?: string
   prompt: string
   options: string[]
-}
-type PassAcadApiResponse = {
-  error?: string
-  quizId?: string
-  questions?: QuizQuestion[]
-  score?: number | null
+  answer?: number
 }
 
 const profiles: { id: Profile; title: string; description: string }[] = [
@@ -76,8 +71,6 @@ export default function PassAcadFlow() {
   const [studyDomain, setStudyDomain] = useState<StudyDomain>('it')
   const [institution, setInstitution] = useState('')
   const [flowMessage, setFlowMessage] = useState('')
-  const [quizId, setQuizId] = useState('')
-  const [quizLoading, setQuizLoading] = useState(false)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([])
   const [answers, setAnswers] = useState<number[]>([])
@@ -124,53 +117,25 @@ export default function PassAcadFlow() {
     return () => window.clearInterval(intervalId)
   }, [])
 
-  async function startQuiz() {
-    setQuizLoading(true)
+  function startQuiz() {
     setFlowMessage('')
-    try {
-      if (isStudent) {
-        const response = await fetch('/api/passacad', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'start', domain: studyDomain }),
-        })
-        const data: PassAcadApiResponse = await response.json()
-        if (!response.ok) {
-          setFlowMessage(data.error ?? 'Le test n’a pas pu démarrer. Réessaie.')
-          return
-        }
-        if (!data.quizId || !data.questions) {
-          setFlowMessage('Le test reçu est incomplet. Réessaie.')
-          return
-        }
-        setQuizId(data.quizId)
-        setQuizQuestions(data.questions)
-      } else {
-        setQuizQuestions([])
-      }
-
+    setQuizQuestions(isStudent ? createStudentQuiz(studyDomain) : [])
     setAnswers([])
     setQuestionIndex(0)
     setScore(null)
     setStage('quiz')
-    } catch {
-      setFlowMessage('Connexion impossible au service PassAcad. Vérifie ta connexion puis réessaie.')
-    } finally {
-      setQuizLoading(false)
-    }
   }
 
   function chooseProfile(nextProfile: Profile) {
     setProfile(nextProfile)
     setQuizQuestions([])
-    setQuizId('')
     setAnswers([])
     setQuestionIndex(0)
     setScore(null)
     setFlowMessage('')
   }
 
-  async function submitAnswer() {
+  function submitAnswer() {
     if (selectedAnswer === undefined) return
 
     if (questionIndex < currentQuestions.length - 1) {
@@ -182,29 +147,11 @@ export default function PassAcadFlow() {
     finalAnswers[questionIndex] = selectedAnswer
     setAnswers(finalAnswers)
     if (isStudent) {
-      setQuizLoading(true)
-      try {
-        const response = await fetch('/api/passacad', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'submit', quizId, answers: finalAnswers }),
-        })
-        const data: PassAcadApiResponse = await response.json()
-        if (!response.ok) {
-          setFlowMessage(data.error ?? 'Ton résultat n’a pas pu être enregistré.')
-          return
-        }
-        if (typeof data.score !== 'number') {
-          setFlowMessage('Le résultat reçu est incomplet. Contacte l’équipe NAYGAL avant de recommencer.')
-          return
-        }
-        setScore(data.score)
-      } catch {
-        setFlowMessage('Connexion impossible. Tes réponses n’ont pas été validées, réessaie.')
-        return
-      } finally {
-        setQuizLoading(false)
-      }
+      const studentScore = finalAnswers.reduce(
+        (total, answer, index) => total + Number(answer === quizQuestions[index]?.answer),
+        0,
+      )
+      setScore(studentScore)
     } else {
       setScore(null)
     }
@@ -347,62 +294,83 @@ export default function PassAcadFlow() {
         </section>
       )}
       <section className="relative isolate min-h-[680px] overflow-hidden bg-[#041d45] text-white lg:min-h-[730px]">
-        <div className="passacad-universe absolute inset-0 -z-20" aria-hidden="true">
-          <div className="passacad-universe__stars" />
-        </div>
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_5%,rgba(3,19,46,.18)_58%,rgba(3,19,46,.8)_100%)]" />
-        <div className="container-custom relative z-10 flex min-h-[680px] flex-col items-center py-8 sm:py-10 lg:min-h-[730px]">
-          <p className="relative z-10 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.2em] text-[#c7e9ae]">
-            <span className="h-px w-8 bg-[#8ed15b]" />
-            NAYGAL Academy <span className="text-white/40">/</span> PassAcad
-          </p>
-
-          <div className="passacad-journey-copy absolute inset-x-4 top-24 bottom-36 flex items-center justify-center sm:inset-x-8 sm:top-28 sm:bottom-40 lg:inset-x-12 lg:top-24 lg:bottom-44">
-            <div className="sr-only">
-              Apprends en faisant. Construis des projets concrets. Entoure-toi de talents. Fais grandir tes idées.
-              Rejoins l’Académie des Bâtisseurs.
-            </div>
-            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--one">
-              <span className="passacad-journey-copy__eyebrow">01 · Explore</span>
-              Apprends <strong>en faisant.</strong>
-            </span>
-            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--two">
-              <span className="passacad-journey-copy__eyebrow">02 · Construis</span>
-              Des projets <strong>qui comptent.</strong>
-            </span>
-            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--three">
-              <span className="passacad-journey-copy__eyebrow">03 · Connecte</span>
-              Entoure-toi de <strong>talents.</strong>
-            </span>
-            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--four">
-              <span className="passacad-journey-copy__eyebrow">04 · Imagine</span>
-              Fais grandir <strong>tes idées.</strong>
-            </span>
-            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--final">
-              <span className="passacad-journey-copy__eyebrow">Ton prochain chapitre commence ici</span>
-              Rejoins
-              <strong className="passacad-journey-copy__final-title">l’Académie des Bâtisseurs</strong>
-              <span className="passacad-journey-copy__final-rule" />
-              <span className="passacad-journey-copy__final-caption">
-                Apprendre · Oser · Construire
-              </span>
-            </span>
-          </div>
-
-          <div className="relative z-10 mt-auto flex w-full flex-col items-center gap-3 pt-8 text-center">
-            <button
-              type="button"
-              onClick={() => document.getElementById('passacad-flow')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex min-h-14 items-center justify-center gap-4 bg-[#a8d779] px-7 font-bold text-[#092345] transition hover:bg-[#c1e49f]"
-            >
-              Commencer mon parcours <span aria-hidden="true">↗</span>
-            </button>
-            <p className="text-sm text-white/75">
-              <span className="font-semibold text-white">{membershipFee}</span> d’adhésion
-              <span className="mx-2 text-white/40">·</span>
-              Paiement après le parcours
+        <Image
+          src="/images/academy/Grand%20caroussel/img2.jpg"
+          alt="Deux jeunes apprenantes échangent autour d’un projet numérique"
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 58vw"
+          className="absolute inset-0 -z-20 object-cover object-[center_38%] lg:object-[center_42%]"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#031b42] via-[#031b42]/90 to-[#031b42]/35 lg:via-[#031b42]/75 lg:to-[#031b42]/15" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#031b42]/80 via-transparent to-[#031b42]/15" />
+        <div className="absolute inset-0 -z-10 opacity-[.14] [background-image:linear-gradient(rgba(255,255,255,.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.18)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:linear-gradient(to_right,transparent,black)]" />
+        <div className="container-custom relative flex min-h-[680px] flex-col justify-center py-12 sm:py-20 lg:min-h-[730px]">
+          <div className="max-w-3xl lg:pb-16">
+            <p className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.2em] text-[#c7e9ae]">
+              <span className="h-px w-8 bg-[#8ed15b]" />
+              NAYGAL Academy <span className="text-white/40">/</span> PassAcad
             </p>
+            <p className="mt-9 text-sm font-medium tracking-[.08em] text-blue-100/80">
+              Un réseau grandit quand chacun y apporte quelque chose.
+            </p>
+            <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[.98] tracking-[-.055em] sm:text-7xl lg:text-[5.5rem]">
+              Une place
+              <span className="block font-normal italic text-[#a8d779]">se construit.</span>
+              <span className="mt-2 block text-3xl font-medium tracking-[-.03em] text-white/90 sm:text-5xl">
+                La tienne commence ici.
+              </span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-7 text-blue-50/85 sm:text-lg sm:leading-8">
+              Étudiant·e, professionnel·le, curieux·se : trouve ta place dans
+              NAYGAL Community. Ton itinéraire s’adapte à ce que tu étudies, fais
+              ou rêves d’apprendre.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <button
+                type="button"
+                onClick={() => document.getElementById('passacad-flow')?.scrollIntoView({ behavior: 'smooth' })}
+                className="inline-flex min-h-14 items-center justify-center gap-4 bg-[#a8d779] px-7 font-bold text-[#092345] transition hover:bg-[#c1e49f]"
+              >
+                Construire mon parcours <span aria-hidden="true">↗</span>
+              </button>
+              <p className="text-sm text-white/80">
+                <span className="font-semibold text-white">{membershipFee}</span> d’adhésion
+                <span className="mx-2 text-white/40">·</span>
+                Paiement après le parcours
+              </p>
+            </div>
           </div>
+
+          <div className="relative z-10 ml-auto mt-8 w-[min(19rem,calc(100%-2rem))] rotate-[-2deg] sm:mr-8 lg:absolute lg:bottom-14 lg:right-[7%] lg:mr-0 lg:mt-0">
+            <div className="relative overflow-hidden border border-white/50 bg-[#f7f4e9] p-5 text-[#082b5b] shadow-[0_28px_70px_-20px_rgba(0,0,0,.65)] sm:p-6">
+              <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full border border-[#0b356b]/10" />
+              <div className="absolute -right-7 -top-7 h-24 w-24 rounded-full border border-[#0b356b]/10" />
+              <div className="relative flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-[9px] font-bold uppercase tracking-[.2em] text-[#4c7b42]">NAYGAL Community</p>
+                  <p className="mt-1 text-2xl font-semibold tracking-tight">PassAcad</p>
+                </div>
+                <span className="grid h-10 w-10 place-items-center border border-[#0b356b]/20 text-lg" aria-hidden="true">✳</span>
+              </div>
+              <div className="relative mt-6 flex items-end justify-between border-t border-[#0b356b]/15 pt-4">
+                <div>
+                  <p className="text-[9px] uppercase tracking-[.18em] text-slate-500">Édition communauté</p>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-[.12em]">Cameroun · 2026</p>
+                </div>
+                <span className="font-mono text-[10px] tracking-[.18em] text-[#4c7b42]">N° À VENIR</span>
+              </div>
+              <div className="mt-4 flex gap-1" aria-hidden="true">
+                {Array.from({ length: 28 }, (_, index) => (
+                  <span key={index} className={`h-5 flex-1 ${index % 4 === 0 || index % 7 === 0 ? 'bg-[#0b356b]' : 'bg-[#0b356b]/25'}`} />
+                ))}
+              </div>
+              <p className="mt-2 text-right text-[8px] uppercase tracking-[.2em] text-slate-500">Une place se construit</p>
+            </div>
+          </div>
+          <p className="absolute bottom-8 left-4 hidden text-[10px] font-medium uppercase tracking-[.2em] text-white/55 sm:left-8 lg:block">
+            04 étapes <span className="mx-2 text-[#a8d779]">/</span> une communauté à construire
+          </p>
         </div>
       </section>
 
@@ -586,6 +554,10 @@ export default function PassAcadFlow() {
                         Ton établissement nous aide à t’orienter vers l’espace correspondant,
                         par exemple l’Académie des bâtisseurs à l’ISTAG.
                       </p>
+                      <p className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 sm:col-span-2" role="status">
+                        Attention : le test est conservé uniquement dans cette page. Si tu actualises
+                        ou fermes la page, tes réponses seront réinitialisées et tu devras recommencer.
+                      </p>
                       {flowMessage && (
                         <p className="text-sm leading-6 text-slate-600 sm:col-span-2" role="status">
                           {flowMessage}
@@ -604,19 +576,18 @@ export default function PassAcadFlow() {
                         <button
                           type="button"
                           onClick={startQuiz}
-                          disabled={!institution.trim() || quizLoading}
+                          disabled={!institution.trim()}
                           className="rounded-md bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50] disabled:cursor-not-allowed disabled:opacity-40"
                         >
-                          {quizLoading ? 'Préparation…' : 'Commencer le test'} <span aria-hidden="true">→</span>
+                          Commencer le test <span aria-hidden="true">→</span>
                         </button>
                       ) : (
                         <button
                           type="button"
                           onClick={startQuiz}
-                          disabled={quizLoading}
                           className="rounded-md bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50] disabled:cursor-not-allowed disabled:opacity-40"
                         >
-                          {quizLoading ? 'Préparation…' : 'Continuer'} <span aria-hidden="true">→</span>
+                          Continuer <span aria-hidden="true">→</span>
                         </button>
                       )}
                     </div>
@@ -641,9 +612,14 @@ export default function PassAcadFlow() {
                     />
                   </div>
                   {isStudent && (
-                    <p className="mt-5 text-sm text-slate-500">
-                      {studyDomains.find((domain) => domain.id === studyDomain)?.label} · {institution}
-                    </p>
+                    <>
+                      <p className="mt-5 text-sm text-slate-500">
+                        {studyDomains.find((domain) => domain.id === studyDomain)?.label} · {institution}
+                      </p>
+                      <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm leading-6 text-amber-900" role="status">
+                        Ne quitte pas cette page et ne l’actualise pas : ta progression n’est pas sauvegardée et le test repartira de zéro.
+                      </p>
+                    </>
                   )}
                   <h2 className="mt-8 text-2xl font-semibold leading-snug">{currentQuestion.prompt}</h2>
                   <fieldset className="mt-6 space-y-3">
@@ -689,12 +665,10 @@ export default function PassAcadFlow() {
                     <button
                       type="button"
                       onClick={submitAnswer}
-                      disabled={selectedAnswer === undefined || quizLoading}
+                      disabled={selectedAnswer === undefined}
                       className="rounded-md bg-[#032965] px-6 py-3 font-semibold text-white transition hover:bg-[#021f50] disabled:cursor-not-allowed disabled:opacity-40"
                     >
-                      {quizLoading
-                        ? 'Vérification…'
-                        : questionIndex === currentQuestions.length - 1
+                      {questionIndex === currentQuestions.length - 1
                         ? isStudent ? 'Voir mon résultat' : 'Terminer le questionnaire'
                         : 'Question suivante →'}
                     </button>
@@ -781,7 +755,7 @@ export default function PassAcadFlow() {
                   )}
                   <p className="mt-6 text-xs leading-5 text-slate-500">
                     {isStudent
-                      ? 'Ce résultat est affiché dans ton navigateur et n’est pas enregistré sur un serveur. La validation finale de l’adhésion est faite par l’équipe.'
+                      ? 'Le test et son résultat sont gérés uniquement dans ton navigateur, sans validation ni sauvegarde sur un serveur. La validation finale de l’adhésion est faite par l’équipe.'
                       : 'Tes réponses restent dans ton navigateur jusqu’à la préparation du message WhatsApp ; elles ne sont pas envoyées à un serveur.'}
                   </p>
                 </div>
