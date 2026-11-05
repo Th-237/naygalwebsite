@@ -105,16 +105,14 @@ async function readStore(storePath: string): Promise<PassAcadStore> {
     }
     const members = parsed.members as Record<string, PassAcadMember>
     for (const member of Object.values(members)) {
+      member.email = null
       if (parsed.version === 1) {
-        member.email = null
         delete (member as PassAcadMember & Record<string, unknown>).otpHash
         delete (member as PassAcadMember & Record<string, unknown>).otpExpiresAt
         delete (member as PassAcadMember & Record<string, unknown>).otpLastSentAt
         delete (member as PassAcadMember & Record<string, unknown>).otpWindowStartedAt
         delete (member as PassAcadMember & Record<string, unknown>).otpSendsInWindow
         delete (member as PassAcadMember & Record<string, unknown>).otpFailures
-      } else if (typeof member.email !== 'string') {
-        member.email = null
       }
     }
     return { version: 2, members }

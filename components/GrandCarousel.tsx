@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 
-type Props = { interval?: number; images?: string[] }
+type Props = { interval?: number; images?: string[]; showControls?: boolean }
 
 const defaultImages = [
   '/images/academy/Grand caroussel/img1.jpg',
@@ -12,7 +12,7 @@ const defaultImages = [
   '/images/academy/Grand caroussel/img5.jpg',
 ]
 
-export default function GrandCarousel({ interval = 5000, images }: Props) {
+export default function GrandCarousel({ interval = 5000, images, showControls = true }: Props) {
   const slides = images && images.length ? images : defaultImages
   const [index, setIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -35,11 +35,12 @@ export default function GrandCarousel({ interval = 5000, images }: Props) {
       onMouseLeave={() => setIsPaused(false)}
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
+      aria-hidden={!showControls}
     >
       <Image
         key={slides[index]}
         src={slides[index]}
-        alt={`Slide ${index + 1}`}
+        alt={showControls ? `Slide ${index + 1}` : ''}
         fill
         priority
         quality={85}
@@ -48,7 +49,7 @@ export default function GrandCarousel({ interval = 5000, images }: Props) {
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#021d47]/70 via-transparent to-[#021d47]/10" />
 
-      {slides.length > 1 && (
+      {showControls && slides.length > 1 && (
         <div className="absolute bottom-6 left-6 right-6 z-10 flex items-center justify-between gap-4 sm:bottom-8 sm:left-8 sm:right-8">
           <div className="flex items-center gap-2" role="tablist" aria-label="Choisir une image">
             {slides.map((slide, slideIndex) => (

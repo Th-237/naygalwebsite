@@ -290,6 +290,247 @@
     animation: carousel-image-in 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+  .passacad-universe {
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 68% 46%, rgb(28 78 132 / 48%), transparent 48%),
+      radial-gradient(ellipse at 45% 120%, rgb(8 47 91 / 72%), transparent 55%),
+      #03132e;
+  }
+
+  .passacad-universe::before {
+    position: absolute;
+    inset: -55%;
+    background: repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg 7.8deg,
+      rgb(160 205 255 / 13%) 8deg,
+      transparent 8.15deg 15deg
+    );
+    content: "";
+    mask-image: radial-gradient(ellipse at center, transparent 0 12%, #000 62%, transparent 82%);
+    animation: passacad-warp 36s linear infinite;
+  }
+
+  .passacad-universe__stars {
+    position: absolute;
+    inset: -20%;
+    background-image:
+      radial-gradient(1px 1px at 12% 20%, rgb(255 255 255 / 75%) 50%, transparent 100%),
+      radial-gradient(1px 1px at 35% 64%, rgb(255 255 255 / 55%) 50%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 62% 28%, rgb(210 235 255 / 75%) 50%, transparent 100%),
+      radial-gradient(1px 1px at 84% 72%, rgb(255 255 255 / 65%) 50%, transparent 100%),
+      radial-gradient(1px 1px at 72% 88%, rgb(255 255 255 / 45%) 50%, transparent 100%);
+    background-size: 310px 280px, 370px 330px, 420px 360px, 340px 310px, 460px 390px;
+    animation: passacad-stardrift 48s linear infinite;
+  }
+
+  .passacad-journey-copy {
+    perspective: 700px;
+  }
+
+  .passacad-journey-copy__word {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    max-width: 80%;
+    color: rgb(232 242 255 / 86%);
+    font-size: clamp(1.15rem, 2.6vw, 2.25rem);
+    font-weight: 450;
+    letter-spacing: -0.035em;
+    line-height: 1.3;
+    opacity: 0;
+    text-shadow: 0 2px 24px rgb(118 177 255 / 42%);
+    transform: translate3d(0, 16px, -90px) scale(.94);
+    animation: passacad-journey-word 20s cubic-bezier(0.16, 1, 0.3, 1) infinite both;
+  }
+
+  .passacad-journey-copy__word--one {
+    top: 5%;
+    left: 0;
+    text-align: left;
+    animation-delay: 0s;
+  }
+
+  .passacad-journey-copy__word--two {
+    top: 28%;
+    right: 0;
+    align-items: flex-end;
+    text-align: right;
+    animation-delay: -3.5s;
+  }
+
+  .passacad-journey-copy__word--three {
+    top: 52%;
+    left: 4%;
+    animation-delay: -7s;
+  }
+
+  .passacad-journey-copy__word--four {
+    top: 76%;
+    right: 2%;
+    align-items: flex-end;
+    text-align: right;
+    animation-delay: -10.5s;
+  }
+
+  .passacad-journey-copy__eyebrow {
+    color: #b7df91;
+    font-size: clamp(.62rem, 1.1vw, .78rem);
+    font-weight: 700;
+    letter-spacing: .2em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .passacad-journey-copy__word strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .passacad-journey-copy__word--final {
+    top: 50%;
+    left: 50%;
+    align-items: center;
+    width: 100%;
+    max-width: 58rem;
+    gap: .65rem;
+    color: #fff;
+    font-size: clamp(.65rem, 1.3vw, .85rem);
+    font-weight: 700;
+    letter-spacing: .2em;
+    line-height: 1.4;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translate3d(-50%, -45%, -90px) scale(.92);
+    animation: passacad-journey-final 20s cubic-bezier(0.16, 1, 0.3, 1) infinite both;
+  }
+
+  .passacad-journey-copy__final-title {
+    display: block;
+    max-width: 100%;
+    color: #fff;
+    font-size: clamp(2.15rem, 7vw, 5.75rem);
+    font-weight: 750;
+    letter-spacing: -.065em;
+    line-height: .98;
+    text-wrap: balance;
+    text-shadow: 0 8px 42px rgb(81 152 255 / 38%);
+    text-transform: none;
+  }
+
+  .passacad-journey-copy__final-rule {
+    width: clamp(3rem, 10vw, 6rem);
+    height: 2px;
+    margin-top: .3rem;
+    background: linear-gradient(90deg, transparent, #b7df91, transparent);
+  }
+
+  .passacad-journey-copy__final-caption {
+    color: #c7e9ae;
+    font-size: clamp(.62rem, 1.2vw, .8rem);
+    font-weight: 600;
+    letter-spacing: .24em;
+  }
+
+  @media (max-width: 639px) {
+    .passacad-journey-copy__word {
+      max-width: 88%;
+      font-size: clamp(1.05rem, 5vw, 1.45rem);
+    }
+
+    .passacad-journey-copy__word--one {
+      top: 4%;
+    }
+
+    .passacad-journey-copy__word--two {
+      top: 29%;
+    }
+
+    .passacad-journey-copy__word--three {
+      top: 54%;
+      left: 0;
+    }
+
+    .passacad-journey-copy__word--four {
+      top: 79%;
+      right: 0;
+    }
+
+    .passacad-journey-copy__word--final {
+      top: 50%;
+      max-width: 100%;
+      gap: .55rem;
+      font-size: .62rem;
+      transform: translate3d(-50%, -50%, -90px) scale(.92);
+    }
+
+    .passacad-journey-copy__final-title {
+      font-size: clamp(2rem, 10vw, 3.5rem);
+    }
+  }
+
+  @keyframes passacad-warp {
+    from {
+      transform: rotate(0deg) scale(0.8);
+    }
+    to {
+      transform: rotate(360deg) scale(1.15);
+    }
+  }
+
+  @keyframes passacad-stardrift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(-2%, 3%, 0) scale(1.08);
+    }
+  }
+
+  @keyframes passacad-journey-word {
+    0%,
+    2%,
+    26%,
+    100% {
+      filter: blur(4px);
+      opacity: 0;
+      transform: translate3d(0, 16px, -90px) scale(.94);
+    }
+    6%,
+    20% {
+      filter: blur(0);
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    24% {
+      filter: blur(3px);
+      opacity: 0;
+      transform: translate3d(0, -10px, 40px) scale(1.03);
+    }
+  }
+
+  @keyframes passacad-journey-final {
+    0%,
+    73% {
+      filter: blur(8px);
+      opacity: 0;
+      transform: translate3d(-50%, -45%, -90px) scale(.92);
+    }
+    79%,
+    96% {
+      filter: blur(0);
+      opacity: 1;
+      transform: translate3d(-50%, -50%, 0) scale(1);
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+      transform: translate3d(-50%, -50%, 0) scale(1);
+    }
+  }
+
   @keyframes partner-marquee {
     from {
       transform: translateX(0);
@@ -377,8 +618,21 @@
   @media (prefers-reduced-motion: reduce) {
     .animate-carousel-copy,
     .animate-carousel-image,
-    .animate-partner-marquee {
+    .animate-partner-marquee,
+    .passacad-universe::before,
+    .passacad-universe__stars {
       animation: none;
+    }
+
+    .passacad-journey-copy__word {
+      animation: none;
+      opacity: 0;
+      transform: none;
+    }
+
+    .passacad-journey-copy__word--final {
+      opacity: 1;
+      transform: translate(-50%, -50%);
     }
 
     .partner-logo-card {

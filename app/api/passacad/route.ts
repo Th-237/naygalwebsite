@@ -7,7 +7,6 @@ import {
   getOrCreatePassAcadMember,
   hashPassAcadValue,
   readPassAcadSession,
-  resetExpiredLock,
   withPassAcadStore,
 } from '@/lib/passacad-store'
 
@@ -27,33 +26,8 @@ function getString(value: unknown, maxLength: number) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : ''
 }
 
-function getEmail(value: unknown) {
-  const email = getString(value, 254).toLowerCase()
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : null
-}
-
 function isStudyDomain(value: unknown): value is StudyDomain {
   return typeof value === 'string' && allowedDomains.has(value as StudyDomain)
-}
-
-function getRetrySeconds(retryAt: number, now = Date.now()) {
-  return Math.max(1, Math.ceil((retryAt - now) / 1000))
-}
-
-function getAttemptStatus(member: {
-  failedAttempts: number
-  lockedUntil: number | null
-  passed: boolean
-  lastScore: number | null
-}, now: number) {
-  return {
-    failedAttempts: member.failedAttempts,
-    attemptsRemaining: Math.max(0, 3 - member.failedAttempts),
-    lockedUntil: member.lockedUntil,
-    retryAfter: member.lockedUntil === null ? 0 : getRetrySeconds(member.lockedUntil, now),
-    passed: member.passed,
-    score: member.lastScore,
-  }
 }
 
 function publicQuestions(questions: StoredQuizQuestion[]) {
@@ -66,35 +40,16 @@ function createSessionCookie(identityHash: string, expiresAt: number) {
   return `passacad_session=${session}; HttpOnly; SameSite=Lax; Path=/api/passacad; Max-Age=${Math.floor(sessionDurationMs / 1000)}${secure}`
 }
 
-async function handleQuizStart(body: RequestBody) {
-  const email = getEmail(body.email)
-  if (!email) return NextResponse.json({ error: 'Saisis une adresse e-mail valide.' }, { status: 400 })
+async function handleQuizStart(request: Request, body: RequestBody) {
   const domain = body.domain
   if (!isStudyDomain(domain)) {
     return NextResponse.json({ error: 'Choisis un domaine d’études valide.' }, { status: 400 })
   }
 
   const now = Date.now()
-  const identityHash = hashPassAcadValue(`email:${email}`)
+  const identityHash = readPassAcadSession(request) ?? hashPassAcadValue(`session:${randomUUID()}`)
   const result = await withPassAcadStore((store) => {
     const member = getOrCreatePassAcadMember(store, identityHash, now)
-    member.email = email
-
-    resetExpiredLock(member, now)
-    if (member.passed) {
-      return {
-        error: 'Ce test a déjà été réussi avec cette adresse.',
-        status: 409 as const,
-        ...getAttemptStatus(member, now),
-      }
-    }
-    if (member.lockedUntil !== null && member.lockedUntil > now) {
-      return {
-        error: 'Tu as atteint trois essais. Tu pourras réessayer après la période d’attente.',
-        status: 429 as const,
-        ...getAttemptStatus(member, now),
-      }
-    }
 
     if (
       member.activeQuiz &&
@@ -102,18 +57,16 @@ async function handleQuizStart(body: RequestBody) {
       member.activeQuiz.domain === domain &&
       member.activeQuiz.questions.length === quizQuestionCount
     ) {
-      return { quizId: member.activeQuiz.id, questions: publicQuestions(member.activeQuiz.questions), ...getAttemptStatus(member, now) }
+      return { quizId: member.activeQuiz.id, questions: publicQuestions(member.activeQuiz.questions) }
     }
 
     const questions = createStudentQuiz(domain)
     const quizId = randomUUID()
     member.activeQuiz = { id: quizId, domain, expiresAt: now + quizDurationMs, questions }
-    return { quizId, questions: publicQuestions(questions), ...getAttemptStatus(member, now) }
+    return { quizId, questions: publicQuestions(questions) }
   })
 
-  const response = 'error' in result
-    ? NextResponse.json(result, { status: result.status })
-    : NextResponse.json({ ok: true, ...result })
+  const response = NextResponse.json({ ok: true, ...result })
   response.headers.set('Set-Cookie', createSessionCookie(identityHash, now + sessionDurationMs))
   return response
 }
@@ -130,18 +83,9 @@ async function handleQuizSubmission(body: RequestBody, identityHash: string) {
   const now = Date.now()
   const result = await withPassAcadStore((store) => {
     const member = store.members[identityHash]
-    if (!member) return { error: 'Relance le test avec l’adresse e-mail utilisée au démarrage.', status: 401 as const }
-
-    resetExpiredLock(member, now)
-    if (member.lockedUntil !== null && member.lockedUntil > now) {
-      return {
-        error: 'Tu as atteint trois essais. Tu pourras réessayer après la période d’attente.',
-        status: 429 as const,
-        ...getAttemptStatus(member, now),
-      }
-    }
+    if (!member) return { error: 'Relance le test pour ouvrir une nouvelle session.', status: 401 as const }
     const quiz = member.activeQuiz
-    if (!quiz || quiz.id !== quizId || quiz.expiresAt <= now || member.passed) {
+    if (!quiz || quiz.id !== quizId || quiz.expiresAt <= now) {
       return { error: 'Ce test a expiré. Prépare une nouvelle tentative.', status: 409 as const }
     }
 
@@ -155,22 +99,14 @@ async function handleQuizSubmission(body: RequestBody, identityHash: string) {
     member.attemptHistory.push({ at: now, score, passed })
     member.attemptHistory = member.attemptHistory.slice(-20)
     member.activeQuiz = null
+    member.failedAttempts = passed ? 0 : member.failedAttempts + 1
+    member.lockedUntil = null
 
     if (passed) {
       member.passed = true
-      member.failedAttempts = 0
-      member.lockedUntil = null
-    } else {
-      member.failedAttempts += 1
-      if (member.failedAttempts >= 3) {
-        member.lockedUntil = now + 60 * 60 * 1000
-      }
     }
 
-    return {
-      ok: true,
-      ...getAttemptStatus(member, now),
-    }
+    return { ok: true, passed, score }
   })
 
   if ('error' in result) {
@@ -181,15 +117,13 @@ async function handleQuizSubmission(body: RequestBody, identityHash: string) {
 
 export async function GET(request: Request) {
   const identityHash = readPassAcadSession(request)
-  if (!identityHash) return NextResponse.json({ error: 'Ta session PassAcad a expiré. Relance le test avec ton adresse e-mail.' }, { status: 401 })
+  if (!identityHash) return NextResponse.json({ error: 'Ta session PassAcad a expiré. Relance le test.' }, { status: 401 })
 
   try {
     const status = await withPassAcadStore((store) => {
       const member = store.members[identityHash]
       if (!member) return null
-      const now = Date.now()
-      resetExpiredLock(member, now)
-      return getAttemptStatus(member, now)
+      return { passed: member.passed, score: member.lastScore }
     })
     if (!status) return NextResponse.json({ error: 'Aucun parcours PassAcad trouvé.' }, { status: 404 })
     return NextResponse.json({ ok: true, ...status })
@@ -210,10 +144,10 @@ export async function POST(request: Request) {
 
   const action = getString(body.action, 32)
   try {
-    if (action === 'start') return await handleQuizStart(body)
+    if (action === 'start') return await handleQuizStart(request, body)
 
     const identityHash = readPassAcadSession(request)
-    if (!identityHash) return NextResponse.json({ error: 'Relance le test avec ton adresse e-mail pour ouvrir une nouvelle session.' }, { status: 401 })
+    if (!identityHash) return NextResponse.json({ error: 'Relance le test pour ouvrir une nouvelle session.' }, { status: 401 })
 
     if (action === 'submit') return await handleQuizSubmission(body, identityHash)
     return NextResponse.json({ error: 'Action PassAcad inconnue.' }, { status: 400 })

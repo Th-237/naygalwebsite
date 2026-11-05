@@ -20,9 +20,6 @@ type PassAcadApiResponse = {
   error?: string
   quizId?: string
   questions?: QuizQuestion[]
-  attemptsRemaining?: number
-  retryAfter?: number
-  passed?: boolean
   score?: number | null
 }
 
@@ -78,12 +75,8 @@ export default function PassAcadFlow() {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [studyDomain, setStudyDomain] = useState<StudyDomain>('it')
   const [institution, setInstitution] = useState('')
-  const [email, setEmail] = useState('')
   const [flowMessage, setFlowMessage] = useState('')
-  const [emailInSession, setEmailInSession] = useState(false)
   const [quizId, setQuizId] = useState('')
-  const [attemptsRemaining, setAttemptsRemaining] = useState(3)
-  const [retrySeconds, setRetrySeconds] = useState(0)
   const [quizLoading, setQuizLoading] = useState(false)
   const [questionIndex, setQuestionIndex] = useState(0)
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([])
@@ -131,19 +124,6 @@ export default function PassAcadFlow() {
     return () => window.clearInterval(intervalId)
   }, [])
 
-  const retryCountdownActive = retrySeconds > 0
-  useEffect(() => {
-    if (!retryCountdownActive) return
-    const intervalId = window.setInterval(() => {
-      setRetrySeconds((seconds) => Math.max(0, seconds - 1))
-    }, 1000)
-    return () => window.clearInterval(intervalId)
-  }, [retryCountdownActive])
-
-  function updateRetryLock(retryAfter: number | undefined) {
-    setRetrySeconds(typeof retryAfter === 'number' ? Math.max(0, Math.ceil(retryAfter)) : 0)
-  }
-
   async function startQuiz() {
     setQuizLoading(true)
     setFlowMessage('')
@@ -152,17 +132,10 @@ export default function PassAcadFlow() {
         const response = await fetch('/api/passacad', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'start', domain: studyDomain, email }),
+          body: JSON.stringify({ action: 'start', domain: studyDomain }),
         })
         const data: PassAcadApiResponse = await response.json()
-        if (response.ok || response.status === 409 || response.status === 429) setEmailInSession(true)
         if (!response.ok) {
-          updateRetryLock(data.retryAfter)
-          if (data.passed && typeof data.score === 'number') {
-            setScore(data.score)
-            setStage('result')
-            return
-          }
           setFlowMessage(data.error ?? 'Le test n’a pas pu démarrer. Réessaie.')
           return
         }
@@ -171,10 +144,7 @@ export default function PassAcadFlow() {
           return
         }
         setQuizId(data.quizId)
-        setAttemptsRemaining(data.attemptsRemaining ?? 3)
-        updateRetryLock(data.retryAfter)
         setQuizQuestions(data.questions)
-        setEmailInSession(true)
       } else {
         setQuizQuestions([])
       }
@@ -197,12 +167,7 @@ export default function PassAcadFlow() {
     setAnswers([])
     setQuestionIndex(0)
     setScore(null)
-    updateRetryLock(undefined)
-    setEmailInSession(false)
     setFlowMessage('')
-    if (nextProfile !== 'student') {
-      setEmailInSession(false)
-    }
   }
 
   async function submitAnswer() {
@@ -226,7 +191,6 @@ export default function PassAcadFlow() {
         })
         const data: PassAcadApiResponse = await response.json()
         if (!response.ok) {
-          updateRetryLock(data.retryAfter)
           setFlowMessage(data.error ?? 'Ton résultat n’a pas pu être enregistré.')
           return
         }
@@ -235,8 +199,6 @@ export default function PassAcadFlow() {
           return
         }
         setScore(data.score)
-        setAttemptsRemaining(data.attemptsRemaining ?? 3)
-        updateRetryLock(data.retryAfter)
       } catch {
         setFlowMessage('Connexion impossible. Tes réponses n’ont pas été validées, réessaie.')
         return
@@ -261,7 +223,6 @@ export default function PassAcadFlow() {
       `Nom complet : ${name.trim()}`,
       `Téléphone utilisé pour le paiement : ${phone.trim()}`,
       `Profil : ${profiles.find((item) => item.id === profile)?.title ?? 'Non renseigné'}`,
-      ...(isStudent ? [`E-mail étudiant déclaré : ${email.trim().toLowerCase()}`] : []),
       ...(isStudent
         ? [`Établissement : ${institution.trim()}`, `Domaine d’études : ${studyDomains.find((item) => item.id === studyDomain)?.label}`]
         : []),
@@ -386,83 +347,62 @@ export default function PassAcadFlow() {
         </section>
       )}
       <section className="relative isolate min-h-[680px] overflow-hidden bg-[#041d45] text-white lg:min-h-[730px]">
-        <Image
-          src="/images/academy/Grand%20caroussel/img2.jpg"
-          alt="Deux jeunes apprenantes échangent autour d’un projet numérique"
-          fill
-          priority
-          sizes="(max-width: 1024px) 100vw, 58vw"
-          className="absolute inset-0 -z-20 object-cover object-[center_38%] lg:object-[center_42%]"
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#031b42] via-[#031b42]/90 to-[#031b42]/35 lg:via-[#031b42]/75 lg:to-[#031b42]/15" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#031b42]/80 via-transparent to-[#031b42]/15" />
-        <div className="absolute inset-0 -z-10 opacity-[.14] [background-image:linear-gradient(rgba(255,255,255,.18)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.18)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:linear-gradient(to_right,transparent,black)]" />
-        <div className="container-custom relative flex min-h-[680px] flex-col justify-center py-12 sm:py-20 lg:min-h-[730px]">
-          <div className="max-w-3xl lg:pb-16">
-            <p className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.2em] text-[#c7e9ae]">
-              <span className="h-px w-8 bg-[#8ed15b]" />
-              NAYGAL Academy <span className="text-white/40">/</span> PassAcad
-            </p>
-            <p className="mt-9 text-sm font-medium tracking-[.08em] text-blue-100/80">
-              Un réseau grandit quand chacun y apporte quelque chose.
-            </p>
-            <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[.98] tracking-[-.055em] sm:text-7xl lg:text-[5.5rem]">
-              Une place
-              <span className="block font-normal italic text-[#a8d779]">se construit.</span>
-              <span className="mt-2 block text-3xl font-medium tracking-[-.03em] text-white/90 sm:text-5xl">
-                La tienne commence ici.
-              </span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-blue-50/85 sm:text-lg sm:leading-8">
-              Étudiant·e, professionnel·le, curieux·se : trouve ta place dans
-              NAYGAL Community. Ton itinéraire s’adapte à ce que tu étudies, fais
-              ou rêves d’apprendre.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-              <button
-                type="button"
-                onClick={() => document.getElementById('passacad-flow')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex min-h-14 items-center justify-center gap-4 bg-[#a8d779] px-7 font-bold text-[#092345] transition hover:bg-[#c1e49f]"
-              >
-                Construire mon parcours <span aria-hidden="true">↗</span>
-              </button>
-              <p className="text-sm text-white/80">
-                <span className="font-semibold text-white">{membershipFee}</span> d’adhésion
-                <span className="mx-2 text-white/40">·</span>
-                Paiement après le parcours
-              </p>
+        <div className="passacad-universe absolute inset-0 -z-20" aria-hidden="true">
+          <div className="passacad-universe__stars" />
+        </div>
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_5%,rgba(3,19,46,.18)_58%,rgba(3,19,46,.8)_100%)]" />
+        <div className="container-custom relative z-10 flex min-h-[680px] flex-col items-center py-8 sm:py-10 lg:min-h-[730px]">
+          <p className="relative z-10 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[.2em] text-[#c7e9ae]">
+            <span className="h-px w-8 bg-[#8ed15b]" />
+            NAYGAL Academy <span className="text-white/40">/</span> PassAcad
+          </p>
+
+          <div className="passacad-journey-copy absolute inset-x-4 top-24 bottom-36 flex items-center justify-center sm:inset-x-8 sm:top-28 sm:bottom-40 lg:inset-x-12 lg:top-24 lg:bottom-44">
+            <div className="sr-only">
+              Apprends en faisant. Construis des projets concrets. Entoure-toi de talents. Fais grandir tes idées.
+              Rejoins l’Académie des Bâtisseurs.
             </div>
+            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--one">
+              <span className="passacad-journey-copy__eyebrow">01 · Explore</span>
+              Apprends <strong>en faisant.</strong>
+            </span>
+            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--two">
+              <span className="passacad-journey-copy__eyebrow">02 · Construis</span>
+              Des projets <strong>qui comptent.</strong>
+            </span>
+            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--three">
+              <span className="passacad-journey-copy__eyebrow">03 · Connecte</span>
+              Entoure-toi de <strong>talents.</strong>
+            </span>
+            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--four">
+              <span className="passacad-journey-copy__eyebrow">04 · Imagine</span>
+              Fais grandir <strong>tes idées.</strong>
+            </span>
+            <span aria-hidden="true" className="passacad-journey-copy__word passacad-journey-copy__word--final">
+              <span className="passacad-journey-copy__eyebrow">Ton prochain chapitre commence ici</span>
+              Rejoins
+              <strong className="passacad-journey-copy__final-title">l’Académie des Bâtisseurs</strong>
+              <span className="passacad-journey-copy__final-rule" />
+              <span className="passacad-journey-copy__final-caption">
+                Apprendre · Oser · Construire
+              </span>
+            </span>
           </div>
 
-          <div className="relative z-10 ml-auto mt-8 w-[min(19rem,calc(100%-2rem))] rotate-[-2deg] sm:mr-8 lg:absolute lg:bottom-14 lg:right-[7%] lg:mr-0 lg:mt-0">
-            <div className="relative overflow-hidden border border-white/50 bg-[#f7f4e9] p-5 text-[#082b5b] shadow-[0_28px_70px_-20px_rgba(0,0,0,.65)] sm:p-6">
-              <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full border border-[#0b356b]/10" />
-              <div className="absolute -right-7 -top-7 h-24 w-24 rounded-full border border-[#0b356b]/10" />
-              <div className="relative flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-[9px] font-bold uppercase tracking-[.2em] text-[#4c7b42]">NAYGAL Community</p>
-                  <p className="mt-1 text-2xl font-semibold tracking-tight">PassAcad</p>
-                </div>
-                <span className="grid h-10 w-10 place-items-center border border-[#0b356b]/20 text-lg" aria-hidden="true">✳</span>
-              </div>
-              <div className="relative mt-6 flex items-end justify-between border-t border-[#0b356b]/15 pt-4">
-                <div>
-                  <p className="text-[9px] uppercase tracking-[.18em] text-slate-500">Édition communauté</p>
-                  <p className="mt-1 text-xs font-semibold uppercase tracking-[.12em]">Cameroun · 2026</p>
-                </div>
-                <span className="font-mono text-[10px] tracking-[.18em] text-[#4c7b42]">N° À VENIR</span>
-              </div>
-              <div className="mt-4 flex gap-1" aria-hidden="true">
-                {Array.from({ length: 28 }, (_, index) => (
-                  <span key={index} className={`h-5 flex-1 ${index % 4 === 0 || index % 7 === 0 ? 'bg-[#0b356b]' : 'bg-[#0b356b]/25'}`} />
-                ))}
-              </div>
-              <p className="mt-2 text-right text-[8px] uppercase tracking-[.2em] text-slate-500">Une place se construit</p>
-            </div>
+          <div className="relative z-10 mt-auto flex w-full flex-col items-center gap-3 pt-8 text-center">
+            <button
+              type="button"
+              onClick={() => document.getElementById('passacad-flow')?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-flex min-h-14 items-center justify-center gap-4 bg-[#a8d779] px-7 font-bold text-[#092345] transition hover:bg-[#c1e49f]"
+            >
+              Commencer mon parcours <span aria-hidden="true">↗</span>
+            </button>
+            <p className="text-sm text-white/75">
+              <span className="font-semibold text-white">{membershipFee}</span> d’adhésion
+              <span className="mx-2 text-white/40">·</span>
+              Paiement après le parcours
+            </p>
           </div>
-          <p className="absolute bottom-8 left-4 hidden text-[10px] font-medium uppercase tracking-[.2em] text-white/55 sm:left-8 lg:block">
-            04 étapes <span className="mx-2 text-[#a8d779]">/</span> une communauté à construire
-          </p>
         </div>
       </section>
 
@@ -616,27 +556,6 @@ export default function PassAcadFlow() {
                   </div>
                   {isStudent && (
                     <div className="mt-7 grid gap-5 rounded-xl bg-[#f7f9fc] p-5 sm:grid-cols-2 sm:p-6">
-                      <label className="block text-sm font-semibold text-slate-700 sm:col-span-2">
-                        Adresse e-mail étudiante
-                        <input
-                          required
-                          type="email"
-                          autoComplete="email"
-                          value={email}
-                          onChange={(event) => {
-                            setEmail(event.target.value)
-                            setEmailInSession(false)
-                            setAttemptsRemaining(3)
-                            updateRetryLock(undefined)
-                            setFlowMessage('')
-                          }}
-                          className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
-                          placeholder="nom@exemple.com"
-                        />
-                        <span className="mt-1 block text-xs font-normal text-slate-500">
-                          Chaque adresse est rattachée à un dossier PassAcad. Tes tentatives sont enregistrées et contrôlées côté serveur ; après trois échecs, l’accès est suspendu pendant une heure. Renseigne une adresse valide et personnelle pour assurer le suivi de ton parcours.
-                        </span>
-                      </label>
                       <label className="block text-sm font-semibold text-slate-700">
                         Établissement
                         <input
@@ -667,11 +586,6 @@ export default function PassAcadFlow() {
                         Ton établissement nous aide à t’orienter vers l’espace correspondant,
                         par exemple l’Académie des bâtisseurs à l’ISTAG.
                       </p>
-                      {emailInSession && (
-                        <div className="sm:col-span-2">
-                          <p className="text-sm font-semibold text-[#438a2c]" role="status">Adresse enregistrée pour cette session PassAcad.</p>
-                        </div>
-                      )}
                       {flowMessage && (
                         <p className="text-sm leading-6 text-slate-600 sm:col-span-2" role="status">
                           {flowMessage}
@@ -683,20 +597,18 @@ export default function PassAcadFlow() {
                     <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <p className="text-sm text-slate-500">
                         {isStudent
-                          ? `7 QCM aléatoires · logique, NAYGAL et enjeux du numérique · seuil : 4/7 · essais restants : ${attemptsRemaining}`
+                          ? '7 QCM aléatoires · logique, NAYGAL et enjeux du numérique · seuil indicatif : 4/7 · tentatives illimitées'
                           : '3 questions · aucun score éliminatoire'}
                       </p>
                       {isStudent ? (
-                        email.trim() && (retrySeconds === 0) && (
-                          <button
-                            type="button"
-                            onClick={startQuiz}
-                            disabled={!institution.trim() || quizLoading}
-                            className="rounded-md bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50] disabled:cursor-not-allowed disabled:opacity-40"
-                          >
-                            {quizLoading ? 'Préparation…' : 'Commencer le test'} <span aria-hidden="true">→</span>
-                          </button>
-                        )
+                        <button
+                          type="button"
+                          onClick={startQuiz}
+                          disabled={!institution.trim() || quizLoading}
+                          className="rounded-md bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50] disabled:cursor-not-allowed disabled:opacity-40"
+                        >
+                          {quizLoading ? 'Préparation…' : 'Commencer le test'} <span aria-hidden="true">→</span>
+                        </button>
                       ) : (
                         <button
                           type="button"
@@ -708,12 +620,6 @@ export default function PassAcadFlow() {
                         </button>
                       )}
                     </div>
-                  )}
-                  {isStudent && retrySeconds > 0 && (
-                    <p className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900" role="status">
-                      Tu as utilisé tes trois essais. Tu pourras retenter dans {Math.floor(retrySeconds / 3600)} h{' '}
-                      {Math.floor((retrySeconds % 3600) / 60)} min {retrySeconds % 60} s.
-                    </p>
                   )}
                 </div>
               )}
@@ -818,24 +724,35 @@ export default function PassAcadFlow() {
                           ? <>Tu atteins le seuil indicatif. L’étape suivante est l’adhésion PassAcad de {membershipFee}, réglée par Orange Money ou MTN MoMo.</>
                           : <>Tes réponses nous aideront à t’orienter vers les échanges et activités qui te correspondent. Tu peux maintenant poursuivre avec l’adhésion de {membershipFee}.</>}
                       </p>
-                      <button
-                        type="button"
-                        onClick={() => setStage('payment')}
-                        className="mt-7 rounded-md bg-[#52a234] px-6 py-3.5 font-semibold text-white transition hover:bg-[#438a2c]"
-                      >
-                        Continuer vers l’adhésion →
-                      </button>
+                      <div className="mt-7 flex flex-wrap gap-3">
+                        <button
+                          type="button"
+                          onClick={() => setStage('payment')}
+                          className="rounded-md bg-[#52a234] px-6 py-3.5 font-semibold text-white transition hover:bg-[#438a2c]"
+                        >
+                          Continuer vers l’adhésion →
+                        </button>
+                        {isStudent && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setStage('profile')
+                              setQuizQuestions([])
+                              setAnswers([])
+                              void startQuiz()
+                            }}
+                            className="rounded-md border border-[#032965]/20 px-6 py-3.5 font-semibold text-[#032965] transition hover:bg-[#f5f8fc]"
+                          >
+                            Recommencer le test
+                          </button>
+                        )}
+                      </div>
                     </>
                   ) : (
                     <>
                       <p className="mt-4 leading-7 text-slate-600">
                         Le seuil indicatif est de {passingScore} bonnes réponses. Tu peux revoir ton domaine
-                        d’études ou recommencer le test quand tu le souhaites.
-                      </p>
-                      <p className="mt-3 text-sm font-semibold text-slate-600">
-                        {retrySeconds > 0
-                          ? `Tes trois essais sont terminés. Tu pourras réessayer dans ${Math.floor(retrySeconds / 3600)} h ${Math.floor((retrySeconds % 3600) / 60)} min ${retrySeconds % 60} s.`
-                          : `Il te reste ${attemptsRemaining} essai${attemptsRemaining > 1 ? 's' : ''}.`}
+                        d’études ou recommencer le test autant de fois que tu le souhaites.
                       </p>
                       <button
                         type="button"
@@ -848,20 +765,18 @@ export default function PassAcadFlow() {
                       >
                         Revoir mon profil
                       </button>
-                      {retrySeconds === 0 && (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setStage('profile')
-                            setQuizQuestions([])
-                            setAnswers([])
-                            void startQuiz()
-                          }}
-                          className="ml-3 mt-7 rounded-md bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50]"
-                        >
-                          Recommencer le test
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setStage('profile')
+                          setQuizQuestions([])
+                          setAnswers([])
+                          void startQuiz()
+                        }}
+                        className="ml-3 mt-7 rounded-md bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50]"
+                      >
+                        Recommencer le test
+                      </button>
                     </>
                   )}
                   <p className="mt-6 text-xs leading-5 text-slate-500">
