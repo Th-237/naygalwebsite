@@ -70,6 +70,15 @@ export default function PassAcadFlow() {
   const [profile, setProfile] = useState<Profile | null>(null)
   const [studyDomain, setStudyDomain] = useState<StudyDomain>('it')
   const [institution, setInstitution] = useState('')
+  const [studyLevel, setStudyLevel] = useState('')
+  const [profession, setProfession] = useState('')
+  const [professionalField, setProfessionalField] = useState('')
+  const [organization, setOrganization] = useState('')
+  const [experience, setExperience] = useState('')
+  const [currentSituation, setCurrentSituation] = useState('')
+  const [interestArea, setInterestArea] = useState('')
+  const [email, setEmail] = useState('')
+  const [city, setCity] = useState('')
   const [flowMessage, setFlowMessage] = useState('')
   const [questionIndex, setQuestionIndex] = useState(0)
   const [quizQuestions, setQuizQuestions] = useState<Question[]>([])
@@ -77,6 +86,7 @@ export default function PassAcadFlow() {
   const [score, setScore] = useState<number | null>(null)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
+  const [paymentPhone, setPaymentPhone] = useState('')
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('Orange Money')
   const [transactionReference, setTransactionReference] = useState('')
   const [proofFile, setProofFile] = useState<File | null>(null)
@@ -88,6 +98,18 @@ export default function PassAcadFlow() {
   const currentQuestion = currentQuestions[questionIndex]
   const selectedAnswer = answers[questionIndex]
   const passed = !isStudent || (score !== null && score >= passingScore)
+  const registrationComplete = Boolean(
+    profile &&
+    name.trim() &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) &&
+    phone.trim() &&
+    city.trim() &&
+    (profile === 'student'
+      ? institution.trim() && studyLevel
+      : profile === 'professional'
+        ? profession.trim() && professionalField && experience
+        : currentSituation && interestArea.trim()),
+  )
   const countdownParts = countdownSeconds === null
     ? null
     : {
@@ -96,6 +118,33 @@ export default function PassAcadFlow() {
         minutes: Math.floor((countdownSeconds % 3_600) / 60),
         seconds: countdownSeconds % 60,
       }
+
+  const registrationDetails = [
+    `Nom complet : ${name.trim()}`,
+    `E-mail : ${email.trim()}`,
+    `Téléphone de contact : ${phone.trim()}`,
+    `Ville : ${city.trim()}`,
+    `Profil : ${profiles.find((item) => item.id === profile)?.title ?? 'Non renseigné'}`,
+    ...(isStudent
+      ? [
+          `Établissement : ${institution.trim()}`,
+          `Niveau d’études : ${studyLevel}`,
+          `Domaine d’études : ${studyDomains.find((item) => item.id === studyDomain)?.label}`,
+        ]
+      : profile === 'professional'
+        ? [
+            `Profession / fonction : ${profession.trim()}`,
+            `Domaine professionnel : ${professionalField}`,
+            `Organisation : ${organization.trim() || 'Indépendant·e / non renseignée'}`,
+            `Expérience : ${experience}`,
+          ]
+        : profile === 'curious'
+          ? [
+              `Situation actuelle : ${currentSituation}`,
+              `Centres d’intérêt : ${interestArea.trim()}`,
+            ]
+          : []),
+  ]
 
   useEffect(() => {
     const membershipDeadline = new Date('2026-11-17T00:00:00+01:00').getTime()
@@ -122,8 +171,8 @@ export default function PassAcadFlow() {
 
     const targetId = stage === 'quiz'
       ? 'passacad-current-question'
-      : stage === 'profile' && profile === 'student'
-        ? 'passacad-student-fields'
+      : stage === 'profile' && profile
+        ? 'passacad-registration-fields'
         : null
     if (!targetId) return
 
@@ -134,6 +183,11 @@ export default function PassAcadFlow() {
   }, [profile, questionIndex, stage])
 
   function startQuiz() {
+    if (!registrationComplete) {
+      setFlowMessage('Complète les renseignements obligatoires avant de poursuivre.')
+      return
+    }
+
     setFlowMessage('')
     setQuizQuestions(isStudent ? createStudentQuiz(studyDomain) : [])
     setAnswers([])
@@ -183,12 +237,8 @@ export default function PassAcadFlow() {
     const message = [
       'Bonjour NAYGAL, je souhaite faire vérifier mon paiement PassAcad.',
       '',
-      `Nom complet : ${name.trim()}`,
-      `Téléphone utilisé pour le paiement : ${phone.trim()}`,
-      `Profil : ${profiles.find((item) => item.id === profile)?.title ?? 'Non renseigné'}`,
-      ...(isStudent
-        ? [`Établissement : ${institution.trim()}`, `Domaine d’études : ${studyDomains.find((item) => item.id === studyDomain)?.label}`]
-        : []),
+      ...registrationDetails,
+      `Téléphone utilisé pour le paiement : ${paymentPhone.trim() || phone.trim()}`,
       `Moyen de paiement : ${paymentMethod}`,
       `Montant : ${membershipFee}`,
       `Référence de transaction : ${transactionReference.trim() || 'Voir la capture jointe'}`,
@@ -542,37 +592,189 @@ export default function PassAcadFlow() {
                       </button>
                     ))}
                   </div>
-                  {isStudent && (
-                    <div id="passacad-student-fields" className="mt-7 scroll-mt-24 grid gap-5 rounded-xl bg-[#f7f9fc] p-5 sm:grid-cols-2 sm:p-6">
+                  {profile && (
+                    <div id="passacad-registration-fields" className="mt-7 scroll-mt-24 grid gap-5 rounded-xl bg-[#f7f9fc] p-5 sm:grid-cols-2 sm:p-6">
+                      <p className="text-sm leading-6 text-slate-600 sm:col-span-2">
+                        Quelques renseignements pour préparer ton inscription. Ils seront ajoutés au message WhatsApp à la fin du parcours.
+                      </p>
                       <label className="block text-sm font-semibold text-slate-700">
-                        Établissement
+                        Nom complet
                         <input
                           required
-                          value={institution}
-                          onChange={(event) => setInstitution(event.target.value)}
+                          autoComplete="name"
+                          value={name}
+                          onChange={(event) => setName(event.target.value)}
                           className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
-                          placeholder="Ex. ISTAG"
+                          placeholder="Ton nom et prénom"
                         />
                       </label>
                       <label className="block text-sm font-semibold text-slate-700">
-                        Domaine d’études
-                        <select
-                          value={studyDomain}
-                          onChange={(event) => {
-                            const selectedDomain = studyDomains.find((domain) => domain.id === event.target.value)
-                            setStudyDomain(selectedDomain?.id ?? 'other')
-                            setQuizQuestions([])
-                            setAnswers([])
-                            setQuestionIndex(0)
-                          }}
+                        Adresse e-mail
+                        <input
+                          required
+                          type="email"
+                          autoComplete="email"
+                          value={email}
+                          onChange={(event) => setEmail(event.target.value)}
                           className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
-                        >
-                          {studyDomains.map((domain) => <option key={domain.id} value={domain.id}>{domain.label}</option>)}
-                        </select>
+                          placeholder="nom@exemple.com"
+                        />
                       </label>
-                      <p className="text-sm leading-6 text-slate-600 sm:col-span-2">
-                        Ton établissement nous aide à t’orienter vers l’espace correspondant,
-                        par exemple l’Académie des bâtisseurs à l’ISTAG.
+                      <label className="block text-sm font-semibold text-slate-700">
+                        Téléphone de contact
+                        <input
+                          required
+                          type="tel"
+                          autoComplete="tel"
+                          value={phone}
+                          onChange={(event) => setPhone(event.target.value)}
+                          className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                          placeholder="+237 6XX XXX XXX"
+                        />
+                      </label>
+                      <label className="block text-sm font-semibold text-slate-700">
+                        Ville de résidence
+                        <input
+                          required
+                          autoComplete="address-level2"
+                          value={city}
+                          onChange={(event) => setCity(event.target.value)}
+                          className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                          placeholder="Ex. Douala"
+                        />
+                      </label>
+
+                      {isStudent && (
+                        <>
+                          <label className="block text-sm font-semibold text-slate-700">
+                            Établissement
+                            <input
+                              required
+                              autoComplete="organization"
+                              value={institution}
+                              onChange={(event) => setInstitution(event.target.value)}
+                              className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                              placeholder="Ex. ISTAG"
+                            />
+                          </label>
+                          <label className="block text-sm font-semibold text-slate-700">
+                            Niveau d’études
+                            <select
+                              required
+                              value={studyLevel}
+                              onChange={(event) => setStudyLevel(event.target.value)}
+                              className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                            >
+                              <option value="">Choisir un niveau</option>
+                              {['Secondaire', 'Baccalauréat', 'BTS / DUT', 'Licence 1', 'Licence 2', 'Licence 3', 'Master 1', 'Master 2', 'Doctorat', 'Autre'].map((level) => (
+                                <option key={level} value={level}>{level}</option>
+                              ))}
+                            </select>
+                          </label>
+                          <label className="block text-sm font-semibold text-slate-700 sm:col-span-2">
+                            Domaine d’études
+                            <select
+                              value={studyDomain}
+                              onChange={(event) => {
+                                const selectedDomain = studyDomains.find((domain) => domain.id === event.target.value)
+                                setStudyDomain(selectedDomain?.id ?? 'other')
+                                setQuizQuestions([])
+                                setAnswers([])
+                                setQuestionIndex(0)
+                              }}
+                              className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                            >
+                              {studyDomains.map((domain) => <option key={domain.id} value={domain.id}>{domain.label}</option>)}
+                            </select>
+                          </label>
+                        </>
+                      )}
+
+                      {profile === 'professional' && (
+                        <>
+                          <label className="block text-sm font-semibold text-slate-700">
+                            Poste ou profession
+                            <input
+                              required
+                              value={profession}
+                              onChange={(event) => setProfession(event.target.value)}
+                              className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                              placeholder="Ex. développeur·se, comptable"
+                            />
+                          </label>
+                          <label className="block text-sm font-semibold text-slate-700">
+                            Domaine professionnel
+                            <select
+                              required
+                              value={professionalField}
+                              onChange={(event) => setProfessionalField(event.target.value)}
+                              className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                            >
+                              <option value="">Choisir un domaine</option>
+                              {studyDomains.map((domain) => <option key={domain.id} value={domain.label}>{domain.label}</option>)}
+                            </select>
+                          </label>
+                          <label className="block text-sm font-semibold text-slate-700">
+                            Entreprise ou organisation <span className="font-normal text-slate-500">(facultatif)</span>
+                            <input
+                              value={organization}
+                              onChange={(event) => setOrganization(event.target.value)}
+                              className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                              placeholder="Ex. indépendant·e"
+                            />
+                          </label>
+                          <label className="block text-sm font-semibold text-slate-700">
+                            Années d’expérience
+                            <select
+                              required
+                              value={experience}
+                              onChange={(event) => setExperience(event.target.value)}
+                              className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                            >
+                              <option value="">Choisir une expérience</option>
+                              <option value="Débutant·e / en reconversion">Débutant·e / en reconversion</option>
+                              <option value="1 à 3 ans">1 à 3 ans</option>
+                              <option value="4 à 7 ans">4 à 7 ans</option>
+                              <option value="8 ans ou plus">8 ans ou plus</option>
+                            </select>
+                          </label>
+                        </>
+                      )}
+
+                      {profile === 'curious' && (
+                        <>
+                          <label className="block text-sm font-semibold text-slate-700 sm:col-span-2">
+                            Situation actuelle
+                            <select
+                              required
+                              value={currentSituation}
+                              onChange={(event) => setCurrentSituation(event.target.value)}
+                              className="mt-2 w-full rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                            >
+                              <option value="">Choisir une situation</option>
+                              <option>Élève ou étudiant·e</option>
+                              <option>En activité professionnelle</option>
+                              <option>En recherche d’emploi</option>
+                              <option>Entrepreneur·se</option>
+                              <option>Autre</option>
+                            </select>
+                          </label>
+                          <label className="block text-sm font-semibold text-slate-700 sm:col-span-2">
+                            Quels sujets ou compétences numériques t’intéressent ?
+                            <textarea
+                              required
+                              value={interestArea}
+                              onChange={(event) => setInterestArea(event.target.value)}
+                              rows={3}
+                              className="mt-2 w-full resize-y rounded-md border border-slate-300 bg-white px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
+                              placeholder="Ex. IA, cybersécurité, création de sites, entrepreneuriat…"
+                            />
+                          </label>
+                        </>
+                      )}
+
+                      <p className="text-xs leading-5 text-slate-500 sm:col-span-2">
+                        Ces informations restent dans ton navigateur et seront transmises uniquement si tu choisis de préparer un message WhatsApp à l’équipe.
                       </p>
                       <p className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-amber-900 sm:col-span-2" role="status">
                         Attention : le test est conservé uniquement dans cette page. Si tu actualises
@@ -592,24 +794,14 @@ export default function PassAcadFlow() {
                           ? '7 QCM aléatoires · logique, NAYGAL et enjeux du numérique · seuil indicatif : 4/7 · tentatives illimitées'
                           : '3 questions · aucun score éliminatoire'}
                       </p>
-                      {isStudent ? (
-                        <button
-                          type="button"
-                          onClick={startQuiz}
-                          disabled={!institution.trim()}
-                          className="rounded-md bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50] disabled:cursor-not-allowed disabled:opacity-40"
-                        >
-                          Commencer le test <span aria-hidden="true">→</span>
-                        </button>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={startQuiz}
-                          className="rounded-md bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50] disabled:cursor-not-allowed disabled:opacity-40"
-                        >
-                          Continuer <span aria-hidden="true">→</span>
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        onClick={startQuiz}
+                        disabled={!registrationComplete}
+                        className="rounded-md bg-[#032965] px-6 py-3.5 font-semibold text-white transition hover:bg-[#021f50] disabled:cursor-not-allowed disabled:opacity-40"
+                      >
+                        {isStudent ? 'Commencer le test' : 'Continuer'} <span aria-hidden="true">→</span>
+                      </button>
                     </div>
                   )}
                 </div>
@@ -801,7 +993,7 @@ export default function PassAcadFlow() {
                     Le PassAcad et le lien privé WhatsApp seront envoyés après vérification manuelle.
                   </p>
                   <a
-                    href={createWhatsAppUrl(`Bonjour NAYGAL, mon parcours PassAcad (${profiles.find((item) => item.id === profile)?.title ?? 'membre'}${isStudent ? ` · ${institution} · ${studyDomains.find((item) => item.id === studyDomain)?.label}` : ''}) est terminé. Merci de m’envoyer les coordonnées officielles pour régler mon adhésion de ${membershipFee} par Orange Money ou MTN MoMo.`)}
+                    href={createWhatsAppUrl(`Bonjour NAYGAL, mon parcours PassAcad est terminé. Merci de m’envoyer les coordonnées officielles pour régler mon adhésion de ${membershipFee} par Orange Money ou MTN MoMo.\n\n${registrationDetails.join('\n')}`)}
                     target="_blank"
                     rel="noreferrer"
                     className="mt-5 inline-flex rounded-md border border-[#032965]/20 px-5 py-3 font-semibold text-[#032965] transition hover:bg-[#f5f8fc]"
@@ -812,27 +1004,17 @@ export default function PassAcadFlow() {
                   <form onSubmit={sendPaymentProof} className="mt-9 space-y-5 border-t border-slate-100 pt-8">
                     <h3 className="text-xl font-bold">Transmettre les informations du paiement</h3>
                     <div className="grid gap-5 sm:grid-cols-2">
+                      <p className="self-center text-sm leading-6 text-slate-600">
+                        Inscription au nom de <strong className="text-[#032965]">{name}</strong>
+                      </p>
                       <label className="block text-sm font-semibold text-slate-700">
-                        Nom complet
+                        Numéro utilisé pour le paiement <span className="font-normal text-slate-500">(si différent)</span>
                         <input
-                          required
-                          autoComplete="name"
-                          value={name}
-                          onChange={(event) => setName(event.target.value)}
-                          className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
-                          placeholder="Ton nom et prénom"
-                        />
-                      </label>
-                      <label className="block text-sm font-semibold text-slate-700">
-                        Numéro utilisé pour le paiement
-                        <input
-                          required
                           type="tel"
-                          autoComplete="tel"
-                          value={phone}
-                          onChange={(event) => setPhone(event.target.value)}
+                          value={paymentPhone}
+                          onChange={(event) => setPaymentPhone(event.target.value)}
                           className="mt-2 w-full rounded-md border border-slate-300 px-4 py-3 font-normal outline-none transition focus:border-[#52a234] focus:ring-2 focus:ring-[#52a234]/20"
-                          placeholder="+237 6XX XXX XXX"
+                          placeholder={phone || '+237 6XX XXX XXX'}
                         />
                       </label>
                     </div>
@@ -966,7 +1148,15 @@ export default function PassAcadFlow() {
                       <p className="text-[9px] font-bold uppercase tracking-[.18em] text-slate-500">Adhésion après le parcours</p>
                       <p className="mt-1 text-2xl font-semibold text-[#082b5b]">{membershipFee}</p>
                     </div>
-                    <span className="border border-[#0b356b]/20 px-2 py-1 text-[9px] font-bold uppercase tracking-[.14em] text-[#4c7b42]">Orange · MTN</span>
+                    <div className="relative h-9 w-28 shrink-0 overflow-hidden rounded border border-[#0b356b]/15 bg-white sm:h-10 sm:w-32">
+                      <Image
+                        src="/images/partners/mobile-money.jpg"
+                        alt="Paiement accepté par MTN Mobile Money et Orange Money"
+                        fill
+                        sizes="128px"
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
                   <p className="mt-4 text-xs leading-5 text-slate-600">
                     Les coordonnées de paiement sont communiquées par NAYGAL. L’invitation privée est envoyée après vérification.

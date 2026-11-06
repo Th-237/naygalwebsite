@@ -477,7 +477,7 @@ export default function ContactPage() {
               </p>
 
               <p className="mt-2 text-sm font-semibold text-white">
-                +237 655 002 493
+                +237 674 509 721
               </p>
 
               <p className="mt-1 text-xs text-slate-500">
@@ -754,7 +754,7 @@ export default function ContactPage() {
                   </p>
 
                   <p className="mt-1 text-sm text-slate-300">
-                    +237 655 002 493
+                    +237 674 509 721
                   </p>
 
                   <p className="mt-1 text-sm text-slate-500">
