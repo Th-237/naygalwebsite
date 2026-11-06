@@ -201,7 +201,7 @@ export default function ContactPage() {
         formData.message,
       ].join('\n')
 
-      const whatsappUrl = `https://wa.me/237655002493?text=${encodeURIComponent(whatsappMessage)}`
+      const whatsappUrl = `https://wa.me/237674509721?text=${encodeURIComponent(whatsappMessage)}`
 
       window.open(whatsappUrl, '_blank', 'noopener,noreferrer')
 
@@ -339,7 +339,7 @@ export default function ContactPage() {
                 </button>
 
                 <a
-                  href="https://wa.me/237655002493?text=Bonjour%20NAYGAL%2C%20je%20souhaite%20discuter%20de%20mon%20projet."
+                  href="https://wa.me/237674509721?text=Bonjour%20NAYGAL%2C%20je%20souhaite%20discuter%20de%20mon%20projet."
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 border border-[#25D366]/60 bg-[#25D366]/10 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition hover:bg-[#25D366]/20"
@@ -466,7 +466,7 @@ export default function ContactPage() {
             </a>
 
             <a
-              href="https://wa.me/237655002493?text=Bonjour%20NAYGAL%2C%20je%20souhaite%20discuter%20de%20mon%20projet."
+              href="https://wa.me/237674509721?text=Bonjour%20NAYGAL%2C%20je%20souhaite%20discuter%20de%20mon%20projet."
               target="_blank"
               rel="noreferrer"
               className="border-b border-white/10 p-6 transition hover:bg-white/[.03] sm:border-b-0 sm:border-r"
@@ -1152,7 +1152,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href="https://wa.me/237655002493?text=Bonjour%20NAYGAL%2C%20je%20souhaite%20discuter%20de%20mon%20projet."
+                href="https://wa.me/237674509721?text=Bonjour%20NAYGAL%2C%20je%20souhaite%20discuter%20de%20mon%20projet."
                 target="_blank"
                 rel="noreferrer"
                 className="bg-[#25D366] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1ebc5b]"

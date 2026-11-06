@@ -104,7 +104,7 @@ export default function ProposerProjetPage() {
       `Besoin d'accompagnement:\n${formData.support}`,
     ].join("\n")
 
-    const whatsappUrl = `https://wa.me/237655002493?text=${encodeURIComponent(whatsappMessage)}`
+    const whatsappUrl = `https://wa.me/237674509721?text=${encodeURIComponent(whatsappMessage)}`
     window.open(whatsappUrl, "_blank", "noopener,noreferrer")
     setStatus("sent")
   }

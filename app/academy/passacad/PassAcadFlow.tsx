@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { createStudentQuiz, passingScore } from '@/lib/passacad-student-quiz'
 import type { StudyDomain } from '@/lib/passacad-types'
 
-const whatsappNumber = '237655002493'
+const whatsappNumber = '237674509721'
 const membershipFee = '5 000 FCFA'
 
 type Profile = 'student' | 'professional' | 'curious'
@@ -116,6 +116,22 @@ export default function PassAcadFlow() {
     const intervalId = window.setInterval(updateCountdown, 1000)
     return () => window.clearInterval(intervalId)
   }, [])
+
+  useEffect(() => {
+    if (!window.matchMedia('(max-width: 767px)').matches) return
+
+    const targetId = stage === 'quiz'
+      ? 'passacad-current-question'
+      : stage === 'profile' && profile === 'student'
+        ? 'passacad-student-fields'
+        : null
+    if (!targetId) return
+
+    const frameId = window.requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+    return () => window.cancelAnimationFrame(frameId)
+  }, [profile, questionIndex, stage])
 
   function startQuiz() {
     setFlowMessage('')
@@ -394,24 +410,28 @@ export default function PassAcadFlow() {
             {[
               {
                 number: '01',
+                label: 'Communauté',
                 title: 'Une communauté engagée',
                 description: 'Un espace WhatsApp orienté vers le numérique utile, l’entraide et le partage de ressources.',
                 mark: '↗',
               },
               {
                 number: '02',
+                label: 'Rencontres',
                 title: 'Des rencontres privilégiées',
                 description: 'Accès privilégié aux événements NAYGAL et aux rencontres avec des professionnels.',
                 mark: '◎',
               },
               {
                 number: '03',
+                label: 'Pratique',
                 title: 'Des ateliers pratiques',
                 description: 'Exonération des frais d’inscription aux ateliers pratiques NAYGAL, selon le calendrier proposé.',
                 mark: '⌁',
               },
               {
                 number: '04',
+                label: 'Opportunités',
                 title: 'Des opportunités à suivre',
                 description: 'Visibilité sur les propositions des entreprises partenaires, dont des stages et de l’alternance.',
                 mark: '✳',
@@ -419,7 +439,7 @@ export default function PassAcadFlow() {
             ].map((benefit) => (
               <article key={benefit.number} className="bg-[#f8f6ef] p-6 sm:p-7">
                 <div className="flex items-start justify-between">
-                  <span className="text-xs font-bold tracking-[.16em] text-[#4c7b42]">{benefit.number} / PASSACAD</span>
+                  <span className="text-xs font-bold tracking-[.16em] text-[#4c7b42]">{benefit.number} / {benefit.label}</span>
                   <span className="grid h-9 w-9 place-items-center border border-[#c9c8bd] text-[#315c2c]" aria-hidden="true">{benefit.mark}</span>
                 </div>
                 <h3 className="mt-7 text-lg font-semibold text-[#082b5b]">{benefit.title}</h3>
@@ -523,7 +543,7 @@ export default function PassAcadFlow() {
                     ))}
                   </div>
                   {isStudent && (
-                    <div className="mt-7 grid gap-5 rounded-xl bg-[#f7f9fc] p-5 sm:grid-cols-2 sm:p-6">
+                    <div id="passacad-student-fields" className="mt-7 scroll-mt-24 grid gap-5 rounded-xl bg-[#f7f9fc] p-5 sm:grid-cols-2 sm:p-6">
                       <label className="block text-sm font-semibold text-slate-700">
                         Établissement
                         <input
@@ -621,7 +641,7 @@ export default function PassAcadFlow() {
                       </p>
                     </>
                   )}
-                  <h2 className="mt-8 text-2xl font-semibold leading-snug">{currentQuestion.prompt}</h2>
+                  <h2 id="passacad-current-question" className="mt-8 scroll-mt-24 text-2xl font-semibold leading-snug">{currentQuestion.prompt}</h2>
                   <fieldset className="mt-6 space-y-3">
                     <legend className="sr-only">Choisis une réponse</legend>
                     {currentQuestion.options.map((option, index) => (

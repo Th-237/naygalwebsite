@@ -157,7 +157,7 @@ export default function AcademyPage() {
                   href="/academy/passacad"
                   className="inline-flex justify-center rounded-md border border-[#a4d78f]/60 bg-[#a4d78f]/10 px-7 py-4 font-semibold text-white backdrop-blur transition hover:bg-[#a4d78f]/20"
                 >
-                  Rejoindre PassAcad
+                  Démarrer mon admission via PassAcad
                 </Link>
               </div>
 
@@ -332,7 +332,7 @@ export default function AcademyPage() {
             href="/academy/passacad"
             className="inline-flex w-fit items-center gap-3 rounded-md bg-[#71b224] px-6 py-4 font-semibold text-white transition hover:bg-[#5d9b1c]"
           >
-            Découvrir PassAcad <span aria-hidden="true">→</span>
+            Démarrer mon admission via PassAcad <span aria-hidden="true">→</span>
           </Link>
         </div>
       </section>
